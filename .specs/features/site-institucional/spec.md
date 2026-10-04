@@ -219,8 +219,8 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-05 | P1: Landing page — 4 etapas do processo | - | Pending |
 | PAGE-06 | P1: Landing page — navegação por âncoras | - | Implementing |
 | PAGE-07 | P1: Landing page — perguntas frequentes | - | Pending |
-| PAGE-08 | P1: Landing page — configuração única | - | Pending |
-| PAGE-09 | P1: Landing page — build falha com placeholder | - | Pending |
+| PAGE-08 | P1: Landing page — configuração única | - | Implementing |
+| PAGE-09 | P1: Landing page — build falha com placeholder | - | Implementing |
 | PAGE-10 | P1: Landing page — seção Projetos condicional | - | Pending |
 | PAGE-11 | P1: Landing page — omissão sem projetos | - | Pending |
 | PAGE-12 | P1: Landing page — depoimento condicional | - | Pending |

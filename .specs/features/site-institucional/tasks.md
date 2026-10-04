@@ -170,10 +170,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Para cada campo obrigatório: vazio → erro com o nome do campo; `[X]` → erro com o nome do campo
-- [ ] Config válida retorna o objeto tipado
-- [ ] `projetos: []` e `depoimento` ausente são aceitos
-- [ ] Gate quick passa; ≥ 18 testes
+- [x] Para cada campo obrigatório: vazio → erro com o nome do campo; `[X]` → erro com o nome do campo
+- [x] Config válida retorna o objeto tipado
+- [x] `projetos: []` e `depoimento` ausente são aceitos
+- [x] Gate quick passa; ≥ 18 testes
 
 **Tests**: unit
 **Gate**: quick
