@@ -44,6 +44,16 @@ describe("saída do build", () => {
     expect(listFiles(STATIC).some((file) => file.includes("contato"))).toBe(false);
   });
 
+  it("endereço inexistente responde 404 com a página 404.html (LEGAL-03)", () => {
+    expect(existsSync(join(STATIC, "404.html"))).toBe(true);
+    const config = JSON.parse(readFileSync(join(OUTPUT, "config.json"), "utf8")) as {
+      routes: Array<{ src?: string; dest?: string; status?: number }>;
+    };
+    const route = config.routes.find((r) => r.dest === "/404.html");
+    expect(route?.status).toBe(404);
+    expect(new RegExp(route?.src ?? "$^").test("/qualquer-coisa")).toBe(true);
+  });
+
   it("nenhum arquivo público contém o nome nem o valor da chave do Resend", () => {
     const files = listFiles(STATIC);
     expect(files.length).toBeGreaterThan(0);

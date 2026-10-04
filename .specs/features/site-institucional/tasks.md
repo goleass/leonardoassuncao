@@ -892,9 +892,9 @@ T30 -> T32
 
 **Done when**:
 
-- [ ] Renderiza título e link `href="/"`
-- [ ] Build gera `404.html`
-- [ ] Gate quick passa; ≥ 1 teste
+- [x] Renderiza título e link `href="/"`
+- [x] Build gera `404.html`
+- [x] Gate quick passa; ≥ 1 teste
 
 **Tests**: unit
 **Gate**: quick

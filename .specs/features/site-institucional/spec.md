@@ -275,7 +275,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | A11Y-05 | P2: Acessibilidade — hierarquia de títulos | - | Implementing |
 | LEGAL-01 | P2: Privacidade — página /privacidade | - | Implementing |
 | LEGAL-02 | P2: Privacidade — link no formulário | - | Implementing |
-| LEGAL-03 | P2: Privacidade — página 404 | - | Pending |
+| LEGAL-03 | P2: Privacidade — página 404 | - | Implementing |
 | LEGAL-04 | P2: Privacidade — rodapé | - | Implementing |
 | EDGE-01 | Edge: clique duplo envia uma vez | - | Implementing |
 | EDGE-02 | Edge: mensagem acima de 2000 caracteres | - | Implementing |
