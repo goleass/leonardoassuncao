@@ -74,6 +74,18 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: W3 src/pages/api/contato.ts:11 (round 3) (endpoint-wiring)
 - last seen: 2026-10-04T13:41:13Z
 
+### L-011 - Move inline client bootstrap code that maps page data into script deps into a tested module because component tests do not run it and script tests inject their own deps
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `component-wiring` · harmful: 0
+- features: site-institucional
+- evidence: validation.md round 4: S1, S2 at src/components/Contact.astro:150-151 (component-wiring)
+- last seen: 2026-10-04T14:09:41Z
+
+### L-012 - Assert placement requirements such as next to a button by checking the shared container or sibling, not just presence somewhere in the form
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `component-markup` · harmful: 0
+- features: site-institucional
+- evidence: validation.md round 4: L2b at src/components/Contact.astro:132-134 (LEGAL-02) (component-markup)
+- last seen: 2026-10-04T14:09:41Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

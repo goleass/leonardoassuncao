@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 11,
+  "next_id": 13,
   "lessons": [
     {
       "id": "L-001",
@@ -184,6 +184,42 @@
       ],
       "created": "2026-10-04T13:41:13Z",
       "last_seen": "2026-10-04T13:41:13Z"
+    },
+    {
+      "id": "L-011",
+      "key": "surviving_mutant::move inline client bootstrap code that maps page data into script deps into a tested module because component tests do not run it and script tests inject their own deps",
+      "text": "Move inline client bootstrap code that maps page data into script deps into a tested module because component tests do not run it and script tests inject their own deps",
+      "signal": "surviving_mutant",
+      "scope": "component-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "validation.md round 4: S1, S2 at src/components/Contact.astro:150-151 (component-wiring)"
+      ],
+      "created": "2026-10-04T14:09:41Z",
+      "last_seen": "2026-10-04T14:09:41Z"
+    },
+    {
+      "id": "L-012",
+      "key": "surviving_mutant::assert placement requirements such as next to a button by checking the shared container or sibling not just presence somewhere in the form",
+      "text": "Assert placement requirements such as next to a button by checking the shared container or sibling, not just presence somewhere in the form",
+      "signal": "surviving_mutant",
+      "scope": "component-markup",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "validation.md round 4: L2b at src/components/Contact.astro:132-134 (LEGAL-02) (component-markup)"
+      ],
+      "created": "2026-10-04T14:09:41Z",
+      "last_seen": "2026-10-04T14:09:41Z"
     }
   ]
 }
