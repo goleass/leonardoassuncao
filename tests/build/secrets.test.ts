@@ -121,3 +121,22 @@ describe("fontes servidas pelo próprio domínio (SEO-06)", () => {
     expect(external.map(({ file }) => file)).toEqual([]);
   });
 });
+
+describe("URL canônica de cada página (SEO-03)", () => {
+  const DOMAIN = "https://leonardoassuncao.com.br";
+  const metaOf = (page: string) => {
+    const html = readFileSync(join(STATIC, page), "utf8");
+    return {
+      canonical: html.match(/<link[^>]+rel="canonical"[^>]+href="([^"]+)"/)?.[1],
+      ogUrl: html.match(/<meta[^>]+property="og:url"[^>]+content="([^"]+)"/)?.[1],
+    };
+  };
+
+  it("a página inicial aponta para a raiz do domínio", () => {
+    expect(metaOf("index.html")).toEqual({ canonical: `${DOMAIN}/`, ogUrl: `${DOMAIN}/` });
+  });
+
+  it("/privacidade aponta para si mesma, não para a página inicial", () => {
+    expect(metaOf("privacidade/index.html")).toEqual({ canonical: `${DOMAIN}/privacidade/`, ogUrl: `${DOMAIN}/privacidade/` });
+  });
+});

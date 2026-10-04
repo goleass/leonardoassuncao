@@ -105,6 +105,12 @@ T30 -> T32
 T34 -> T37
 ```
 
+### Phase 8: Correções da validação (rodada 2)
+
+```
+T38 -> T39
+```
+
 ---
 
 ## Task Breakdown
@@ -1086,6 +1092,58 @@ T34 -> T37
 
 ---
 
+### Phase 8: Correções da validação (rodada 2)
+
+#### T38: Teste do endpoint real com serviços substituídos
+
+**What**: `src/pages/api/_contato.test.ts` chama o `POST` real com `astro:env/server` e `resend` mockados: 6 envios do mesmo IP → `[200×5, 429]`, outro IP não afetado, destino/remetente/`replyTo`, envio pendente → nada aos 9.999 ms e 502 aos 10.000 ms, erro do Resend → 502 (sobreviventes W1/W2).
+**Where**: `src/pages/api/_contato.test.ts`
+**Depends on**: None
+**Reuses**: `src/pages/api/contato.ts`
+**Requirement**: FORM-01, FORM-08, FORM-11
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Endpoint ignorando `CONTACT_RATE_LIMIT` ou `SEND_TIMEOUT_MS` faz o teste falhar
+- [x] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(contact): exercise the real contact endpoint`
+
+---
+
+#### T39: Canonical por página no build
+
+**What**: Teste de build afirmando canonical e `og:url` de `/` e de `/privacidade/` (sobrevivente N5).
+**Where**: `tests/build/secrets.test.ts`
+**Depends on**: T38
+**Reuses**: build do próprio arquivo
+**Requirement**: SEO-03
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Canonical fixo em `/` faz o teste falhar
+- [x] Gate build passa (fim da fase)
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `test(seo): assert canonical url per page`
+
+---
+
 ## Phase Execution Map
 
 ```
@@ -1098,6 +1156,7 @@ Phase 4:  T19, T20, T21, T22, T23, T24        (6)
 Phase 5:  T25, T26, T27, T28                  (4)
 Phase 6:  T29, T30, T31, T32, T33             (5)
 Phase 7:  T34, T35, T36, T37                  (4)
+Phase 8:  T38, T39                            (2)
 ```
 
 Execution is strictly sequential - there is no intra-phase parallelism.
