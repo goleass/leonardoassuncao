@@ -225,7 +225,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-11 | P1: Landing page — omissão sem projetos | - | Pending |
 | PAGE-12 | P1: Landing page — depoimento condicional | - | Pending |
 | PAGE-13 | P1: Landing page — cabeçalho fixo | - | Pending |
-| FORM-01 | P1: Formulário — envio do e-mail | - | Pending |
+| FORM-01 | P1: Formulário — envio do e-mail | - | Implementing |
 | FORM-02 | P1: Formulário — mensagem de sucesso | - | Pending |
 | FORM-03 | P1: Formulário — continuar no WhatsApp | - | Implementing |
 | FORM-04 | P1: Formulário — campos e limites | - | Implementing |
@@ -273,7 +273,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | LEGAL-04 | P2: Privacidade — rodapé | - | Pending |
 | EDGE-01 | Edge: clique duplo envia uma vez | - | Pending |
 | EDGE-02 | Edge: mensagem acima de 2000 caracteres | - | Implementing |
-| EDGE-03 | Edge: HTML escapado no e-mail | - | Pending |
+| EDGE-03 | Edge: HTML escapado no e-mail | - | Implementing |
 | EDGE-04 | Edge: largura exata de 768px | - | Pending |
 | EDGE-05 | Edge: imagem de projeto que não carrega | - | Pending |
 

@@ -307,9 +307,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Nome, e-mail, tipo e mensagem presentes no texto e no HTML
-- [ ] `<script>` no nome/mensagem aparece como `&lt;script&gt;` no HTML
-- [ ] Gate quick passa; ≥ 4 testes
+- [x] Nome, e-mail, tipo e mensagem presentes no texto e no HTML
+- [x] `<script>` no nome/mensagem aparece como `&lt;script&gt;` no HTML
+- [x] Gate quick passa; ≥ 4 testes
 
 **Tests**: unit
 **Gate**: quick
