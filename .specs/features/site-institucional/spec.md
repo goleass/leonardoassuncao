@@ -226,17 +226,17 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-12 | P1: Landing page — depoimento condicional | - | Implementing |
 | PAGE-13 | P1: Landing page — cabeçalho fixo | - | Implementing |
 | FORM-01 | P1: Formulário — envio do e-mail | - | Implementing |
-| FORM-02 | P1: Formulário — mensagem de sucesso | - | Pending |
+| FORM-02 | P1: Formulário — mensagem de sucesso | - | Implementing |
 | FORM-03 | P1: Formulário — continuar no WhatsApp | - | Implementing |
 | FORM-04 | P1: Formulário — campos e limites | - | Implementing |
 | FORM-05 | P1: Formulário — validação no navegador | - | Implementing |
 | FORM-06 | P1: Formulário — validação no servidor (400) | - | Implementing |
-| FORM-07 | P1: Formulário — estado "Enviando…" | - | Pending |
+| FORM-07 | P1: Formulário — estado "Enviando…" | - | Implementing |
 | FORM-08 | P1: Formulário — falha do serviço de e-mail (502) | - | Implementing |
-| FORM-09 | P1: Formulário — plano B na falha | - | Pending |
+| FORM-09 | P1: Formulário — plano B na falha | - | Implementing |
 | FORM-10 | P1: Formulário — honeypot | - | Implementing |
 | FORM-11 | P1: Formulário — limite de envios (429) | - | Implementing |
-| FORM-12 | P1: Formulário — mensagem de limite | - | Pending |
+| FORM-12 | P1: Formulário — mensagem de limite | - | Implementing |
 | FORM-13 | P1: Formulário — sem armazenamento | - | Implementing |
 | FORM-14 | P1: Formulário — credenciais só no servidor | - | Implementing |
 | FORM-15 | P1: Formulário — log sem dados pessoais | - | Implementing |
@@ -271,7 +271,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | LEGAL-02 | P2: Privacidade — link no formulário | - | Implementing |
 | LEGAL-03 | P2: Privacidade — página 404 | - | Pending |
 | LEGAL-04 | P2: Privacidade — rodapé | - | Implementing |
-| EDGE-01 | Edge: clique duplo envia uma vez | - | Pending |
+| EDGE-01 | Edge: clique duplo envia uma vez | - | Implementing |
 | EDGE-02 | Edge: mensagem acima de 2000 caracteres | - | Implementing |
 | EDGE-03 | Edge: HTML escapado no e-mail | - | Implementing |
 | EDGE-04 | Edge: largura exata de 768px | - | Pending |

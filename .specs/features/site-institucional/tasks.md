@@ -839,11 +839,11 @@ Adiada: depende de T4 (dados reais).
 
 **Done when**:
 
-- [ ] Inválido → erro abaixo do campo e `fetch` não chamado
-- [ ] Clique duplo → `fetch` chamado 1 vez
-- [ ] Cada resposta (200, 400, 429, 502, rejeição de rede) leva ao texto exato da spec
-- [ ] Após sucesso, o botão aponta para a URL do `buildWhatsAppUrl`
-- [ ] Gate build passa (fim da fase); ≥ 9 testes
+- [x] Inválido → erro abaixo do campo e `fetch` não chamado
+- [x] Clique duplo → `fetch` chamado 1 vez
+- [x] Cada resposta (200, 400, 429, 502, rejeição de rede) leva ao texto exato da spec
+- [x] Após sucesso, o botão aponta para a URL do `buildWhatsAppUrl`
+- [x] Gate build passa (fim da fase); ≥ 9 testes
 
 **Tests**: unit
 **Gate**: build

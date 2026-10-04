@@ -48,7 +48,14 @@ const { site } = Astro.props;
       </div>
 
       <div class="contact__panel">
-        <form class="contact-form" action="/api/contato" method="post">
+        <form
+          class="contact-form"
+          action="/api/contato"
+          method="post"
+          data-whatsapp={site.whatsapp}
+          data-email={site.email}
+          data-prazo={site.prazoResposta}
+        >
           <div class="contact-form__row">
             <div class="field">
               <label class="field__label" for="nome">Nome</label>
@@ -134,6 +141,16 @@ const { site } = Astro.props;
     </div>
   </div>
 </section>
+
+<script>
+  import { initContactForm } from "../scripts/contact-form";
+
+  const form = document.querySelector<HTMLFormElement>(".contact-form");
+  if (form) {
+    const { whatsapp = "", email = "", prazo = "" } = form.dataset;
+    initContactForm(form, { fetch: window.fetch.bind(window), whatsappPhone: whatsapp, email, responseTime: prazo });
+  }
+</script>
 
 <style>
   .contact {
@@ -339,5 +356,29 @@ const { site } = Astro.props;
 
   .contact-status:empty {
     display: none;
+  }
+
+  /* Conteúdo criado pelo script do formulário (sem o atributo de escopo do Astro). */
+  .contact-status :global(.contact-status__actions) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+
+  .contact-status :global(.contact-status__link) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    color: var(--brand);
+    font-weight: 600;
+  }
+
+  .contact-status :global(.contact-status__link:first-child) {
+    padding: 14px 24px;
+    background-color: var(--brand);
+    color: var(--white);
+    text-decoration: none;
   }
 </style>
