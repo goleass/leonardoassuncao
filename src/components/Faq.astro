@@ -1,0 +1,85 @@
+---
+const questions = [
+  {
+    q: "Quanto custa um site ou sistema?",
+    a: "Depende do escopo. Depois do diagnóstico você recebe uma proposta fechada, com valor e prazo definidos antes de começar.",
+  },
+  {
+    q: "Quanto tempo leva para ficar pronto?",
+    a: "Sites costumam levar algumas semanas. Sistemas são divididos em entregas para você começar a usar o quanto antes.",
+  },
+  {
+    q: "Dá para integrar com o sistema que eu já uso?",
+    a: "Na maioria dos casos, sim. Se o sistema tem API, webhook ou exportação de dados, é possível integrar.",
+  },
+  {
+    q: "Você atende empresas de outras cidades?",
+    a: "Sim. Todo o processo funciona remotamente, com reuniões por vídeo e acompanhamento online.",
+  },
+];
+---
+
+<section id="faq" class="faq">
+  <div class="container faq__inner">
+    <h2 class="faq__title reveal">Perguntas frequentes</h2>
+    <div class="faq__list">
+      {
+        questions.map(({ q, a }, index) => (
+          <details class="faq__item" open={index === 0}>
+            <summary class="faq__question">{q}</summary>
+            <p class="faq__answer">{a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding: var(--section-y) var(--gutter);
+    background: var(--gray-100);
+  }
+
+  .faq__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px 80px;
+  }
+
+  .faq__title {
+    flex: 1 1 340px;
+    min-width: 0;
+    font-size: var(--text-h2-faq);
+    line-height: 1;
+    letter-spacing: var(--tracking-display);
+    font-weight: 700;
+    font-stretch: var(--stretch-display);
+  }
+
+  .faq__list {
+    flex: 1.6 1 560px;
+    min-width: 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .faq__item {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--gray-250);
+  }
+
+  .faq__question {
+    min-height: 44px;
+    display: list-item;
+    padding-block: 8px;
+    font-size: var(--text-lead);
+    font-weight: 600;
+    font-stretch: 108%;
+    cursor: pointer;
+  }
+
+  .faq__answer {
+    margin-top: 14px;
+    color: var(--gray-600);
+  }
+</style>

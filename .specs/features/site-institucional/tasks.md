@@ -652,8 +652,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 4 `<details>` com pergunta e resposta; só o primeiro com `open`
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] 4 `<details>` com pergunta e resposta; só o primeiro com `open`
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick

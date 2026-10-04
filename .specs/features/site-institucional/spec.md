@@ -218,7 +218,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-04 | P1: Landing page — fluxo de integrações | - | Implementing |
 | PAGE-05 | P1: Landing page — 4 etapas do processo | - | Implementing |
 | PAGE-06 | P1: Landing page — navegação por âncoras | - | Implementing |
-| PAGE-07 | P1: Landing page — perguntas frequentes | - | Pending |
+| PAGE-07 | P1: Landing page — perguntas frequentes | - | Implementing |
 | PAGE-08 | P1: Landing page — configuração única | - | Implementing |
 | PAGE-09 | P1: Landing page — build falha com placeholder | - | Implementing |
 | PAGE-10 | P1: Landing page — seção Projetos condicional | - | Implementing |
