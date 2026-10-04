@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { accessibleText, parseHtml, renderComponent } from "../../tests/render";
-import { siteFixture } from "../../tests/fixtures/site";
+import { siteComLinkedinFixture, siteFixture } from "../../tests/fixtures/site";
 import Contact from "./Contact.astro";
 
 let doc: Document;
@@ -77,12 +77,23 @@ describe("Contact: honeypot anti-spam (FORM-10)", () => {
 });
 
 describe("Contact: dados de contato da configuração (PAGE-08)", () => {
-  it("e-mail, WhatsApp e LinkedIn usam os valores da config", () => {
+  it("e-mail e WhatsApp usam os valores da config", () => {
     const hrefs = [...doc.querySelectorAll("#contato a")].map((a) => a.getAttribute("href"));
     expect(hrefs).toContain("mailto:contato@exemplo.com.br");
     expect(hrefs).toContain("https://wa.me/5511900000000");
-    expect(hrefs).toContain("https://www.linkedin.com/in/exemplo");
     expect(doc.querySelector('#contato a[href^="mailto:"]')?.textContent?.trim()).toBe("contato@exemplo.com.br");
+  });
+
+  it("sem LinkedIn configurado, não há link LinkedIn", () => {
+    const texts = [...doc.querySelectorAll("#contato a")].map((a) => a.textContent?.trim());
+    expect(texts).not.toContain("LinkedIn");
+    expect(doc.querySelector('#contato a[href*="linkedin"]')).toBeNull();
+  });
+
+  it("com LinkedIn configurado, o link LinkedIn aponta para o perfil da config", async () => {
+    const other = parseHtml(await renderComponent(Contact, { site: siteComLinkedinFixture }));
+    const link = [...other.querySelectorAll("#contato a")].find((a) => a.textContent?.trim() === "LinkedIn");
+    expect(link?.getAttribute("href")).toBe("https://www.linkedin.com/in/exemplo");
   });
 
   it("mostra o prazo de resposta configurado", () => {

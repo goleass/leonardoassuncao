@@ -33,7 +33,7 @@ const jsonLd = {
   image: ogImage,
   email: site.email,
   telephone: `+${site.whatsapp}`,
-  sameAs: [site.linkedin],
+  ...(site.linkedin ? { sameAs: [site.linkedin] } : {}),
   address: { "@type": "PostalAddress", addressLocality: locality, addressRegion: region, addressCountry: "BR" },
   areaServed: { "@type": "Country", name: "Brasil" },
   hasOfferCatalog: {

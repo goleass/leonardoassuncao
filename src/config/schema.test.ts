@@ -18,7 +18,6 @@ const requiredFields = [
   "email",
   "whatsapp",
   "whatsappDisplay",
-  "linkedin",
   "cidade",
   "cnpj",
   "prazoResposta",
@@ -55,6 +54,29 @@ describe("validateSiteConfig", () => {
   it("config válida retorna o objeto tipado com os mesmos valores", () => {
     const result = validateSiteConfig(valid);
     expect(result).toEqual(valid);
+  });
+
+  it("linkedin é opcional: config sem o campo é válida", () => {
+    const { linkedin: _omit, ...semLinkedin } = valid;
+    const result = validateSiteConfig(semLinkedin);
+    expect(result.linkedin).toBeUndefined();
+    expect(result).toEqual(semLinkedin);
+  });
+
+  it("linkedin presente mas vazio → erro que nomeia o campo", () => {
+    expect(() => validateSiteConfig({ ...valid, linkedin: "" })).toThrow(/^Configuração inválida: linkedin está vazio$/);
+  });
+
+  it("linkedin presente com texto entre colchetes → erro que nomeia o campo", () => {
+    expect(() => validateSiteConfig({ ...valid, linkedin: "https://linkedin.com/in/[SEU_PERFIL]" })).toThrow(
+      /^Configuração inválida: linkedin contém texto entre colchetes$/,
+    );
+  });
+
+  it("linkedin presente que não é URL → erro que nomeia o campo", () => {
+    expect(() => validateSiteConfig({ ...valid, linkedin: "meu perfil" })).toThrow(
+      /^Configuração inválida: linkedin não é uma URL válida$/,
+    );
   });
 
   it("aceita projetos: [] e depoimento ausente", () => {

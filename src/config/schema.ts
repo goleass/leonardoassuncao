@@ -14,7 +14,8 @@ export const siteSchema = z.object({
   email: required,
   whatsapp: required,
   whatsappDisplay: required,
-  linkedin: required,
+  // Opcional: a empresa pode não ter LinkedIn. Se vier, precisa ser uma URL real, sem marcador.
+  linkedin: required.pipe(z.url({ error: "não é uma URL válida" })).optional(),
   cidade: required,
   cnpj: required,
   prazoResposta: required,

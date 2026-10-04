@@ -6,12 +6,14 @@ export const siteFixture: SiteConfig = {
   email: "contato@exemplo.com.br",
   whatsapp: "5511900000000",
   whatsappDisplay: "(11) 90000-0000",
-  linkedin: "https://www.linkedin.com/in/exemplo",
   cidade: "São Paulo, SP",
   cnpj: "00.000.000/0001-00",
   prazoResposta: "24 horas úteis",
   projetos: [],
 };
+
+/** Variante com LinkedIn configurado (o campo é opcional). */
+export const siteComLinkedinFixture: SiteConfig = { ...siteFixture, linkedin: "https://www.linkedin.com/in/exemplo" };
 
 export const projetoFixture: SiteConfig["projetos"][number] = {
   nome: "Projeto Exemplo",

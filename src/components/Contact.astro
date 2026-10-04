@@ -37,7 +37,13 @@ const { site } = Astro.props;
               aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"></path></svg
             >
           </a>
-          <a class="button button--line lg-btn lg-btn-s" href={site.linkedin}>LinkedIn</a>
+          {
+            site.linkedin && (
+              <a class="button button--line lg-btn lg-btn-s" href={site.linkedin}>
+                LinkedIn
+              </a>
+            )
+          }
         </div>
       </div>
 

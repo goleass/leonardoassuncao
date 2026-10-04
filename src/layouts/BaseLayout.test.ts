@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { parseHtml, renderComponent } from "../../tests/render";
-import { siteFixture } from "../../tests/fixtures/site";
+import { siteComLinkedinFixture, siteFixture } from "../../tests/fixtures/site";
 import BaseLayout from "./BaseLayout.astro";
 
 const TITLE = "Leonardo Gomes Assunção — Sites, Sistemas Web e Integrações";
@@ -97,6 +97,15 @@ describe("BaseLayout: JSON-LD ProfessionalService (SEO-04)", () => {
     const data = jsonLd();
     expect(data.email).toBe("contato@exemplo.com.br");
     expect(data.telephone).toBe("+5511900000000");
+  });
+
+  it("sem LinkedIn configurado, não publica sameAs", () => {
+    expect(jsonLd()).not.toHaveProperty("sameAs");
+  });
+
+  it("com LinkedIn configurado, publica o perfil em sameAs", async () => {
+    const other = parseHtml(await renderComponent(BaseLayout, { site: siteComLinkedinFixture }));
+    const data = JSON.parse(other.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
     expect(data.sameAs).toEqual(["https://www.linkedin.com/in/exemplo"]);
   });
 });
