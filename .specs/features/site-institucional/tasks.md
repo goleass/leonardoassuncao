@@ -627,8 +627,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Sem depoimento → string vazia; com depoimento → texto, autor, cargo e empresa
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] Sem depoimento → string vazia; com depoimento → texto, autor, cargo e empresa
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick

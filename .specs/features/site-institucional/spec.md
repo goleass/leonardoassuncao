@@ -223,7 +223,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-09 | P1: Landing page — build falha com placeholder | - | Implementing |
 | PAGE-10 | P1: Landing page — seção Projetos condicional | - | Implementing |
 | PAGE-11 | P1: Landing page — omissão sem projetos | - | Implementing |
-| PAGE-12 | P1: Landing page — depoimento condicional | - | Pending |
+| PAGE-12 | P1: Landing page — depoimento condicional | - | Implementing |
 | PAGE-13 | P1: Landing page — cabeçalho fixo | - | Implementing |
 | FORM-01 | P1: Formulário — envio do e-mail | - | Implementing |
 | FORM-02 | P1: Formulário — mensagem de sucesso | - | Pending |
