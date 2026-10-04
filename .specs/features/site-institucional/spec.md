@@ -227,7 +227,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-13 | P1: Landing page — cabeçalho fixo | - | Pending |
 | FORM-01 | P1: Formulário — envio do e-mail | - | Pending |
 | FORM-02 | P1: Formulário — mensagem de sucesso | - | Pending |
-| FORM-03 | P1: Formulário — continuar no WhatsApp | - | Pending |
+| FORM-03 | P1: Formulário — continuar no WhatsApp | - | Implementing |
 | FORM-04 | P1: Formulário — campos e limites | - | Implementing |
 | FORM-05 | P1: Formulário — validação no navegador | - | Implementing |
 | FORM-06 | P1: Formulário — validação no servidor (400) | - | Implementing |

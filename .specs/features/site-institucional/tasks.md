@@ -281,9 +281,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] URL decodificada é exatamente "Olá, Leonardo! Acabei de enviar uma mensagem pelo site sobre: <tipo>. Meu nome é <nome>."
-- [ ] Acentos, `&` e espaços codificados corretamente
-- [ ] Gate quick passa; ≥ 3 testes
+- [x] URL decodificada é exatamente "Olá, Leonardo! Acabei de enviar uma mensagem pelo site sobre: <tipo>. Meu nome é <nome>."
+- [x] Acentos, `&` e espaços codificados corretamente
+- [x] Gate quick passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: quick
