@@ -547,8 +547,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 3 títulos e textos do protótipo presentes
-- [ ] Gate quick passa; ≥ 1 teste
+- [x] 3 títulos e textos do protótipo presentes
+- [x] Gate quick passa; ≥ 1 teste
 
 **Tests**: unit
 **Gate**: quick

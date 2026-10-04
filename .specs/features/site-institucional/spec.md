@@ -212,7 +212,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| PAGE-01 | P1: Landing page — ordem das seções | - | Pending |
+| PAGE-01 | P1: Landing page — ordem das seções | - | Implementing |
 | PAGE-02 | P1: Landing page — título com palavras alternadas | - | Implementing |
 | PAGE-03 | P1: Landing page — 5 serviços | - | Implementing |
 | PAGE-04 | P1: Landing page — fluxo de integrações | - | Implementing |
