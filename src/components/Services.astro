@@ -1,26 +1,5 @@
 ---
-const services = [
-  {
-    title: "Criação de sites",
-    text: "Institucionais, landing pages e catálogos. Rápidos, bem posicionados no Google e pensados para gerar contato.",
-  },
-  {
-    title: "Sistemas web",
-    text: "Painéis administrativos, CRMs, portais de clientes e plataformas desenhadas em torno do seu processo, não o contrário.",
-  },
-  {
-    title: "Integrações e APIs",
-    text: "ERP, pagamentos, WhatsApp, marketplaces e emissão fiscal conectados, para os dados fluírem sem digitação manual.",
-  },
-  {
-    title: "Software sob medida",
-    text: "Automações, APIs próprias, aplicações internas e consultoria técnica para decisões de tecnologia.",
-  },
-  {
-    title: "Manutenção e evolução",
-    text: "Assumo sistemas que já existem: correções, melhorias de desempenho, segurança e novas funcionalidades.",
-  },
-];
+import { services } from "../data/services";
 ---
 
 <section id="servicos" class="services">
@@ -35,14 +14,14 @@ const services = [
 
     <ol class="services__list">
       {
-        services.map(({ title, text }, index) => (
+        services.map(({ slug, name, summary }, index) => (
           <li>
-            <a class="service lg-svc reveal" href="#contato">
+            <a class="service lg-svc reveal" href={`/${slug}/`}>
               <span class="service__num lg-muted" aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <h3 class="service__title">{title}</h3>
-              <p class="service__text lg-muted">{text}</p>
+              <h3 class="service__title">{name}</h3>
+              <p class="service__text lg-muted">{summary}</p>
               <svg
                 class="service__arrow lg-arr"
                 width="32"

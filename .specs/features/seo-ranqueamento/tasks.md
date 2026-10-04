@@ -307,7 +307,7 @@ T18
 
 ---
 
-### T12: Cards de serviço apontam para as páginas
+### T12: Cards de serviço apontam para as páginas ✅
 
 **What**: A seção "Serviços" da home lê `src/data/services.ts` e cada card linka para a página do serviço.
 **Where**: `src/components/Services.astro`
@@ -319,8 +319,8 @@ T18
 
 **Done when**:
 
-- [ ] `Services.test.ts` confere os 5 `href` na ordem de SVC-01
-- [ ] Gate passa: `npm test`
+- [x] `Services.test.ts` confere os 5 `href` na ordem de SVC-01
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick
