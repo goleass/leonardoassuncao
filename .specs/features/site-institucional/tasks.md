@@ -184,6 +184,8 @@ T30 -> T31
 
 #### T4: Dados reais do site e bloqueio no build
 
+> Adiada: aguardando dados reais da empresa (execução reordenada; nenhuma tarefa da Fase 2 depende de T4).
+
 **What**: Preencher `site.ts` com os dados reais e chamar `validateSiteConfig(site)` no `astro.config.mjs`, definindo `site: site.url`.
 **Where**: `src/config/site.ts`
 **Depends on**: T3
