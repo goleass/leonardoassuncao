@@ -286,7 +286,7 @@ T18
 
 ---
 
-### T11: Rota das páginas de serviço
+### T11: Rota das páginas de serviço ✅
 
 **What**: `getStaticPaths` dos 5 serviços; página com trilha, `<article>` (h1, intro, seções, FAQ), "Outros serviços", contato e JSON-LD `Service` + `BreadcrumbList` + `FAQPage`.
 **Where**: `src/pages/[servico].astro`
@@ -298,8 +298,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste renderiza cada serviço: 1 `h1`, title/description do módulo, ≥ 600 palavras em `article`, ≥ 2 `h2`, ≥ 3 `details`, trilha com `aria-current`, 4 links para os outros serviços sem auto-link, `#contato` com formulário, JSON-LD com FAQ igual ao texto visível
-- [ ] Gate passa: `npm test`
+- [x] Teste renderiza cada serviço: 1 `h1`, title/description do módulo, ≥ 600 palavras em `article`, ≥ 2 `h2`, ≥ 3 `details`, trilha com `aria-current`, 4 links para os outros serviços sem auto-link, `#contato` com formulário, JSON-LD com FAQ igual ao texto visível
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

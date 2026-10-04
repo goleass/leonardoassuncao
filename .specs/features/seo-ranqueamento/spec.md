@@ -235,18 +235,18 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | HOME-02 | P1: Título, descrição e h1 da home | Tasks | In Tasks |
 | HOME-03 | P1: Título, descrição e h1 da home | Tasks | In Tasks |
 | HOME-04 | P1: Título, descrição e h1 da home | Tasks | In Tasks |
-| SVC-01 | P1: Páginas de serviço | Tasks | In Tasks |
-| SVC-02 | P1: Páginas de serviço | Tasks | In Tasks |
+| SVC-01 | P1: Páginas de serviço | Tasks | Implementing |
+| SVC-02 | P1: Páginas de serviço | Tasks | Implementing |
 | SVC-03 | P1: Páginas de serviço | Tasks | In Tasks |
-| SVC-04 | P1: Páginas de serviço | Tasks | In Tasks |
-| SVC-05 | P1: Páginas de serviço | Tasks | In Tasks |
-| SVC-06 | P1: Páginas de serviço | Tasks | In Tasks |
-| SVC-07 | P1: Páginas de serviço | Tasks | In Tasks |
-| SVC-08 | P1: Páginas de serviço | Tasks | In Tasks |
-| SVC-09 | P1: Páginas de serviço | Tasks | In Tasks |
+| SVC-04 | P1: Páginas de serviço | Tasks | Implementing |
+| SVC-05 | P1: Páginas de serviço | Tasks | Implementing |
+| SVC-06 | P1: Páginas de serviço | Tasks | Implementing |
+| SVC-07 | P1: Páginas de serviço | Tasks | Implementing |
+| SVC-08 | P1: Páginas de serviço | Tasks | Implementing |
+| SVC-09 | P1: Páginas de serviço | Tasks | Implementing |
 | SVC-10 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-11 | Edge cases | Tasks | In Tasks |
-| SVC-12 | Edge cases | Tasks | In Tasks |
+| SVC-11 | Edge cases | Tasks | Implementing |
+| SVC-12 | Edge cases | Tasks | Implementing |
 | LINK-01 | P1: Links internos | Tasks | In Tasks |
 | LINK-02 | P1: Links internos | Tasks | In Tasks |
 | LD-01 | P2: Dados estruturados | Tasks | Implementing |
@@ -254,7 +254,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | LD-03 | P2: Dados estruturados | Tasks | Implementing |
 | LD-04 | P2: Dados estruturados | Tasks | Implementing |
 | LD-05 | P2: Dados estruturados | Tasks | Implementing |
-| LD-06 | P2: Dados estruturados | Tasks | In Tasks |
+| LD-06 | P2: Dados estruturados | Tasks | Implementing |
 | LD-07 | P2: Dados estruturados | Tasks | In Tasks |
 | LD-08 | P2: Dados estruturados | Tasks | Implementing |
 | LD-09 | Edge cases | Tasks | Implementing |

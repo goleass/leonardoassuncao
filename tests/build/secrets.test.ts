@@ -95,7 +95,7 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
     expect(png.readUInt32BE(20)).toBe(630);
   });
 
-  it("o sitemap lista / e /privacidade, sem /api/contato nem a 404", () => {
+  it("o sitemap lista /, as 5 páginas de serviço e /privacidade, sem /api/contato nem a 404 (SVC-09, NOIDX-03)", () => {
     const index = readFileSync(join(STATIC, "sitemap-index.xml"), "utf8");
     const sitemaps = [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc);
     expect(sitemaps.length).toBeGreaterThan(0);
@@ -103,7 +103,15 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
       const file = readFileSync(join(STATIC, new URL(loc).pathname), "utf8");
       return [...file.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
     });
-    expect(urls).toEqual([`${DOMAIN}/`, `${DOMAIN}/privacidade/`]);
+    expect(urls).toEqual([
+      `${DOMAIN}/`,
+      `${DOMAIN}/criacao-de-sites/`,
+      `${DOMAIN}/integracoes/`,
+      `${DOMAIN}/manutencao-de-sistemas/`,
+      `${DOMAIN}/privacidade/`,
+      `${DOMAIN}/sistemas-web/`,
+      `${DOMAIN}/software-sob-medida/`,
+    ]);
   });
 
   it("robots.txt aponta para o índice do sitemap no domínio", () => {
