@@ -44,6 +44,18 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: A11Y-03 src/scripts/contact-form.ts:43 (forms-a11y)
 - last seen: 2026-10-04T13:16:46Z
 
+### L-006 - Assert URL-derived metadata such as canonical and og:url on at least one non-root page so a value hard-wired to the root is caught
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `seo-metadata` · harmful: 0
+- features: site-institucional
+- evidence: N5 src/layouts/BaseLayout.astro:22 (round 2) (seo-metadata)
+- last seen: 2026-10-04T13:30:19Z
+
+### L-007 - Exercise the real endpoint with external services mocked because pinning shared constants does not prove the endpoint uses them
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `endpoint-wiring` · harmful: 0
+- features: site-institucional
+- evidence: W1 src/pages/api/contato.ts:11; W2 src/pages/api/contato.ts:23 (round 2) (endpoint-wiring)
+- last seen: 2026-10-04T13:30:19Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

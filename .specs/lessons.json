@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 6,
+  "next_id": 8,
   "lessons": [
     {
       "id": "L-001",
@@ -94,6 +94,42 @@
       ],
       "created": "2026-10-04T13:16:46Z",
       "last_seen": "2026-10-04T13:16:46Z"
+    },
+    {
+      "id": "L-006",
+      "key": "surviving_mutant::assert url derived metadata such as canonical and og url on at least one non root page so a value hard wired to the root is caught",
+      "text": "Assert URL-derived metadata such as canonical and og:url on at least one non-root page so a value hard-wired to the root is caught",
+      "signal": "surviving_mutant",
+      "scope": "seo-metadata",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "N5 src/layouts/BaseLayout.astro:22 (round 2) (seo-metadata)"
+      ],
+      "created": "2026-10-04T13:30:19Z",
+      "last_seen": "2026-10-04T13:30:19Z"
+    },
+    {
+      "id": "L-007",
+      "key": "surviving_mutant::exercise the real endpoint with external services mocked because pinning shared constants does not prove the endpoint uses them",
+      "text": "Exercise the real endpoint with external services mocked because pinning shared constants does not prove the endpoint uses them",
+      "signal": "surviving_mutant",
+      "scope": "endpoint-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "W1 src/pages/api/contato.ts:11; W2 src/pages/api/contato.ts:23 (round 2) (endpoint-wiring)"
+      ],
+      "created": "2026-10-04T13:30:19Z",
+      "last_seen": "2026-10-04T13:30:19Z"
     }
   ]
 }
