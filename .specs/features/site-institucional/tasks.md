@@ -227,10 +227,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Limites testados no valor exato e ±1 (1, 2, 100, 101; 9, 10, 2000, 2001; 254, 255)
-- [ ] Mensagem de 2001 caracteres retorna "A mensagem pode ter até 2000 caracteres."
-- [ ] Tipo fora da lista e campos ausentes geram erro por campo
-- [ ] Gate quick passa; ≥ 16 testes
+- [x] Limites testados no valor exato e ±1 (1, 2, 100, 101; 9, 10, 2000, 2001; 254, 255)
+- [x] Mensagem de 2001 caracteres retorna "A mensagem pode ter até 2000 caracteres."
+- [x] Tipo fora da lista e campos ausentes geram erro por campo
+- [x] Gate quick passa; ≥ 16 testes
 
 **Tests**: unit
 **Gate**: quick

@@ -228,9 +228,9 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | FORM-01 | P1: Formulário — envio do e-mail | - | Pending |
 | FORM-02 | P1: Formulário — mensagem de sucesso | - | Pending |
 | FORM-03 | P1: Formulário — continuar no WhatsApp | - | Pending |
-| FORM-04 | P1: Formulário — campos e limites | - | Pending |
-| FORM-05 | P1: Formulário — validação no navegador | - | Pending |
-| FORM-06 | P1: Formulário — validação no servidor (400) | - | Pending |
+| FORM-04 | P1: Formulário — campos e limites | - | Implementing |
+| FORM-05 | P1: Formulário — validação no navegador | - | Implementing |
+| FORM-06 | P1: Formulário — validação no servidor (400) | - | Implementing |
 | FORM-07 | P1: Formulário — estado "Enviando…" | - | Pending |
 | FORM-08 | P1: Formulário — falha do serviço de e-mail (502) | - | Pending |
 | FORM-09 | P1: Formulário — plano B na falha | - | Pending |
@@ -272,7 +272,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | LEGAL-03 | P2: Privacidade — página 404 | - | Pending |
 | LEGAL-04 | P2: Privacidade — rodapé | - | Pending |
 | EDGE-01 | Edge: clique duplo envia uma vez | - | Pending |
-| EDGE-02 | Edge: mensagem acima de 2000 caracteres | - | Pending |
+| EDGE-02 | Edge: mensagem acima de 2000 caracteres | - | Implementing |
 | EDGE-03 | Edge: HTML escapado no e-mail | - | Pending |
 | EDGE-04 | Edge: largura exata de 768px | - | Pending |
 | EDGE-05 | Edge: imagem de projeto que não carrega | - | Pending |
