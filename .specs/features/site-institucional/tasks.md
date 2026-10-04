@@ -944,8 +944,8 @@ T30 -> T32
 
 **Done when**:
 
-- [ ] Todos os links de seção do Header usam `/#<id>`; testes do T12 atualizados para o novo contrato (mudança de spec PAGE-15, não enfraquecimento)
-- [ ] Gate quick passa
+- [x] Todos os links de seção do Header usam `/#<id>`; testes do T12 atualizados para o novo contrato (mudança de spec PAGE-15, não enfraquecimento)
+- [x] Gate quick passa
 
 **Tests**: unit
 **Gate**: quick

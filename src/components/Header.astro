@@ -8,16 +8,16 @@ interface Props {
 const { site } = Astro.props;
 
 const links = [
-  { href: "#servicos", label: "Serviços" },
-  { href: "#integracoes", label: "Integrações" },
-  { href: "#processo", label: "Processo" },
-  ...(site.projetos.length > 0 ? [{ href: "#projetos", label: "Projetos" }] : []),
+  { href: "/#servicos", label: "Serviços" },
+  { href: "/#integracoes", label: "Integrações" },
+  { href: "/#processo", label: "Processo" },
+  ...(site.projetos.length > 0 ? [{ href: "/#projetos", label: "Projetos" }] : []),
 ];
 ---
 
 <header class="site-header surface-dark">
   <div class="container site-header__inner">
-    <a class="brand" href="#topo">
+    <a class="brand" href="/">
       <span class="brand__mark" aria-hidden="true"></span>
       <span>Leonardo Gomes Assunção</span>
     </a>
@@ -34,7 +34,7 @@ const links = [
           ))
         }
         <li>
-          <a class="site-nav__cta lg-btn lg-btn-m" href="#contato">Fale comigo</a>
+          <a class="site-nav__cta lg-btn lg-btn-m" href="/#contato">Fale comigo</a>
         </li>
       </ul>
     </nav>

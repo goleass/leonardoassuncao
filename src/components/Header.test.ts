@@ -10,20 +10,28 @@ async function render(site = siteFixture) {
 const linkHref = (doc: Document, text: string) =>
   [...doc.querySelectorAll("nav a")].find((a) => a.textContent?.trim() === text)?.getAttribute("href");
 
-describe("Header: navegação por âncoras (PAGE-06)", () => {
-  it("cada link do menu aponta para o id da seção", async () => {
+describe("Header: navegação por âncoras da página inicial (PAGE-06, PAGE-15)", () => {
+  // "/#id" leva à seção da página inicial também a partir de /privacidade e da 404.
+  it("cada link do menu aponta para o id da seção na página inicial", async () => {
     const doc = await render({ ...siteFixture, projetos: [projetoFixture] });
-    expect(linkHref(doc, "Serviços")).toBe("#servicos");
-    expect(linkHref(doc, "Integrações")).toBe("#integracoes");
-    expect(linkHref(doc, "Processo")).toBe("#processo");
-    expect(linkHref(doc, "Projetos")).toBe("#projetos");
-    expect(linkHref(doc, "Fale comigo")).toBe("#contato");
+    expect(linkHref(doc, "Serviços")).toBe("/#servicos");
+    expect(linkHref(doc, "Integrações")).toBe("/#integracoes");
+    expect(linkHref(doc, "Processo")).toBe("/#processo");
+    expect(linkHref(doc, "Projetos")).toBe("/#projetos");
+    expect(linkHref(doc, "Fale comigo")).toBe("/#contato");
   });
 
-  it("o nome da empresa leva ao topo", async () => {
+  it("o nome da empresa leva à página inicial", async () => {
     const doc = await render();
-    const brand = doc.querySelector('header a[href="#topo"]');
+    const brand = doc.querySelector('header a[href="/"]');
     expect(brand?.textContent?.trim()).toBe("Leonardo Gomes Assunção");
+  });
+
+  it("nenhum link do cabeçalho depende da página atual (só /#id ou /)", async () => {
+    const doc = await render({ ...siteFixture, projetos: [projetoFixture] });
+    const hrefs = [...doc.querySelectorAll("header a")].map((a) => a.getAttribute("href"));
+    expect(hrefs.length).toBe(6);
+    hrefs.forEach((href) => expect(href).toMatch(/^\/(#[a-z]+)?$/));
   });
 });
 
@@ -31,7 +39,7 @@ describe("Header: link Projetos condicional (PAGE-11)", () => {
   it('sem projetos configurados, não há link "Projetos"', async () => {
     const doc = await render();
     expect(linkHref(doc, "Projetos")).toBeUndefined();
-    expect(doc.querySelector('a[href="#projetos"]')).toBeNull();
+    expect(doc.querySelector('a[href="/#projetos"]')).toBeNull();
   });
 
   it('com projetos configurados, o link "Projetos" aparece entre Processo e Fale comigo', async () => {

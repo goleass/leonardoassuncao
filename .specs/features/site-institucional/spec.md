@@ -230,7 +230,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-12 | P1: Landing page — depoimento condicional | - | Implementing |
 | PAGE-13 | P1: Landing page — cabeçalho fixo | - | Implementing |
 | PAGE-14 | P1: Landing page — LinkedIn opcional | - | Implementing |
-| PAGE-15 | P1: Landing page — menu fora da página inicial | - | Pending |
+| PAGE-15 | P1: Landing page — menu fora da página inicial | - | Implementing |
 | FORM-01 | P1: Formulário — envio do e-mail | - | Implementing |
 | FORM-02 | P1: Formulário — mensagem de sucesso | - | Implementing |
 | FORM-03 | P1: Formulário — continuar no WhatsApp | - | Implementing |
