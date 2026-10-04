@@ -31,7 +31,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | Assumption / decision | Chosen default | Rationale | Confirmed? |
 | --------------------- | -------------- | --------- | ---------- |
 | Paleta final | "marinho": fundo escuro #0A1A33, azul de marca #143E7A, destaque #5B95FF, cinzas frios (#F0F2F5) | Foi a paleta padrão da última versão aprovada ("Gostei… azul"). | n |
-| Conteúdo real (cidade, e-mail, WhatsApp, LinkedIn, CNPJ, prazo de resposta) | Lidos de um único arquivo de configuração; o build falha se algum valor obrigatório estiver vazio ou entre colchetes | Evita publicar o site com "[SEU_NUMERO]" e centraliza a edição. | n |
+| Conteúdo real (domínio, cidade, e-mail, WhatsApp, CNPJ, prazo de resposta; LinkedIn opcional) | Lidos de um único arquivo de configuração; o build falha se algum valor obrigatório estiver vazio ou entre colchetes | Evita publicar o site com "[SEU_NUMERO]" e centraliza a edição. | n |
 | Projetos e depoimento ainda não existem | Seções Projetos e Depoimento só aparecem quando houver ao menos 1 item configurado | Não publicar placeholders nem conteúdo inventado. | n |
 | Lista de tecnologias exibida | Não exibida na v1 (a faixa em movimento já lista as especialidades) | O canvas final não tem a faixa de tecnologias; evita afirmar stack que não foi confirmada. | y |
 | Menu no celular | Abaixo de 768px o menu vira botão "Menu" que abre um painel com os links | No canvas os links apenas quebravam linha; em produção isso ocupa a tela toda no celular. | n |
@@ -39,6 +39,8 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | Limite de envios do formulário | 5 envios por IP a cada 60 minutos, contagem em memória (zera se o servidor reiniciar) | Volume esperado é baixo; contagem distribuída seria complexidade sem necessidade agora. | n |
 | Tempo máximo de espera do serviço de e-mail | 10 segundos | Acima disso o visitante tende a abandonar; mostramos o plano B (WhatsApp/e-mail). | n |
 | Texto pré-preenchido no WhatsApp após envio | "Olá, Leonardo! Acabei de enviar uma mensagem pelo site sobre: <tipo de projeto>. Meu nome é <nome>." | Dá contexto sem repetir a mensagem inteira. | n |
+| LinkedIn | A empresa não terá LinkedIn; campo opcional e link omitido quando ausente | Decisão do usuário em 2026-10-04. | y |
+| Prazo de resposta prometido | "24 horas úteis" | Usuário não informou; valor do protótipo, fácil de trocar no arquivo de configuração. | n |
 | Navegadores suportados | Duas últimas versões de Chrome, Edge, Firefox e Safari (desktop e mobile) | Cobre praticamente todo o público. | n |
 | Tecnologia, hospedagem e serviço de envio de e-mail | Definidos na etapa de Design | São decisões técnicas, não de produto. | y |
 
@@ -63,12 +65,14 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 5. The site SHALL mostrar em Processo as 4 etapas: Diagnóstico, Proposta, Desenvolvimento, Entrega e suporte.
 6. WHEN o visitante clica num link do menu (Serviços, Integrações, Processo, Projetos, Fale comigo) THEN the site SHALL rolar suavemente até a seção correspondente, deixando o título da seção visível abaixo do cabeçalho fixo.
 7. WHEN o visitante clica numa pergunta frequente THEN the site SHALL expandir a resposta dela, e um novo clique SHALL recolhê-la.
-8. The site SHALL ler e-mail, WhatsApp, LinkedIn, cidade/UF, CNPJ e prazo de resposta de um único arquivo de configuração.
+8. The site SHALL ler domínio, e-mail, WhatsApp, cidade/UF, CNPJ, prazo de resposta e o LinkedIn opcional de um único arquivo de configuração.
 9. IF algum valor obrigatório da configuração estiver vazio ou contiver texto entre colchetes THEN the build SHALL falhar com uma mensagem que nomeia o campo.
 10. WHERE houver ao menos 1 projeto configurado the site SHALL exibir a seção Projetos com imagem, nome, categoria, ano e descrição de cada projeto.
 11. IF não houver projeto configurado THEN the site SHALL omitir a seção Projetos e o link "Projetos" do menu.
 12. WHERE houver um depoimento configurado the site SHALL exibir a citação com nome, cargo e empresa do autor.
 13. The header SHALL permanecer fixo no topo da tela durante a rolagem.
+14. WHERE houver LinkedIn configurado the site SHALL exibir o link do LinkedIn na seção Contato e em `sameAs` do JSON-LD; sem LinkedIn, nenhum link ou referência a ele SHALL aparecer.
+15. WHEN o visitante clica num link do menu em `/privacidade` ou na página 404 THEN the site SHALL levar à seção correspondente da página inicial.
 
 **Independent Test**: Abrir a página, conferir a ordem e o texto das seções, clicar em cada item do menu e nas perguntas frequentes; rodar o build com um campo de configuração vazio e ver a falha.
 
@@ -133,7 +137,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 2. The hero SHALL alternar a palavra do título entre "sites", "sistemas", "integrações" e "software" em ciclo contínuo, com cada palavra visível por cerca de 2,5 segundos.
 3. The site SHALL mover a faixa de especialidades continuamente da direita para a esquerda, em ciclo sem emenda visível.
 4. WHEN o ponteiro do mouse está sobre a faixa de especialidades THEN the site SHALL pausar o movimento dela.
-5. WHEN o ponteiro passa sobre um item de Serviços THEN the site SHALL preencher o fundo do item com a cor de marca da esquerda para a direita e girar a seta em -45°.
+5. WHEN o ponteiro passa sobre um item de Serviços THEN the site SHALL preencher o fundo do item com o azul-marinho escuro da marca (`--deep`, #0A1A33) da esquerda para a direita e girar a seta em -45°.
 6. The site SHALL animar, em ciclo de 5 segundos, um marcador que percorre o fluxo de Integrações destacando cada etapa quando ele passa por ela.
 7. WHEN uma seção entra na área visível pela primeira vez THEN the site SHALL revelá-la com transição de opacidade e deslocamento vertical, uma única vez.
 8. WHILE o sistema do visitante estiver com "reduzir movimento" ativado the site SHALL exibir todo o conteúdo sem animações e com o título fixo "Construo software sob medida."
@@ -173,7 +177,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 
 1. The site SHALL ter contraste de no mínimo 4,5:1 em textos normais e 3:1 em textos de 24px ou mais.
 2. The site SHALL permitir alcançar e acionar por teclado todos os links, botões, perguntas frequentes e campos, com indicador de foco visível.
-3. The site SHALL associar cada campo do formulário a um `<label>` e anunciar erros e o resultado do envio para leitores de tela (`aria-live`).
+3. The site SHALL associar cada campo do formulário a um `<label>`, ligar cada mensagem de erro ao campo por `aria-describedby` com `aria-invalid="true"`, mover o foco para o primeiro campo inválido e anunciar o resultado do envio numa região `aria-live="polite"`.
 4. The site SHALL oferecer um link "Pular para o conteúdo" como primeiro elemento focável.
 5. The site SHALL usar um único `<h1>` e títulos `<h2>`/`<h3>` em ordem hierárquica.
 
@@ -212,72 +216,74 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| PAGE-01 | P1: Landing page — ordem das seções | - | Pending |
-| PAGE-02 | P1: Landing page — título com palavras alternadas | - | Pending |
-| PAGE-03 | P1: Landing page — 5 serviços | - | Pending |
-| PAGE-04 | P1: Landing page — fluxo de integrações | - | Pending |
-| PAGE-05 | P1: Landing page — 4 etapas do processo | - | Pending |
-| PAGE-06 | P1: Landing page — navegação por âncoras | - | Pending |
-| PAGE-07 | P1: Landing page — perguntas frequentes | - | Pending |
-| PAGE-08 | P1: Landing page — configuração única | - | Pending |
-| PAGE-09 | P1: Landing page — build falha com placeholder | - | Pending |
-| PAGE-10 | P1: Landing page — seção Projetos condicional | - | Pending |
-| PAGE-11 | P1: Landing page — omissão sem projetos | - | Pending |
-| PAGE-12 | P1: Landing page — depoimento condicional | - | Pending |
-| PAGE-13 | P1: Landing page — cabeçalho fixo | - | Pending |
-| FORM-01 | P1: Formulário — envio do e-mail | - | Pending |
-| FORM-02 | P1: Formulário — mensagem de sucesso | - | Pending |
-| FORM-03 | P1: Formulário — continuar no WhatsApp | - | Pending |
-| FORM-04 | P1: Formulário — campos e limites | - | Pending |
-| FORM-05 | P1: Formulário — validação no navegador | - | Pending |
-| FORM-06 | P1: Formulário — validação no servidor (400) | - | Pending |
-| FORM-07 | P1: Formulário — estado "Enviando…" | - | Pending |
-| FORM-08 | P1: Formulário — falha do serviço de e-mail (502) | - | Pending |
-| FORM-09 | P1: Formulário — plano B na falha | - | Pending |
-| FORM-10 | P1: Formulário — honeypot | - | Pending |
-| FORM-11 | P1: Formulário — limite de envios (429) | - | Pending |
-| FORM-12 | P1: Formulário — mensagem de limite | - | Pending |
-| FORM-13 | P1: Formulário — sem armazenamento | - | Pending |
-| FORM-14 | P1: Formulário — credenciais só no servidor | - | Pending |
-| FORM-15 | P1: Formulário — log sem dados pessoais | - | Pending |
+| PAGE-01 | P1: Landing page — ordem das seções | - | Implementing |
+| PAGE-02 | P1: Landing page — título com palavras alternadas | - | Implementing |
+| PAGE-03 | P1: Landing page — 5 serviços | - | Implementing |
+| PAGE-04 | P1: Landing page — fluxo de integrações | - | Implementing |
+| PAGE-05 | P1: Landing page — 4 etapas do processo | - | Implementing |
+| PAGE-06 | P1: Landing page — navegação por âncoras | - | Implementing |
+| PAGE-07 | P1: Landing page — perguntas frequentes | - | Implementing |
+| PAGE-08 | P1: Landing page — configuração única | - | Implementing |
+| PAGE-09 | P1: Landing page — build falha com placeholder | - | Implementing |
+| PAGE-10 | P1: Landing page — seção Projetos condicional | - | Implementing |
+| PAGE-11 | P1: Landing page — omissão sem projetos | - | Implementing |
+| PAGE-12 | P1: Landing page — depoimento condicional | - | Implementing |
+| PAGE-13 | P1: Landing page — cabeçalho fixo | - | Implementing |
+| PAGE-14 | P1: Landing page — LinkedIn opcional | - | Implementing |
+| PAGE-15 | P1: Landing page — menu fora da página inicial | - | Implementing |
+| FORM-01 | P1: Formulário — envio do e-mail | - | Implementing |
+| FORM-02 | P1: Formulário — mensagem de sucesso | - | Implementing |
+| FORM-03 | P1: Formulário — continuar no WhatsApp | - | Implementing |
+| FORM-04 | P1: Formulário — campos e limites | - | Implementing |
+| FORM-05 | P1: Formulário — validação no navegador | - | Implementing |
+| FORM-06 | P1: Formulário — validação no servidor (400) | - | Implementing |
+| FORM-07 | P1: Formulário — estado "Enviando…" | - | Implementing |
+| FORM-08 | P1: Formulário — falha do serviço de e-mail (502) | - | Implementing |
+| FORM-09 | P1: Formulário — plano B na falha | - | Implementing |
+| FORM-10 | P1: Formulário — honeypot | - | Implementing |
+| FORM-11 | P1: Formulário — limite de envios (429) | - | Implementing |
+| FORM-12 | P1: Formulário — mensagem de limite | - | Implementing |
+| FORM-13 | P1: Formulário — sem armazenamento | - | Implementing |
+| FORM-14 | P1: Formulário — credenciais só no servidor | - | Implementing |
+| FORM-15 | P1: Formulário — log sem dados pessoais | - | Implementing |
 | RESP-01 | P1: Responsivo — sem rolagem horizontal | - | Pending |
-| RESP-02 | P1: Responsivo — botão Menu < 768px | - | Pending |
-| RESP-03 | P1: Responsivo — abrir painel | - | Pending |
-| RESP-04 | P1: Responsivo — fechar painel | - | Pending |
+| RESP-02 | P1: Responsivo — botão Menu < 768px | - | Implementing |
+| RESP-03 | P1: Responsivo — abrir painel | - | Implementing |
+| RESP-04 | P1: Responsivo — fechar painel | - | Implementing |
 | RESP-05 | P1: Responsivo — áreas de toque | - | Pending |
 | RESP-06 | P1: Responsivo — empilhamento | - | Pending |
-| ANIM-01 | P2: Animações — entrada do título | - | Pending |
-| ANIM-02 | P2: Animações — palavra alternada | - | Pending |
-| ANIM-03 | P2: Animações — faixa em movimento | - | Pending |
-| ANIM-04 | P2: Animações — pausa da faixa | - | Pending |
-| ANIM-05 | P2: Animações — hover dos serviços | - | Pending |
-| ANIM-06 | P2: Animações — fluxo de integrações | - | Pending |
-| ANIM-07 | P2: Animações — revelação ao rolar | - | Pending |
-| ANIM-08 | P2: Animações — reduzir movimento | - | Pending |
-| ANIM-09 | P2: Animações — sem JavaScript | - | Pending |
-| ANIM-10 | P2: Animações — propriedades e CLS | - | Pending |
-| SEO-01 | P2: SEO — idioma, título e descrição | - | Pending |
-| SEO-02 | P2: SEO — Open Graph | - | Pending |
-| SEO-03 | P2: SEO — sitemap, robots, canônica | - | Pending |
-| SEO-04 | P2: SEO — JSON-LD | - | Pending |
+| ANIM-01 | P2: Animações — entrada do título | - | Implementing |
+| ANIM-02 | P2: Animações — palavra alternada | - | Implementing |
+| ANIM-03 | P2: Animações — faixa em movimento | - | Implementing |
+| ANIM-04 | P2: Animações — pausa da faixa | - | Implementing |
+| ANIM-05 | P2: Animações — hover dos serviços | - | Implementing |
+| ANIM-06 | P2: Animações — fluxo de integrações | - | Implementing |
+| ANIM-07 | P2: Animações — revelação ao rolar | - | Implementing |
+| ANIM-08 | P2: Animações — reduzir movimento | - | Implementing |
+| ANIM-09 | P2: Animações — sem JavaScript | - | Implementing |
+| ANIM-10 | P2: Animações — propriedades e CLS | - | Implementing |
+| SEO-01 | P2: SEO — idioma, título e descrição | - | Implementing |
+| SEO-02 | P2: SEO — Open Graph | - | Implementing |
+| SEO-03 | P2: SEO — sitemap, robots, canônica | - | Implementing |
+| SEO-04 | P2: SEO — JSON-LD | - | Implementing |
 | SEO-05 | P2: SEO — Lighthouse | - | Pending |
-| SEO-06 | P2: SEO — fontes locais | - | Pending |
-| A11Y-01 | P2: Acessibilidade — contraste | - | Pending |
+| SEO-06 | P2: SEO — fontes locais | - | Implementing |
+| A11Y-01 | P2: Acessibilidade — contraste | - | Implementing |
 | A11Y-02 | P2: Acessibilidade — teclado e foco | - | Pending |
-| A11Y-03 | P2: Acessibilidade — labels e aria-live | - | Pending |
-| A11Y-04 | P2: Acessibilidade — pular para o conteúdo | - | Pending |
-| A11Y-05 | P2: Acessibilidade — hierarquia de títulos | - | Pending |
-| LEGAL-01 | P2: Privacidade — página /privacidade | - | Pending |
-| LEGAL-02 | P2: Privacidade — link no formulário | - | Pending |
-| LEGAL-03 | P2: Privacidade — página 404 | - | Pending |
-| LEGAL-04 | P2: Privacidade — rodapé | - | Pending |
-| EDGE-01 | Edge: clique duplo envia uma vez | - | Pending |
-| EDGE-02 | Edge: mensagem acima de 2000 caracteres | - | Pending |
-| EDGE-03 | Edge: HTML escapado no e-mail | - | Pending |
+| A11Y-03 | P2: Acessibilidade — labels e aria-live | - | Implementing |
+| A11Y-04 | P2: Acessibilidade — pular para o conteúdo | - | Implementing |
+| A11Y-05 | P2: Acessibilidade — hierarquia de títulos | - | Implementing |
+| LEGAL-01 | P2: Privacidade — página /privacidade | - | Implementing |
+| LEGAL-02 | P2: Privacidade — link no formulário | - | Implementing |
+| LEGAL-03 | P2: Privacidade — página 404 | - | Implementing |
+| LEGAL-04 | P2: Privacidade — rodapé | - | Implementing |
+| EDGE-01 | Edge: clique duplo envia uma vez | - | Implementing |
+| EDGE-02 | Edge: mensagem acima de 2000 caracteres | - | Implementing |
+| EDGE-03 | Edge: HTML escapado no e-mail | - | Implementing |
 | EDGE-04 | Edge: largura exata de 768px | - | Pending |
-| EDGE-05 | Edge: imagem de projeto que não carrega | - | Pending |
+| EDGE-05 | Edge: imagem de projeto que não carrega | - | Implementing |
 
-**Coverage:** 64 total, 0 mapped to tasks, 64 unmapped ⚠️ (mapeamento acontece na etapa de Tasks)
+**Coverage:** 66 total, 0 mapped to tasks, 64 unmapped ⚠️ (mapeamento acontece na etapa de Tasks)
 
 ### Implicit-requirement dimensions sweep
 

@@ -1,0 +1,52 @@
+---
+import type { SiteConfig } from "../config/schema";
+
+interface Props {
+  depoimento?: SiteConfig["depoimento"];
+}
+
+const { depoimento } = Astro.props;
+---
+
+{
+  depoimento && (
+    <section class="testimonial" aria-label="Depoimento">
+      <div class="container">
+        <figure class="testimonial__figure reveal">
+          <blockquote class="testimonial__quote">“{depoimento.texto}”</blockquote>
+          <figcaption class="testimonial__author">
+            {depoimento.autor} — {depoimento.cargo}, {depoimento.empresa}
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .testimonial {
+    padding: 0 var(--gutter) var(--section-y);
+  }
+
+  .testimonial__figure {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    max-width: 1040px;
+    padding-top: 56px;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  .testimonial__quote {
+    font-size: var(--text-quote);
+    line-height: 1.18;
+    font-weight: 500;
+    font-stretch: 108%;
+    letter-spacing: -0.025em;
+  }
+
+  .testimonial__author {
+    font-size: var(--text-nav);
+    color: var(--gray-600);
+  }
+</style>

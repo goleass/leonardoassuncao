@@ -1,0 +1,300 @@
+/*
+ * Animações portadas do protótipo aprovado (Main.dc.html).
+ * Só transform, opacity e background-size são animados (ANIM-10): nada mexe no layout.
+ * Mudanças de cor no hover são instantâneas por esse motivo.
+ */
+
+@keyframes lg-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes lg-fade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lg-rot {
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+  25%,
+  45% {
+    transform: translateY(-1.1em);
+  }
+  50%,
+  70% {
+    transform: translateY(-2.2em);
+  }
+  75%,
+  95% {
+    transform: translateY(-3.3em);
+  }
+  100% {
+    transform: translateY(-4.4em);
+  }
+}
+
+@keyframes lg-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* O protótipo animava `top`; aqui o trilho do marcador desliza a própria altura com transform. */
+@keyframes lg-travel {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* O protótipo trocava borda, cor e fundo da etapa; aqui uma camada de destaque e o texto mudam de opacidade. */
+@keyframes lg-step-glow {
+  0%,
+  16% {
+    opacity: 1;
+  }
+  24%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes lg-step-text {
+  0%,
+  16% {
+    opacity: 1;
+  }
+  24%,
+  100% {
+    opacity: 0.64;
+  }
+}
+
+/* Topo: 3 linhas sobem em sequência e terminam em 1,35s (ANIM-01). */
+.lg-line > span {
+  animation: lg-rise 1.1s var(--ease-out) both;
+}
+
+.lg-d1 > span {
+  animation-delay: 0.05s;
+}
+
+.lg-d2 > span {
+  animation-delay: 0.15s;
+}
+
+.lg-d3 > span {
+  animation-delay: 0.25s;
+}
+
+.lg-fadein {
+  animation: lg-fade 1s 0.6s var(--ease-out) both;
+}
+
+/* Palavra alternada: 4 palavras em 11s, cerca de 2,75s cada (ANIM-02). */
+.lg-rot-in {
+  animation: lg-rot 11s cubic-bezier(0.76, 0, 0.24, 1) 1.4s infinite;
+}
+
+/* Faixa de especialidades: duas cópias, desloca 50% e recomeça sem emenda (ANIM-03, ANIM-04). */
+.lg-marquee {
+  animation: lg-marquee 48s linear infinite;
+}
+
+.lg-band:hover .lg-marquee {
+  animation-play-state: paused;
+}
+
+/* Serviços: fundo preenche da esquerda para a direita e a seta gira -45° (ANIM-05). */
+.lg-svc {
+  background: linear-gradient(var(--deep), var(--deep)) no-repeat left / 0% 100%;
+  transition: background-size 0.7s var(--ease-out);
+}
+
+a.lg-svc:hover,
+a.lg-svc:focus-visible {
+  background-size: 100% 100%;
+  color: var(--on-dark);
+}
+
+.lg-svc:hover .lg-muted,
+.lg-svc:focus-visible .lg-muted {
+  color: var(--on-dark-muted);
+}
+
+.lg-svc .lg-arr {
+  transition: transform 0.6s var(--ease-out);
+}
+
+.lg-svc:hover .lg-arr,
+.lg-svc:focus-visible .lg-arr {
+  transform: rotate(-45deg);
+}
+
+/* Botões */
+.lg-btn .lg-arr {
+  transition: transform 0.5s var(--ease-out);
+}
+
+.lg-btn:hover .lg-arr {
+  transform: translateX(6px);
+}
+
+.lg-btn.lg-btn-p:hover:not(:disabled) {
+  background-color: var(--mark);
+  color: var(--deep);
+}
+
+.lg-btn.lg-btn-m:hover {
+  background-color: var(--on-dark);
+  color: var(--deep);
+}
+
+.lg-btn.lg-btn-o:hover {
+  border-color: var(--on-dark);
+}
+
+.lg-btn.lg-btn-s:hover {
+  border-color: var(--ink);
+}
+
+/* Sublinhado que cresce da direita para a esquerda no hover */
+.lg-ul {
+  background: linear-gradient(currentColor, currentColor) no-repeat right bottom / 0% 2px;
+  transition: background-size 0.6s var(--ease-out);
+}
+
+.lg-ul:hover {
+  background-position: left bottom;
+  background-size: 100% 2px;
+}
+
+/* Projetos: leve aproximação da imagem no hover */
+.lg-proj .lg-img {
+  transition: transform 1.4s var(--ease-out);
+}
+
+.lg-proj:hover .lg-img {
+  transform: scale(1.045);
+}
+
+/* Integrações: marcador percorre o fluxo em 5s e acende cada etapa quando passa (ANIM-06). */
+.lg-dot {
+  animation: lg-travel 5s linear infinite;
+}
+
+.lg-step {
+  position: relative;
+  isolation: isolate;
+}
+
+.lg-step::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--mark);
+  background: rgba(255, 255, 255, 0.07);
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  animation: lg-step-glow 5s linear var(--step-delay, 0s) infinite;
+}
+
+.lg-step > * {
+  color: var(--white);
+  opacity: 0.64;
+  animation: lg-step-text 5s linear var(--step-delay, 0s) infinite;
+}
+
+.flow__step:nth-child(1) {
+  --step-delay: 0.4s;
+}
+
+.flow__step:nth-child(2) {
+  --step-delay: 1.4s;
+}
+
+.flow__step:nth-child(3) {
+  --step-delay: 2.4s;
+}
+
+.flow__step:nth-child(4) {
+  --step-delay: 3.4s;
+}
+
+.flow__step:nth-child(5) {
+  --step-delay: 4.4s;
+}
+
+/*
+ * Revelação ao rolar (ANIM-07). O estado escondido só existe com JavaScript (classe `js` no <html>),
+ * então sem script todo o conteúdo fica visível (ANIM-09).
+ */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(56px);
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 1.1s var(--ease-out);
+}
+
+html.js .reveal.lg-svc {
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 1.1s var(--ease-out),
+    background-size 0.7s var(--ease-out);
+}
+
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Linhas que se desenham quando o bloco delas é revelado. */
+.lg-draw {
+  transform-origin: left;
+  transition: transform 1.2s var(--ease-out) 0.2s;
+}
+
+html.js .reveal:not(.is-visible) .lg-draw {
+  transform: scaleX(0);
+}
+
+/* Movimento reduzido: tudo parado e visível (ANIM-08). A troca da palavra pelo texto fixo fica no Hero. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html.js .reveal,
+  html.js .reveal:not(.is-visible) .lg-draw {
+    opacity: 1;
+    transform: none;
+  }
+}

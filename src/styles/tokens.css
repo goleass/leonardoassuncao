@@ -1,0 +1,58 @@
+/* Valores copiados do protótipo aprovado (Main.dc.html, paleta "marinho"). */
+:root {
+  /* Paleta */
+  --deep: #0a1a33;
+  --brand: #143e7a;
+  --mark: #5b95ff;
+  --ink: #0d1522;
+  --white: #ffffff;
+  --on-dark: #eef3fa;
+  --on-dark-muted: rgba(238, 243, 250, 0.74);
+  --on-dark-subtle: rgba(238, 243, 250, 0.64);
+  --on-dark-line: rgba(255, 255, 255, 0.2);
+  --on-dark-line-soft: rgba(255, 255, 255, 0.12);
+  --on-dark-line-strong: rgba(255, 255, 255, 0.32);
+
+  /* Cinzas frios */
+  --gray-50: #f0f2f5; /* fundo da página */
+  --gray-100: #e4e8ee; /* fundo das perguntas frequentes */
+  --gray-150: #dde2ea; /* espaço reservado de imagem */
+  --gray-200: #cfd5de; /* linha entre itens */
+  --gray-250: #c3cad4; /* linha das perguntas */
+  --gray-300: #b7bfcb; /* borda de botão secundário */
+  --gray-500: #6b7482; /* numeração e legenda */
+  --gray-600: #4f5866; /* texto secundário */
+
+  /* Tipografia */
+  --font-sans: "Archivo Variable", system-ui, sans-serif;
+  --text-base: 17px;
+  --leading-base: 1.55;
+  --text-label: 13px;
+  --text-small: 14px;
+  --text-nav: 15px;
+  --text-body-sm: 16px;
+  --text-body-lg: 18px;
+  --text-lead: 20px;
+  --text-hero: clamp(40px, 9.4vw, 152px);
+  --text-h2: clamp(44px, 6.4vw, 96px);
+  --text-h2-split: clamp(40px, 5.2vw, 80px);
+  --text-h2-faq: clamp(40px, 4.6vw, 68px);
+  --text-contact: clamp(48px, 10vw, 168px);
+  --text-service: clamp(26px, 2.8vw, 40px);
+  --text-h3: clamp(26px, 2.4vw, 34px);
+  --text-marquee: clamp(26px, 3vw, 40px);
+  --text-quote: clamp(28px, 3.2vw, 46px);
+  --tracking-display: -0.045em;
+  --tracking-label: 0.06em;
+  --stretch-display: 118%;
+  --stretch-title: 112%;
+
+  /* Espaçamentos e layout */
+  --container: 1320px;
+  --gutter: 24px;
+  --section-y: 128px;
+  --header-h: 76px;
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+}

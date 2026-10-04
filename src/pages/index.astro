@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Marquee from "../components/Marquee.astro";
+import Services from "../components/Services.astro";
+import Integrations from "../components/Integrations.astro";
+import Commitments from "../components/Commitments.astro";
+import Process from "../components/Process.astro";
+import Projects from "../components/Projects.astro";
+import Testimonial from "../components/Testimonial.astro";
+import Faq from "../components/Faq.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../config/site";
+---
+
+<BaseLayout site={site}>
+  <Header slot="header" site={site} />
+  <Hero site={site} />
+  <Marquee />
+  <Services />
+  <Integrations />
+  <Commitments />
+  <Process />
+  <Projects projetos={site.projetos} />
+  <Testimonial depoimento={site.depoimento} />
+  <Faq />
+  <Contact site={site} />
+  <Footer slot="footer" site={site} />
+</BaseLayout>

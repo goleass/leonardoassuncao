@@ -1,0 +1,72 @@
+---
+const commitments = [
+  {
+    title: "O código é seu.",
+    text: "Código-fonte, servidores e acessos ficam com a sua empresa. Sem aluguel de plataforma, sem ficar refém.",
+  },
+  {
+    title: "Escopo antes do código.",
+    text: "Proposta por escrito com entregas, prazo e investimento definidos antes da primeira linha.",
+  },
+  {
+    title: "Suporte depois da entrega.",
+    text: "Monitoramento, correções e evolução contínua. O projeto não termina quando vai ao ar.",
+  },
+];
+---
+
+<section id="compromissos" class="commitments" aria-labelledby="compromissos-titulo">
+  {/* O protótipo não mostra título aqui; o <h2> oculto mantém a hierarquia para leitores de tela. */}
+  <h2 id="compromissos-titulo" class="visually-hidden">Compromissos</h2>
+  <ul class="container commitments__list">
+    {
+      commitments.map(({ title, text }) => (
+        <li class="commitment reveal">
+          <span class="commitment__rule lg-draw" aria-hidden="true" />
+          <h3 class="commitment__title">{title}</h3>
+          <p class="commitment__text">{text}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .commitments {
+    padding: var(--section-y) var(--gutter) 0;
+  }
+
+  .commitments__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 48px;
+    margin-block: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .commitment {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .commitment__rule {
+    display: block;
+    height: 2px;
+    background: var(--ink);
+  }
+
+  .commitment__title {
+    margin-top: 8px;
+    font-size: var(--text-h3);
+    line-height: 1.1;
+    font-weight: 600;
+    font-stretch: var(--stretch-title);
+    letter-spacing: -0.03em;
+  }
+
+  .commitment__text {
+    color: var(--gray-600);
+  }
+</style>

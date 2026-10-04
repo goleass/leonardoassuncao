@@ -26,7 +26,7 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 | Componentes e páginas `.astro` | unit (Container API → HTML) | Textos, ordem, atributos (`href`, `aria-*`, `lang`, `id`), renderização condicional; 1:1 com PAGE/SEO/A11Y/LEGAL testáveis por HTML | `src/components/*.test.ts`, `src/pages/*.test.ts`, `src/layouts/*.test.ts` | `npm test` |
 | Scripts do navegador (`src/scripts/*`) | unit (happy-dom) | Toda transição de estado e evento da spec (clique, Esc, envio, 400/429/502/rede, clique duplo) | `src/scripts/*.test.ts` | `npm test` |
 | Saída do build (`.vercel/output`) | unit sobre artefatos | Segredo ausente dos arquivos públicos; sitemap/robots presentes | `tests/build/*.test.ts` | `npm run test:build` |
-| Estilos (`src/styles/*.css`) e config de ferramenta | none | Build gate + checklist manual na validação (RESP-01/05/06, A11Y-01/02, SEO-05, ANIM-01..06/10) | - | build gate only |
+| Estilos (`src/styles/*.css`) e config de ferramenta | none | Build gate + checklist manual na validação (RESP-01/02/05/06, EDGE-04, PAGE-06 rolagem suave/deslocamento, PAGE-13, A11Y-01/02, SEO-05, ANIM-01..06/10); FORM-13 por inspeção estática (nenhuma escrita em disco/banco no código) | - | build gate only |
 
 ## Gate Check Commands
 
@@ -95,6 +95,26 @@ T25 -> T27
 ```
 T29 -> T31
 T30 -> T31
+T29 -> T32
+T30 -> T32
+```
+
+### Phase 7: Correções da validação (rodada 1)
+
+```
+T34 -> T37
+```
+
+### Phase 8: Correções da validação (rodada 2)
+
+```
+T38 -> T39
+```
+
+### Phase 9: Correções da validação (rodada 3, aprovadas pelo usuário)
+
+```
+T40 -> T42
 ```
 
 ---
@@ -118,9 +138,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] `npm run check`, `npm run build` e `npm test` rodam sem erro
-- [ ] Teste de fumaça do helper `renderComponent` passa (1 teste)
-- [ ] `astro` com versão exata (sem `^`) no `package.json`
+- [x] `npm run check`, `npm run build` e `npm test` rodam sem erro
+- [x] Teste de fumaça do helper `renderComponent` passa (1 teste)
+- [x] `astro` com versão exata (sem `^`) no `package.json`
 
 **Tests**: unit
 **Gate**: build
@@ -144,9 +164,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Cores e tamanhos idênticos ao protótipo
-- [ ] Fonte servida do próprio domínio com `font-display: swap`
-- [ ] Gate build passa
+- [x] Cores e tamanhos idênticos ao protótipo
+- [x] Fonte servida do próprio domínio com `font-display: swap`
+- [x] Gate build passa
 
 **Tests**: none
 **Gate**: build
@@ -170,10 +190,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Para cada campo obrigatório: vazio → erro com o nome do campo; `[X]` → erro com o nome do campo
-- [ ] Config válida retorna o objeto tipado
-- [ ] `projetos: []` e `depoimento` ausente são aceitos
-- [ ] Gate quick passa; ≥ 18 testes
+- [x] Para cada campo obrigatório: vazio → erro com o nome do campo; `[X]` → erro com o nome do campo
+- [x] Config válida retorna o objeto tipado
+- [x] `projetos: []` e `depoimento` ausente são aceitos
+- [x] Gate quick passa; ≥ 18 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -197,9 +217,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Teste unitário confirma que `site.ts` passa no schema
-- [ ] Trocar um campo por `[X]` faz `npm run build` falhar citando o campo (verificado e revertido)
-- [ ] Gate build passa
+- [x] Teste unitário confirma que `site.ts` passa no schema
+- [x] Trocar um campo por `[X]` faz `npm run build` falhar citando o campo (verificado e revertido)
+- [x] Gate build passa
 
 **Tests**: unit
 **Gate**: build
@@ -225,10 +245,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Limites testados no valor exato e ±1 (1, 2, 100, 101; 9, 10, 2000, 2001; 254, 255)
-- [ ] Mensagem de 2001 caracteres retorna "A mensagem pode ter até 2000 caracteres."
-- [ ] Tipo fora da lista e campos ausentes geram erro por campo
-- [ ] Gate quick passa; ≥ 16 testes
+- [x] Limites testados no valor exato e ±1 (1, 2, 100, 101; 9, 10, 2000, 2001; 254, 255)
+- [x] Mensagem de 2001 caracteres retorna "A mensagem pode ter até 2000 caracteres."
+- [x] Tipo fora da lista e campos ausentes geram erro por campo
+- [x] Gate quick passa; ≥ 16 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -252,10 +272,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 5 chamadas permitidas, a 6ª bloqueada dentro de 60 min
-- [ ] Permitido de novo após a janela expirar (relógio injetado)
-- [ ] IPs diferentes contam separadamente
-- [ ] Gate quick passa; ≥ 5 testes
+- [x] 5 chamadas permitidas, a 6ª bloqueada dentro de 60 min
+- [x] Permitido de novo após a janela expirar (relógio injetado)
+- [x] IPs diferentes contam separadamente
+- [x] Gate quick passa; ≥ 5 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -279,9 +299,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] URL decodificada é exatamente "Olá, Leonardo! Acabei de enviar uma mensagem pelo site sobre: <tipo>. Meu nome é <nome>."
-- [ ] Acentos, `&` e espaços codificados corretamente
-- [ ] Gate quick passa; ≥ 3 testes
+- [x] URL decodificada é exatamente "Olá, Leonardo! Acabei de enviar uma mensagem pelo site sobre: <tipo>. Meu nome é <nome>."
+- [x] Acentos, `&` e espaços codificados corretamente
+- [x] Gate quick passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -305,9 +325,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Nome, e-mail, tipo e mensagem presentes no texto e no HTML
-- [ ] `<script>` no nome/mensagem aparece como `&lt;script&gt;` no HTML
-- [ ] Gate quick passa; ≥ 4 testes
+- [x] Nome, e-mail, tipo e mensagem presentes no texto e no HTML
+- [x] `<script>` no nome/mensagem aparece como `&lt;script&gt;` no HTML
+- [x] Gate quick passa; ≥ 4 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -331,11 +351,11 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Cada status (200, 400, 429, 502) testado com o corpo JSON exato do design
-- [ ] `send` não é chamado em 400, 429 e honeypot
-- [ ] Timeout testado com relógio falso: `send` pendente por 10s → 502
-- [ ] Entradas de log não contêm nome, e-mail nem mensagem
-- [ ] Gate quick passa; ≥ 10 testes
+- [x] Cada status (200, 400, 429, 502) testado com o corpo JSON exato do design
+- [x] `send` não é chamado em 400, 429 e honeypot
+- [x] Timeout testado com relógio falso: `send` pendente por 10s → 502
+- [x] Entradas de log não contêm nome, e-mail nem mensagem
+- [x] Gate quick passa; ≥ 10 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -359,9 +379,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] `npm run build` gera a função do endpoint e o resto estático
-- [ ] `tests/build/secrets.test.ts` falha se a pasta de saída não existir e passa sem o segredo nela
-- [ ] Gate build passa
+- [x] `npm run build` gera a função do endpoint e o resto estático
+- [x] `tests/build/secrets.test.ts` falha se a pasta de saída não existir e passa sem o segredo nela
+- [x] Gate build passa
 
 **Tests**: unit
 **Gate**: build
@@ -387,10 +407,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] HTML renderizado contém cada meta/tag da spec com valor exato
-- [ ] JSON-LD é JSON válido com nome, serviços, área atendida e contatos
-- [ ] Primeiro elemento focável é o link "Pular para o conteúdo"
-- [ ] Gate quick passa; ≥ 8 testes
+- [x] HTML renderizado contém cada meta/tag da spec com valor exato
+- [x] JSON-LD é JSON válido com nome, serviços, área atendida e contatos
+- [x] Primeiro elemento focável é o link "Pular para o conteúdo"
+- [x] Gate quick passa; ≥ 8 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -414,10 +434,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] `href` de cada link aponta para o `id` da seção
-- [ ] Sem projetos → sem link "Projetos"; com projetos → link presente
-- [ ] Botão Menu tem `aria-expanded` e `aria-controls` válidos
-- [ ] Gate quick passa; ≥ 5 testes
+- [x] `href` de cada link aponta para o `id` da seção
+- [x] Sem projetos → sem link "Projetos"; com projetos → link presente
+- [x] Botão Menu tem `aria-expanded` e `aria-controls` válidos
+- [x] Gate quick passa; ≥ 5 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -441,10 +461,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Único `<h1>` da página, com texto acessível "Construo software sob medida."
-- [ ] As 4 palavras aparecem na ordem da spec
-- [ ] CTAs apontam para `#contato` e `#servicos`
-- [ ] Gate quick passa; ≥ 4 testes
+- [x] Único `<h1>` da página, com texto acessível "Construo software sob medida."
+- [x] As 4 palavras aparecem na ordem da spec
+- [x] CTAs apontam para `#contato` e `#servicos`
+- [x] Gate quick passa; ≥ 4 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -468,8 +488,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 6 especialidades na primeira cópia; segunda cópia com `aria-hidden="true"`
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] 6 especialidades na primeira cópia; segunda cópia com `aria-hidden="true"`
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -493,9 +513,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 5 itens na ordem e com os textos da spec
-- [ ] `id="servicos"` e `<h2>` presentes
-- [ ] Gate quick passa; ≥ 3 testes
+- [x] 5 itens na ordem e com os textos da spec
+- [x] `id="servicos"` e `<h2>` presentes
+- [x] Gate quick passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -519,9 +539,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 5 etapas na ordem da spec, em lista ordenada
-- [ ] `id="integracoes"` presente
-- [ ] Gate quick passa; ≥ 3 testes
+- [x] 5 etapas na ordem da spec, em lista ordenada
+- [x] `id="integracoes"` presente
+- [x] Gate quick passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -545,8 +565,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 3 títulos e textos do protótipo presentes
-- [ ] Gate quick passa; ≥ 1 teste
+- [x] 3 títulos e textos do protótipo presentes
+- [x] Gate quick passa; ≥ 1 teste
 
 **Tests**: unit
 **Gate**: quick
@@ -570,9 +590,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 4 etapas na ordem da spec
-- [ ] `id="processo"` presente
-- [ ] Gate build passa (fim da fase); ≥ 2 testes
+- [x] 4 etapas na ordem da spec
+- [x] `id="processo"` presente
+- [x] Gate build passa (fim da fase); ≥ 2 testes
 
 **Tests**: unit
 **Gate**: build
@@ -598,10 +618,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Lista vazia → string vazia
-- [ ] 2 projetos → 2 artigos com todos os campos e `alt`
-- [ ] Contêiner da imagem com proporção 16:11 reservada
-- [ ] Gate quick passa; ≥ 3 testes
+- [x] Lista vazia → string vazia
+- [x] 2 projetos → 2 artigos com todos os campos e `alt`
+- [x] Contêiner da imagem com proporção 16:11 reservada
+- [x] Gate quick passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -625,8 +645,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Sem depoimento → string vazia; com depoimento → texto, autor, cargo e empresa
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] Sem depoimento → string vazia; com depoimento → texto, autor, cargo e empresa
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -650,8 +670,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 4 `<details>` com pergunta e resposta; só o primeiro com `open`
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] 4 `<details>` com pergunta e resposta; só o primeiro com `open`
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -675,11 +695,11 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Cada campo tem `<label for>` correspondente e limites do FORM-04
-- [ ] Opções do tipo: Site, Sistema web, Integração, Outro
-- [ ] Honeypot fora da ordem de tabulação e escondido de leitores de tela
-- [ ] Links de e-mail/WhatsApp usam os valores da config
-- [ ] Gate quick passa; ≥ 6 testes
+- [x] Cada campo tem `<label for>` correspondente e limites do FORM-04
+- [x] Opções do tipo: Site, Sistema web, Integração, Outro
+- [x] Honeypot fora da ordem de tabulação e escondido de leitores de tela
+- [x] Links de e-mail/WhatsApp usam os valores da config
+- [x] Gate quick passa; ≥ 6 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -703,8 +723,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Ano vem de `new Date().getFullYear()` (teste com data fixa)
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] Ano vem de `new Date().getFullYear()` (teste com data fixa)
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -728,9 +748,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Ordem dos `id`/seções no HTML igual à spec (com e sem projetos/depoimento)
-- [ ] Exatamente um `<h1>`; nenhum `<h3>` antes do primeiro `<h2>`
-- [ ] Gate build passa (fim da fase); ≥ 3 testes
+- [x] Ordem dos `id`/seções no HTML igual à spec (com e sem projetos/depoimento)
+- [x] Exatamente um `<h1>`; nenhum `<h3>` antes do primeiro `<h2>`
+- [x] Gate build passa (fim da fase); ≥ 3 testes
 
 **Tests**: unit
 **Gate**: build
@@ -756,8 +776,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Só `transform`, `opacity` e `background-size` animados
-- [ ] Gate build passa
+- [x] Só `transform`, `opacity` e `background-size` animados
+- [x] Gate build passa
 
 **Tests**: none
 **Gate**: build
@@ -781,10 +801,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Clique abre (`aria-expanded="true"`), segundo clique fecha
-- [ ] Esc fecha; clique num link fecha
-- [ ] Função de limpeza remove os listeners
-- [ ] Gate quick passa; ≥ 5 testes
+- [x] Clique abre (`aria-expanded="true"`), segundo clique fecha
+- [x] Esc fecha; clique num link fecha
+- [x] Função de limpeza remove os listeners
+- [x] Gate quick passa; ≥ 5 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -808,10 +828,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Entrada na tela → `is-visible` e o elemento deixa de ser observado
-- [ ] Movimento reduzido → todos visíveis sem observer
-- [ ] Sem `IntersectionObserver` → todos visíveis
-- [ ] Gate quick passa; ≥ 4 testes
+- [x] Entrada na tela → `is-visible` e o elemento deixa de ser observado
+- [x] Movimento reduzido → todos visíveis sem observer
+- [x] Sem `IntersectionObserver` → todos visíveis
+- [x] Gate quick passa; ≥ 4 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -835,11 +855,11 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Inválido → erro abaixo do campo e `fetch` não chamado
-- [ ] Clique duplo → `fetch` chamado 1 vez
-- [ ] Cada resposta (200, 400, 429, 502, rejeição de rede) leva ao texto exato da spec
-- [ ] Após sucesso, o botão aponta para a URL do `buildWhatsAppUrl`
-- [ ] Gate build passa (fim da fase); ≥ 9 testes
+- [x] Inválido → erro abaixo do campo e `fetch` não chamado
+- [x] Clique duplo → `fetch` chamado 1 vez
+- [x] Cada resposta (200, 400, 429, 502, rejeição de rede) leva ao texto exato da spec
+- [x] Após sucesso, o botão aponta para a URL do `buildWhatsAppUrl`
+- [x] Gate build passa (fim da fase); ≥ 9 testes
 
 **Tests**: unit
 **Gate**: build
@@ -865,8 +885,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Os 4 itens do LEGAL-01 presentes; e-mail vem da config
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] Os 4 itens do LEGAL-01 presentes; e-mail vem da config
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -890,9 +910,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Renderiza título e link `href="/"`
-- [ ] Build gera `404.html`
-- [ ] Gate quick passa; ≥ 1 teste
+- [x] Renderiza título e link `href="/"`
+- [x] Build gera `404.html`
+- [x] Gate quick passa; ≥ 1 teste
 
 **Tests**: unit
 **Gate**: quick
@@ -916,14 +936,294 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] `og.png` tem exatamente 1200×630 (teste lê o cabeçalho PNG)
-- [ ] Sitemap lista `/` e `/privacidade`
-- [ ] Gate build passa; ≥ 3 testes
+- [x] `og.png` tem exatamente 1200×630 (teste lê o cabeçalho PNG)
+- [x] Sitemap lista `/` e `/privacidade`
+- [x] Gate build passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: build
 
 **Commit**: `feat(seo): add og image, sitemap and robots`
+
+---
+
+#### T32: Links do menu funcionando fora da página inicial
+
+**What**: Trocar os `href` do `Header` de `#secao` para `/#secao` (inclusive "Fale comigo"; logo → `/`), para funcionarem em `/privacidade` e na 404.
+**Where**: `src/components/Header.astro`
+**Depends on**: T29, T30
+**Reuses**: markup do T12
+**Requirement**: PAGE-06, PAGE-15
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Todos os links de seção do Header usam `/#<id>`; testes do T12 atualizados para o novo contrato (mudança de spec PAGE-15, não enfraquecimento)
+- [x] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `fix(header): link menu items to home page sections`
+
+---
+
+#### T33: Linha do Processo desenhada ao rolar
+
+**What**: Envolver a linha do `Process` num elemento `.reveal` para o `lg-draw` animar ao entrar na tela (hoje fica estática).
+**Where**: `src/components/Process.astro`
+**Depends on**: None
+**Reuses**: `.reveal` + `lg-draw` do T25/T27
+**Requirement**: ANIM-07
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] A linha `.lg-draw` do Processo tem um ancestral `.reveal` (teste de HTML)
+- [x] Gate build passa (fim da fase e do lote)
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `fix(process): draw timeline line on scroll`
+
+---
+
+### Phase 7: Correções da validação (rodada 1)
+
+#### T34: Constantes de limite e timeout do contato
+
+**What**: Mover `limit: 5`, `windowMs: 60 min` e `timeoutMs: 10_000` do endpoint para constantes exportadas em `src/lib/contact/limits.ts`, usadas por `contato.ts`, com teste afirmando os valores da spec (sobreviventes M18/M19).
+**Where**: `src/lib/contact/limits.ts`
+**Depends on**: None
+**Reuses**: `src/pages/api/contato.ts`
+**Requirement**: FORM-08, FORM-11
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Teste afirma 5 envios, janela de 3.600.000 ms e timeout de 10.000 ms
+- [x] `contato.ts` não tem mais esses literais
+- [x] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(contact): pin rate limit and timeout to spec values`
+
+---
+
+#### T35: Teste do bloqueio de placeholders no build
+
+**What**: Teste que importa `astro.config.mjs` com `site.ts` substituído por uma config com `[X]` e espera o erro nomeando o campo; e com a config real, importa sem erro (sobrevivente M22).
+**Where**: `tests/astro-config.test.ts`
+**Depends on**: None
+**Reuses**: `validateSiteConfig`
+**Requirement**: PAGE-09
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Remover a chamada `validateSiteConfig(site)` do `astro.config.mjs` faz o teste falhar
+- [x] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(config): cover build-time placeholder check`
+
+---
+
+#### T36: Teste das fontes auto-hospedadas
+
+**What**: Teste de build confirmando arquivos `archivo-*.woff2` em `static/_astro`, `font-display: swap` no CSS gerado e nenhuma referência a `fonts.googleapis.com`/`fonts.gstatic.com` nos HTML/CSS.
+**Where**: `tests/build/secrets.test.ts`
+**Depends on**: None
+**Reuses**: build do próprio arquivo
+**Requirement**: SEO-06
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Gate build passa
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `test(seo): verify self-hosted fonts with swap`
+
+---
+
+#### T37: Foco no primeiro campo inválido
+
+**What**: Teste do `contact-form` afirmando que, com erros, o foco vai para o primeiro campo inválido na ordem nome → e-mail → tipo → mensagem e que a mensagem está ligada por `aria-describedby` (A11Y-03 esclarecido).
+**Where**: `src/scripts/contact-form.test.ts`
+**Depends on**: T34
+**Reuses**: suíte existente
+**Requirement**: A11Y-03
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Gate build passa (fim da fase)
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `test(contact): assert focus moves to first invalid field`
+
+---
+
+### Phase 8: Correções da validação (rodada 2)
+
+#### T38: Teste do endpoint real com serviços substituídos
+
+**What**: `src/pages/api/_contato.test.ts` chama o `POST` real com `astro:env/server` e `resend` mockados: 6 envios do mesmo IP → `[200×5, 429]`, outro IP não afetado, destino/remetente/`replyTo`, envio pendente → nada aos 9.999 ms e 502 aos 10.000 ms, erro do Resend → 502 (sobreviventes W1/W2).
+**Where**: `src/pages/api/_contato.test.ts`
+**Depends on**: None
+**Reuses**: `src/pages/api/contato.ts`
+**Requirement**: FORM-01, FORM-08, FORM-11
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Endpoint ignorando `CONTACT_RATE_LIMIT` ou `SEND_TIMEOUT_MS` faz o teste falhar
+- [x] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(contact): exercise the real contact endpoint`
+
+---
+
+#### T39: Canonical por página no build
+
+**What**: Teste de build afirmando canonical e `og:url` de `/` e de `/privacidade/` (sobrevivente N5).
+**Where**: `tests/build/secrets.test.ts`
+**Depends on**: T38
+**Reuses**: build do próprio arquivo
+**Requirement**: SEO-03
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Canonical fixo em `/` faz o teste falhar
+- [x] Gate build passa (fim da fase)
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `test(seo): assert canonical url per page`
+
+---
+
+### Phase 9: Correções da validação (rodada 3, aprovadas pelo usuário)
+
+#### T40: Dados do formulário vindos da configuração
+
+**What**: Teste do `Contact` afirmando `data-whatsapp`, `data-email` e `data-prazo` iguais à config; prazo do fixture diferente do de produção (sobreviventes C1/C2).
+**Where**: `src/components/Contact.test.ts`
+**Depends on**: None
+**Reuses**: suíte existente
+**Requirement**: FORM-02, FORM-03, FORM-09
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Remover `data-prazo` ou usar `whatsappDisplay` em `data-whatsapp` faz o teste falhar
+- [x] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(contact): assert form data comes from site config`
+
+---
+
+#### T41: Prazo do sucesso vindo da configuração
+
+**What**: Teste do `contact-form` usa um prazo diferente do de produção, para um texto fixo no código falhar (sobrevivente P1).
+**Where**: `src/scripts/contact-form.test.ts`
+**Depends on**: None
+**Reuses**: suíte existente
+**Requirement**: FORM-02
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Prazo fixo "24 horas úteis" no script faz o teste falhar
+- [x] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(contact): use a non-production deadline in form tests`
+
+---
+
+#### T42: Janela de 60 minutos do limite no endpoint
+
+**What**: Teste do endpoint com relógio falso instalado antes de carregar o módulo: 6º envio → 429 aos 59min59s e 200 aos 60min (sobrevivente W3).
+**Where**: `src/pages/api/_contato.test.ts`
+**Depends on**: T40
+**Reuses**: suíte existente
+**Requirement**: FORM-11
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Janela de 30 min no endpoint faz o teste falhar
+- [x] Gate build passa (fim da fase)
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `test(contact): pin the 60 minute rate limit window`
 
 ---
 
@@ -937,12 +1237,15 @@ Phase 2:  T5, T6, T7, T8, T9, T10             (6)
 Phase 3:  T11, T12 … T18                      (8)
 Phase 4:  T19, T20, T21, T22, T23, T24        (6)
 Phase 5:  T25, T26, T27, T28                  (4)
-Phase 6:  T29, T30, T31                       (3)
+Phase 6:  T29, T30, T31, T32, T33             (5)
+Phase 7:  T34, T35, T36, T37                  (4)
+Phase 8:  T38, T39                            (2)
+Phase 9:  T40, T41, T42                       (3)
 ```
 
 Execution is strictly sequential - there is no intra-phase parallelism.
 
-**Batches (~7 tarefas, fases inteiras):** Lote A = Fases 1+2 (10) · Lote B = Fase 3 (8) · Lote C = Fases 4+5 (10) · Lote D = Fase 6 (3).
+**Batches (~7 tarefas, fases inteiras):** Lote A = Fases 1+2 (10) · Lote B = Fase 3 (8) · Lote C = Fases 4+5 (10) · Lote D = T4 + T24 (adiadas) + Fase 6 (5) = 7.
 
 ---
 

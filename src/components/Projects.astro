@@ -1,0 +1,122 @@
+---
+import type { SiteConfig } from "../config/schema";
+
+interface Props {
+  projetos: SiteConfig["projetos"];
+}
+
+const { projetos } = Astro.props;
+---
+
+{
+  projetos.length > 0 && (
+    <section id="projetos" class="projects">
+      <div class="container projects__inner">
+        <div class="section-head projects__head reveal">
+          <h2 class="section-title">Projetos</h2>
+          <a class="projects__cta lg-ul" href="#contato">
+            Quero um projeto assim →
+          </a>
+        </div>
+
+        <div class="projects__grid">
+          {projetos.map(({ nome, categoria, ano, descricao, imagem, alt }) => (
+            <article class="project lg-proj reveal">
+              {/* A proporção 16:11 fica reservada mesmo se a imagem não carregar (EDGE-05). */}
+              <div class="project__media">
+                <img class="project__img lg-img" src={imagem} alt={alt} width="1600" height="1100" loading="lazy" decoding="async" />
+              </div>
+              <div class="project__head">
+                <h3 class="project__title">{nome}</h3>
+                <span class="project__meta">
+                  {categoria} · {ano}
+                </span>
+              </div>
+              <p class="project__text">{descricao}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .projects {
+    padding: 0 var(--gutter) var(--section-y);
+  }
+
+  .projects__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .projects__head {
+    padding-top: 64px;
+    border-top: 1px solid var(--ink);
+  }
+
+  .projects__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+    gap: 56px 40px;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .project__media {
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+    background: var(--gray-150);
+  }
+
+  .project__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    color: var(--gray-600);
+    font-size: var(--text-label);
+  }
+
+  .project__head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .project__title {
+    font-size: 28px;
+    font-weight: 600;
+    font-stretch: var(--stretch-title);
+    letter-spacing: -0.02em;
+  }
+
+  .project__meta {
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--gray-600);
+  }
+
+  .project__text {
+    max-width: 520px;
+    color: var(--gray-600);
+  }
+</style>

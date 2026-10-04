@@ -1,0 +1,225 @@
+{
+  "schema": 1,
+  "promote_threshold": 2,
+  "window_days": 45,
+  "quarantine_threshold": 2,
+  "next_id": 13,
+  "lessons": [
+    {
+      "id": "L-001",
+      "key": "surviving_mutant::cover build time config validation with a test that fails when the validation call is removed from the build entry point",
+      "text": "Cover build-time config validation with a test that fails when the validation call is removed from the build entry point",
+      "signal": "surviving_mutant",
+      "scope": "build-config",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "M22 astro.config.mjs:9 (build-config)"
+      ],
+      "created": "2026-10-04T13:16:45Z",
+      "last_seen": "2026-10-04T13:16:45Z"
+    },
+    {
+      "id": "L-002",
+      "key": "surviving_mutant::export production limits and timeouts as named constants and assert their spec values because handler tests that inject their own values cannot catch wiring changes",
+      "text": "Export production limits and timeouts as named constants and assert their spec values because handler tests that inject their own values cannot catch wiring changes",
+      "signal": "surviving_mutant",
+      "scope": "endpoint-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "M18 src/pages/api/contato.ts:10; M19 src/pages/api/contato.ts:22 (endpoint-wiring)"
+      ],
+      "created": "2026-10-04T13:16:45Z",
+      "last_seen": "2026-10-04T13:16:45Z"
+    },
+    {
+      "id": "L-003",
+      "key": "ac_gap::assert self hosted font files and font display swap in the build artifact tests instead of leaving font requirements untested",
+      "text": "Assert self-hosted font files and font-display swap in the build-artifact tests instead of leaving font requirements untested",
+      "signal": "ac_gap",
+      "scope": "build-output",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "SEO-06 no test; tests/build/secrets.test.ts (build-output)"
+      ],
+      "created": "2026-10-04T13:16:45Z",
+      "last_seen": "2026-10-04T13:16:45Z"
+    },
+    {
+      "id": "L-004",
+      "key": "spec_precision_gap::state negative requirements such as no persistence as an observable check or mark them explicitly as static review items",
+      "text": "State negative requirements such as no persistence as an observable check or mark them explicitly as static-review items",
+      "signal": "spec_precision_gap",
+      "scope": "spec",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "FORM-13 (spec)"
+      ],
+      "created": "2026-10-04T13:16:45Z",
+      "last_seen": "2026-10-04T13:16:45Z"
+    },
+    {
+      "id": "L-005",
+      "key": "spec_precision_gap::specify whether field validation errors must sit in an aria live region or are announced through focus and aria describedby",
+      "text": "Specify whether field validation errors must sit in an aria-live region or are announced through focus and aria-describedby",
+      "signal": "spec_precision_gap",
+      "scope": "forms-a11y",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "A11Y-03 src/scripts/contact-form.ts:43 (forms-a11y)"
+      ],
+      "created": "2026-10-04T13:16:46Z",
+      "last_seen": "2026-10-04T13:16:46Z"
+    },
+    {
+      "id": "L-006",
+      "key": "surviving_mutant::assert url derived metadata such as canonical and og url on at least one non root page so a value hard wired to the root is caught",
+      "text": "Assert URL-derived metadata such as canonical and og:url on at least one non-root page so a value hard-wired to the root is caught",
+      "signal": "surviving_mutant",
+      "scope": "seo-metadata",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "N5 src/layouts/BaseLayout.astro:22 (round 2) (seo-metadata)"
+      ],
+      "created": "2026-10-04T13:30:19Z",
+      "last_seen": "2026-10-04T13:30:19Z"
+    },
+    {
+      "id": "L-007",
+      "key": "surviving_mutant::exercise the real endpoint with external services mocked because pinning shared constants does not prove the endpoint uses them",
+      "text": "Exercise the real endpoint with external services mocked because pinning shared constants does not prove the endpoint uses them",
+      "signal": "surviving_mutant",
+      "scope": "endpoint-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "W1 src/pages/api/contato.ts:11; W2 src/pages/api/contato.ts:23 (round 2) (endpoint-wiring)"
+      ],
+      "created": "2026-10-04T13:30:19Z",
+      "last_seen": "2026-10-04T13:30:19Z"
+    },
+    {
+      "id": "L-008",
+      "key": "surviving_mutant::assert the data attributes a page hands to its client script because script tests that inject their own deps cannot catch a wrong or missing config value in the hand off",
+      "text": "Assert the data attributes a page hands to its client script because script tests that inject their own deps cannot catch a wrong or missing config value in the hand-off",
+      "signal": "surviving_mutant",
+      "scope": "component-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C1 src/components/Contact.astro:57; C2 src/components/Contact.astro:55 (round 3) (component-wiring)"
+      ],
+      "created": "2026-10-04T13:41:12Z",
+      "last_seen": "2026-10-04T13:41:12Z"
+    },
+    {
+      "id": "L-009",
+      "key": "surviving_mutant::use test fixture values that differ from the production config so a hard coded production value cannot pass the test",
+      "text": "Use test fixture values that differ from the production config so a hard-coded production value cannot pass the test",
+      "signal": "surviving_mutant",
+      "scope": "test-fixtures",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "P1 src/scripts/contact-form.ts:100; src/scripts/contact-form.test.ts:63 (round 3) (test-fixtures)"
+      ],
+      "created": "2026-10-04T13:41:13Z",
+      "last_seen": "2026-10-04T13:41:13Z"
+    },
+    {
+      "id": "L-010",
+      "key": "surviving_mutant::test a time window at the real entry point by advancing a fake clock to just before and exactly at the boundary",
+      "text": "Test a time window at the real entry point by advancing a fake clock to just before and exactly at the boundary",
+      "signal": "surviving_mutant",
+      "scope": "endpoint-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "W3 src/pages/api/contato.ts:11 (round 3) (endpoint-wiring)"
+      ],
+      "created": "2026-10-04T13:41:13Z",
+      "last_seen": "2026-10-04T13:41:13Z"
+    },
+    {
+      "id": "L-011",
+      "key": "surviving_mutant::move inline client bootstrap code that maps page data into script deps into a tested module because component tests do not run it and script tests inject their own deps",
+      "text": "Move inline client bootstrap code that maps page data into script deps into a tested module because component tests do not run it and script tests inject their own deps",
+      "signal": "surviving_mutant",
+      "scope": "component-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "validation.md round 4: S1, S2 at src/components/Contact.astro:150-151 (component-wiring)"
+      ],
+      "created": "2026-10-04T14:09:41Z",
+      "last_seen": "2026-10-04T14:09:41Z"
+    },
+    {
+      "id": "L-012",
+      "key": "surviving_mutant::assert placement requirements such as next to a button by checking the shared container or sibling not just presence somewhere in the form",
+      "text": "Assert placement requirements such as next to a button by checking the shared container or sibling, not just presence somewhere in the form",
+      "signal": "surviving_mutant",
+      "scope": "component-markup",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "validation.md round 4: L2b at src/components/Contact.astro:132-134 (LEGAL-02) (component-markup)"
+      ],
+      "created": "2026-10-04T14:09:41Z",
+      "last_seen": "2026-10-04T14:09:41Z"
+    }
+  ]
+}

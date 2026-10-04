@@ -1,0 +1,167 @@
+---
+const tags = ["ERPs", "Gateways de pagamento", "WhatsApp Business", "Marketplaces", "Emissão fiscal", "Planilhas e BI"];
+
+const steps = [
+  { label: "Pedido no site", time: "00:00" },
+  { label: "Cliente cadastrado no ERP", time: "automático" },
+  { label: "Pagamento confirmado", time: "automático" },
+  { label: "Nota fiscal emitida", time: "automático" },
+  { label: "Cliente avisado no WhatsApp", time: "automático" },
+];
+---
+
+<section id="integracoes" class="integrations surface-dark">
+  <div class="container integrations__inner">
+    <div class="integrations__intro reveal">
+      <span class="integrations__eyebrow">Integrações</span>
+      <h2 class="integrations__title">Seus sistemas, conversando entre si.</h2>
+      <p class="integrations__text">
+        Um pedido entra pelo site e, sem ninguém digitar nada, vira cadastro no ERP, cobrança, nota fiscal e mensagem
+        para o cliente. É esse tipo de trabalho manual que eu elimino.
+      </p>
+      <ul class="integrations__tags">
+        {tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+    </div>
+
+    <div class="flow">
+      <span class="flow__line" aria-hidden="true"></span>
+      <span class="flow__dot lg-dot" aria-hidden="true"></span>
+      <ol class="flow__steps">
+        {
+          steps.map(({ label, time }) => (
+            <li class="flow__step lg-step">
+              <span class="flow__label">{label}</span>
+              <small class="flow__time">{time}</small>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .integrations {
+    padding: var(--section-y) var(--gutter);
+  }
+
+  .integrations__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 72px;
+  }
+
+  .integrations__intro {
+    flex: 1 1 460px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .integrations__eyebrow {
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--on-dark-subtle);
+  }
+
+  .integrations__title {
+    font-size: var(--text-h2-split);
+    line-height: 1;
+    letter-spacing: var(--tracking-display);
+    font-weight: 700;
+    font-stretch: var(--stretch-display);
+  }
+
+  .integrations__text {
+    max-width: 520px;
+    font-size: var(--text-body-lg);
+    color: var(--on-dark-muted);
+  }
+
+  .integrations__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 8px 0 0;
+    list-style: none;
+    font-size: var(--text-small);
+  }
+
+  .integrations__tags li {
+    padding: 8px 14px;
+    border: 1px solid var(--on-dark-line);
+  }
+
+  .flow {
+    flex: 1 1 420px;
+    min-width: 0;
+    position: relative;
+    padding-left: 44px;
+  }
+
+  .flow__line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 12px;
+    width: 1px;
+    background: var(--on-dark-line);
+  }
+
+  /* Trilho da altura do fluxo; o quadrado fica no topo e o trilho desliza com transform (ANIM-10). */
+  .flow__dot {
+    position: absolute;
+    top: 0;
+    left: 7px;
+    width: 11px;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .flow__dot::before {
+    content: "";
+    display: block;
+    width: 11px;
+    height: 11px;
+    margin-top: -5px;
+    background: var(--mark);
+  }
+
+  .flow__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .flow__step {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: var(--on-dark-subtle);
+  }
+
+  .flow__label {
+    font-size: 19px;
+    font-weight: 600;
+    font-stretch: 110%;
+  }
+
+  .flow__time {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+</style>
