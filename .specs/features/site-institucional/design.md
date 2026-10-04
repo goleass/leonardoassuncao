@@ -2,13 +2,13 @@
 
 **Spec**: `.specs/features/site-institucional/spec.md`
 **Context**: `.specs/features/site-institucional/context.md`
-**Status**: Approved (abordagem escolhida pelo usuário: Astro + Vercel; testes: só unitários)
+**Status**: Approved (abordagem escolhida pelo usuário: Astro + Vercel; testes: só unitários). Hospedagem trocada para Netlify em 2026-10-04 (AD-003).
 
 ---
 
 ## Architecture Overview
 
-Site estático gerado pelo Astro (`output: 'static'`). Só o endpoint `POST /api/contato` roda sob demanda (`export const prerender = false`) como função serverless da Vercel, via `@astrojs/vercel`. O e-mail sai pelo Resend. Toda regra de negócio do contato vive em módulos TypeScript puros com dependências injetadas, para ser testada por unidade sem rede nem `astro:env`.
+Site estático gerado pelo Astro (`output: 'static'`). Só o endpoint `POST /api/contato` roda sob demanda (`export const prerender = false`) como Netlify Function, via `@astrojs/netlify` (AD-003; antes Vercel). O e-mail sai pelo Resend. Toda regra de negócio do contato vive em módulos TypeScript puros com dependências injetadas, para ser testada por unidade sem rede nem `astro:env`.
 
 ```mermaid
 graph TD
@@ -49,7 +49,7 @@ O repositório está vazio (só `.claude/`), então não há código próprio a 
 | System | Integration Method |
 | ------ | ------------------ |
 | Resend | SDK `resend` chamado no endpoint; chave em `RESEND_API_KEY` (`astro:env`, `context: "server"`, `access: "secret"`). |
-| Vercel | Adaptador `@astrojs/vercel`; endpoint vira função serverless, o resto é estático no CDN. |
+| Netlify | Adaptador `@astrojs/netlify`; endpoint vira Netlify Function em `.netlify/v1/functions/ssr/`, o resto é estático em `dist/`; IP do visitante vem de `context.ip`. |
 | WhatsApp | Link `https://wa.me/<número>?text=<texto codificado>`; sem API. |
 
 ---
