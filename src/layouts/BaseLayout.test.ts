@@ -34,6 +34,20 @@ describe("BaseLayout: idioma, título e descrição (SEO-01)", () => {
   });
 });
 
+describe("BaseLayout: ícones e cor do tema (ICON-02, ICON-03)", () => {
+  it("declara favicon ICO 48×48, favicon SVG e ícone da Apple", () => {
+    const ico = doc.querySelector('link[rel="icon"][href="/favicon.ico"]');
+    expect(ico?.getAttribute("sizes")).toBe("48x48");
+    const svg = doc.querySelector('link[rel="icon"][href="/favicon.svg"]');
+    expect(svg?.getAttribute("type")).toBe("image/svg+xml");
+    expect(doc.querySelector('link[rel="apple-touch-icon"]')?.getAttribute("href")).toBe("/apple-touch-icon.png");
+  });
+
+  it('declara theme-color "#0a1a33"', () => {
+    expect(meta('name="theme-color"')).toBe("#0a1a33");
+  });
+});
+
 describe("BaseLayout: canônica, Open Graph e Twitter Card (SEO-02, SEO-03)", () => {
   it("sem noindex, não publica meta robots (NOIDX-01)", () => {
     expect(doc.querySelector('meta[name="robots"]')).toBeNull();

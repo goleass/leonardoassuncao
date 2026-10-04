@@ -181,7 +181,7 @@ T18
 
 ---
 
-### T6: Tags de ícone e theme-color
+### T6: Tags de ícone e theme-color ✅
 
 **What**: Layout declara os 3 `link` de ícone e `meta theme-color` `#0a1a33`.
 **Where**: `src/layouts/BaseLayout.astro`
@@ -193,8 +193,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste do layout confere os `href`, `sizes`, `type` e o theme-color
-- [ ] Gate passa: `npm test`
+- [x] Teste do layout confere os `href`, `sizes`, `type` e o theme-color
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick
