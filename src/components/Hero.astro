@@ -23,7 +23,7 @@ const words = ["sites", "sistemas", "integrações", "software", "sites"];
       <span class="hero__line lg-line lg-d2">
         <span>
           <span class="hero__rotator lg-rot" aria-hidden="true">
-            <span class="hero__words lg-rot-in">{words.map((word) => <span>{word}</span>)}</span>
+            <span class="hero__words lg-rot-in">{words.map((word) => <span data-word={word} />)}</span>
           </span>
           <span class="hero__static">software</span>
         </span>
@@ -123,6 +123,11 @@ const words = ["sites", "sistemas", "integrações", "software", "sites"];
     display: block;
     height: 1.1em;
     line-height: 1.1em;
+  }
+
+  /* As palavras são desenhadas pelo CSS: fora do texto do <h1> que o Google indexa (HOME-03). */
+  .hero__words > span::before {
+    content: attr(data-word);
   }
 
   /* A palavra fixa é o que o leitor de tela lê; na tela ela só aparece com movimento reduzido (ANIM-08). */

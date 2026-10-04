@@ -391,7 +391,7 @@ T18
 
 ---
 
-### T16: `<h1>` da home sem as palavras alternadas no texto
+### T16: `<h1>` da home sem as palavras alternadas no texto ✅
 
 **What**: As palavras do rotador viram `data-word` desenhadas por `::before { content: attr(data-word) }`.
 **Where**: `src/components/Hero.astro`
@@ -403,8 +403,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste confere `textContent` do `h1` = "Construo software sob medida." e os `data-word` na ordem
-- [ ] Gate passa: `npm test`
+- [x] Teste confere `textContent` do `h1` = "Construo software sob medida." e os `data-word` na ordem
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick
