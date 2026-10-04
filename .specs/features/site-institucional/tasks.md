@@ -254,10 +254,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 5 chamadas permitidas, a 6ª bloqueada dentro de 60 min
-- [ ] Permitido de novo após a janela expirar (relógio injetado)
-- [ ] IPs diferentes contam separadamente
-- [ ] Gate quick passa; ≥ 5 testes
+- [x] 5 chamadas permitidas, a 6ª bloqueada dentro de 60 min
+- [x] Permitido de novo após a janela expirar (relógio injetado)
+- [x] IPs diferentes contam separadamente
+- [x] Gate quick passa; ≥ 5 testes
 
 **Tests**: unit
 **Gate**: quick

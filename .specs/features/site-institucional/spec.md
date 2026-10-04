@@ -235,7 +235,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | FORM-08 | P1: Formulário — falha do serviço de e-mail (502) | - | Pending |
 | FORM-09 | P1: Formulário — plano B na falha | - | Pending |
 | FORM-10 | P1: Formulário — honeypot | - | Pending |
-| FORM-11 | P1: Formulário — limite de envios (429) | - | Pending |
+| FORM-11 | P1: Formulário — limite de envios (429) | - | Implementing |
 | FORM-12 | P1: Formulário — mensagem de limite | - | Pending |
 | FORM-13 | P1: Formulário — sem armazenamento | - | Pending |
 | FORM-14 | P1: Formulário — credenciais só no servidor | - | Pending |
