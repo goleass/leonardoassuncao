@@ -215,7 +215,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-01 | P1: Landing page — ordem das seções | - | Pending |
 | PAGE-02 | P1: Landing page — título com palavras alternadas | - | Implementing |
 | PAGE-03 | P1: Landing page — 5 serviços | - | Implementing |
-| PAGE-04 | P1: Landing page — fluxo de integrações | - | Pending |
+| PAGE-04 | P1: Landing page — fluxo de integrações | - | Implementing |
 | PAGE-05 | P1: Landing page — 4 etapas do processo | - | Pending |
 | PAGE-06 | P1: Landing page — navegação por âncoras | - | Implementing |
 | PAGE-07 | P1: Landing page — perguntas frequentes | - | Pending |
@@ -251,7 +251,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | ANIM-03 | P2: Animações — faixa em movimento | - | Implementing |
 | ANIM-04 | P2: Animações — pausa da faixa | - | Implementing |
 | ANIM-05 | P2: Animações — hover dos serviços | - | Implementing |
-| ANIM-06 | P2: Animações — fluxo de integrações | - | Pending |
+| ANIM-06 | P2: Animações — fluxo de integrações | - | Implementing |
 | ANIM-07 | P2: Animações — revelação ao rolar | - | Pending |
 | ANIM-08 | P2: Animações — reduzir movimento | - | Implementing |
 | ANIM-09 | P2: Animações — sem JavaScript | - | Pending |

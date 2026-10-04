@@ -521,9 +521,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 5 etapas na ordem da spec, em lista ordenada
-- [ ] `id="integracoes"` presente
-- [ ] Gate quick passa; ≥ 3 testes
+- [x] 5 etapas na ordem da spec, em lista ordenada
+- [x] `id="integracoes"` presente
+- [x] Gate quick passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: quick
