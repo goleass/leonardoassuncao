@@ -705,8 +705,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Ano vem de `new Date().getFullYear()` (teste com data fixa)
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] Ano vem de `new Date().getFullYear()` (teste com data fixa)
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick
@@ -716,6 +716,8 @@ T30 -> T31
 ---
 
 #### T24: Página inicial
+
+Adiada: depende de T4 (dados reais).
 
 **What**: `index.astro` montando as seções na ordem da spec dentro do `BaseLayout`.
 **Where**: `src/pages/index.astro`

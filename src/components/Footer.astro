@@ -1,0 +1,71 @@
+---
+import type { SiteConfig } from "../config/schema";
+
+interface Props {
+  site: SiteConfig;
+}
+
+const { site } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer surface-dark">
+  <div class="container site-footer__inner">
+    <span class="site-footer__brand">
+      <span class="site-footer__mark" aria-hidden="true"></span>
+      Leonardo Gomes Assunção
+    </span>
+    <span>CNPJ {site.cnpj} · {site.cidade} · Atendimento em todo o Brasil</span>
+    <span class="site-footer__end">
+      <a class="site-footer__link lg-ul" href="/privacidade">Política de privacidade</a>
+      <span>© {year}</span>
+    </span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 48px var(--gutter);
+    color: var(--on-dark-muted);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px 40px;
+    font-size: var(--text-small);
+  }
+
+  .site-footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--on-dark);
+    font-weight: 700;
+    font-stretch: var(--stretch-title);
+    font-size: var(--text-body-sm);
+  }
+
+  .site-footer__mark {
+    width: 12px;
+    height: 12px;
+    background: var(--mark);
+  }
+
+  .site-footer__end {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+  }
+
+  .site-footer__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--on-dark);
+    text-decoration: none;
+  }
+</style>

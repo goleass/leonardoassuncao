@@ -270,7 +270,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | LEGAL-01 | P2: Privacidade — página /privacidade | - | Pending |
 | LEGAL-02 | P2: Privacidade — link no formulário | - | Implementing |
 | LEGAL-03 | P2: Privacidade — página 404 | - | Pending |
-| LEGAL-04 | P2: Privacidade — rodapé | - | Pending |
+| LEGAL-04 | P2: Privacidade — rodapé | - | Implementing |
 | EDGE-01 | Edge: clique duplo envia uma vez | - | Pending |
 | EDGE-02 | Edge: mensagem acima de 2000 caracteres | - | Implementing |
 | EDGE-03 | Edge: HTML escapado no e-mail | - | Implementing |
