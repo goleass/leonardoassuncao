@@ -117,7 +117,7 @@ T18
 
 ---
 
-### T3: Redirecionar o subdomínio netlify.app
+### T3: Redirecionar o subdomínio netlify.app ✅
 
 **What**: Regra 301 forçada de `https://leonardoassuncao.netlify.app/*` para `https://www.leonardoassuncao.com.br/:splat`.
 **Where**: `netlify.toml`
@@ -129,8 +129,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste lê `netlify.toml` e confere origem, destino, `status = 301` e `force = true`
-- [ ] Gate passa: `npm test`
+- [x] Teste lê `netlify.toml` e confere origem, destino, `status = 301` e `force = true`
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

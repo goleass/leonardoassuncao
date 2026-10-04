@@ -4,3 +4,10 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# O endereço padrão da Netlify serviria uma cópia indexável do site (HOST-05).
+[[redirects]]
+  from = "https://leonardoassuncao.netlify.app/*"
+  to = "https://www.leonardoassuncao.com.br/:splat"
+  status = 301
+  force = true
