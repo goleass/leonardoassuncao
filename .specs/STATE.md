@@ -40,7 +40,7 @@
 - **Phase / Task**: Execute concluído (T1–T18); Verificador rodada 2 = PASS (41/41 ACs, 18 mutações, 0 sobreviventes)
 - **Completed**: T1–T18 + correção de teste da rodada 1
 - **In-progress** (file:line): none
-- **Next step**: usuário revisa os textos de `src/data/services.ts`; com autorização, push da branch `feat/seo-ranqueamento`, merge e deploy. Depois do deploy: `curl -I https://leonardoassuncao.netlify.app/` (esperado 301 → www), Lighthouse em produção, Search Console (verificar domínio por DNS, enviar `sitemap-index.xml`, pedir indexação das 7 URLs), Perfil da Empresa no Google, Rich Results Test na home e numa página de serviço
-- **Blockers**: autorização de push/deploy
+- **Next step**: deploy feito e verificado em 2026-10-04 (netlify.app e apex → 301 www; 7 URLs 200; Lighthouse produção 100/100/100/100 na home e em /integracoes/). Pendente do usuário: revisar textos de `src/data/services.ts`; Search Console (verificar domínio por DNS, enviar `sitemap-index.xml`, pedir indexação); Perfil da Empresa no Google; Rich Results Test
+- **Blockers**: none
 - **Uncommitted files**: none
-- **Branch**: feat/seo-ranqueamento
+- **Branch**: main (feat/seo-ranqueamento mergeada)
