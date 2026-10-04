@@ -416,10 +416,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] `href` de cada link aponta para o `id` da seção
-- [ ] Sem projetos → sem link "Projetos"; com projetos → link presente
-- [ ] Botão Menu tem `aria-expanded` e `aria-controls` válidos
-- [ ] Gate quick passa; ≥ 5 testes
+- [x] `href` de cada link aponta para o `id` da seção
+- [x] Sem projetos → sem link "Projetos"; com projetos → link presente
+- [x] Botão Menu tem `aria-expanded` e `aria-controls` válidos
+- [x] Gate quick passa; ≥ 5 testes
 
 **Tests**: unit
 **Gate**: quick

@@ -1,0 +1,159 @@
+---
+import type { SiteConfig } from "../config/schema";
+
+interface Props {
+  site: SiteConfig;
+}
+
+const { site } = Astro.props;
+
+const links = [
+  { href: "#servicos", label: "Serviços" },
+  { href: "#integracoes", label: "Integrações" },
+  { href: "#processo", label: "Processo" },
+  ...(site.projetos.length > 0 ? [{ href: "#projetos", label: "Projetos" }] : []),
+];
+---
+
+<header class="site-header surface-dark">
+  <div class="container site-header__inner">
+    <a class="brand" href="#topo">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span>Leonardo Gomes Assunção</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+    <nav id="menu-principal" class="site-nav" aria-label="Principal">
+      <ul class="site-nav__list">
+        {
+          links.map(({ href, label }) => (
+            <li>
+              <a class="site-nav__link lg-ul" href={href}>
+                {label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a class="site-nav__cta lg-btn lg-btn-m" href="#contato">Fale comigo</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Fixo no topo durante a rolagem (PAGE-13). */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding-inline: var(--gutter);
+    border-bottom: 1px solid var(--on-dark-line-soft);
+  }
+
+  .site-header__inner {
+    min-height: var(--header-h);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 32px;
+    padding-block: 14px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    color: var(--on-dark);
+    text-decoration: none;
+    font-weight: 700;
+    font-stretch: var(--stretch-title);
+    font-size: var(--text-base);
+    letter-spacing: -0.01em;
+  }
+
+  .brand__mark {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    background: var(--mark);
+  }
+
+  .site-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-nav);
+    font-weight: 500;
+  }
+
+  .site-nav__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--on-dark);
+    text-decoration: none;
+  }
+
+  .site-nav__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 12px 20px;
+    background-color: var(--mark);
+    color: var(--deep);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .menu-button {
+    display: none;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--on-dark-line-strong);
+    background: transparent;
+    color: var(--on-dark);
+    font-size: var(--text-nav);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /*
+   * Abaixo de 768px (RESP-02, EDGE-04) o botão Menu substitui os links. Só com JavaScript:
+   * sem ele os links continuam visíveis, quebrando linha.
+   */
+  @media (max-width: 767.98px) {
+    :global(html.js) .menu-button {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    :global(html.js) .site-nav {
+      display: none;
+      flex-basis: 100%;
+    }
+
+    :global(html.js) .menu-button[aria-expanded="true"] + .site-nav {
+      display: block;
+    }
+
+    :global(html.js) .site-nav__list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      padding-block: 8px 12px;
+    }
+
+    :global(html.js) .site-nav__cta {
+      justify-content: center;
+      margin-top: 8px;
+    }
+  }
+</style>
