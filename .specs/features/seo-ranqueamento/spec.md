@@ -219,8 +219,8 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| HOST-01 | P1: Sinal canônico único | Tasks | In Tasks |
-| HOST-02 | P1: Sinal canônico único | Tasks | In Tasks |
+| HOST-01 | P1: Sinal canônico único | Tasks | Implementing |
+| HOST-02 | P1: Sinal canônico único | Tasks | Implementing |
 | HOST-03 | P1: Sinal canônico único | Tasks | In Tasks |
 | HOST-04 | P1: Sinal canônico único | Tasks | In Tasks |
 | HOST-05 | P1: Sinal canônico único | Tasks | In Tasks |

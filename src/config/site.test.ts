@@ -9,7 +9,7 @@ describe("site.ts: dados reais da empresa (PAGE-08, PAGE-09)", () => {
 
   it("traz domínio, e-mail, WhatsApp, cidade/UF, CNPJ e prazo informados", () => {
     expect(site).toEqual({
-      url: "https://leonardoassuncao.com.br",
+      url: "https://www.leonardoassuncao.com.br",
       email: "contato@leonardoassuncao.com.br",
       whatsapp: "5551991419064",
       whatsappDisplay: "(51) 99141-9064",

@@ -75,7 +75,7 @@ T18
 
 ## Task Breakdown
 
-### T1: Host canônico www na configuração
+### T1: Host canônico www na configuração ✅
 
 **What**: `site.url` passa a `https://www.leonardoassuncao.com.br`.
 **Where**: `src/config/site.ts`
@@ -87,8 +87,8 @@ T18
 
 **Done when**:
 
-- [ ] `site.test.ts` e `astro-config.test.ts` esperam o host www
-- [ ] Gate passa: `npm test`
+- [x] `site.test.ts` e `astro-config.test.ts` esperam o host www
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick
