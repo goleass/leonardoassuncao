@@ -1,0 +1,337 @@
+---
+import type { SiteConfig } from "../config/schema";
+import { PROJECT_TYPES } from "../lib/contact/validation";
+
+interface Props {
+  site: SiteConfig;
+}
+
+const { site } = Astro.props;
+---
+
+<section id="contato" class="contact">
+  <div class="container contact__inner">
+    <h2 class="contact__title reveal">
+      <span class="contact__line">Vamos</span>{" "}
+      <span class="contact__line">construir<span class="contact__q">?</span></span>
+    </h2>
+
+    <div class="contact__body reveal">
+      <div class="contact__info">
+        <p class="contact__lead">
+          Conte o que você precisa resolver. Respondo pessoalmente em até {site.prazoResposta}.
+        </p>
+        <a class="contact__email lg-ul" href={`mailto:${site.email}`}>{site.email}</a>
+        <div class="contact__actions">
+          <a class="button button--brand lg-btn lg-btn-p" href={`https://wa.me/${site.whatsapp}`}>
+            Chamar no WhatsApp
+            <svg
+              class="lg-arr"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="square"
+              aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"></path></svg
+            >
+          </a>
+          <a class="button button--line lg-btn lg-btn-s" href={site.linkedin}>LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="contact__panel">
+        <form class="contact-form" action="/api/contato" method="post">
+          <div class="contact-form__row">
+            <div class="field">
+              <label class="field__label" for="nome">Nome</label>
+              <input
+                class="field__control"
+                id="nome"
+                name="nome"
+                type="text"
+                autocomplete="name"
+                required
+                minlength="2"
+                maxlength="100"
+                aria-describedby="nome-erro"
+              />
+              <p class="field__error" id="nome-erro"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="email">E-mail</label>
+              <input
+                class="field__control"
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                maxlength="254"
+                aria-describedby="email-erro"
+              />
+              <p class="field__error" id="email-erro"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="tipo">Tipo de projeto</label>
+            <select class="field__control" id="tipo" name="tipo" required aria-describedby="tipo-erro">
+              {PROJECT_TYPES.map((tipo) => <option value={tipo}>{tipo}</option>)}
+            </select>
+            <p class="field__error" id="tipo-erro"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="mensagem">Sobre o projeto</label>
+            <textarea
+              class="field__control"
+              id="mensagem"
+              name="mensagem"
+              rows="3"
+              required
+              minlength="10"
+              maxlength="2000"
+              aria-describedby="mensagem-erro"></textarea>
+            <p class="field__error" id="mensagem-erro"></p>
+          </div>
+
+          <!-- Honeypot: pessoas não veem nem alcançam este campo; robôs costumam preenchê-lo (FORM-10). -->
+          <div class="contact-form__hp" aria-hidden="true">
+            <label for="website">Site</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="contact-form__submit">
+            <button class="button button--brand lg-btn lg-btn-p" type="submit">
+              <span class="contact-form__label">Enviar mensagem</span>
+              <svg
+                class="lg-arr"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="square"
+                aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"></path></svg
+              >
+            </button>
+            <p class="contact-form__privacy">
+              Seus dados servem só para responder ao contato. Veja a <a href="/privacidade">política de privacidade</a>.
+            </p>
+          </div>
+        </form>
+
+        <!-- Fora do formulário para continuar anunciando quando o formulário for substituído (A11Y-03). -->
+        <div class="contact-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    /* Vermelho de erro com 5,8:1 sobre --gray-50 (A11Y-01). */
+    --error: #b42318;
+    padding: var(--section-y) var(--gutter) 96px;
+  }
+
+  .contact__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .contact__title {
+    font-size: var(--text-contact);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+    font-stretch: var(--stretch-display);
+  }
+
+  .contact__line {
+    display: block;
+  }
+
+  .contact__q {
+    color: var(--brand);
+  }
+
+  .contact__body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--ink);
+  }
+
+  .contact__info {
+    flex: 1 1 380px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact__lead {
+    max-width: 440px;
+    font-size: var(--text-lead);
+  }
+
+  .contact__email {
+    align-self: flex-start;
+    max-width: 100%;
+    padding-bottom: 4px;
+    overflow-wrap: anywhere;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: 600;
+    font-stretch: 110%;
+    letter-spacing: -0.02em;
+  }
+
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 18px 26px;
+    border: 0;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .button--brand {
+    background-color: var(--brand);
+    color: var(--white);
+  }
+
+  .button--line {
+    padding-inline: 24px;
+    border: 1px solid var(--gray-300);
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .contact__panel {
+    flex: 1 1 460px;
+    min-width: 0;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .contact-form__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+
+  .contact-form__row > .field {
+    flex: 1 1 200px;
+  }
+
+  .field {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field__label {
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--gray-600);
+  }
+
+  .field__control {
+    min-height: 44px;
+    padding: 10px 0;
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink);
+    font-size: var(--text-body-lg);
+  }
+
+  textarea.field__control {
+    resize: vertical;
+  }
+
+  .field__control[aria-invalid="true"] {
+    border-bottom-color: var(--error);
+  }
+
+  .field__error {
+    font-size: var(--text-small);
+    color: var(--error);
+  }
+
+  .field__error:empty {
+    display: none;
+  }
+
+  .contact-form__hp {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .contact-form__submit {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+  }
+
+  .contact-form__submit .button {
+    min-height: 56px;
+    padding-inline: 28px;
+  }
+
+  .contact-form__submit .button:disabled {
+    cursor: progress;
+    opacity: 0.7;
+  }
+
+  .contact-form__privacy {
+    flex: 1 1 220px;
+    font-size: var(--text-small);
+    color: var(--gray-600);
+  }
+
+  .contact-form__privacy a {
+    display: inline-block;
+    padding-block: 12px;
+    margin-block: -12px;
+    color: var(--brand);
+  }
+
+  .contact-status {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: var(--text-body-lg);
+  }
+
+  .contact-status:empty {
+    display: none;
+  }
+</style>

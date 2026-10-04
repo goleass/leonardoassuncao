@@ -677,11 +677,11 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Cada campo tem `<label for>` correspondente e limites do FORM-04
-- [ ] Opções do tipo: Site, Sistema web, Integração, Outro
-- [ ] Honeypot fora da ordem de tabulação e escondido de leitores de tela
-- [ ] Links de e-mail/WhatsApp usam os valores da config
-- [ ] Gate quick passa; ≥ 6 testes
+- [x] Cada campo tem `<label for>` correspondente e limites do FORM-04
+- [x] Opções do tipo: Site, Sistema web, Integração, Outro
+- [x] Honeypot fora da ordem de tabulação e escondido de leitores de tela
+- [x] Links de e-mail/WhatsApp usam os valores da config
+- [x] Gate quick passa; ≥ 6 testes
 
 **Tests**: unit
 **Gate**: quick

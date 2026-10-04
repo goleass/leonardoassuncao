@@ -264,11 +264,11 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | SEO-06 | P2: SEO — fontes locais | - | Implementing |
 | A11Y-01 | P2: Acessibilidade — contraste | - | Implementing |
 | A11Y-02 | P2: Acessibilidade — teclado e foco | - | Pending |
-| A11Y-03 | P2: Acessibilidade — labels e aria-live | - | Pending |
+| A11Y-03 | P2: Acessibilidade — labels e aria-live | - | Implementing |
 | A11Y-04 | P2: Acessibilidade — pular para o conteúdo | - | Implementing |
 | A11Y-05 | P2: Acessibilidade — hierarquia de títulos | - | Implementing |
 | LEGAL-01 | P2: Privacidade — página /privacidade | - | Pending |
-| LEGAL-02 | P2: Privacidade — link no formulário | - | Pending |
+| LEGAL-02 | P2: Privacidade — link no formulário | - | Implementing |
 | LEGAL-03 | P2: Privacidade — página 404 | - | Pending |
 | LEGAL-04 | P2: Privacidade — rodapé | - | Pending |
 | EDGE-01 | Edge: clique duplo envia uma vez | - | Pending |
