@@ -20,3 +20,11 @@
 
 ## Handoff
 
+- **Feature**: `.specs/features/site-institucional`
+- **Phase / Task**: Execute concluído (T1–T42); validação rodada 4 (extra, autorizada) = FAIL só por lacunas de teste
+- **Completed**: T1–T42
+- **In-progress** (file:line): none
+- **Next step**: Usuário decide: aplicar 2 correções de teste (bootstrap do formulário em `Contact.astro:150-151` → helper testado; posição do link de privacidade junto ao botão) e re-verificar, ou aceitar; depois UAT do checklist manual
+- **Blockers**: decisão do usuário
+- **Uncommitted files**: `.specs/features/site-institucional/validation.md`, `.specs/STATE.md`
+- **Branch**: feat/site-institucional
