@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import type { SiteConfig } from "../config/schema";
+import { jsonLdText as buildJsonLdText, HOME_DESCRIPTION, NAME, siteNodes } from "../lib/seo/schema";
 
 interface Props {
   site: SiteConfig;
@@ -10,50 +11,21 @@ interface Props {
   description?: string;
   /** Página de erro: fora do índice, sem canônica (NOIDX-01, NOIDX-02). */
   noindex?: boolean;
+  /** Nós JSON-LD da página, somados aos da empresa no mesmo @graph (LD-01). */
+  schema?: Record<string, unknown>[];
 }
-
-const NAME = "Leonardo Gomes Assunção";
-const HOME_DESCRIPTION =
-  "Criação de sites, sistemas web, integrações e software sob medida. Um único responsável técnico, do diagnóstico ao suporte. Atendimento em todo o Brasil.";
 
 const {
   site,
   title = `${NAME} — Sites, Sistemas Web e Integrações`,
   description = HOME_DESCRIPTION,
   noindex = false,
+  schema = [],
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL("/og.png", site.url).href;
 
-const SERVICES = [
-  "Criação de sites",
-  "Sistemas web",
-  "Integrações e APIs",
-  "Software sob medida",
-  "Manutenção e evolução",
-];
-const [locality, region] = site.cidade.split(",").map((part) => part.trim());
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: NAME,
-  description: HOME_DESCRIPTION,
-  url: new URL("/", site.url).href,
-  image: ogImage,
-  email: site.email,
-  telephone: `+${site.whatsapp}`,
-  ...(site.linkedin ? { sameAs: [site.linkedin] } : {}),
-  address: { "@type": "PostalAddress", addressLocality: locality, addressRegion: region, addressCountry: "BR" },
-  areaServed: { "@type": "Country", name: "Brasil" },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Serviços",
-    itemListElement: SERVICES.map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
-  },
-};
-// "<" escapado para o JSON nunca fechar a tag <script> antes da hora.
-const jsonLdText = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
+const jsonLdText = buildJsonLdText([...siteNodes(site), ...schema]);
 ---
 
 <html lang="pt-BR">

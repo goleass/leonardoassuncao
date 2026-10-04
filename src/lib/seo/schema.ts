@@ -6,7 +6,8 @@ import { services, type Service } from "../../data/services";
 type Node = Record<string, unknown>;
 
 export const NAME = "Leonardo Gomes Assunção";
-const DESCRIPTION =
+/** Descrição da empresa: a mesma da página inicial. */
+export const HOME_DESCRIPTION =
   "Criação de sites, sistemas web, integrações e software sob medida. Um único responsável técnico, do diagnóstico ao suporte. Atendimento em todo o Brasil.";
 
 const AREA_SERVED = [
@@ -27,7 +28,7 @@ export function siteNodes(site: SiteConfig): Node[] {
       "@type": "ProfessionalService",
       ...ref(site, "empresa"),
       name: NAME,
-      description: DESCRIPTION,
+      description: HOME_DESCRIPTION,
       url: abs(site, "/"),
       logo: abs(site, "/icon-512.png"),
       image: abs(site, "/og.png"),

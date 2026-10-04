@@ -265,7 +265,7 @@ T18
 
 ---
 
-### T10: Layout publica o @graph
+### T10: Layout publica o @graph ✅
 
 **What**: Layout passa a publicar um único script com `@graph` (empresa, site, pessoa + nós extras recebidos por prop `schema`).
 **Where**: `src/layouts/BaseLayout.astro`
@@ -277,8 +277,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste do layout confere um único script, `@graph` com os 3 nós fixos e o nó extra passado por prop
-- [ ] Gate passa: `npm test`
+- [x] Teste do layout confere um único script, `@graph` com os 3 nós fixos e o nó extra passado por prop
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

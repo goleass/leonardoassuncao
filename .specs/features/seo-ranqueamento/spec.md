@@ -249,7 +249,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | SVC-12 | Edge cases | Tasks | In Tasks |
 | LINK-01 | P1: Links internos | Tasks | In Tasks |
 | LINK-02 | P1: Links internos | Tasks | In Tasks |
-| LD-01 | P2: Dados estruturados | Tasks | In Tasks |
+| LD-01 | P2: Dados estruturados | Tasks | Implementing |
 | LD-02 | P2: Dados estruturados | Tasks | Implementing |
 | LD-03 | P2: Dados estruturados | Tasks | Implementing |
 | LD-04 | P2: Dados estruturados | Tasks | Implementing |

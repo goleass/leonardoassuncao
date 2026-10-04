@@ -76,19 +76,37 @@ describe("BaseLayout: canônica, Open Graph e Twitter Card (SEO-02, SEO-03)", ()
   });
 });
 
-describe("BaseLayout: JSON-LD ProfessionalService (SEO-04)", () => {
-  const jsonLd = () => JSON.parse(doc.querySelector('script[type="application/ld+json"]')?.textContent ?? "null");
+describe("BaseLayout: JSON-LD em @graph (SEO-04, LD-01)", () => {
+  const scripts = (d: Document) => d.querySelectorAll('script[type="application/ld+json"]');
+  const graph = (d: Document = doc) => JSON.parse(scripts(d)[0]?.textContent ?? "null");
+  const empresa = (d: Document = doc) =>
+    graph(d)["@graph"].find((node: { "@type": string }) => node["@type"] === "ProfessionalService");
 
-  it("é JSON válido do tipo ProfessionalService com o nome da empresa", () => {
-    const data = jsonLd();
-    expect(data["@context"]).toBe("https://schema.org");
-    expect(data["@type"]).toBe("ProfessionalService");
-    expect(data.name).toBe("Leonardo Gomes Assunção");
-    expect(data.url).toBe("https://exemplo.com.br/");
+  it("publica um único script JSON-LD com @context e @graph", () => {
+    expect(scripts(doc)).toHaveLength(1);
+    expect(graph()["@context"]).toBe("https://schema.org");
+    expect(Array.isArray(graph()["@graph"])).toBe(true);
+  });
+
+  it("o @graph traz empresa, site e pessoa", () => {
+    const types = graph()["@graph"].map((node: { "@type": string }) => node["@type"]);
+    expect(types).toEqual(expect.arrayContaining(["ProfessionalService", "WebSite", "Person"]));
+  });
+
+  it("acrescenta ao @graph os nós extras recebidos por prop", async () => {
+    const extra = { "@type": "FAQPage", mainEntity: [] };
+    const other = parseHtml(await renderComponent(BaseLayout, { site: siteFixture, schema: [extra] }));
+    expect(scripts(other)).toHaveLength(1);
+    expect(graph(other)["@graph"]).toContainEqual(extra);
+  });
+
+  it("a empresa é um ProfessionalService com o nome e a URL do site", () => {
+    expect(empresa().name).toBe("Leonardo Gomes Assunção");
+    expect(empresa().url).toBe("https://exemplo.com.br/");
   });
 
   it("lista os 5 serviços", () => {
-    const names = jsonLd().hasOfferCatalog.itemListElement.map(
+    const names = empresa().hasOfferCatalog.itemListElement.map(
       (offer: { itemOffered: { name: string } }) => offer.itemOffered.name,
     );
     expect(names).toEqual([
@@ -101,9 +119,12 @@ describe("BaseLayout: JSON-LD ProfessionalService (SEO-04)", () => {
   });
 
   it("informa a área atendida e a cidade/UF configurada", () => {
-    const data = jsonLd();
-    expect(data.areaServed).toEqual({ "@type": "Country", name: "Brasil" });
-    expect(data.address).toEqual({
+    expect(empresa().areaServed).toEqual([
+      { "@type": "City", name: "Canoas" },
+      { "@type": "City", name: "Porto Alegre" },
+      { "@type": "Country", name: "Brasil" },
+    ]);
+    expect(empresa().address).toEqual({
       "@type": "PostalAddress",
       addressLocality: "São Paulo",
       addressRegion: "SP",
@@ -112,19 +133,17 @@ describe("BaseLayout: JSON-LD ProfessionalService (SEO-04)", () => {
   });
 
   it("traz os contatos configurados", () => {
-    const data = jsonLd();
-    expect(data.email).toBe("contato@exemplo.com.br");
-    expect(data.telephone).toBe("+5511900000000");
+    expect(empresa().email).toBe("contato@exemplo.com.br");
+    expect(empresa().telephone).toBe("+5511900000000");
   });
 
   it("sem LinkedIn configurado, não publica sameAs", () => {
-    expect(jsonLd()).not.toHaveProperty("sameAs");
+    expect(empresa()).not.toHaveProperty("sameAs");
   });
 
   it("com LinkedIn configurado, publica o perfil em sameAs", async () => {
     const other = parseHtml(await renderComponent(BaseLayout, { site: siteComLinkedinFixture }));
-    const data = JSON.parse(other.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
-    expect(data.sameAs).toEqual(["https://www.linkedin.com/in/exemplo"]);
+    expect(empresa(other).sameAs).toEqual(["https://www.linkedin.com/in/exemplo"]);
   });
 });
 
@@ -168,7 +187,8 @@ describe("BaseLayout: título e descrição por página (LEGAL-01, LEGAL-03)", (
     expect(content('name="twitter:description"')).toBe(PAGE_DESCRIPTION);
     // O JSON-LD descreve a empresa (SEO-04), não a página: mantém a descrição da página inicial.
     const data = JSON.parse(page.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
-    expect(data.description).toBe(meta('name="description"'));
+    const empresa = data["@graph"].find((node: { "@type": string }) => node["@type"] === "ProfessionalService");
+    expect(empresa.description).toBe(meta('name="description"'));
   });
 
   it("sem título e descrição recebidos, mantém os da página inicial (SEO-01)", () => {
