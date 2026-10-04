@@ -35,6 +35,10 @@ describe("BaseLayout: idioma, título e descrição (SEO-01)", () => {
 });
 
 describe("BaseLayout: canônica, Open Graph e Twitter Card (SEO-02, SEO-03)", () => {
+  it("sem noindex, não publica meta robots (NOIDX-01)", () => {
+    expect(doc.querySelector('meta[name="robots"]')).toBeNull();
+  });
+
   it("aponta a URL canônica para o domínio configurado", () => {
     expect(doc.querySelector('link[rel="canonical"]')?.getAttribute("href")).toBe("https://exemplo.com.br/");
   });

@@ -138,7 +138,7 @@ T18
 
 ---
 
-### T4: 404 com noindex e sem canônica
+### T4: 404 com noindex e sem canônica ✅
 
 **What**: Prop `noindex` no layout: publica `<meta name="robots" content="noindex">` e omite canônica e `og:url`; a 404 usa a prop.
 **Where**: `src/layouts/BaseLayout.astro`
@@ -150,9 +150,9 @@ T18
 
 **Done when**:
 
-- [ ] Teste da 404 confere o meta robots e a ausência de canônica e `og:url`
-- [ ] Teste do layout confere que sem a prop a canônica continua
-- [ ] Gate passa: `npm test`
+- [x] Teste da 404 confere o meta robots e a ausência de canônica e `og:url`
+- [x] Teste do layout confere que sem a prop a canônica continua
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick
