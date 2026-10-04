@@ -1053,7 +1053,7 @@ T34 -> T37
 
 **Done when**:
 
-- [ ] Gate build passa
+- [x] Gate build passa
 
 **Tests**: unit
 **Gate**: build

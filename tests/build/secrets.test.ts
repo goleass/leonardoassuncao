@@ -94,3 +94,30 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
     expect(robots).toMatch(new RegExp(`^Sitemap: ${DOMAIN}/sitemap-index\\.xml$`, "m"));
   });
 });
+
+describe("fontes servidas pelo próprio domínio (SEO-06)", () => {
+  const publicText = () =>
+    listFiles(STATIC)
+      .filter((file) => /\.(html|css)$/.test(file))
+      .map((file) => ({ file, content: readFileSync(file, "utf8") }));
+
+  it("os arquivos da Archivo estão na pasta pública do build", () => {
+    const fonts = readdirSync(join(STATIC, "_astro")).filter((name) => /^archivo-.*\.woff2$/.test(name));
+    expect(fonts.length).toBeGreaterThan(0);
+  });
+
+  it("toda @font-face da Archivo aponta para /_astro/ e usa font-display: swap", () => {
+    const faces = publicText().flatMap(({ content }) => content.match(/@font-face\{[^}]*\}/g) ?? []);
+    const archivo = faces.filter((face) => /font-family:\s*["']?Archivo/.test(face));
+    expect(archivo.length).toBeGreaterThan(0);
+    for (const face of archivo) {
+      expect(face).toMatch(/font-display:\s*swap/);
+      expect(face).toMatch(/url\(["']?\/_astro\/archivo-[^)]+\.woff2/);
+    }
+  });
+
+  it("nenhuma página ou CSS carrega fontes do Google", () => {
+    const external = publicText().filter(({ content }) => /fonts\.(googleapis|gstatic)\.com/.test(content));
+    expect(external.map(({ file }) => file)).toEqual([]);
+  });
+});
