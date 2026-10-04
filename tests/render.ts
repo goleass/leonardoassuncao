@@ -1,4 +1,5 @@
 import { experimental_AstroContainer } from "astro/container";
+import { Window } from "happy-dom";
 
 type Component = Parameters<experimental_AstroContainer["renderToString"]>[0];
 
@@ -12,4 +13,17 @@ export async function renderComponent(
 ): Promise<string> {
   container ??= await experimental_AstroContainer.create();
   return container.renderToString(component, { props, slots });
+}
+
+/** Transforma o HTML renderizado num documento consultável por seletores. */
+export function parseHtml(html: string): Document {
+  const window = new Window();
+  return new window.DOMParser().parseFromString(html, "text/html") as unknown as Document;
+}
+
+/** Texto como um leitor de tela lê: ignora `aria-hidden="true"` e junta os espaços. */
+export function accessibleText(element: Element): string {
+  const clone = element.cloneNode(true) as Element;
+  clone.querySelectorAll('[aria-hidden="true"]').forEach((hidden) => hidden.remove());
+  return (clone.textContent ?? "").replace(/\s+/g, " ").trim();
 }

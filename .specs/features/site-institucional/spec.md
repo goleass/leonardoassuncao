@@ -256,16 +256,16 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | ANIM-08 | P2: Animações — reduzir movimento | - | Pending |
 | ANIM-09 | P2: Animações — sem JavaScript | - | Pending |
 | ANIM-10 | P2: Animações — propriedades e CLS | - | Pending |
-| SEO-01 | P2: SEO — idioma, título e descrição | - | Pending |
-| SEO-02 | P2: SEO — Open Graph | - | Pending |
+| SEO-01 | P2: SEO — idioma, título e descrição | - | Implementing |
+| SEO-02 | P2: SEO — Open Graph | - | Implementing |
 | SEO-03 | P2: SEO — sitemap, robots, canônica | - | Pending |
-| SEO-04 | P2: SEO — JSON-LD | - | Pending |
+| SEO-04 | P2: SEO — JSON-LD | - | Implementing |
 | SEO-05 | P2: SEO — Lighthouse | - | Pending |
 | SEO-06 | P2: SEO — fontes locais | - | Implementing |
 | A11Y-01 | P2: Acessibilidade — contraste | - | Implementing |
 | A11Y-02 | P2: Acessibilidade — teclado e foco | - | Pending |
 | A11Y-03 | P2: Acessibilidade — labels e aria-live | - | Pending |
-| A11Y-04 | P2: Acessibilidade — pular para o conteúdo | - | Pending |
+| A11Y-04 | P2: Acessibilidade — pular para o conteúdo | - | Implementing |
 | A11Y-05 | P2: Acessibilidade — hierarquia de títulos | - | Pending |
 | LEGAL-01 | P2: Privacidade — página /privacidade | - | Pending |
 | LEGAL-02 | P2: Privacidade — link no formulário | - | Pending |

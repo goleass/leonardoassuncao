@@ -1,0 +1,104 @@
+---
+import "../styles/global.css";
+import type { SiteConfig } from "../config/schema";
+
+interface Props {
+  site: SiteConfig;
+}
+
+const { site } = Astro.props;
+
+const NAME = "Leonardo Gomes Assunção";
+const title = `${NAME} — Sites, Sistemas Web e Integrações`;
+const description =
+  "Criação de sites, sistemas web, integrações e software sob medida. Um único responsável técnico, do diagnóstico ao suporte. Atendimento em todo o Brasil.";
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = new URL("/og.png", site.url).href;
+
+const SERVICES = [
+  "Criação de sites",
+  "Sistemas web",
+  "Integrações e APIs",
+  "Software sob medida",
+  "Manutenção e evolução",
+];
+const [locality, region] = site.cidade.split(",").map((part) => part.trim());
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: NAME,
+  description,
+  url: new URL("/", site.url).href,
+  image: ogImage,
+  email: site.email,
+  telephone: `+${site.whatsapp}`,
+  sameAs: [site.linkedin],
+  address: { "@type": "PostalAddress", addressLocality: locality, addressRegion: region, addressCountry: "BR" },
+  areaServed: { "@type": "Country", name: "Brasil" },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Serviços",
+    itemListElement: SERVICES.map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
+  },
+};
+// "<" escapado para o JSON nunca fechar a tag <script> antes da hora.
+const jsonLdText = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
+---
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={jsonLdText} />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <slot name="header" />
+    <main id="conteudo">
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 100;
+    padding: 12px 20px;
+    background: var(--mark);
+    color: var(--deep);
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus-visible {
+    transform: none;
+    outline-color: var(--deep);
+  }
+</style>

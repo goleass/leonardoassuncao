@@ -389,10 +389,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] HTML renderizado contém cada meta/tag da spec com valor exato
-- [ ] JSON-LD é JSON válido com nome, serviços, área atendida e contatos
-- [ ] Primeiro elemento focável é o link "Pular para o conteúdo"
-- [ ] Gate quick passa; ≥ 8 testes
+- [x] HTML renderizado contém cada meta/tag da spec com valor exato
+- [x] JSON-LD é JSON válido com nome, serviços, área atendida e contatos
+- [x] Primeiro elemento focável é o link "Pular para o conteúdo"
+- [x] Gate quick passa; ≥ 8 testes
 
 **Tests**: unit
 **Gate**: quick
