@@ -760,8 +760,8 @@ Adiada: depende de T4 (dados reais).
 
 **Done when**:
 
-- [ ] Só `transform`, `opacity` e `background-size` animados
-- [ ] Gate build passa
+- [x] Só `transform`, `opacity` e `background-size` animados
+- [x] Gate build passa
 
 **Tests**: none
 **Gate**: build

@@ -1,5 +1,6 @@
 @import "@fontsource-variable/archivo/wdth.css";
 @import "./tokens.css";
+@import "./animations.css";
 
 *,
 *::before,

@@ -114,10 +114,19 @@ const steps = [
     background: var(--on-dark-line);
   }
 
+  /* Trilho da altura do fluxo; o quadrado fica no topo e o trilho desliza com transform (ANIM-10). */
   .flow__dot {
     position: absolute;
     top: 0;
     left: 7px;
+    width: 11px;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .flow__dot::before {
+    content: "";
+    display: block;
     width: 11px;
     height: 11px;
     margin-top: -5px;

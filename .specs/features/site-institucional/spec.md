@@ -254,8 +254,8 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | ANIM-06 | P2: Animações — fluxo de integrações | - | Implementing |
 | ANIM-07 | P2: Animações — revelação ao rolar | - | Pending |
 | ANIM-08 | P2: Animações — reduzir movimento | - | Implementing |
-| ANIM-09 | P2: Animações — sem JavaScript | - | Pending |
-| ANIM-10 | P2: Animações — propriedades e CLS | - | Pending |
+| ANIM-09 | P2: Animações — sem JavaScript | - | Implementing |
+| ANIM-10 | P2: Animações — propriedades e CLS | - | Implementing |
 | SEO-01 | P2: SEO — idioma, título e descrição | - | Implementing |
 | SEO-02 | P2: SEO — Open Graph | - | Implementing |
 | SEO-03 | P2: SEO — sitemap, robots, canônica | - | Pending |
