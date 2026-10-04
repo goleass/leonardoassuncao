@@ -328,7 +328,7 @@ T18
 
 ---
 
-### T13: Rodapé com links de serviço
+### T13: Rodapé com links de serviço ✅
 
 **What**: Rodapé lista os 5 serviços e a política em `/privacidade/`.
 **Where**: `src/components/Footer.astro`
@@ -340,8 +340,8 @@ T18
 
 **Done when**:
 
-- [ ] `Footer.test.ts` confere os 5 `href` de serviço e `/privacidade/`
-- [ ] Gate passa: `npm test`
+- [x] `Footer.test.ts` confere os 5 `href` de serviço e `/privacidade/`
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

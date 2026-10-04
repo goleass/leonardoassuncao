@@ -1,5 +1,6 @@
 ---
 import type { SiteConfig } from "../config/schema";
+import { services } from "../data/services";
 
 interface Props {
   site: SiteConfig;
@@ -15,9 +16,22 @@ const year = new Date().getFullYear();
       <span class="site-footer__mark" aria-hidden="true"></span>
       Leonardo Gomes Assunção
     </span>
+    <nav class="site-footer__nav" aria-label="Serviços">
+      <ul class="site-footer__list">
+        {
+          services.map(({ slug, name }) => (
+            <li>
+              <a class="site-footer__link lg-ul" href={`/${slug}/`}>
+                {name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
     <span>CNPJ {site.cnpj} · {site.cidade} · Atendimento em todo o Brasil</span>
     <span class="site-footer__end">
-      <a class="site-footer__link lg-ul" href="/privacidade">Política de privacidade</a>
+      <a class="site-footer__link lg-ul" href="/privacidade/">Política de privacidade</a>
       <span>© {year}</span>
     </span>
   </div>
@@ -52,6 +66,19 @@ const year = new Date().getFullYear();
     width: 12px;
     height: 12px;
     background: var(--mark);
+  }
+
+  .site-footer__nav {
+    flex-basis: 100%;
+  }
+
+  .site-footer__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   .site-footer__end {
