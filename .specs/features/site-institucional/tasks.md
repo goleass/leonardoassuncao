@@ -1002,9 +1002,9 @@ T34 -> T37
 
 **Done when**:
 
-- [ ] Teste afirma 5 envios, janela de 3.600.000 ms e timeout de 10.000 ms
-- [ ] `contato.ts` não tem mais esses literais
-- [ ] Gate quick passa
+- [x] Teste afirma 5 envios, janela de 3.600.000 ms e timeout de 10.000 ms
+- [x] `contato.ts` não tem mais esses literais
+- [x] Gate quick passa
 
 **Tests**: unit
 **Gate**: quick
