@@ -717,8 +717,6 @@ T30 -> T32
 
 #### T24: Página inicial
 
-Adiada: depende de T4 (dados reais).
-
 **What**: `index.astro` montando as seções na ordem da spec dentro do `BaseLayout`.
 **Where**: `src/pages/index.astro`
 **Depends on**: T19, T20, T21, T22, T23
@@ -732,9 +730,9 @@ Adiada: depende de T4 (dados reais).
 
 **Done when**:
 
-- [ ] Ordem dos `id`/seções no HTML igual à spec (com e sem projetos/depoimento)
-- [ ] Exatamente um `<h1>`; nenhum `<h3>` antes do primeiro `<h2>`
-- [ ] Gate build passa (fim da fase); ≥ 3 testes
+- [x] Ordem dos `id`/seções no HTML igual à spec (com e sem projetos/depoimento)
+- [x] Exatamente um `<h1>`; nenhum `<h3>` antes do primeiro `<h2>`
+- [x] Gate build passa (fim da fase); ≥ 3 testes
 
 **Tests**: unit
 **Gate**: build
