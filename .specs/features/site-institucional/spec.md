@@ -242,8 +242,8 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | FORM-15 | P1: Formulário — log sem dados pessoais | - | Implementing |
 | RESP-01 | P1: Responsivo — sem rolagem horizontal | - | Pending |
 | RESP-02 | P1: Responsivo — botão Menu < 768px | - | Implementing |
-| RESP-03 | P1: Responsivo — abrir painel | - | Pending |
-| RESP-04 | P1: Responsivo — fechar painel | - | Pending |
+| RESP-03 | P1: Responsivo — abrir painel | - | Implementing |
+| RESP-04 | P1: Responsivo — fechar painel | - | Implementing |
 | RESP-05 | P1: Responsivo — áreas de toque | - | Pending |
 | RESP-06 | P1: Responsivo — empilhamento | - | Pending |
 | ANIM-01 | P2: Animações — entrada do título | - | Implementing |

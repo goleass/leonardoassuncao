@@ -41,6 +41,13 @@ const links = [
   </div>
 </header>
 
+<script>
+  import { initMenu } from "../scripts/menu";
+
+  const header = document.querySelector<HTMLElement>(".site-header");
+  if (header) initMenu(header);
+</script>
+
 <style>
   /* Fixo no topo durante a rolagem (PAGE-13). */
   .site-header {

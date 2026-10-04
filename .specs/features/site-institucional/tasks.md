@@ -785,10 +785,10 @@ Adiada: depende de T4 (dados reais).
 
 **Done when**:
 
-- [ ] Clique abre (`aria-expanded="true"`), segundo clique fecha
-- [ ] Esc fecha; clique num link fecha
-- [ ] Função de limpeza remove os listeners
-- [ ] Gate quick passa; ≥ 5 testes
+- [x] Clique abre (`aria-expanded="true"`), segundo clique fecha
+- [x] Esc fecha; clique num link fecha
+- [x] Função de limpeza remove os listeners
+- [x] Gate quick passa; ≥ 5 testes
 
 **Tests**: unit
 **Gate**: quick
