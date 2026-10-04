@@ -228,7 +228,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | NOIDX-01 | P1: Página 404 fora do índice | Tasks | Implementing |
 | NOIDX-02 | P1: Página 404 fora do índice | Tasks | Implementing |
 | NOIDX-03 | P1: Página 404 fora do índice | Tasks | In Tasks |
-| ICON-01 | P1: Favicon | Tasks | In Tasks |
+| ICON-01 | P1: Favicon | Tasks | Implementing |
 | ICON-02 | P1: Favicon | Tasks | In Tasks |
 | ICON-03 | P1: Favicon | Tasks | In Tasks |
 | HOME-01 | P1: Título, descrição e h1 da home | Tasks | In Tasks |

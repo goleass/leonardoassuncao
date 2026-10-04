@@ -160,7 +160,7 @@ T18
 
 ---
 
-### T5: Arquivos de favicon
+### T5: Arquivos de favicon ✅
 
 **What**: `favicon.svg`, `favicon.ico` (48×48), `apple-touch-icon.png` (180×180) e `icon-512.png` (512×512) com a marca (quadrado #5B95FF sobre #0A1A33).
 **Where**: `public/favicon.svg`
@@ -172,8 +172,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste lê os 4 arquivos em `public/` e confere as dimensões pelo cabeçalho PNG/ICO
-- [ ] Gate passa: `npm test`
+- [x] Teste lê os 4 arquivos em `public/` e confere as dimensões pelo cabeçalho PNG/ICO
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick
