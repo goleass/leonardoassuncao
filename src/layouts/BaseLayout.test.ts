@@ -132,3 +132,29 @@ describe("BaseLayout: classe js para animações (ANIM-09)", () => {
     expect(doc.documentElement.classList.contains("js")).toBe(false);
   });
 });
+
+describe("BaseLayout: título e descrição por página (LEGAL-01, LEGAL-03)", () => {
+  const PAGE_TITLE = "Política de privacidade — Leonardo Gomes Assunção";
+  const PAGE_DESCRIPTION = "Como o formulário de contato trata os seus dados.";
+
+  it("usa o título e a descrição recebidos em <title>, description, Open Graph e Twitter", async () => {
+    const page = parseHtml(
+      await renderComponent(BaseLayout, { site: siteFixture, title: PAGE_TITLE, description: PAGE_DESCRIPTION }),
+    );
+    const content = (selector: string) => page.querySelector(`meta[${selector}]`)?.getAttribute("content");
+    expect(page.querySelector("title")?.textContent).toBe(PAGE_TITLE);
+    expect(content('name="description"')).toBe(PAGE_DESCRIPTION);
+    expect(content('property="og:title"')).toBe(PAGE_TITLE);
+    expect(content('property="og:description"')).toBe(PAGE_DESCRIPTION);
+    expect(content('name="twitter:title"')).toBe(PAGE_TITLE);
+    expect(content('name="twitter:description"')).toBe(PAGE_DESCRIPTION);
+    // O JSON-LD descreve a empresa (SEO-04), não a página: mantém a descrição da página inicial.
+    const data = JSON.parse(page.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
+    expect(data.description).toBe(meta('name="description"'));
+  });
+
+  it("sem título e descrição recebidos, mantém os da página inicial (SEO-01)", () => {
+    expect(doc.querySelector("title")?.textContent).toBe(TITLE);
+    expect(meta('name="description"')).toMatch(/^Criação de sites, sistemas web, integrações e software sob medida\./);
+  });
+});

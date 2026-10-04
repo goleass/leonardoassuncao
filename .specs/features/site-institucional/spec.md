@@ -273,7 +273,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | A11Y-03 | P2: Acessibilidade — labels e aria-live | - | Implementing |
 | A11Y-04 | P2: Acessibilidade — pular para o conteúdo | - | Implementing |
 | A11Y-05 | P2: Acessibilidade — hierarquia de títulos | - | Implementing |
-| LEGAL-01 | P2: Privacidade — página /privacidade | - | Pending |
+| LEGAL-01 | P2: Privacidade — página /privacidade | - | Implementing |
 | LEGAL-02 | P2: Privacidade — link no formulário | - | Implementing |
 | LEGAL-03 | P2: Privacidade — página 404 | - | Pending |
 | LEGAL-04 | P2: Privacidade — rodapé | - | Implementing |

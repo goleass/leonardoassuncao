@@ -867,8 +867,8 @@ T30 -> T32
 
 **Done when**:
 
-- [ ] Os 4 itens do LEGAL-01 presentes; e-mail vem da config
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] Os 4 itens do LEGAL-01 presentes; e-mail vem da config
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick

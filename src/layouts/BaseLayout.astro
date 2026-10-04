@@ -4,14 +4,21 @@ import type { SiteConfig } from "../config/schema";
 
 interface Props {
   site: SiteConfig;
+  /** Título da página; sem ele vale o da página inicial (SEO-01). */
+  title?: string;
+  /** Descrição da página; sem ela vale a da página inicial. */
+  description?: string;
 }
 
-const { site } = Astro.props;
-
 const NAME = "Leonardo Gomes Assunção";
-const title = `${NAME} — Sites, Sistemas Web e Integrações`;
-const description =
+const HOME_DESCRIPTION =
   "Criação de sites, sistemas web, integrações e software sob medida. Um único responsável técnico, do diagnóstico ao suporte. Atendimento em todo o Brasil.";
+
+const {
+  site,
+  title = `${NAME} — Sites, Sistemas Web e Integrações`,
+  description = HOME_DESCRIPTION,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL("/og.png", site.url).href;
 
@@ -28,7 +35,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: NAME,
-  description,
+  description: HOME_DESCRIPTION,
   url: new URL("/", site.url).href,
   image: ogImage,
   email: site.email,

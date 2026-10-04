@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../config/site";
+---
+
+<BaseLayout
+  site={site}
+  title="Política de privacidade — Leonardo Gomes Assunção"
+  description="Quais dados o formulário de contato coleta, para que servem e como pedir informações sobre os seus dados pessoais."
+>
+  <Header slot="header" site={site} />
+  <article class="legal">
+    <div class="container legal__inner">
+      <h1 class="legal__title">Política de privacidade</h1>
+
+      <p class="legal__lead">
+        Esta página explica o que acontece com os dados que você envia pelo formulário de contato deste site.
+      </p>
+
+      <h2 id="dados-coletados" class="legal__heading">Dados coletados</h2>
+      <ul class="legal__list">
+        <li>Nome</li>
+        <li>E-mail</li>
+        <li>Tipo de projeto</li>
+        <li>Mensagem sobre o projeto</li>
+      </ul>
+
+      <h2 class="legal__heading">Finalidade</h2>
+      <p>
+        Os dados são usados apenas para responder ao seu contato. Eles não são vendidos, compartilhados para marketing
+        nem usados para outros fins.
+      </p>
+
+      <h2 class="legal__heading">Armazenamento</h2>
+      <p>
+        As mensagens não são armazenadas no site: o formulário envia o conteúdo por e-mail ao responsável e não grava
+        nada em disco ou banco de dados. Para limitar envios repetidos, o endereço IP fica em memória por até 60 minutos.
+        Em caso de falha no envio, o registro guarda só a data, a hora e o código do erro.
+      </p>
+
+      <h2 class="legal__heading">Seus direitos</h2>
+      <p>
+        Para saber quais dados seus estão na caixa de e-mail, pedir correção ou exclusão, escreva para
+        <a class="legal__link lg-ul" href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </div>
+  </article>
+  <Footer slot="footer" site={site} />
+</BaseLayout>
+
+<style>
+  .legal {
+    padding: 96px var(--gutter) var(--section-y);
+  }
+
+  .legal__inner {
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .legal__title {
+    margin-bottom: 12px;
+    font-size: var(--text-h2-faq);
+    line-height: 1;
+    letter-spacing: var(--tracking-display);
+    font-weight: 700;
+    font-stretch: var(--stretch-display);
+  }
+
+  .legal__lead {
+    font-size: var(--text-lead);
+    color: var(--gray-600);
+  }
+
+  .legal__heading {
+    margin-top: 28px;
+    font-size: var(--text-h3);
+    line-height: 1.1;
+    font-weight: 700;
+    font-stretch: var(--stretch-title);
+  }
+
+  .legal__list {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+
+  .legal__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--brand);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+</style>
