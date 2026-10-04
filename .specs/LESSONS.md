@@ -56,6 +56,24 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: W1 src/pages/api/contato.ts:11; W2 src/pages/api/contato.ts:23 (round 2) (endpoint-wiring)
 - last seen: 2026-10-04T13:30:19Z
 
+### L-008 - Assert the data attributes a page hands to its client script because script tests that inject their own deps cannot catch a wrong or missing config value in the hand-off
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `component-wiring` · harmful: 0
+- features: site-institucional
+- evidence: C1 src/components/Contact.astro:57; C2 src/components/Contact.astro:55 (round 3) (component-wiring)
+- last seen: 2026-10-04T13:41:12Z
+
+### L-009 - Use test fixture values that differ from the production config so a hard-coded production value cannot pass the test
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `test-fixtures` · harmful: 0
+- features: site-institucional
+- evidence: P1 src/scripts/contact-form.ts:100; src/scripts/contact-form.test.ts:63 (round 3) (test-fixtures)
+- last seen: 2026-10-04T13:41:13Z
+
+### L-010 - Test a time window at the real entry point by advancing a fake clock to just before and exactly at the boundary
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `endpoint-wiring` · harmful: 0
+- features: site-institucional
+- evidence: W3 src/pages/api/contato.ts:11 (round 3) (endpoint-wiring)
+- last seen: 2026-10-04T13:41:13Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

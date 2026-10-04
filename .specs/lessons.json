@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 8,
+  "next_id": 11,
   "lessons": [
     {
       "id": "L-001",
@@ -130,6 +130,60 @@
       ],
       "created": "2026-10-04T13:30:19Z",
       "last_seen": "2026-10-04T13:30:19Z"
+    },
+    {
+      "id": "L-008",
+      "key": "surviving_mutant::assert the data attributes a page hands to its client script because script tests that inject their own deps cannot catch a wrong or missing config value in the hand off",
+      "text": "Assert the data attributes a page hands to its client script because script tests that inject their own deps cannot catch a wrong or missing config value in the hand-off",
+      "signal": "surviving_mutant",
+      "scope": "component-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C1 src/components/Contact.astro:57; C2 src/components/Contact.astro:55 (round 3) (component-wiring)"
+      ],
+      "created": "2026-10-04T13:41:12Z",
+      "last_seen": "2026-10-04T13:41:12Z"
+    },
+    {
+      "id": "L-009",
+      "key": "surviving_mutant::use test fixture values that differ from the production config so a hard coded production value cannot pass the test",
+      "text": "Use test fixture values that differ from the production config so a hard-coded production value cannot pass the test",
+      "signal": "surviving_mutant",
+      "scope": "test-fixtures",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "P1 src/scripts/contact-form.ts:100; src/scripts/contact-form.test.ts:63 (round 3) (test-fixtures)"
+      ],
+      "created": "2026-10-04T13:41:13Z",
+      "last_seen": "2026-10-04T13:41:13Z"
+    },
+    {
+      "id": "L-010",
+      "key": "surviving_mutant::test a time window at the real entry point by advancing a fake clock to just before and exactly at the boundary",
+      "text": "Test a time window at the real entry point by advancing a fake clock to just before and exactly at the boundary",
+      "signal": "surviving_mutant",
+      "scope": "endpoint-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "W3 src/pages/api/contato.ts:11 (round 3) (endpoint-wiring)"
+      ],
+      "created": "2026-10-04T13:41:13Z",
+      "last_seen": "2026-10-04T13:41:13Z"
     }
   ]
 }
