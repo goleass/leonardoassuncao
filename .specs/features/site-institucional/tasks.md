@@ -118,9 +118,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] `npm run check`, `npm run build` e `npm test` rodam sem erro
-- [ ] Teste de fumaça do helper `renderComponent` passa (1 teste)
-- [ ] `astro` com versão exata (sem `^`) no `package.json`
+- [x] `npm run check`, `npm run build` e `npm test` rodam sem erro
+- [x] Teste de fumaça do helper `renderComponent` passa (1 teste)
+- [x] `astro` com versão exata (sem `^`) no `package.json`
 
 **Tests**: unit
 **Gate**: build
