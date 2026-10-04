@@ -227,7 +227,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | HOST-06 | P1: Sinal canônico único | Tasks | Implementing |
 | NOIDX-01 | P1: Página 404 fora do índice | Tasks | Implementing |
 | NOIDX-02 | P1: Página 404 fora do índice | Tasks | Implementing |
-| NOIDX-03 | P1: Página 404 fora do índice | Tasks | In Tasks |
+| NOIDX-03 | P1: Página 404 fora do índice | Tasks | Implementing |
 | ICON-01 | P1: Favicon | Tasks | Implementing |
 | ICON-02 | P1: Favicon | Tasks | Implementing |
 | ICON-03 | P1: Favicon | Tasks | Implementing |
@@ -237,7 +237,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | HOME-04 | P1: Título, descrição e h1 da home | Tasks | Implementing |
 | SVC-01 | P1: Páginas de serviço | Tasks | Implementing |
 | SVC-02 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-03 | P1: Páginas de serviço | Tasks | In Tasks |
+| SVC-03 | P1: Páginas de serviço | Tasks | Implementing |
 | SVC-04 | P1: Páginas de serviço | Tasks | Implementing |
 | SVC-05 | P1: Páginas de serviço | Tasks | Implementing |
 | SVC-06 | P1: Páginas de serviço | Tasks | Implementing |
@@ -259,7 +259,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | LD-08 | P2: Dados estruturados | Tasks | Implementing |
 | LD-09 | Edge cases | Tasks | Implementing |
 | PERF-01 | P2: CSS sem bloqueio | Tasks | Implementing |
-| PERF-02 | P2: CSS sem bloqueio | Tasks | In Tasks |
+| PERF-02 | P2: CSS sem bloqueio | Tasks | Implementing |
 
 **Coverage:** 41 total, 0 mapped to tasks, 41 unmapped ⚠️ (mapped in tasks.md)
 

@@ -434,19 +434,20 @@ T18
 
 ---
 
-### T18: Invariantes de SEO na saída do build
+### T18: Invariantes de SEO na saída do build ✅
 
 **What**: Teste de integração lê `dist/`: host www em canônicas/og/JSON-LD/sitemap/robots, links internos com barra final, títulos e descrições únicos, 5 serviços no sitemap, nenhum 404 no sitemap, nenhum `<link rel="stylesheet">`, ícones publicados.
-**Where**: `tests/build/seo.test.ts`
+**Where**: `tests/build/secrets.test.ts`
 **Depends on**: None
 **Reuses**: padrão de `tests/build/secrets.test.ts`
+**SPEC_DEVIATION**: o plano previa `tests/build/seo.test.ts`. Um segundo arquivo rodaria outro `astro build` em paralelo na mesma pasta `dist/` (aviso no próprio arquivo), então os invariantes ficaram num novo `describe` em `secrets.test.ts`.
 **Requirement**: HOST-02, HOST-06, SVC-03, SVC-09, NOIDX-03, PERF-02, ICON-01
 
 **Tools**: MCP: NONE · Skill: NONE
 
 **Done when**:
 
-- [ ] Gate passa: `npm run check && npm test && npm run test:build`
+- [x] Gate passa: `npm run check && npm test && npm run test:build`
 
 **Tests**: integration
 **Gate**: build
