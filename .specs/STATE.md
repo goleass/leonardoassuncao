@@ -26,6 +26,14 @@
 - **Date**: 2026-10-04
 - **Status**: active
 
+### AD-004
+- **Decision**: O host canônico do site é `https://www.leonardoassuncao.com.br`; `site.url` usa esse valor e o subdomínio `leonardoassuncao.netlify.app` redireciona 301 para ele.
+- **Reason**: A Netlify já serve o www com 200 e redireciona o domínio sem www para ele; canônica apontando para uma URL que redireciona confunde o Google.
+- **Trade-off**: O e-mail continua em `@leonardoassuncao.com.br` (sem efeito); mudar o domínio principal no painel exigiria trocar `site.url` de volta.
+- **Scope**: Canônicas, sitemap, robots, Open Graph e JSON-LD.
+- **Date**: 2026-10-04
+- **Status**: active
+
 ## Handoff
 
 - **Feature**: `.specs/features/site-institucional`
