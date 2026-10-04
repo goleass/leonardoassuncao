@@ -31,3 +31,13 @@ describe("Process: 4 etapas (PAGE-05)", () => {
     ]);
   });
 });
+
+describe("Process: linha desenhada ao rolar (ANIM-07)", () => {
+  it("a linha .lg-draw tem um ancestral .reveal, que o script revela ao entrar na tela", () => {
+    const line = doc.querySelector("#processo .lg-draw");
+    expect(line).not.toBeNull();
+    expect(line?.closest(".reveal")).not.toBeNull();
+    // Sem envolver as etapas: cada uma já é revelada sozinha.
+    expect(line?.closest(".reveal")?.querySelector(".step")).toBeNull();
+  });
+});

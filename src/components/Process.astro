@@ -18,7 +18,9 @@ const steps = [
     </div>
 
     <div>
-      <span class="process__rule lg-draw" aria-hidden="true"></span>
+      <div class="reveal" aria-hidden="true">
+        <span class="process__rule lg-draw"></span>
+      </div>
       <ol class="process__steps">
         {
           steps.map(({ title, text }, index) => (

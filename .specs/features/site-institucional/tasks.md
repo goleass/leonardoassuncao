@@ -969,8 +969,8 @@ T30 -> T32
 
 **Done when**:
 
-- [ ] A linha `.lg-draw` do Processo tem um ancestral `.reveal` (teste de HTML)
-- [ ] Gate build passa (fim da fase e do lote)
+- [x] A linha `.lg-draw` do Processo tem um ancestral `.reveal` (teste de HTML)
+- [x] Gate build passa (fim da fase e do lote)
 
 **Tests**: unit
 **Gate**: build
