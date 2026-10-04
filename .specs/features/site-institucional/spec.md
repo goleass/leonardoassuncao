@@ -232,14 +232,14 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | FORM-05 | P1: Formulário — validação no navegador | - | Implementing |
 | FORM-06 | P1: Formulário — validação no servidor (400) | - | Implementing |
 | FORM-07 | P1: Formulário — estado "Enviando…" | - | Pending |
-| FORM-08 | P1: Formulário — falha do serviço de e-mail (502) | - | Pending |
+| FORM-08 | P1: Formulário — falha do serviço de e-mail (502) | - | Implementing |
 | FORM-09 | P1: Formulário — plano B na falha | - | Pending |
-| FORM-10 | P1: Formulário — honeypot | - | Pending |
+| FORM-10 | P1: Formulário — honeypot | - | Implementing |
 | FORM-11 | P1: Formulário — limite de envios (429) | - | Implementing |
 | FORM-12 | P1: Formulário — mensagem de limite | - | Pending |
-| FORM-13 | P1: Formulário — sem armazenamento | - | Pending |
+| FORM-13 | P1: Formulário — sem armazenamento | - | Implementing |
 | FORM-14 | P1: Formulário — credenciais só no servidor | - | Pending |
-| FORM-15 | P1: Formulário — log sem dados pessoais | - | Pending |
+| FORM-15 | P1: Formulário — log sem dados pessoais | - | Implementing |
 | RESP-01 | P1: Responsivo — sem rolagem horizontal | - | Pending |
 | RESP-02 | P1: Responsivo — botão Menu < 768px | - | Pending |
 | RESP-03 | P1: Responsivo — abrir painel | - | Pending |

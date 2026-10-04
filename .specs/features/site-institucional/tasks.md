@@ -333,11 +333,11 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Cada status (200, 400, 429, 502) testado com o corpo JSON exato do design
-- [ ] `send` não é chamado em 400, 429 e honeypot
-- [ ] Timeout testado com relógio falso: `send` pendente por 10s → 502
-- [ ] Entradas de log não contêm nome, e-mail nem mensagem
-- [ ] Gate quick passa; ≥ 10 testes
+- [x] Cada status (200, 400, 429, 502) testado com o corpo JSON exato do design
+- [x] `send` não é chamado em 400, 429 e honeypot
+- [x] Timeout testado com relógio falso: `send` pendente por 10s → 502
+- [x] Entradas de log não contêm nome, e-mail nem mensagem
+- [x] Gate quick passa; ≥ 10 testes
 
 **Tests**: unit
 **Gate**: quick
