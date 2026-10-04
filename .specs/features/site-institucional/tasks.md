@@ -1077,7 +1077,7 @@ T34 -> T37
 
 **Done when**:
 
-- [ ] Gate build passa (fim da fase)
+- [x] Gate build passa (fim da fase)
 
 **Tests**: unit
 **Gate**: build

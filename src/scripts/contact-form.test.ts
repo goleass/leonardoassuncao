@@ -85,6 +85,32 @@ describe("initContactForm: validação no navegador (FORM-05, EDGE-02)", () => {
   });
 });
 
+describe("initContactForm: anúncio de erros para leitores de tela (A11Y-03)", () => {
+  it("o foco vai para o primeiro campo inválido na ordem do formulário", async () => {
+    fill({ email: "ana@", mensagem: "curta" });
+    submit();
+    await flush();
+    expect(document.activeElement).toBe(control("email"));
+  });
+
+  it("com nome inválido, o foco vai para o nome mesmo havendo outros erros", async () => {
+    fill({ nome: "A", mensagem: "curta" });
+    submit();
+    await flush();
+    expect(document.activeElement).toBe(control("nome"));
+  });
+
+  it("cada campo inválido fica marcado e ligado à sua mensagem por aria-describedby", async () => {
+    fill({ email: "ana@" });
+    submit();
+    await flush();
+    const email = control("email");
+    expect(email.getAttribute("aria-invalid")).toBe("true");
+    expect(document.getElementById(email.getAttribute("aria-describedby") ?? "")?.textContent?.trim()).toBe("Informe um e-mail válido.");
+    expect(control("nome").hasAttribute("aria-invalid")).toBe(false);
+  });
+});
+
 describe("initContactForm: envio (FORM-07, EDGE-01)", () => {
   it("envia uma requisição POST JSON para /api/contato com os campos e o honeypot", async () => {
     fetchMock.mockReturnValue(reply(200, { ok: true }));
