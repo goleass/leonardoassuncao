@@ -96,7 +96,7 @@ T18
 
 ---
 
-### T2: robots.txt gerado da configuração
+### T2: robots.txt gerado da configuração ✅
 
 **What**: Endpoint estático `/robots.txt` com `Allow: /`, `Disallow: /api/` e `Sitemap: <site.url>/sitemap-index.xml`; remove `public/robots.txt`.
 **Where**: `src/pages/robots.txt.ts`
@@ -108,8 +108,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste chama o `GET` e confere `Disallow: /api/` e a linha `Sitemap:` com o host www
-- [ ] Gate passa: `npm test`
+- [x] Teste chama o `GET` e confere `Disallow: /api/` e a linha `Sitemap:` com o host www
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick
