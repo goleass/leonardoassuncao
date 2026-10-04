@@ -349,7 +349,7 @@ T18
 
 ---
 
-### T14: Link de privacidade do formulário com barra final
+### T14: Link de privacidade do formulário com barra final ✅
 
 **What**: O link junto ao botão de envio aponta para `/privacidade/`.
 **Where**: `src/components/Contact.astro`
@@ -361,8 +361,8 @@ T18
 
 **Done when**:
 
-- [ ] `Contact.test.ts` espera `a[href="/privacidade/"]`
-- [ ] Gate passa: `npm test`
+- [x] `Contact.test.ts` espera `a[href="/privacidade/"]`
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

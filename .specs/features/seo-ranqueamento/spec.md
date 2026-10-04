@@ -224,7 +224,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | HOST-03 | P1: Sinal canônico único | Tasks | Implementing |
 | HOST-04 | P1: Sinal canônico único | Tasks | Implementing |
 | HOST-05 | P1: Sinal canônico único | Tasks | Implementing |
-| HOST-06 | P1: Sinal canônico único | Tasks | In Tasks |
+| HOST-06 | P1: Sinal canônico único | Tasks | Implementing |
 | NOIDX-01 | P1: Página 404 fora do índice | Tasks | Implementing |
 | NOIDX-02 | P1: Página 404 fora do índice | Tasks | Implementing |
 | NOIDX-03 | P1: Página 404 fora do índice | Tasks | In Tasks |
