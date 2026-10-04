@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 13,
+  "next_id": 15,
   "lessons": [
     {
       "id": "L-001",
@@ -220,6 +220,42 @@
       ],
       "created": "2026-10-04T14:09:41Z",
       "last_seen": "2026-10-04T14:09:41Z"
+    },
+    {
+      "id": "L-013",
+      "key": "surviving_mutant::assert page level seo values title description on the rendered page itself not only on the layout default the page inherits",
+      "text": "Assert page-level SEO values (title, description) on the rendered page itself, not only on the layout default the page inherits",
+      "signal": "surviving_mutant",
+      "scope": "pages, seo",
+      "status": "candidate",
+      "features": [
+        "seo-ranqueamento"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "validation.md M13 (src/pages/index.astro:20; HOME-01, HOME-02) (pages, seo)"
+      ],
+      "created": "2026-10-04T22:11:20Z",
+      "last_seen": "2026-10-04T22:11:20Z"
+    },
+    {
+      "id": "L-014",
+      "key": "spec_deviation::keep all dist output assertions in the single build test file so test build runs only one astro build",
+      "text": "Keep all dist output assertions in the single build test file so test:build runs only one astro build",
+      "signal": "spec_deviation",
+      "scope": "tests/build",
+      "status": "candidate",
+      "features": [
+        "seo-ranqueamento"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "tasks.md T18 SPEC_DEVIATION (tests/build/secrets.test.ts:171) (tests/build)"
+      ],
+      "created": "2026-10-04T22:11:20Z",
+      "last_seen": "2026-10-04T22:11:20Z"
     }
   ]
 }
