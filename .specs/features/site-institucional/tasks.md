@@ -812,10 +812,10 @@ Adiada: depende de T4 (dados reais).
 
 **Done when**:
 
-- [ ] Entrada na tela → `is-visible` e o elemento deixa de ser observado
-- [ ] Movimento reduzido → todos visíveis sem observer
-- [ ] Sem `IntersectionObserver` → todos visíveis
-- [ ] Gate quick passa; ≥ 4 testes
+- [x] Entrada na tela → `is-visible` e o elemento deixa de ser observado
+- [x] Movimento reduzido → todos visíveis sem observer
+- [x] Sem `IntersectionObserver` → todos visíveis
+- [x] Gate quick passa; ≥ 4 testes
 
 **Tests**: unit
 **Gate**: quick

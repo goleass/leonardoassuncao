@@ -252,7 +252,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | ANIM-04 | P2: Animações — pausa da faixa | - | Implementing |
 | ANIM-05 | P2: Animações — hover dos serviços | - | Implementing |
 | ANIM-06 | P2: Animações — fluxo de integrações | - | Implementing |
-| ANIM-07 | P2: Animações — revelação ao rolar | - | Pending |
+| ANIM-07 | P2: Animações — revelação ao rolar | - | Implementing |
 | ANIM-08 | P2: Animações — reduzir movimento | - | Implementing |
 | ANIM-09 | P2: Animações — sem JavaScript | - | Implementing |
 | ANIM-10 | P2: Animações — propriedades e CLS | - | Implementing |

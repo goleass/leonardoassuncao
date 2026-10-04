@@ -80,6 +80,11 @@ const jsonLdText = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
       <slot />
     </main>
     <slot name="footer" />
+    <script>
+      import { initReveal } from "../scripts/reveal";
+
+      initReveal(document, { reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches });
+    </script>
   </body>
 </html>
 
