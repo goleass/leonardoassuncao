@@ -51,6 +51,16 @@ describe("POST /api/contato", () => {
     expect(send).toHaveBeenCalledTimes(5);
   });
 
+  it("a janela do limite é de 60 minutos: bloqueado aos 59min59s, liberado aos 60min (FORM-11)", async () => {
+    vi.useFakeTimers({ now: new Date("2026-10-04T12:00:00Z") });
+    const post = await loadPost();
+    for (let i = 0; i < 5; i++) expect((await post()).status).toBe(200);
+    vi.setSystemTime(new Date("2026-10-04T12:59:59Z"));
+    expect((await post()).status).toBe(429);
+    vi.setSystemTime(new Date("2026-10-04T13:00:00Z"));
+    expect((await post()).status).toBe(200);
+  });
+
   it("outro IP não é afetado pelo limite do primeiro (FORM-11)", async () => {
     const post = await loadPost();
     for (let i = 0; i < 5; i++) await post("203.0.113.7");

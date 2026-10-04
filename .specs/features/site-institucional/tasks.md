@@ -1217,8 +1217,8 @@ T40 -> T42
 
 **Done when**:
 
-- [ ] Janela de 30 min no endpoint faz o teste falhar
-- [ ] Gate build passa (fim da fase)
+- [x] Janela de 30 min no endpoint faz o teste falhar
+- [x] Gate build passa (fim da fase)
 
 **Tests**: unit
 **Gate**: build
