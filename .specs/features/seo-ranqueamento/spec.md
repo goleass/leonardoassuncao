@@ -255,7 +255,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | LD-04 | P2: Dados estruturados | Tasks | Implementing |
 | LD-05 | P2: Dados estruturados | Tasks | Implementing |
 | LD-06 | P2: Dados estruturados | Tasks | Implementing |
-| LD-07 | P2: Dados estruturados | Tasks | In Tasks |
+| LD-07 | P2: Dados estruturados | Tasks | Implementing |
 | LD-08 | P2: Dados estruturados | Tasks | Implementing |
 | LD-09 | Edge cases | Tasks | Implementing |
 | PERF-01 | P2: CSS sem bloqueio | Tasks | Implementing |

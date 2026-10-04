@@ -13,9 +13,11 @@ import Faq from "../components/Faq.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import { site } from "../config/site";
+import { questions } from "../data/faq";
+import { faqNode } from "../lib/seo/schema";
 ---
 
-<BaseLayout site={site}>
+<BaseLayout site={site} schema={[faqNode(questions)]}>
   <Header slot="header" site={site} />
   <Hero site={site} />
   <Marquee />

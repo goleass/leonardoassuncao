@@ -412,7 +412,7 @@ T18
 
 ---
 
-### T17: FAQPage na home
+### T17: FAQPage na home ✅
 
 **What**: As perguntas da FAQ saem para um módulo de dados; `Faq.astro` e a home (JSON-LD `FAQPage`) leem dele.
 **Where**: `src/data/faq.ts`
@@ -424,9 +424,9 @@ T18
 
 **Done when**:
 
-- [ ] Teste da home confere `FAQPage` com perguntas e respostas iguais ao texto visível
-- [ ] `Faq.test.ts` continua passando
-- [ ] Gate passa: `npm test`
+- [x] Teste da home confere `FAQPage` com perguntas e respostas iguais ao texto visível
+- [x] `Faq.test.ts` continua passando
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

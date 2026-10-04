@@ -100,3 +100,17 @@ describe("Página inicial: hierarquia de títulos (A11Y-05)", () => {
     expect(levels.indexOf(3)).toBeGreaterThan(levels.indexOf(2));
   });
 });
+
+describe("Página inicial: FAQ em dados estruturados (LD-07)", () => {
+  it("publica uma FAQPage com as perguntas e respostas exatamente como aparecem na seção #faq", async () => {
+    const doc = await render(siteFixture);
+    const visible = [...doc.querySelectorAll("#faq details")].map((d) => [
+      d.querySelector("summary")?.textContent?.trim(),
+      d.querySelector("summary + *")?.textContent?.trim(),
+    ]);
+    const graph = JSON.parse(doc.querySelector('script[type="application/ld+json"]')?.textContent ?? "null")["@graph"];
+    const faq = graph.find((node: { "@type": string }) => node["@type"] === "FAQPage");
+    expect(visible).toHaveLength(4);
+    expect(faq.mainEntity.map((q: any) => [q.name, q.acceptedAnswer.text])).toEqual(visible);
+  });
+});
