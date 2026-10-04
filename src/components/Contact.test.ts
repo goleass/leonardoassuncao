@@ -97,7 +97,7 @@ describe("Contact: dados de contato da configuração (PAGE-08)", () => {
   });
 
   it("mostra o prazo de resposta configurado", () => {
-    expect(accessibleText(doc.getElementById("contato")!)).toContain("Respondo pessoalmente em até 24 horas úteis.");
+    expect(accessibleText(doc.getElementById("contato")!)).toContain("Respondo pessoalmente em até 48 horas úteis.");
   });
 });
 
@@ -113,5 +113,15 @@ describe("Contact: título da seção (A11Y-05)", () => {
   it('tem um <h2> "Vamos construir?" em id="contato"', () => {
     const h2 = doc.querySelector("section#contato h2");
     expect(h2 && accessibleText(h2)).toBe("Vamos construir?");
+  });
+});
+
+describe("Contact: dados passados ao script do formulário (FORM-02, FORM-03, FORM-09)", () => {
+  it("o formulário leva o WhatsApp só com dígitos, o e-mail e o prazo da configuração", () => {
+    expect({ ...form().dataset }).toEqual({
+      whatsapp: siteFixture.whatsapp,
+      email: siteFixture.email,
+      prazo: siteFixture.prazoResposta,
+    });
   });
 });

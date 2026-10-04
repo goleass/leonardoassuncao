@@ -8,7 +8,8 @@ export const siteFixture: SiteConfig = {
   whatsappDisplay: "(11) 90000-0000",
   cidade: "São Paulo, SP",
   cnpj: "00.000.000/0001-00",
-  prazoResposta: "24 horas úteis",
+  // Diferente do valor de produção, para que um texto fixo no código não passe nos testes.
+  prazoResposta: "48 horas úteis",
   projetos: [],
 };
 

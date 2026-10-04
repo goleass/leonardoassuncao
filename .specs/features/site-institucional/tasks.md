@@ -111,6 +111,12 @@ T34 -> T37
 T38 -> T39
 ```
 
+### Phase 9: Correções da validação (rodada 3, aprovadas pelo usuário)
+
+```
+T40 -> T42
+```
+
 ---
 
 ## Task Breakdown
@@ -1144,6 +1150,83 @@ T38 -> T39
 
 ---
 
+### Phase 9: Correções da validação (rodada 3, aprovadas pelo usuário)
+
+#### T40: Dados do formulário vindos da configuração
+
+**What**: Teste do `Contact` afirmando `data-whatsapp`, `data-email` e `data-prazo` iguais à config; prazo do fixture diferente do de produção (sobreviventes C1/C2).
+**Where**: `src/components/Contact.test.ts`
+**Depends on**: None
+**Reuses**: suíte existente
+**Requirement**: FORM-02, FORM-03, FORM-09
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Remover `data-prazo` ou usar `whatsappDisplay` em `data-whatsapp` faz o teste falhar
+- [x] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(contact): assert form data comes from site config`
+
+---
+
+#### T41: Prazo do sucesso vindo da configuração
+
+**What**: Teste do `contact-form` usa um prazo diferente do de produção, para um texto fixo no código falhar (sobrevivente P1).
+**Where**: `src/scripts/contact-form.test.ts`
+**Depends on**: None
+**Reuses**: suíte existente
+**Requirement**: FORM-02
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [ ] Prazo fixo "24 horas úteis" no script faz o teste falhar
+- [ ] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(contact): use a non-production deadline in form tests`
+
+---
+
+#### T42: Janela de 60 minutos do limite no endpoint
+
+**What**: Teste do endpoint com relógio falso instalado antes de carregar o módulo: 6º envio → 429 aos 59min59s e 200 aos 60min (sobrevivente W3).
+**Where**: `src/pages/api/_contato.test.ts`
+**Depends on**: T40
+**Reuses**: suíte existente
+**Requirement**: FORM-11
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [ ] Janela de 30 min no endpoint faz o teste falhar
+- [ ] Gate build passa (fim da fase)
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `test(contact): pin the 60 minute rate limit window`
+
+---
+
 ## Phase Execution Map
 
 ```
@@ -1157,6 +1240,7 @@ Phase 5:  T25, T26, T27, T28                  (4)
 Phase 6:  T29, T30, T31, T32, T33             (5)
 Phase 7:  T34, T35, T36, T37                  (4)
 Phase 8:  T38, T39                            (2)
+Phase 9:  T40, T41, T42                       (3)
 ```
 
 Execution is strictly sequential - there is no intra-phase parallelism.
