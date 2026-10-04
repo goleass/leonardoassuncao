@@ -238,7 +238,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | FORM-11 | P1: Formulário — limite de envios (429) | - | Implementing |
 | FORM-12 | P1: Formulário — mensagem de limite | - | Pending |
 | FORM-13 | P1: Formulário — sem armazenamento | - | Implementing |
-| FORM-14 | P1: Formulário — credenciais só no servidor | - | Pending |
+| FORM-14 | P1: Formulário — credenciais só no servidor | - | Implementing |
 | FORM-15 | P1: Formulário — log sem dados pessoais | - | Implementing |
 | RESP-01 | P1: Responsivo — sem rolagem horizontal | - | Pending |
 | RESP-02 | P1: Responsivo — botão Menu < 768px | - | Pending |

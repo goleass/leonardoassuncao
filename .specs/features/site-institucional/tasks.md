@@ -361,9 +361,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] `npm run build` gera a função do endpoint e o resto estático
-- [ ] `tests/build/secrets.test.ts` falha se a pasta de saída não existir e passa sem o segredo nela
-- [ ] Gate build passa
+- [x] `npm run build` gera a função do endpoint e o resto estático
+- [x] `tests/build/secrets.test.ts` falha se a pasta de saída não existir e passa sem o segredo nela
+- [x] Gate build passa
 
 **Tests**: unit
 **Gate**: build
