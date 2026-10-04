@@ -217,7 +217,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-03 | P1: Landing page — 5 serviços | - | Pending |
 | PAGE-04 | P1: Landing page — fluxo de integrações | - | Pending |
 | PAGE-05 | P1: Landing page — 4 etapas do processo | - | Pending |
-| PAGE-06 | P1: Landing page — navegação por âncoras | - | Pending |
+| PAGE-06 | P1: Landing page — navegação por âncoras | - | Implementing |
 | PAGE-07 | P1: Landing page — perguntas frequentes | - | Pending |
 | PAGE-08 | P1: Landing page — configuração única | - | Pending |
 | PAGE-09 | P1: Landing page — build falha com placeholder | - | Pending |
@@ -261,8 +261,8 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | SEO-03 | P2: SEO — sitemap, robots, canônica | - | Pending |
 | SEO-04 | P2: SEO — JSON-LD | - | Pending |
 | SEO-05 | P2: SEO — Lighthouse | - | Pending |
-| SEO-06 | P2: SEO — fontes locais | - | Pending |
-| A11Y-01 | P2: Acessibilidade — contraste | - | Pending |
+| SEO-06 | P2: SEO — fontes locais | - | Implementing |
+| A11Y-01 | P2: Acessibilidade — contraste | - | Implementing |
 | A11Y-02 | P2: Acessibilidade — teclado e foco | - | Pending |
 | A11Y-03 | P2: Acessibilidade — labels e aria-live | - | Pending |
 | A11Y-04 | P2: Acessibilidade — pular para o conteúdo | - | Pending |

@@ -144,9 +144,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Cores e tamanhos idênticos ao protótipo
-- [ ] Fonte servida do próprio domínio com `font-display: swap`
-- [ ] Gate build passa
+- [x] Cores e tamanhos idênticos ao protótipo
+- [x] Fonte servida do próprio domínio com `font-display: swap`
+- [x] Gate build passa
 
 **Tests**: none
 **Gate**: build
