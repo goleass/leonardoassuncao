@@ -3,9 +3,10 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
 
-// Pasta confirmada após o build com @astrojs/vercel 11 + Astro 7: tudo que vai ao navegador fica em static/.
-const OUTPUT = join(process.cwd(), ".vercel/output");
-const STATIC = join(OUTPUT, "static");
+// Pastas confirmadas após o build com @astrojs/netlify 8 + Astro 7: o que vai ao navegador fica em dist/,
+// e a função que atende /api/contato e a 404 fica em .netlify/v1/functions/ssr/.
+const STATIC = join(process.cwd(), "dist");
+const SSR = join(process.cwd(), ".netlify/v1/functions/ssr/ssr.mjs");
 const SENTINEL = "re_SENTINELA_nao_pode_vazar_7f3a91";
 
 function listFiles(dir: string): string[] {
@@ -29,29 +30,46 @@ beforeAll(() => {
 }, 180_000);
 
 describe("saída do build", () => {
+  // Contexto mínimo que a Netlify entrega à função; `ip` vira o clientAddress do Astro.
+  const context = { ip: "203.0.113.7", geo: {}, cookies: { set() {}, delete() {} }, next: async () => new Response(null) };
+  const loadSsr = async () => {
+    Object.assign(process.env, { RESEND_API_KEY: SENTINEL, CONTACT_TO: "destino@exemplo.com.br", CONTACT_FROM: "Site <site@exemplo.com.br>" });
+    return (await import(SSR)) as {
+      default: (request: Request, ctx: typeof context) => Promise<Response>;
+      config: { path: string; preferStatic: boolean };
+    };
+  };
+  const post = (body: string) =>
+    new Request("https://leonardoassuncao.com.br/api/contato", { method: "POST", headers: { "content-type": "application/json" }, body });
+
   it("pasta pública existe e contém o HTML estático", () => {
     expect(existsSync(STATIC)).toBe(true);
     expect(existsSync(join(STATIC, "index.html"))).toBe(true);
   });
 
-  it("/api/contato é servido por uma função, não por arquivo estático", () => {
-    const config = JSON.parse(readFileSync(join(OUTPUT, "config.json"), "utf8")) as {
-      routes: Array<{ src?: string; dest?: string }>;
-    };
-    const route = config.routes.find((r) => r.src && new RegExp(r.src).test("/api/contato"));
-    expect(route?.dest).toBe("_render");
-    expect(existsSync(join(OUTPUT, "functions/_render.func/.vc-config.json"))).toBe(true);
+  it("/api/contato é servido pela função, não por arquivo estático (FORM-10)", async () => {
+    const { default: handler, config } = await loadSsr();
+    expect(config).toMatchObject({ path: "/*", preferStatic: true });
     expect(listFiles(STATIC).some((file) => file.includes("contato"))).toBe(false);
+    const honeypot = await handler(post(JSON.stringify({ nome: "Ana Lima", email: "ana@empresa.com.br", tipo: "Site", mensagem: "Preciso de um site novo.", website: "bot" })), context);
+    expect(honeypot.status).toBe(200);
+    expect(await honeypot.json()).toEqual({ ok: true });
   });
 
-  it("endereço inexistente responde 404 com a página 404.html (LEGAL-03)", () => {
+  it("a função responde 400 para JSON malformado (FORM-06)", async () => {
+    const { default: handler } = await loadSsr();
+    const response = await handler(post("{"), context);
+    expect(response.status).toBe(400);
+  });
+
+  it("endereço inexistente responde 404 com a página 404 (LEGAL-03)", async () => {
     expect(existsSync(join(STATIC, "404.html"))).toBe(true);
-    const config = JSON.parse(readFileSync(join(OUTPUT, "config.json"), "utf8")) as {
-      routes: Array<{ src?: string; dest?: string; status?: number }>;
-    };
-    const route = config.routes.find((r) => r.dest === "/404.html");
-    expect(route?.status).toBe(404);
-    expect(new RegExp(route?.src ?? "$^").test("/qualquer-coisa")).toBe(true);
+    const { default: handler } = await loadSsr();
+    const response = await handler(new Request("https://leonardoassuncao.com.br/qualquer-coisa"), context);
+    expect(response.status).toBe(404);
+    const html = await response.text();
+    expect(html).toContain("Página não encontrada");
+    expect(html).toContain('href="/"');
   });
 
   it("nenhum arquivo público contém o nome nem o valor da chave do Resend", () => {

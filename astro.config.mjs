@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
-import vercel from "@astrojs/vercel";
+import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import { validateSiteConfig } from "./src/config/schema.ts";
 import { site } from "./src/config/site.ts";
@@ -10,7 +10,7 @@ validateSiteConfig(site);
 
 export default defineConfig({
   site: site.url,
-  adapter: vercel(),
+  adapter: netlify(),
   integrations: [sitemap()],
   env: {
     schema: {

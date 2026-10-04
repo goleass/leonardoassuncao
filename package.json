@@ -15,8 +15,8 @@
     "test:build": "vitest run tests/build"
   },
   "dependencies": {
+    "@astrojs/netlify": "8.2.6",
     "@astrojs/sitemap": "3.7.4",
-    "@astrojs/vercel": "11.0.11",
     "@fontsource-variable/archivo": "5.3.0",
     "astro": "7.3.5",
     "resend": "6.32.0",
