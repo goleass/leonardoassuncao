@@ -223,7 +223,7 @@ T18
 
 ---
 
-### T8: Conteúdo das 5 páginas de serviço
+### T8: Conteúdo das 5 páginas de serviço ✅
 
 **What**: Módulo com os 5 serviços (slug, nome, resumo do card, title, description, h1, intro, seções h2, FAQ), texto em pt-BR sem afirmações inventadas.
 **Where**: `src/data/services.ts`
@@ -235,8 +235,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste confere os 5 slugs na ordem, title ≤ 60, description 70–160, ≥ 2 seções, ≥ 3 perguntas, ≥ 600 palavras (intro + seções + FAQ), e nenhum padrão de número + "clientes|projetos|anos|%"
-- [ ] Gate passa: `npm test`
+- [x] Teste confere os 5 slugs na ordem, title ≤ 60, description 70–160, ≥ 2 seções, ≥ 3 perguntas, ≥ 600 palavras (intro + seções + FAQ), e nenhum padrão de número + "clientes|projetos|anos|%"
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

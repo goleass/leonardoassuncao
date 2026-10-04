@@ -244,7 +244,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | SVC-07 | P1: Páginas de serviço | Tasks | In Tasks |
 | SVC-08 | P1: Páginas de serviço | Tasks | In Tasks |
 | SVC-09 | P1: Páginas de serviço | Tasks | In Tasks |
-| SVC-10 | P1: Páginas de serviço | Tasks | In Tasks |
+| SVC-10 | P1: Páginas de serviço | Tasks | Implementing |
 | SVC-11 | Edge cases | Tasks | In Tasks |
 | SVC-12 | Edge cases | Tasks | In Tasks |
 | LINK-01 | P1: Links internos | Tasks | In Tasks |
