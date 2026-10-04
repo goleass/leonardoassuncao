@@ -1192,8 +1192,8 @@ T40 -> T42
 
 **Done when**:
 
-- [ ] Prazo fixo "24 horas úteis" no script faz o teste falhar
-- [ ] Gate quick passa
+- [x] Prazo fixo "24 horas úteis" no script faz o teste falhar
+- [x] Gate quick passa
 
 **Tests**: unit
 **Gate**: quick

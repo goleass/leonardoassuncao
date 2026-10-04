@@ -60,7 +60,8 @@ beforeEach(() => {
     fetch: fetchMock as unknown as typeof fetch,
     whatsappPhone: "5511900000000",
     email: "contato@exemplo.com.br",
-    responseTime: "24 horas úteis",
+    // Diferente do prazo de produção, para que um texto fixo no script não passe.
+    responseTime: "3 dias úteis",
   });
 });
 
@@ -156,7 +157,7 @@ describe("initContactForm: sucesso (FORM-02, FORM-03)", () => {
     submit();
     await flush();
     expect(form.hidden).toBe(true);
-    expect(statusText()).toContain("Mensagem enviada! Respondo pessoalmente em até 24 horas úteis.");
+    expect(statusText()).toContain("Mensagem enviada! Respondo pessoalmente em até 3 dias úteis.");
     const text = "Olá, Leonardo! Acabei de enviar uma mensagem pelo site sobre: Sistema web. Meu nome é Ana Lima.";
     expect(statusLinks()).toEqual([
       { text: "Continuar no WhatsApp", href: `https://wa.me/5511900000000?text=${encodeURIComponent(text)}` },
