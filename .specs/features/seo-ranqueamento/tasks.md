@@ -244,7 +244,7 @@ T18
 
 ---
 
-### T9: Montagem do JSON-LD
+### T9: Montagem do JSON-LD ✅
 
 **What**: Funções puras que devolvem os nós `ProfessionalService`, `WebSite`, `Person`, `Service`, `BreadcrumbList`, `FAQPage` e o texto do script com `<` escapado.
 **Where**: `src/lib/seo/schema.ts`
@@ -256,8 +256,8 @@ T18
 
 **Done when**:
 
-- [ ] Testes 1:1 com LD-02..05, LD-08 e LD-09 (com e sem LinkedIn)
-- [ ] Gate passa: `npm test`
+- [x] Testes 1:1 com LD-02..05, LD-08 e LD-09 (com e sem LinkedIn)
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

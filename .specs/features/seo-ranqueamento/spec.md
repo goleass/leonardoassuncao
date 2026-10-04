@@ -250,14 +250,14 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | LINK-01 | P1: Links internos | Tasks | In Tasks |
 | LINK-02 | P1: Links internos | Tasks | In Tasks |
 | LD-01 | P2: Dados estruturados | Tasks | In Tasks |
-| LD-02 | P2: Dados estruturados | Tasks | In Tasks |
-| LD-03 | P2: Dados estruturados | Tasks | In Tasks |
-| LD-04 | P2: Dados estruturados | Tasks | In Tasks |
-| LD-05 | P2: Dados estruturados | Tasks | In Tasks |
+| LD-02 | P2: Dados estruturados | Tasks | Implementing |
+| LD-03 | P2: Dados estruturados | Tasks | Implementing |
+| LD-04 | P2: Dados estruturados | Tasks | Implementing |
+| LD-05 | P2: Dados estruturados | Tasks | Implementing |
 | LD-06 | P2: Dados estruturados | Tasks | In Tasks |
 | LD-07 | P2: Dados estruturados | Tasks | In Tasks |
-| LD-08 | P2: Dados estruturados | Tasks | In Tasks |
-| LD-09 | Edge cases | Tasks | In Tasks |
+| LD-08 | P2: Dados estruturados | Tasks | Implementing |
+| LD-09 | Edge cases | Tasks | Implementing |
 | PERF-01 | P2: CSS sem bloqueio | Tasks | Implementing |
 | PERF-02 | P2: CSS sem bloqueio | Tasks | In Tasks |
 
