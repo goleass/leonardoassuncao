@@ -202,7 +202,7 @@ T18
 
 ---
 
-### T7: CSS embutido no HTML
+### T7: CSS embutido no HTML ✅
 
 **What**: `build.inlineStylesheets: "always"` no Astro.
 **Where**: `astro.config.mjs`
@@ -214,8 +214,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste da configuração confere o valor
-- [ ] Gate passa: `npm test`
+- [x] Teste da configuração confere o valor
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

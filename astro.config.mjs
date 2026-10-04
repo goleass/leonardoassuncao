@@ -12,6 +12,8 @@ export default defineConfig({
   site: site.url,
   adapter: netlify(),
   integrations: [sitemap()],
+  // Sem folhas de estilo externas bloqueando a primeira pintura (PERF-01).
+  build: { inlineStylesheets: "always" },
   env: {
     schema: {
       // Lidas só em tempo de execução, no servidor: nunca entram no build nem no navegador (FORM-14).

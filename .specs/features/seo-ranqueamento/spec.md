@@ -258,7 +258,7 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | LD-07 | P2: Dados estruturados | Tasks | In Tasks |
 | LD-08 | P2: Dados estruturados | Tasks | In Tasks |
 | LD-09 | Edge cases | Tasks | In Tasks |
-| PERF-01 | P2: CSS sem bloqueio | Tasks | In Tasks |
+| PERF-01 | P2: CSS sem bloqueio | Tasks | Implementing |
 | PERF-02 | P2: CSS sem bloqueio | Tasks | In Tasks |
 
 **Coverage:** 41 total, 0 mapped to tasks, 41 unmapped ⚠️ (mapped in tasks.md)
