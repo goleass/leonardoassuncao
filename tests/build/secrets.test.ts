@@ -64,3 +64,33 @@ describe("saída do build", () => {
     expect(leaks).toEqual([]);
   });
 });
+
+// Mesmo arquivo do build acima: um segundo arquivo rodaria outro build em paralelo na mesma pasta.
+describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", () => {
+  const DOMAIN = "https://leonardoassuncao.com.br";
+
+  it("og.png é um PNG de exatamente 1200×630", () => {
+    const png = readFileSync(join(STATIC, "og.png"));
+    expect(png.subarray(1, 4).toString("latin1")).toBe("PNG");
+    expect(png.subarray(12, 16).toString("latin1")).toBe("IHDR");
+    expect(png.readUInt32BE(16)).toBe(1200);
+    expect(png.readUInt32BE(20)).toBe(630);
+  });
+
+  it("o sitemap lista / e /privacidade, sem /api/contato nem a 404", () => {
+    const index = readFileSync(join(STATIC, "sitemap-index.xml"), "utf8");
+    const sitemaps = [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc);
+    expect(sitemaps.length).toBeGreaterThan(0);
+    const urls = sitemaps.flatMap((loc) => {
+      const file = readFileSync(join(STATIC, new URL(loc).pathname), "utf8");
+      return [...file.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
+    });
+    expect(urls).toEqual([`${DOMAIN}/`, `${DOMAIN}/privacidade/`]);
+  });
+
+  it("robots.txt aponta para o índice do sitemap no domínio", () => {
+    const robots = readFileSync(join(STATIC, "robots.txt"), "utf8");
+    expect(robots).toMatch(/^User-agent: \*$/m);
+    expect(robots).toMatch(new RegExp(`^Sitemap: ${DOMAIN}/sitemap-index\\.xml$`, "m"));
+  });
+});

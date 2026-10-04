@@ -918,9 +918,9 @@ T30 -> T32
 
 **Done when**:
 
-- [ ] `og.png` tem exatamente 1200×630 (teste lê o cabeçalho PNG)
-- [ ] Sitemap lista `/` e `/privacidade`
-- [ ] Gate build passa; ≥ 3 testes
+- [x] `og.png` tem exatamente 1200×630 (teste lê o cabeçalho PNG)
+- [x] Sitemap lista `/` e `/privacidade`
+- [x] Gate build passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: build

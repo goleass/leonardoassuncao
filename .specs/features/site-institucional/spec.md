@@ -264,7 +264,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | ANIM-10 | P2: Animações — propriedades e CLS | - | Implementing |
 | SEO-01 | P2: SEO — idioma, título e descrição | - | Implementing |
 | SEO-02 | P2: SEO — Open Graph | - | Implementing |
-| SEO-03 | P2: SEO — sitemap, robots, canônica | - | Pending |
+| SEO-03 | P2: SEO — sitemap, robots, canônica | - | Implementing |
 | SEO-04 | P2: SEO — JSON-LD | - | Implementing |
 | SEO-05 | P2: SEO — Lighthouse | - | Pending |
 | SEO-06 | P2: SEO — fontes locais | - | Implementing |

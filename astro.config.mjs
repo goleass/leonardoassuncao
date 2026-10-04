@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
 import vercel from "@astrojs/vercel";
+import sitemap from "@astrojs/sitemap";
 import { validateSiteConfig } from "./src/config/schema.ts";
 import { site } from "./src/config/site.ts";
 
@@ -10,6 +11,7 @@ validateSiteConfig(site);
 export default defineConfig({
   site: site.url,
   adapter: vercel(),
+  integrations: [sitemap()],
   env: {
     schema: {
       // Lidas só em tempo de execução, no servidor: nunca entram no build nem no navegador (FORM-14).
