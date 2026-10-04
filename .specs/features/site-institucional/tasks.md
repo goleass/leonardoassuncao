@@ -572,9 +572,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 4 etapas na ordem da spec
-- [ ] `id="processo"` presente
-- [ ] Gate build passa (fim da fase); ≥ 2 testes
+- [x] 4 etapas na ordem da spec
+- [x] `id="processo"` presente
+- [x] Gate build passa (fim da fase); ≥ 2 testes
 
 **Tests**: unit
 **Gate**: build

@@ -1,0 +1,90 @@
+---
+const steps = [
+  {
+    title: "Diagnóstico",
+    text: "Conversa para entender o problema, o objetivo e o que já existe hoje na empresa.",
+  },
+  { title: "Proposta", text: "Escopo, tecnologias, cronograma e investimento, tudo documentado." },
+  { title: "Desenvolvimento", text: "Ciclos curtos, com versões de teste que você acompanha e valida." },
+  { title: "Entrega e suporte", text: "Publicação, treinamento da equipe e acompanhamento contínuo." },
+];
+---
+
+<section id="processo" class="process">
+  <div class="container process__inner">
+    <div class="section-head reveal">
+      <h2 class="section-title">Processo</h2>
+      <p class="section-intro">Quatro etapas, com entregas parciais que você testa e aprova. Sem caixa-preta.</p>
+    </div>
+
+    <div>
+      <span class="process__rule lg-draw" aria-hidden="true"></span>
+      <ol class="process__steps">
+        {
+          steps.map(({ title, text }, index) => (
+            <li class="step reveal">
+              <span class="step__num" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 class="step__title">{title}</h3>
+              <p class="step__text">{text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    padding: var(--section-y) var(--gutter);
+  }
+
+  .process__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .process__rule {
+    display: block;
+    height: 1px;
+    margin-bottom: 40px;
+    background: var(--ink);
+  }
+
+  .process__steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 40px 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .step__num {
+    font-size: 64px;
+    font-weight: 300;
+    font-stretch: 100%;
+    line-height: 1;
+    color: var(--brand);
+  }
+
+  .step__title {
+    font-size: 22px;
+    font-weight: 600;
+    font-stretch: 110%;
+  }
+
+  .step__text {
+    font-size: var(--text-body-sm);
+    color: var(--gray-600);
+  }
+</style>

@@ -216,7 +216,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-02 | P1: Landing page — título com palavras alternadas | - | Implementing |
 | PAGE-03 | P1: Landing page — 5 serviços | - | Implementing |
 | PAGE-04 | P1: Landing page — fluxo de integrações | - | Implementing |
-| PAGE-05 | P1: Landing page — 4 etapas do processo | - | Pending |
+| PAGE-05 | P1: Landing page — 4 etapas do processo | - | Implementing |
 | PAGE-06 | P1: Landing page — navegação por âncoras | - | Implementing |
 | PAGE-07 | P1: Landing page — perguntas frequentes | - | Pending |
 | PAGE-08 | P1: Landing page — configuração única | - | Implementing |
