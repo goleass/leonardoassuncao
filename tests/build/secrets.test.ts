@@ -85,7 +85,7 @@ describe("saída do build", () => {
 
 // Mesmo arquivo do build acima: um segundo arquivo rodaria outro build em paralelo na mesma pasta.
 describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", () => {
-  const DOMAIN = "https://leonardoassuncao.com.br";
+  const DOMAIN = "https://www.leonardoassuncao.com.br";
 
   it("og.png é um PNG de exatamente 1200×630", () => {
     const png = readFileSync(join(STATIC, "og.png"));
@@ -141,7 +141,7 @@ describe("fontes servidas pelo próprio domínio (SEO-06)", () => {
 });
 
 describe("URL canônica de cada página (SEO-03)", () => {
-  const DOMAIN = "https://leonardoassuncao.com.br";
+  const DOMAIN = "https://www.leonardoassuncao.com.br";
   const metaOf = (page: string) => {
     const html = readFileSync(join(STATIC, page), "utf8");
     return {
