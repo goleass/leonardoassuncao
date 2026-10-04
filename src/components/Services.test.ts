@@ -52,13 +52,17 @@ describe("Services: seção (PAGE-03)", () => {
     expect(items).toEqual(SERVICES);
   });
 
-  it("cada serviço é um link para #contato com a seta decorativa (ANIM-05)", () => {
+  it("cada serviço é um link para a própria página, com a seta decorativa (ANIM-05, LINK-01)", () => {
     const items = [...doc.querySelectorAll("#servicos li")];
-    expect(items).toHaveLength(5);
+    expect(items.map((li) => li.querySelector("a")?.getAttribute("href"))).toEqual([
+      "/criacao-de-sites/",
+      "/sistemas-web/",
+      "/integracoes/",
+      "/software-sob-medida/",
+      "/manutencao-de-sistemas/",
+    ]);
     for (const li of items) {
-      const link = li.querySelector("a");
-      expect(link?.getAttribute("href")).toBe("#contato");
-      expect(link?.querySelector("svg")?.getAttribute("aria-hidden")).toBe("true");
+      expect(li.querySelector("a svg")?.getAttribute("aria-hidden")).toBe("true");
     }
   });
 });

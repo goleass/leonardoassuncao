@@ -1,0 +1,294 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../config/site";
+import { services, type Service } from "../data/services";
+import { breadcrumbNode, faqNode, serviceNode } from "../lib/seo/schema";
+
+// Uma página estática por serviço (SVC-01).
+export const getStaticPaths = (() =>
+  services.map((service) => ({ params: { servico: service.slug }, props: { service } }))) satisfies GetStaticPaths;
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const path = `/${service.slug}/`;
+const others = services.filter((s) => s !== service);
+
+const schema = [
+  serviceNode(site, service),
+  breadcrumbNode(site, [
+    { name: "Início", path: "/" },
+    { name: service.name, path },
+  ]),
+  faqNode(service.faq),
+];
+---
+
+<BaseLayout site={site} title={service.title} description={service.description} schema={schema}>
+  <Header slot="header" site={site} />
+
+  <article class="svc">
+    <header class="svc-hero surface-dark">
+      <div class="container svc-hero__inner">
+        <nav aria-label="Trilha de navegação">
+          <ol class="crumbs">
+            <li><a class="crumbs__link lg-ul" href="/">Início</a></li>
+            <li aria-current="page">{service.name}</li>
+          </ol>
+        </nav>
+        <h1 class="svc-hero__title">{service.h1}</h1>
+        <p class="svc-hero__intro">{service.intro}</p>
+        <div class="svc-hero__actions">
+          <a class="button button--mark lg-btn lg-btn-m" href="#contato">Pedir orçamento</a>
+          <a class="button button--outline lg-btn lg-btn-o" href={`https://wa.me/${site.whatsapp}`}>Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container svc__body">
+      {
+        service.sections.map(({ title, paragraphs, items }) => (
+          <section class="svc-section">
+            <h2 class="svc-section__title">{title}</h2>
+            {paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+            {items && (
+              <ul class="svc-section__list">
+                {items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ))
+      }
+    </div>
+
+    <section class="svc-faq">
+      <div class="container svc-faq__inner">
+        <h2 class="svc-faq__title">Perguntas frequentes</h2>
+        <div class="svc-faq__list">
+          {
+            service.faq.map(({ q, a }, index) => (
+              <details class="svc-faq__item" open={index === 0}>
+                <summary class="svc-faq__question">{q}</summary>
+                <p class="svc-faq__answer">{a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <nav class="svc-others" aria-label="Outros serviços">
+    <div class="container">
+      <h2 class="svc-others__title">Outros serviços</h2>
+      <ul class="svc-others__list">
+        {
+          others.map((other) => (
+            <li>
+              <a class="svc-others__link lg-ul" href={`/${other.slug}/`}>
+                {other.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+
+  <Contact site={site} />
+  <Footer slot="footer" site={site} />
+</BaseLayout>
+
+<style>
+  .svc-hero {
+    padding: 56px var(--gutter) 96px;
+  }
+
+  .svc-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-label);
+    letter-spacing: var(--tracking-label);
+    color: var(--on-dark-subtle);
+  }
+
+  .crumbs li + li::before {
+    content: "/";
+    margin-right: 8px;
+  }
+
+  .crumbs__link {
+    color: var(--on-dark);
+    text-decoration: none;
+  }
+
+  .svc-hero__title {
+    max-width: 16ch;
+    font-size: var(--text-h2);
+    line-height: 0.98;
+    letter-spacing: var(--tracking-display);
+    font-weight: 700;
+    font-stretch: var(--stretch-display);
+  }
+
+  .svc-hero__intro {
+    max-width: 720px;
+    font-size: var(--text-lead);
+    color: var(--on-dark-muted);
+  }
+
+  .svc-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 18px 26px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .button--mark {
+    background-color: var(--mark);
+    color: var(--deep);
+  }
+
+  .button--outline {
+    padding-inline: 24px;
+    border: 1px solid var(--on-dark-line-strong);
+    color: var(--on-dark);
+    font-weight: 500;
+  }
+
+  .svc__body {
+    max-width: 820px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding: var(--section-y) var(--gutter);
+  }
+
+  .svc-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .svc-section__title {
+    font-size: var(--text-h3);
+    line-height: 1.1;
+    font-weight: 700;
+    font-stretch: var(--stretch-title);
+  }
+
+  .svc-section__list {
+    margin: 0;
+    padding-left: 1.2em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .svc-faq {
+    padding: var(--section-y) var(--gutter);
+    background: var(--gray-100);
+  }
+
+  .svc-faq__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px 80px;
+  }
+
+  .svc-faq__title {
+    flex: 1 1 340px;
+    min-width: 0;
+    font-size: var(--text-h2-faq);
+    line-height: 1;
+    letter-spacing: var(--tracking-display);
+    font-weight: 700;
+    font-stretch: var(--stretch-display);
+  }
+
+  .svc-faq__list {
+    flex: 1.6 1 560px;
+    min-width: 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .svc-faq__item {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--gray-250);
+  }
+
+  .svc-faq__question {
+    min-height: 44px;
+    display: list-item;
+    padding-block: 8px;
+    font-size: var(--text-lead);
+    font-weight: 600;
+    font-stretch: 108%;
+    cursor: pointer;
+  }
+
+  .svc-faq__answer {
+    margin-top: 14px;
+    color: var(--gray-600);
+  }
+
+  .svc-others {
+    padding: 72px var(--gutter);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .svc-others__title {
+    margin-bottom: 24px;
+    font-size: var(--text-h3);
+    font-weight: 700;
+    font-stretch: var(--stretch-title);
+  }
+
+  .svc-others__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .svc-others__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--brand);
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>

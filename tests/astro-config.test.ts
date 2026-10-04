@@ -26,6 +26,14 @@ describe("astro.config.mjs bloqueia o build com dados de exemplo (PAGE-09)", { t
   it("com os dados reais, a configuração carrega e usa o domínio como site", async () => {
     vi.resetModules();
     const { default: config } = await loadConfig();
-    expect(config.site).toBe("https://leonardoassuncao.com.br");
+    expect(config.site).toBe("https://www.leonardoassuncao.com.br");
+  });
+});
+
+describe("astro.config.mjs: CSS embutido no HTML (PERF-01)", { timeout: 30_000 }, () => {
+  it('define build.inlineStylesheets como "always"', async () => {
+    vi.resetModules();
+    const { default: config } = await loadConfig();
+    expect(config.build?.inlineStylesheets).toBe("always");
   });
 });

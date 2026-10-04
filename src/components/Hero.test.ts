@@ -18,12 +18,14 @@ describe("Hero: título (PAGE-02, A11Y-05, ANIM-08)", () => {
     expect(accessibleText(doc.querySelector("h1")!)).toBe("Construo software sob medida.");
   });
 
-  it("alterna as palavras sites, sistemas, integrações e software, nessa ordem, fora da leitura de tela", () => {
+  it("alterna as palavras sites, sistemas, integrações e software, nessa ordem, fora da leitura de tela (HOME-04)", () => {
     const rotator = doc.querySelector('h1 [aria-hidden="true"]');
-    const words = [...(rotator?.querySelectorAll("*") ?? [])]
-      .filter((el) => el.children.length === 0)
-      .map((w) => w.textContent?.trim());
+    const words = [...(rotator?.querySelectorAll("[data-word]") ?? [])].map((w) => w.getAttribute("data-word"));
     expect(words.slice(0, 4)).toEqual(["sites", "sistemas", "integrações", "software"]);
+  });
+
+  it('o texto do <h1> que o Google indexa é só "Construo software sob medida." (HOME-03)', () => {
+    expect(doc.querySelector("h1")?.textContent?.replace(/\s+/g, " ").trim()).toBe("Construo software sob medida.");
   });
 });
 

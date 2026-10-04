@@ -3,7 +3,7 @@ import { parseHtml, renderComponent } from "../../tests/render";
 import { siteComLinkedinFixture, siteFixture } from "../../tests/fixtures/site";
 import BaseLayout from "./BaseLayout.astro";
 
-const TITLE = "Leonardo Gomes Assunção — Sites, Sistemas Web e Integrações";
+const TITLE = "Criação de Sites e Sistemas Web em Canoas/RS | Leonardo Assunção";
 
 let doc: Document;
 
@@ -23,7 +23,7 @@ describe("BaseLayout: idioma, título e descrição (SEO-01)", () => {
     expect(doc.documentElement.getAttribute("lang")).toBe("pt-BR");
   });
 
-  it("usa o título exato da spec", () => {
+  it("usa o título exato da spec (HOME-01)", () => {
     expect(doc.querySelector("title")?.textContent).toBe(TITLE);
   });
 
@@ -32,9 +32,33 @@ describe("BaseLayout: idioma, título e descrição (SEO-01)", () => {
     expect(description.length).toBeGreaterThan(0);
     expect(description.length).toBeLessThanOrEqual(160);
   });
+
+  it("usa a descrição exata da spec (HOME-02)", () => {
+    expect(meta('name="description"')).toBe(
+      "Criação de sites, sistemas web, integrações e software sob medida em Canoas/RS. Um só responsável técnico, do diagnóstico ao suporte. Atendo todo o Brasil.",
+    );
+  });
+});
+
+describe("BaseLayout: ícones e cor do tema (ICON-02, ICON-03)", () => {
+  it("declara favicon ICO 48×48, favicon SVG e ícone da Apple", () => {
+    const ico = doc.querySelector('link[rel="icon"][href="/favicon.ico"]');
+    expect(ico?.getAttribute("sizes")).toBe("48x48");
+    const svg = doc.querySelector('link[rel="icon"][href="/favicon.svg"]');
+    expect(svg?.getAttribute("type")).toBe("image/svg+xml");
+    expect(doc.querySelector('link[rel="apple-touch-icon"]')?.getAttribute("href")).toBe("/apple-touch-icon.png");
+  });
+
+  it('declara theme-color "#0a1a33"', () => {
+    expect(meta('name="theme-color"')).toBe("#0a1a33");
+  });
 });
 
 describe("BaseLayout: canônica, Open Graph e Twitter Card (SEO-02, SEO-03)", () => {
+  it("sem noindex, não publica meta robots (NOIDX-01)", () => {
+    expect(doc.querySelector('meta[name="robots"]')).toBeNull();
+  });
+
   it("aponta a URL canônica para o domínio configurado", () => {
     expect(doc.querySelector('link[rel="canonical"]')?.getAttribute("href")).toBe("https://exemplo.com.br/");
   });
@@ -58,19 +82,37 @@ describe("BaseLayout: canônica, Open Graph e Twitter Card (SEO-02, SEO-03)", ()
   });
 });
 
-describe("BaseLayout: JSON-LD ProfessionalService (SEO-04)", () => {
-  const jsonLd = () => JSON.parse(doc.querySelector('script[type="application/ld+json"]')?.textContent ?? "null");
+describe("BaseLayout: JSON-LD em @graph (SEO-04, LD-01)", () => {
+  const scripts = (d: Document) => d.querySelectorAll('script[type="application/ld+json"]');
+  const graph = (d: Document = doc) => JSON.parse(scripts(d)[0]?.textContent ?? "null");
+  const empresa = (d: Document = doc) =>
+    graph(d)["@graph"].find((node: { "@type": string }) => node["@type"] === "ProfessionalService");
 
-  it("é JSON válido do tipo ProfessionalService com o nome da empresa", () => {
-    const data = jsonLd();
-    expect(data["@context"]).toBe("https://schema.org");
-    expect(data["@type"]).toBe("ProfessionalService");
-    expect(data.name).toBe("Leonardo Gomes Assunção");
-    expect(data.url).toBe("https://exemplo.com.br/");
+  it("publica um único script JSON-LD com @context e @graph", () => {
+    expect(scripts(doc)).toHaveLength(1);
+    expect(graph()["@context"]).toBe("https://schema.org");
+    expect(Array.isArray(graph()["@graph"])).toBe(true);
+  });
+
+  it("o @graph traz empresa, site e pessoa", () => {
+    const types = graph()["@graph"].map((node: { "@type": string }) => node["@type"]);
+    expect(types).toEqual(expect.arrayContaining(["ProfessionalService", "WebSite", "Person"]));
+  });
+
+  it("acrescenta ao @graph os nós extras recebidos por prop", async () => {
+    const extra = { "@type": "FAQPage", mainEntity: [] };
+    const other = parseHtml(await renderComponent(BaseLayout, { site: siteFixture, schema: [extra] }));
+    expect(scripts(other)).toHaveLength(1);
+    expect(graph(other)["@graph"]).toContainEqual(extra);
+  });
+
+  it("a empresa é um ProfessionalService com o nome e a URL do site", () => {
+    expect(empresa().name).toBe("Leonardo Gomes Assunção");
+    expect(empresa().url).toBe("https://exemplo.com.br/");
   });
 
   it("lista os 5 serviços", () => {
-    const names = jsonLd().hasOfferCatalog.itemListElement.map(
+    const names = empresa().hasOfferCatalog.itemListElement.map(
       (offer: { itemOffered: { name: string } }) => offer.itemOffered.name,
     );
     expect(names).toEqual([
@@ -83,9 +125,12 @@ describe("BaseLayout: JSON-LD ProfessionalService (SEO-04)", () => {
   });
 
   it("informa a área atendida e a cidade/UF configurada", () => {
-    const data = jsonLd();
-    expect(data.areaServed).toEqual({ "@type": "Country", name: "Brasil" });
-    expect(data.address).toEqual({
+    expect(empresa().areaServed).toEqual([
+      { "@type": "City", name: "Canoas" },
+      { "@type": "City", name: "Porto Alegre" },
+      { "@type": "Country", name: "Brasil" },
+    ]);
+    expect(empresa().address).toEqual({
       "@type": "PostalAddress",
       addressLocality: "São Paulo",
       addressRegion: "SP",
@@ -94,19 +139,17 @@ describe("BaseLayout: JSON-LD ProfessionalService (SEO-04)", () => {
   });
 
   it("traz os contatos configurados", () => {
-    const data = jsonLd();
-    expect(data.email).toBe("contato@exemplo.com.br");
-    expect(data.telephone).toBe("+5511900000000");
+    expect(empresa().email).toBe("contato@exemplo.com.br");
+    expect(empresa().telephone).toBe("+5511900000000");
   });
 
   it("sem LinkedIn configurado, não publica sameAs", () => {
-    expect(jsonLd()).not.toHaveProperty("sameAs");
+    expect(empresa()).not.toHaveProperty("sameAs");
   });
 
   it("com LinkedIn configurado, publica o perfil em sameAs", async () => {
     const other = parseHtml(await renderComponent(BaseLayout, { site: siteComLinkedinFixture }));
-    const data = JSON.parse(other.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
-    expect(data.sameAs).toEqual(["https://www.linkedin.com/in/exemplo"]);
+    expect(empresa(other).sameAs).toEqual(["https://www.linkedin.com/in/exemplo"]);
   });
 });
 
@@ -150,11 +193,12 @@ describe("BaseLayout: título e descrição por página (LEGAL-01, LEGAL-03)", (
     expect(content('name="twitter:description"')).toBe(PAGE_DESCRIPTION);
     // O JSON-LD descreve a empresa (SEO-04), não a página: mantém a descrição da página inicial.
     const data = JSON.parse(page.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
-    expect(data.description).toBe(meta('name="description"'));
+    const empresa = data["@graph"].find((node: { "@type": string }) => node["@type"] === "ProfessionalService");
+    expect(empresa.description).toBe(meta('name="description"'));
   });
 
   it("sem título e descrição recebidos, mantém os da página inicial (SEO-01)", () => {
     expect(doc.querySelector("title")?.textContent).toBe(TITLE);
-    expect(meta('name="description"')).toMatch(/^Criação de sites, sistemas web, integrações e software sob medida\./);
+    expect(meta('name="description"')).toMatch(/^Criação de sites, sistemas web, integrações e software sob medida em Canoas\/RS\./);
   });
 });

@@ -102,10 +102,10 @@ describe("Contact: dados de contato da configuração (PAGE-08)", () => {
 });
 
 describe("Contact: link da política de privacidade junto ao envio (LEGAL-02)", () => {
-  it('o formulário tem o botão "Enviar mensagem" e um link para /privacidade', () => {
+  it('o formulário tem o botão "Enviar mensagem" e um link para /privacidade/ (HOST-06)', () => {
     const button = form().querySelector('button[type="submit"]');
     expect(button && accessibleText(button)).toBe("Enviar mensagem");
-    expect(form().querySelector('a[href="/privacidade"]')).not.toBeNull();
+    expect(form().querySelector('a[href="/privacidade/"]')).not.toBeNull();
   });
 });
 

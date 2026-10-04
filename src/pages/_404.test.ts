@@ -26,3 +26,14 @@ describe("Página 404 (LEGAL-03)", () => {
     expect(doc.querySelector("footer.site-footer")).not.toBeNull();
   });
 });
+
+describe("Página 404 fora do índice (NOIDX-01, NOIDX-02)", () => {
+  it('declara <meta name="robots" content="noindex">', () => {
+    expect(doc.querySelector('meta[name="robots"]')?.getAttribute("content")).toBe("noindex");
+  });
+
+  it("não declara URL canônica nem og:url", () => {
+    expect(doc.querySelector('link[rel="canonical"]')).toBeNull();
+    expect(doc.querySelector('meta[property="og:url"]')).toBeNull();
+  });
+});

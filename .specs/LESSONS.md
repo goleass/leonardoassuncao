@@ -86,6 +86,18 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: validation.md round 4: L2b at src/components/Contact.astro:132-134 (LEGAL-02) (component-markup)
 - last seen: 2026-10-04T14:09:41Z
 
+### L-013 - Assert page-level SEO values (title, description) on the rendered page itself, not only on the layout default the page inherits
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `pages, seo` · harmful: 0
+- features: seo-ranqueamento
+- evidence: validation.md M13 (src/pages/index.astro:20; HOME-01, HOME-02) (pages, seo)
+- last seen: 2026-10-04T22:11:20Z
+
+### L-014 - Keep all dist output assertions in the single build test file so test:build runs only one astro build
+- signal: `spec_deviation` · recurrence: 1 feature(s) · scope: `tests/build` · harmful: 0
+- features: seo-ranqueamento
+- evidence: tasks.md T18 SPEC_DEVIATION (tests/build/secrets.test.ts:171) (tests/build)
+- last seen: 2026-10-04T22:11:20Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

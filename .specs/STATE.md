@@ -26,13 +26,21 @@
 - **Date**: 2026-10-04
 - **Status**: active
 
+### AD-004
+- **Decision**: O host canônico do site é `https://www.leonardoassuncao.com.br`; `site.url` usa esse valor e o subdomínio `leonardoassuncao.netlify.app` redireciona 301 para ele.
+- **Reason**: A Netlify já serve o www com 200 e redireciona o domínio sem www para ele; canônica apontando para uma URL que redireciona confunde o Google.
+- **Trade-off**: O e-mail continua em `@leonardoassuncao.com.br` (sem efeito); mudar o domínio principal no painel exigiria trocar `site.url` de volta.
+- **Scope**: Canônicas, sitemap, robots, Open Graph e JSON-LD.
+- **Date**: 2026-10-04
+- **Status**: active
+
 ## Handoff
 
-- **Feature**: `.specs/features/site-institucional`
-- **Phase / Task**: Execute concluído (T1–T42); validação rodada 4 (extra, autorizada) = FAIL só por lacunas de teste
-- **Completed**: T1–T42
+- **Feature**: `.specs/features/seo-ranqueamento`
+- **Phase / Task**: Execute concluído (T1–T18); Verificador rodada 2 = PASS (41/41 ACs, 18 mutações, 0 sobreviventes)
+- **Completed**: T1–T18 + correção de teste da rodada 1
 - **In-progress** (file:line): none
-- **Next step**: Deploy na Netlify (usuário). Pendente decisão do usuário: aplicar 2 correções de teste (bootstrap do formulário em `Contact.astro:150-151` → helper testado; posição do link de privacidade junto ao botão) e re-verificar, ou aceitar; depois UAT do checklist manual
-- **Blockers**: decisão do usuário
-- **Uncommitted files**: `.specs/features/site-institucional/validation.md`, `.specs/STATE.md`
-- **Branch**: feat/site-institucional
+- **Next step**: usuário revisa os textos de `src/data/services.ts`; com autorização, push da branch `feat/seo-ranqueamento`, merge e deploy. Depois do deploy: `curl -I https://leonardoassuncao.netlify.app/` (esperado 301 → www), Lighthouse em produção, Search Console (verificar domínio por DNS, enviar `sitemap-index.xml`, pedir indexação das 7 URLs), Perfil da Empresa no Google, Rich Results Test na home e numa página de serviço
+- **Blockers**: autorização de push/deploy
+- **Uncommitted files**: none
+- **Branch**: feat/seo-ranqueamento

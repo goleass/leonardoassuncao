@@ -85,7 +85,7 @@ describe("saída do build", () => {
 
 // Mesmo arquivo do build acima: um segundo arquivo rodaria outro build em paralelo na mesma pasta.
 describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", () => {
-  const DOMAIN = "https://leonardoassuncao.com.br";
+  const DOMAIN = "https://www.leonardoassuncao.com.br";
 
   it("og.png é um PNG de exatamente 1200×630", () => {
     const png = readFileSync(join(STATIC, "og.png"));
@@ -95,7 +95,7 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
     expect(png.readUInt32BE(20)).toBe(630);
   });
 
-  it("o sitemap lista / e /privacidade, sem /api/contato nem a 404", () => {
+  it("o sitemap lista /, as 5 páginas de serviço e /privacidade, sem /api/contato nem a 404 (SVC-09, NOIDX-03)", () => {
     const index = readFileSync(join(STATIC, "sitemap-index.xml"), "utf8");
     const sitemaps = [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc);
     expect(sitemaps.length).toBeGreaterThan(0);
@@ -103,7 +103,15 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
       const file = readFileSync(join(STATIC, new URL(loc).pathname), "utf8");
       return [...file.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
     });
-    expect(urls).toEqual([`${DOMAIN}/`, `${DOMAIN}/privacidade/`]);
+    expect(urls).toEqual([
+      `${DOMAIN}/`,
+      `${DOMAIN}/criacao-de-sites/`,
+      `${DOMAIN}/integracoes/`,
+      `${DOMAIN}/manutencao-de-sistemas/`,
+      `${DOMAIN}/privacidade/`,
+      `${DOMAIN}/sistemas-web/`,
+      `${DOMAIN}/software-sob-medida/`,
+    ]);
   });
 
   it("robots.txt aponta para o índice do sitemap no domínio", () => {
@@ -141,7 +149,7 @@ describe("fontes servidas pelo próprio domínio (SEO-06)", () => {
 });
 
 describe("URL canônica de cada página (SEO-03)", () => {
-  const DOMAIN = "https://leonardoassuncao.com.br";
+  const DOMAIN = "https://www.leonardoassuncao.com.br";
   const metaOf = (page: string) => {
     const html = readFileSync(join(STATIC, page), "utf8");
     return {
@@ -156,5 +164,76 @@ describe("URL canônica de cada página (SEO-03)", () => {
 
   it("/privacidade aponta para si mesma, não para a página inicial", () => {
     expect(metaOf("privacidade/index.html")).toEqual({ canonical: `${DOMAIN}/privacidade/`, ogUrl: `${DOMAIN}/privacidade/` });
+  });
+});
+
+// Invariantes de SEO entre todas as páginas geradas (T18). Ficam neste arquivo pelo mesmo motivo do build único acima.
+describe("SEO: invariantes da saída do build (HOST-02, HOST-06, SVC-03, PERF-02, ICON-01)", () => {
+  const DOMAIN = "https://www.leonardoassuncao.com.br";
+  const PAGES = [
+    "index.html",
+    "privacidade/index.html",
+    "criacao-de-sites/index.html",
+    "sistemas-web/index.html",
+    "integracoes/index.html",
+    "software-sob-medida/index.html",
+    "manutencao-de-sistemas/index.html",
+  ];
+  const html = (page: string) => readFileSync(join(STATIC, page), "utf8");
+  const attr = (source: string, re: RegExp) => source.match(re)?.[1];
+
+  /** Todas as strings http(s) de um valor JSON, em qualquer profundidade. */
+  const urlsIn = (value: unknown): string[] =>
+    typeof value === "string"
+      ? /^https?:\/\//.test(value) ? [value] : []
+      : value && typeof value === "object"
+        ? Object.values(value).flatMap(urlsIn)
+        : [];
+
+  it.each(PAGES)("%s: canônica, og:url e og:image no host www; a canônica é a própria página", (page) => {
+    const source = html(page);
+    const path = `/${page.replace(/index\.html$/, "")}`;
+    expect(attr(source, /<link[^>]+rel="canonical"[^>]+href="([^"]+)"/)).toBe(`${DOMAIN}${path}`);
+    expect(attr(source, /<meta[^>]+property="og:url"[^>]+content="([^"]+)"/)).toBe(`${DOMAIN}${path}`);
+    expect(attr(source, /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/)).toBe(`${DOMAIN}/og.png`);
+  });
+
+  it.each(PAGES)("%s: toda URL do JSON-LD está no host www", (page) => {
+    const json = attr(html(page), /<script type="application\/ld\+json">([^<]+)<\/script>/);
+    // Só o @graph: o @context é o vocabulário schema.org, não uma URL do site.
+    const urls = urlsIn(JSON.parse(json ?? "null")["@graph"]);
+    expect(urls.length).toBeGreaterThan(0);
+    expect(urls.filter((url) => !url.startsWith(`${DOMAIN}/`))).toEqual([]);
+  });
+
+  it("nenhum arquivo público (páginas, sitemap, robots) cita o domínio sem www", () => {
+    const files = listFiles(STATIC).filter((file) => /\.(html|xml|txt)$/.test(file));
+    expect(files.some((file) => file.endsWith("robots.txt"))).toBe(true);
+    const apex = files.filter((file) => readFileSync(file, "utf8").includes("://leonardoassuncao.com.br"));
+    expect(apex).toEqual([]);
+  });
+
+  it.each(PAGES)("%s: links internos para páginas terminam em / (sem redirect)", (page) => {
+    const hrefs = [...html(page).matchAll(/<a[^>]+href="(\/[^"#]*)"/g)].map(([, href]) => href);
+    expect(hrefs.length).toBeGreaterThan(0);
+    expect(hrefs.filter((href) => !href.endsWith("/"))).toEqual([]);
+  });
+
+  it("todas as páginas têm title e description diferentes entre si", () => {
+    const titles = PAGES.map((page) => attr(html(page), /<title>([^<]+)<\/title>/));
+    const descriptions = PAGES.map((page) => attr(html(page), /<meta name="description" content="([^"]+)"/));
+    expect(new Set(titles).size).toBe(PAGES.length);
+    expect(new Set(descriptions).size).toBe(PAGES.length);
+  });
+
+  it("nenhuma página carrega folha de estilo externa", () => {
+    const blocking = [...PAGES, "404.html"].filter((page) => /<link[^>]+rel="stylesheet"/.test(html(page)));
+    expect(blocking).toEqual([]);
+  });
+
+  it("publica os ícones", () => {
+    for (const icon of ["favicon.ico", "favicon.svg", "apple-touch-icon.png", "icon-512.png"]) {
+      expect(existsSync(join(STATIC, icon)), icon).toBe(true);
+    }
   });
 });
