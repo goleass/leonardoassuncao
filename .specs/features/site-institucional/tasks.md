@@ -1028,8 +1028,8 @@ T34 -> T37
 
 **Done when**:
 
-- [ ] Remover a chamada `validateSiteConfig(site)` do `astro.config.mjs` faz o teste falhar
-- [ ] Gate quick passa
+- [x] Remover a chamada `validateSiteConfig(site)` do `astro.config.mjs` faz o teste falhar
+- [x] Gate quick passa
 
 **Tests**: unit
 **Gate**: quick
