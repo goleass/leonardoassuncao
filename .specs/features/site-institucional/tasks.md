@@ -600,10 +600,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Lista vazia → string vazia
-- [ ] 2 projetos → 2 artigos com todos os campos e `alt`
-- [ ] Contêiner da imagem com proporção 16:11 reservada
-- [ ] Gate quick passa; ≥ 3 testes
+- [x] Lista vazia → string vazia
+- [x] 2 projetos → 2 artigos com todos os campos e `alt`
+- [x] Contêiner da imagem com proporção 16:11 reservada
+- [x] Gate quick passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: quick

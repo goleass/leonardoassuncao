@@ -221,7 +221,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-07 | P1: Landing page — perguntas frequentes | - | Pending |
 | PAGE-08 | P1: Landing page — configuração única | - | Implementing |
 | PAGE-09 | P1: Landing page — build falha com placeholder | - | Implementing |
-| PAGE-10 | P1: Landing page — seção Projetos condicional | - | Pending |
+| PAGE-10 | P1: Landing page — seção Projetos condicional | - | Implementing |
 | PAGE-11 | P1: Landing page — omissão sem projetos | - | Implementing |
 | PAGE-12 | P1: Landing page — depoimento condicional | - | Pending |
 | PAGE-13 | P1: Landing page — cabeçalho fixo | - | Implementing |
@@ -275,7 +275,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | EDGE-02 | Edge: mensagem acima de 2000 caracteres | - | Implementing |
 | EDGE-03 | Edge: HTML escapado no e-mail | - | Implementing |
 | EDGE-04 | Edge: largura exata de 768px | - | Pending |
-| EDGE-05 | Edge: imagem de projeto que não carrega | - | Pending |
+| EDGE-05 | Edge: imagem de projeto que não carrega | - | Implementing |
 
 **Coverage:** 64 total, 0 mapped to tasks, 64 unmapped ⚠️ (mapeamento acontece na etapa de Tasks)
 
