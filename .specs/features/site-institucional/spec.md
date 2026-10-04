@@ -31,7 +31,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | Assumption / decision | Chosen default | Rationale | Confirmed? |
 | --------------------- | -------------- | --------- | ---------- |
 | Paleta final | "marinho": fundo escuro #0A1A33, azul de marca #143E7A, destaque #5B95FF, cinzas frios (#F0F2F5) | Foi a paleta padrão da última versão aprovada ("Gostei… azul"). | n |
-| Conteúdo real (cidade, e-mail, WhatsApp, LinkedIn, CNPJ, prazo de resposta) | Lidos de um único arquivo de configuração; o build falha se algum valor obrigatório estiver vazio ou entre colchetes | Evita publicar o site com "[SEU_NUMERO]" e centraliza a edição. | n |
+| Conteúdo real (domínio, cidade, e-mail, WhatsApp, CNPJ, prazo de resposta; LinkedIn opcional) | Lidos de um único arquivo de configuração; o build falha se algum valor obrigatório estiver vazio ou entre colchetes | Evita publicar o site com "[SEU_NUMERO]" e centraliza a edição. | n |
 | Projetos e depoimento ainda não existem | Seções Projetos e Depoimento só aparecem quando houver ao menos 1 item configurado | Não publicar placeholders nem conteúdo inventado. | n |
 | Lista de tecnologias exibida | Não exibida na v1 (a faixa em movimento já lista as especialidades) | O canvas final não tem a faixa de tecnologias; evita afirmar stack que não foi confirmada. | y |
 | Menu no celular | Abaixo de 768px o menu vira botão "Menu" que abre um painel com os links | No canvas os links apenas quebravam linha; em produção isso ocupa a tela toda no celular. | n |
@@ -39,6 +39,8 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | Limite de envios do formulário | 5 envios por IP a cada 60 minutos, contagem em memória (zera se o servidor reiniciar) | Volume esperado é baixo; contagem distribuída seria complexidade sem necessidade agora. | n |
 | Tempo máximo de espera do serviço de e-mail | 10 segundos | Acima disso o visitante tende a abandonar; mostramos o plano B (WhatsApp/e-mail). | n |
 | Texto pré-preenchido no WhatsApp após envio | "Olá, Leonardo! Acabei de enviar uma mensagem pelo site sobre: <tipo de projeto>. Meu nome é <nome>." | Dá contexto sem repetir a mensagem inteira. | n |
+| LinkedIn | A empresa não terá LinkedIn; campo opcional e link omitido quando ausente | Decisão do usuário em 2026-10-04. | y |
+| Prazo de resposta prometido | "24 horas úteis" | Usuário não informou; valor do protótipo, fácil de trocar no arquivo de configuração. | n |
 | Navegadores suportados | Duas últimas versões de Chrome, Edge, Firefox e Safari (desktop e mobile) | Cobre praticamente todo o público. | n |
 | Tecnologia, hospedagem e serviço de envio de e-mail | Definidos na etapa de Design | São decisões técnicas, não de produto. | y |
 
@@ -63,12 +65,14 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 5. The site SHALL mostrar em Processo as 4 etapas: Diagnóstico, Proposta, Desenvolvimento, Entrega e suporte.
 6. WHEN o visitante clica num link do menu (Serviços, Integrações, Processo, Projetos, Fale comigo) THEN the site SHALL rolar suavemente até a seção correspondente, deixando o título da seção visível abaixo do cabeçalho fixo.
 7. WHEN o visitante clica numa pergunta frequente THEN the site SHALL expandir a resposta dela, e um novo clique SHALL recolhê-la.
-8. The site SHALL ler e-mail, WhatsApp, LinkedIn, cidade/UF, CNPJ e prazo de resposta de um único arquivo de configuração.
+8. The site SHALL ler domínio, e-mail, WhatsApp, cidade/UF, CNPJ, prazo de resposta e o LinkedIn opcional de um único arquivo de configuração.
 9. IF algum valor obrigatório da configuração estiver vazio ou contiver texto entre colchetes THEN the build SHALL falhar com uma mensagem que nomeia o campo.
 10. WHERE houver ao menos 1 projeto configurado the site SHALL exibir a seção Projetos com imagem, nome, categoria, ano e descrição de cada projeto.
 11. IF não houver projeto configurado THEN the site SHALL omitir a seção Projetos e o link "Projetos" do menu.
 12. WHERE houver um depoimento configurado the site SHALL exibir a citação com nome, cargo e empresa do autor.
 13. The header SHALL permanecer fixo no topo da tela durante a rolagem.
+14. WHERE houver LinkedIn configurado the site SHALL exibir o link do LinkedIn na seção Contato e em `sameAs` do JSON-LD; sem LinkedIn, nenhum link ou referência a ele SHALL aparecer.
+15. WHEN o visitante clica num link do menu em `/privacidade` ou na página 404 THEN the site SHALL levar à seção correspondente da página inicial.
 
 **Independent Test**: Abrir a página, conferir a ordem e o texto das seções, clicar em cada item do menu e nas perguntas frequentes; rodar o build com um campo de configuração vazio e ver a falha.
 
@@ -225,6 +229,8 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | PAGE-11 | P1: Landing page — omissão sem projetos | - | Implementing |
 | PAGE-12 | P1: Landing page — depoimento condicional | - | Implementing |
 | PAGE-13 | P1: Landing page — cabeçalho fixo | - | Implementing |
+| PAGE-14 | P1: Landing page — LinkedIn opcional | - | Implementing |
+| PAGE-15 | P1: Landing page — menu fora da página inicial | - | Pending |
 | FORM-01 | P1: Formulário — envio do e-mail | - | Implementing |
 | FORM-02 | P1: Formulário — mensagem de sucesso | - | Implementing |
 | FORM-03 | P1: Formulário — continuar no WhatsApp | - | Implementing |
@@ -277,7 +283,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | EDGE-04 | Edge: largura exata de 768px | - | Pending |
 | EDGE-05 | Edge: imagem de projeto que não carrega | - | Implementing |
 
-**Coverage:** 64 total, 0 mapped to tasks, 64 unmapped ⚠️ (mapeamento acontece na etapa de Tasks)
+**Coverage:** 66 total, 0 mapped to tasks, 64 unmapped ⚠️ (mapeamento acontece na etapa de Tasks)
 
 ### Implicit-requirement dimensions sweep
 

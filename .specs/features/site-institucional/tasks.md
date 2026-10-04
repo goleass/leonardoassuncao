@@ -95,6 +95,8 @@ T25 -> T27
 ```
 T29 -> T31
 T30 -> T31
+T29 -> T32
+T30 -> T32
 ```
 
 ---
@@ -931,6 +933,56 @@ Adiada: depende de T4 (dados reais).
 
 ---
 
+#### T32: Links do menu funcionando fora da página inicial
+
+**What**: Trocar os `href` do `Header` de `#secao` para `/#secao` (inclusive "Fale comigo"; logo → `/`), para funcionarem em `/privacidade` e na 404.
+**Where**: `src/components/Header.astro`
+**Depends on**: T29, T30
+**Reuses**: markup do T12
+**Requirement**: PAGE-06, PAGE-15
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [ ] Todos os links de seção do Header usam `/#<id>`; testes do T12 atualizados para o novo contrato (mudança de spec PAGE-15, não enfraquecimento)
+- [ ] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `fix(header): link menu items to home page sections`
+
+---
+
+#### T33: Linha do Processo desenhada ao rolar
+
+**What**: Envolver a linha do `Process` num elemento `.reveal` para o `lg-draw` animar ao entrar na tela (hoje fica estática).
+**Where**: `src/components/Process.astro`
+**Depends on**: None
+**Reuses**: `.reveal` + `lg-draw` do T25/T27
+**Requirement**: ANIM-07
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [ ] A linha `.lg-draw` do Processo tem um ancestral `.reveal` (teste de HTML)
+- [ ] Gate build passa (fim da fase e do lote)
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `fix(process): draw timeline line on scroll`
+
+---
+
 ## Phase Execution Map
 
 ```
@@ -941,12 +993,12 @@ Phase 2:  T5, T6, T7, T8, T9, T10             (6)
 Phase 3:  T11, T12 … T18                      (8)
 Phase 4:  T19, T20, T21, T22, T23, T24        (6)
 Phase 5:  T25, T26, T27, T28                  (4)
-Phase 6:  T29, T30, T31                       (3)
+Phase 6:  T29, T30, T31, T32, T33             (5)
 ```
 
 Execution is strictly sequential - there is no intra-phase parallelism.
 
-**Batches (~7 tarefas, fases inteiras):** Lote A = Fases 1+2 (10) · Lote B = Fase 3 (8) · Lote C = Fases 4+5 (10) · Lote D = Fase 6 (3).
+**Batches (~7 tarefas, fases inteiras):** Lote A = Fases 1+2 (10) · Lote B = Fase 3 (8) · Lote C = Fases 4+5 (10) · Lote D = T4 + T24 (adiadas) + Fase 6 (5) = 7.
 
 ---
 
