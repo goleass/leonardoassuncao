@@ -219,49 +219,49 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| HOST-01 | P1: Sinal canônico único | Tasks | Implementing |
-| HOST-02 | P1: Sinal canônico único | Tasks | Implementing |
-| HOST-03 | P1: Sinal canônico único | Tasks | Implementing |
-| HOST-04 | P1: Sinal canônico único | Tasks | Implementing |
-| HOST-05 | P1: Sinal canônico único | Tasks | Implementing |
-| HOST-06 | P1: Sinal canônico único | Tasks | Implementing |
-| NOIDX-01 | P1: Página 404 fora do índice | Tasks | Implementing |
-| NOIDX-02 | P1: Página 404 fora do índice | Tasks | Implementing |
-| NOIDX-03 | P1: Página 404 fora do índice | Tasks | Implementing |
-| ICON-01 | P1: Favicon | Tasks | Implementing |
-| ICON-02 | P1: Favicon | Tasks | Implementing |
-| ICON-03 | P1: Favicon | Tasks | Implementing |
-| HOME-01 | P1: Título, descrição e h1 da home | Tasks | Implementing |
-| HOME-02 | P1: Título, descrição e h1 da home | Tasks | Implementing |
-| HOME-03 | P1: Título, descrição e h1 da home | Tasks | Implementing |
-| HOME-04 | P1: Título, descrição e h1 da home | Tasks | Implementing |
-| SVC-01 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-02 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-03 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-04 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-05 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-06 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-07 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-08 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-09 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-10 | P1: Páginas de serviço | Tasks | Implementing |
-| SVC-11 | Edge cases | Tasks | Implementing |
-| SVC-12 | Edge cases | Tasks | Implementing |
-| LINK-01 | P1: Links internos | Tasks | Implementing |
-| LINK-02 | P1: Links internos | Tasks | Implementing |
-| LD-01 | P2: Dados estruturados | Tasks | Implementing |
-| LD-02 | P2: Dados estruturados | Tasks | Implementing |
-| LD-03 | P2: Dados estruturados | Tasks | Implementing |
-| LD-04 | P2: Dados estruturados | Tasks | Implementing |
-| LD-05 | P2: Dados estruturados | Tasks | Implementing |
-| LD-06 | P2: Dados estruturados | Tasks | Implementing |
-| LD-07 | P2: Dados estruturados | Tasks | Implementing |
-| LD-08 | P2: Dados estruturados | Tasks | Implementing |
-| LD-09 | Edge cases | Tasks | Implementing |
-| PERF-01 | P2: CSS sem bloqueio | Tasks | Implementing |
-| PERF-02 | P2: CSS sem bloqueio | Tasks | Implementing |
+| HOST-01 | P1: Sinal canônico único | Tasks | Verified |
+| HOST-02 | P1: Sinal canônico único | Tasks | Verified |
+| HOST-03 | P1: Sinal canônico único | Tasks | Verified |
+| HOST-04 | P1: Sinal canônico único | Tasks | Verified |
+| HOST-05 | P1: Sinal canônico único | Tasks | Verified |
+| HOST-06 | P1: Sinal canônico único | Tasks | Verified |
+| NOIDX-01 | P1: Página 404 fora do índice | Tasks | Verified |
+| NOIDX-02 | P1: Página 404 fora do índice | Tasks | Verified |
+| NOIDX-03 | P1: Página 404 fora do índice | Tasks | Verified |
+| ICON-01 | P1: Favicon | Tasks | Verified |
+| ICON-02 | P1: Favicon | Tasks | Verified |
+| ICON-03 | P1: Favicon | Tasks | Verified |
+| HOME-01 | P1: Título, descrição e h1 da home | Tasks | Verified |
+| HOME-02 | P1: Título, descrição e h1 da home | Tasks | Verified |
+| HOME-03 | P1: Título, descrição e h1 da home | Tasks | Verified |
+| HOME-04 | P1: Título, descrição e h1 da home | Tasks | Verified |
+| SVC-01 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-02 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-03 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-04 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-05 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-06 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-07 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-08 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-09 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-10 | P1: Páginas de serviço | Tasks | Verified |
+| SVC-11 | Edge cases | Tasks | Verified |
+| SVC-12 | Edge cases | Tasks | Verified |
+| LINK-01 | P1: Links internos | Tasks | Verified |
+| LINK-02 | P1: Links internos | Tasks | Verified |
+| LD-01 | P2: Dados estruturados | Tasks | Verified |
+| LD-02 | P2: Dados estruturados | Tasks | Verified |
+| LD-03 | P2: Dados estruturados | Tasks | Verified |
+| LD-04 | P2: Dados estruturados | Tasks | Verified |
+| LD-05 | P2: Dados estruturados | Tasks | Verified |
+| LD-06 | P2: Dados estruturados | Tasks | Verified |
+| LD-07 | P2: Dados estruturados | Tasks | Verified |
+| LD-08 | P2: Dados estruturados | Tasks | Verified |
+| LD-09 | Edge cases | Tasks | Verified |
+| PERF-01 | P2: CSS sem bloqueio | Tasks | Verified |
+| PERF-02 | P2: CSS sem bloqueio | Tasks | Verified |
 
-**Coverage:** 41 total, 0 mapped to tasks, 41 unmapped ⚠️ (mapped in tasks.md)
+**Coverage:** 41 total, 41 mapped to tasks, 0 unmapped
 
 ---
 

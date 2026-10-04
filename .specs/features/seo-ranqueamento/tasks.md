@@ -9,7 +9,7 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 ---
 
 **Design**: inline (sem `design.md`: nenhuma decisão de arquitetura nova). Conteúdo das páginas de serviço vive num módulo de dados (`src/data/services.ts`), igual ao padrão atual de listas no frontmatter dos componentes; uma rota dinâmica `src/pages/[servico].astro` com `getStaticPaths` gera as 5 páginas estáticas; o JSON-LD passa a ser montado por funções puras em `src/lib/seo/schema.ts` e o layout recebe nós extras por página.
-**Status**: Approved
+**Status**: Done
 
 ---
 
