@@ -9,7 +9,8 @@ afterEach(() => {
   vi.resetModules();
 });
 
-describe("astro.config.mjs bloqueia o build com dados de exemplo (PAGE-09)", () => {
+// Importar a configuração carrega o Astro e o adaptador; com cache frio passa de 5 s (o limite padrão).
+describe("astro.config.mjs bloqueia o build com dados de exemplo (PAGE-09)", { timeout: 30_000 }, () => {
   it("com um campo entre colchetes, carregar a configuração falha nomeando o campo", async () => {
     vi.resetModules();
     vi.doMock("../src/config/site.ts", () => ({ site: { ...site, cnpj: "[00.000.000/0000-00]" } }));
