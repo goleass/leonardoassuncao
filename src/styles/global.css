@@ -73,6 +73,29 @@ button {
   color: var(--on-dark);
 }
 
+/* Cabeçalho de seção: título grande à esquerda, texto de apoio à direita (Serviços, Processo, Projetos). */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px 64px;
+}
+
+.section-title {
+  font-size: var(--text-h2);
+  line-height: 0.98;
+  letter-spacing: var(--tracking-display);
+  font-weight: 700;
+  font-stretch: var(--stretch-display);
+}
+
+.section-intro {
+  max-width: 440px;
+  font-size: var(--text-body-lg);
+  color: var(--gray-600);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

@@ -495,9 +495,9 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 5 itens na ordem e com os textos da spec
-- [ ] `id="servicos"` e `<h2>` presentes
-- [ ] Gate quick passa; ≥ 3 testes
+- [x] 5 itens na ordem e com os textos da spec
+- [x] `id="servicos"` e `<h2>` presentes
+- [x] Gate quick passa; ≥ 3 testes
 
 **Tests**: unit
 **Gate**: quick
