@@ -1,0 +1,199 @@
+---
+import type { SiteConfig } from "../config/schema";
+
+interface Props {
+  site: SiteConfig;
+}
+
+const { site } = Astro.props;
+
+// A primeira palavra se repete no fim para o ciclo voltar ao início sem salto.
+const words = ["sites", "sistemas", "integrações", "software", "sites"];
+---
+
+<section id="topo" class="hero surface-dark">
+  <div class="container hero__inner">
+    <div class="hero__meta lg-fadein">
+      <span>Desenvolvimento de software</span>
+      <span>{site.cidade} — Atendimento em todo o Brasil</span>
+    </div>
+
+    <h1 class="hero__title">
+      <span class="hero__line lg-line lg-d1"><span>Construo</span></span>{" "}
+      <span class="hero__line lg-line lg-d2">
+        <span>
+          <span class="hero__rotator lg-rot" aria-hidden="true">
+            <span class="hero__words lg-rot-in">{words.map((word) => <span>{word}</span>)}</span>
+          </span>
+          <span class="hero__static">software</span>
+        </span>
+      </span>{" "}
+      <span class="hero__line lg-line lg-d3"><span>sob medida.</span></span>
+    </h1>
+
+    <div class="hero__body lg-fadein">
+      <p class="hero__lead">
+        Tecnologia que resolve problemas reais: do site que traz clientes ao sistema que organiza a operação inteira.
+      </p>
+      <p class="hero__text">
+        Um único responsável técnico, do primeiro diagnóstico ao suporte depois da entrega. Código próprio, prazos
+        claros, conversa direta.
+      </p>
+      <div class="hero__actions">
+        <a class="button button--mark lg-btn lg-btn-m" href="#contato">
+          Iniciar um projeto
+          <svg
+            class="lg-arr"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="square"
+            aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"></path></svg
+          >
+        </a>
+        <a class="button button--outline lg-btn lg-btn-o" href="#servicos">Ver serviços</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 56px var(--gutter) 96px;
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero__title {
+    font-size: var(--text-hero);
+    line-height: 1.04;
+    letter-spacing: var(--tracking-display);
+    font-weight: 700;
+    font-stretch: var(--stretch-display);
+  }
+
+  /* Cada linha recorta o próprio texto para a animação de subida (ANIM-01). */
+  .hero__line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.06em;
+    margin-bottom: -0.06em;
+  }
+
+  .hero__line > span {
+    display: block;
+  }
+
+  .hero__rotator,
+  .hero__static {
+    color: var(--mark);
+  }
+
+  .hero__rotator {
+    display: block;
+    height: 1.1em;
+    overflow: hidden;
+  }
+
+  .hero__words {
+    display: block;
+  }
+
+  .hero__words > span {
+    display: block;
+    height: 1.1em;
+    line-height: 1.1em;
+  }
+
+  /* A palavra fixa é o que o leitor de tela lê; na tela ela só aparece com movimento reduzido (ANIM-08). */
+  .hero__static {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__rotator {
+      display: none;
+    }
+
+    .hero__static {
+      position: static;
+      display: block;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip: auto;
+    }
+  }
+
+  .hero__body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 32px 48px;
+    align-items: end;
+    padding-top: 8px;
+  }
+
+  .hero__lead {
+    max-width: 460px;
+    font-size: var(--text-lead);
+    line-height: 1.5;
+  }
+
+  .hero__text {
+    max-width: 420px;
+    color: var(--on-dark-muted);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 18px 26px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .button--mark {
+    background-color: var(--mark);
+    color: var(--deep);
+  }
+
+  .button--outline {
+    padding-inline: 24px;
+    border: 1px solid var(--on-dark-line-strong);
+    color: var(--on-dark);
+    font-weight: 500;
+  }
+</style>

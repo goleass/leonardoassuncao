@@ -213,7 +213,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
 | PAGE-01 | P1: Landing page — ordem das seções | - | Pending |
-| PAGE-02 | P1: Landing page — título com palavras alternadas | - | Pending |
+| PAGE-02 | P1: Landing page — título com palavras alternadas | - | Implementing |
 | PAGE-03 | P1: Landing page — 5 serviços | - | Pending |
 | PAGE-04 | P1: Landing page — fluxo de integrações | - | Pending |
 | PAGE-05 | P1: Landing page — 4 etapas do processo | - | Pending |
@@ -246,14 +246,14 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | RESP-04 | P1: Responsivo — fechar painel | - | Pending |
 | RESP-05 | P1: Responsivo — áreas de toque | - | Pending |
 | RESP-06 | P1: Responsivo — empilhamento | - | Pending |
-| ANIM-01 | P2: Animações — entrada do título | - | Pending |
-| ANIM-02 | P2: Animações — palavra alternada | - | Pending |
+| ANIM-01 | P2: Animações — entrada do título | - | Implementing |
+| ANIM-02 | P2: Animações — palavra alternada | - | Implementing |
 | ANIM-03 | P2: Animações — faixa em movimento | - | Pending |
 | ANIM-04 | P2: Animações — pausa da faixa | - | Pending |
 | ANIM-05 | P2: Animações — hover dos serviços | - | Pending |
 | ANIM-06 | P2: Animações — fluxo de integrações | - | Pending |
 | ANIM-07 | P2: Animações — revelação ao rolar | - | Pending |
-| ANIM-08 | P2: Animações — reduzir movimento | - | Pending |
+| ANIM-08 | P2: Animações — reduzir movimento | - | Implementing |
 | ANIM-09 | P2: Animações — sem JavaScript | - | Pending |
 | ANIM-10 | P2: Animações — propriedades e CLS | - | Pending |
 | SEO-01 | P2: SEO — idioma, título e descrição | - | Implementing |
@@ -266,7 +266,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 | A11Y-02 | P2: Acessibilidade — teclado e foco | - | Pending |
 | A11Y-03 | P2: Acessibilidade — labels e aria-live | - | Pending |
 | A11Y-04 | P2: Acessibilidade — pular para o conteúdo | - | Implementing |
-| A11Y-05 | P2: Acessibilidade — hierarquia de títulos | - | Pending |
+| A11Y-05 | P2: Acessibilidade — hierarquia de títulos | - | Implementing |
 | LEGAL-01 | P2: Privacidade — página /privacidade | - | Pending |
 | LEGAL-02 | P2: Privacidade — link no formulário | - | Pending |
 | LEGAL-03 | P2: Privacidade — página 404 | - | Pending |

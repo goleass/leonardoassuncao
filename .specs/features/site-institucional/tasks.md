@@ -443,10 +443,10 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] Único `<h1>` da página, com texto acessível "Construo software sob medida."
-- [ ] As 4 palavras aparecem na ordem da spec
-- [ ] CTAs apontam para `#contato` e `#servicos`
-- [ ] Gate quick passa; ≥ 4 testes
+- [x] Único `<h1>` da página, com texto acessível "Construo software sob medida."
+- [x] As 4 palavras aparecem na ordem da spec
+- [x] CTAs apontam para `#contato` e `#servicos`
+- [x] Gate quick passa; ≥ 4 testes
 
 **Tests**: unit
 **Gate**: quick
