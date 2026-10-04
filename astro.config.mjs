@@ -1,8 +1,14 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
 import vercel from "@astrojs/vercel";
+import { validateSiteConfig } from "./src/config/schema.ts";
+import { site } from "./src/config/site.ts";
+
+// Falha o build se algum dado obrigatório estiver vazio ou com marcador "[...]" (PAGE-09).
+validateSiteConfig(site);
 
 export default defineConfig({
+  site: site.url,
   adapter: vercel(),
   env: {
     schema: {

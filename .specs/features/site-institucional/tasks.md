@@ -186,8 +186,6 @@ T30 -> T32
 
 #### T4: Dados reais do site e bloqueio no build
 
-> Adiada: aguardando dados reais da empresa (execução reordenada; nenhuma tarefa da Fase 2 depende de T4).
-
 **What**: Preencher `site.ts` com os dados reais e chamar `validateSiteConfig(site)` no `astro.config.mjs`, definindo `site: site.url`.
 **Where**: `src/config/site.ts`
 **Depends on**: T3
@@ -201,9 +199,9 @@ T30 -> T32
 
 **Done when**:
 
-- [ ] Teste unitário confirma que `site.ts` passa no schema
-- [ ] Trocar um campo por `[X]` faz `npm run build` falhar citando o campo (verificado e revertido)
-- [ ] Gate build passa
+- [x] Teste unitário confirma que `site.ts` passa no schema
+- [x] Trocar um campo por `[X]` faz `npm run build` falhar citando o campo (verificado e revertido)
+- [x] Gate build passa
 
 **Tests**: unit
 **Gate**: build
