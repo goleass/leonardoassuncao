@@ -3,7 +3,7 @@ import { parseHtml, renderComponent } from "../../tests/render";
 import { siteComLinkedinFixture, siteFixture } from "../../tests/fixtures/site";
 import BaseLayout from "./BaseLayout.astro";
 
-const TITLE = "Leonardo Gomes Assunção — Sites, Sistemas Web e Integrações";
+const TITLE = "Criação de Sites e Sistemas Web em Canoas/RS | Leonardo Assunção";
 
 let doc: Document;
 
@@ -23,7 +23,7 @@ describe("BaseLayout: idioma, título e descrição (SEO-01)", () => {
     expect(doc.documentElement.getAttribute("lang")).toBe("pt-BR");
   });
 
-  it("usa o título exato da spec", () => {
+  it("usa o título exato da spec (HOME-01)", () => {
     expect(doc.querySelector("title")?.textContent).toBe(TITLE);
   });
 
@@ -31,6 +31,12 @@ describe("BaseLayout: idioma, título e descrição (SEO-01)", () => {
     const description = meta('name="description"') ?? "";
     expect(description.length).toBeGreaterThan(0);
     expect(description.length).toBeLessThanOrEqual(160);
+  });
+
+  it("usa a descrição exata da spec (HOME-02)", () => {
+    expect(meta('name="description"')).toBe(
+      "Criação de sites, sistemas web, integrações e software sob medida em Canoas/RS. Um só responsável técnico, do diagnóstico ao suporte. Atendo todo o Brasil.",
+    );
   });
 });
 
@@ -193,6 +199,6 @@ describe("BaseLayout: título e descrição por página (LEGAL-01, LEGAL-03)", (
 
   it("sem título e descrição recebidos, mantém os da página inicial (SEO-01)", () => {
     expect(doc.querySelector("title")?.textContent).toBe(TITLE);
-    expect(meta('name="description"')).toMatch(/^Criação de sites, sistemas web, integrações e software sob medida\./);
+    expect(meta('name="description"')).toMatch(/^Criação de sites, sistemas web, integrações e software sob medida em Canoas\/RS\./);
   });
 });

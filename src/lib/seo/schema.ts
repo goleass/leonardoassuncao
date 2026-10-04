@@ -8,7 +8,7 @@ type Node = Record<string, unknown>;
 export const NAME = "Leonardo Gomes Assunção";
 /** Descrição da empresa: a mesma da página inicial. */
 export const HOME_DESCRIPTION =
-  "Criação de sites, sistemas web, integrações e software sob medida. Um único responsável técnico, do diagnóstico ao suporte. Atendimento em todo o Brasil.";
+  "Criação de sites, sistemas web, integrações e software sob medida em Canoas/RS. Um só responsável técnico, do diagnóstico ao suporte. Atendo todo o Brasil.";
 
 const AREA_SERVED = [
   { "@type": "City", name: "Canoas" },

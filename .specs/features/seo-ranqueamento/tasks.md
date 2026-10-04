@@ -370,7 +370,7 @@ T18
 
 ---
 
-### T15: Título e descrição da home
+### T15: Título e descrição da home ✅
 
 **What**: Padrões do layout passam a ser o título e a descrição de HOME-01/02.
 **Where**: `src/layouts/BaseLayout.astro`
@@ -382,8 +382,8 @@ T18
 
 **Done when**:
 
-- [ ] Teste confere título e descrição exatos
-- [ ] Gate passa: `npm test`
+- [x] Teste confere título e descrição exatos
+- [x] Gate passa: `npm test`
 
 **Tests**: unit
 **Gate**: quick

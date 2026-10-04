@@ -231,8 +231,8 @@ O site está no ar e tira 100 em SEO no Lighthouse, mas essa nota só confere o 
 | ICON-01 | P1: Favicon | Tasks | Implementing |
 | ICON-02 | P1: Favicon | Tasks | Implementing |
 | ICON-03 | P1: Favicon | Tasks | Implementing |
-| HOME-01 | P1: Título, descrição e h1 da home | Tasks | In Tasks |
-| HOME-02 | P1: Título, descrição e h1 da home | Tasks | In Tasks |
+| HOME-01 | P1: Título, descrição e h1 da home | Tasks | Implementing |
+| HOME-02 | P1: Título, descrição e h1 da home | Tasks | Implementing |
 | HOME-03 | P1: Título, descrição e h1 da home | Tasks | In Tasks |
 | HOME-04 | P1: Título, descrição e h1 da home | Tasks | In Tasks |
 | SVC-01 | P1: Páginas de serviço | Tasks | Implementing |
