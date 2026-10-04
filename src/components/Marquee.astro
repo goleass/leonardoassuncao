@@ -1,0 +1,66 @@
+---
+const specialties = [
+  "Sites institucionais",
+  "Sistemas web",
+  "Integrações",
+  "APIs",
+  "Automação de processos",
+  "Manutenção e evolução",
+];
+---
+
+<section class="band lg-band" aria-label="Especialidades">
+  <div class="band__track lg-marquee">
+    {
+      // Duas cópias iguais: a animação desloca 50% e recomeça sem emenda (ANIM-03).
+      [false, true].map((copy) => (
+        <ul class="band__list" aria-hidden={copy ? "true" : undefined}>
+          {specialties.map((item) => (
+            <li class="band__item">
+              {item}
+              <span class="band__sep" aria-hidden="true">
+                /
+              </span>
+            </li>
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .band {
+    overflow: hidden;
+    padding-block: 26px;
+    background: var(--mark);
+    color: var(--deep);
+  }
+
+  .band__track {
+    display: flex;
+    width: max-content;
+    font-size: var(--text-marquee);
+    font-weight: 600;
+    font-stretch: 115%;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .band__list,
+  .band__item {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .band__list {
+    margin: 0;
+    padding: 0 40px 0 0;
+    list-style: none;
+  }
+
+  .band__sep {
+    opacity: 0.4;
+  }
+</style>

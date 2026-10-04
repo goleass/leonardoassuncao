@@ -470,8 +470,8 @@ T30 -> T31
 
 **Done when**:
 
-- [ ] 6 especialidades na primeira cópia; segunda cópia com `aria-hidden="true"`
-- [ ] Gate quick passa; ≥ 2 testes
+- [x] 6 especialidades na primeira cópia; segunda cópia com `aria-hidden="true"`
+- [x] Gate quick passa; ≥ 2 testes
 
 **Tests**: unit
 **Gate**: quick
