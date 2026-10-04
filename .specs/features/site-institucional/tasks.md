@@ -26,7 +26,7 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 | Componentes e páginas `.astro` | unit (Container API → HTML) | Textos, ordem, atributos (`href`, `aria-*`, `lang`, `id`), renderização condicional; 1:1 com PAGE/SEO/A11Y/LEGAL testáveis por HTML | `src/components/*.test.ts`, `src/pages/*.test.ts`, `src/layouts/*.test.ts` | `npm test` |
 | Scripts do navegador (`src/scripts/*`) | unit (happy-dom) | Toda transição de estado e evento da spec (clique, Esc, envio, 400/429/502/rede, clique duplo) | `src/scripts/*.test.ts` | `npm test` |
 | Saída do build (`.vercel/output`) | unit sobre artefatos | Segredo ausente dos arquivos públicos; sitemap/robots presentes | `tests/build/*.test.ts` | `npm run test:build` |
-| Estilos (`src/styles/*.css`) e config de ferramenta | none | Build gate + checklist manual na validação (RESP-01/05/06, A11Y-01/02, SEO-05, ANIM-01..06/10) | - | build gate only |
+| Estilos (`src/styles/*.css`) e config de ferramenta | none | Build gate + checklist manual na validação (RESP-01/02/05/06, EDGE-04, PAGE-06 rolagem suave/deslocamento, PAGE-13, A11Y-01/02, SEO-05, ANIM-01..06/10); FORM-13 por inspeção estática (nenhuma escrita em disco/banco no código) | - | build gate only |
 
 ## Gate Check Commands
 
@@ -97,6 +97,12 @@ T29 -> T31
 T30 -> T31
 T29 -> T32
 T30 -> T32
+```
+
+### Phase 7: Correções da validação (rodada 1)
+
+```
+T34 -> T37
 ```
 
 ---
@@ -979,6 +985,107 @@ T30 -> T32
 
 ---
 
+### Phase 7: Correções da validação (rodada 1)
+
+#### T34: Constantes de limite e timeout do contato
+
+**What**: Mover `limit: 5`, `windowMs: 60 min` e `timeoutMs: 10_000` do endpoint para constantes exportadas em `src/lib/contact/limits.ts`, usadas por `contato.ts`, com teste afirmando os valores da spec (sobreviventes M18/M19).
+**Where**: `src/lib/contact/limits.ts`
+**Depends on**: None
+**Reuses**: `src/pages/api/contato.ts`
+**Requirement**: FORM-08, FORM-11
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [ ] Teste afirma 5 envios, janela de 3.600.000 ms e timeout de 10.000 ms
+- [ ] `contato.ts` não tem mais esses literais
+- [ ] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(contact): pin rate limit and timeout to spec values`
+
+---
+
+#### T35: Teste do bloqueio de placeholders no build
+
+**What**: Teste que importa `astro.config.mjs` com `site.ts` substituído por uma config com `[X]` e espera o erro nomeando o campo; e com a config real, importa sem erro (sobrevivente M22).
+**Where**: `tests/astro-config.test.ts`
+**Depends on**: None
+**Reuses**: `validateSiteConfig`
+**Requirement**: PAGE-09
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [ ] Remover a chamada `validateSiteConfig(site)` do `astro.config.mjs` faz o teste falhar
+- [ ] Gate quick passa
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(config): cover build-time placeholder check`
+
+---
+
+#### T36: Teste das fontes auto-hospedadas
+
+**What**: Teste de build confirmando arquivos `archivo-*.woff2` em `static/_astro`, `font-display: swap` no CSS gerado e nenhuma referência a `fonts.googleapis.com`/`fonts.gstatic.com` nos HTML/CSS.
+**Where**: `tests/build/secrets.test.ts`
+**Depends on**: None
+**Reuses**: build do próprio arquivo
+**Requirement**: SEO-06
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [ ] Gate build passa
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `test(seo): verify self-hosted fonts with swap`
+
+---
+
+#### T37: Foco no primeiro campo inválido
+
+**What**: Teste do `contact-form` afirmando que, com erros, o foco vai para o primeiro campo inválido na ordem nome → e-mail → tipo → mensagem e que a mensagem está ligada por `aria-describedby` (A11Y-03 esclarecido).
+**Where**: `src/scripts/contact-form.test.ts`
+**Depends on**: T34
+**Reuses**: suíte existente
+**Requirement**: A11Y-03
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [ ] Gate build passa (fim da fase)
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `test(contact): assert focus moves to first invalid field`
+
+---
+
 ## Phase Execution Map
 
 ```
@@ -990,6 +1097,7 @@ Phase 3:  T11, T12 … T18                      (8)
 Phase 4:  T19, T20, T21, T22, T23, T24        (6)
 Phase 5:  T25, T26, T27, T28                  (4)
 Phase 6:  T29, T30, T31, T32, T33             (5)
+Phase 7:  T34, T35, T36, T37                  (4)
 ```
 
 Execution is strictly sequential - there is no intra-phase parallelism.

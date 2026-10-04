@@ -1,0 +1,51 @@
+# LESSONS - auto-maintained by scripts/lessons.py
+
+> Machine-owned. Do NOT hand-edit. Changes are overwritten on the next `lessons.py` write.
+> Canonical state lives in `.specs/lessons.json`. Edit lessons only via the script.
+> promote_threshold=2 distinct features · window_days=45 · quarantine_threshold=2
+
+## Confirmed (load these at Specify/Design)
+
+Corroborated across multiple features. Safe to apply as guidance.
+
+_none_
+
+## Candidates (under observation - do NOT load as guidance yet)
+
+Seen once or not yet corroborated. Tracked, not trusted.
+
+### L-001 - Cover build-time config validation with a test that fails when the validation call is removed from the build entry point
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `build-config` · harmful: 0
+- features: site-institucional
+- evidence: M22 astro.config.mjs:9 (build-config)
+- last seen: 2026-10-04T13:16:45Z
+
+### L-002 - Export production limits and timeouts as named constants and assert their spec values because handler tests that inject their own values cannot catch wiring changes
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `endpoint-wiring` · harmful: 0
+- features: site-institucional
+- evidence: M18 src/pages/api/contato.ts:10; M19 src/pages/api/contato.ts:22 (endpoint-wiring)
+- last seen: 2026-10-04T13:16:45Z
+
+### L-003 - Assert self-hosted font files and font-display swap in the build-artifact tests instead of leaving font requirements untested
+- signal: `ac_gap` · recurrence: 1 feature(s) · scope: `build-output` · harmful: 0
+- features: site-institucional
+- evidence: SEO-06 no test; tests/build/secrets.test.ts (build-output)
+- last seen: 2026-10-04T13:16:45Z
+
+### L-004 - State negative requirements such as no persistence as an observable check or mark them explicitly as static-review items
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `spec` · harmful: 0
+- features: site-institucional
+- evidence: FORM-13 (spec)
+- last seen: 2026-10-04T13:16:45Z
+
+### L-005 - Specify whether field validation errors must sit in an aria-live region or are announced through focus and aria-describedby
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `forms-a11y` · harmful: 0
+- features: site-institucional
+- evidence: A11Y-03 src/scripts/contact-form.ts:43 (forms-a11y)
+- last seen: 2026-10-04T13:16:46Z
+
+## Quarantined (failed when applied - ignore)
+
+A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.
+
+_none_

@@ -137,7 +137,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 2. The hero SHALL alternar a palavra do título entre "sites", "sistemas", "integrações" e "software" em ciclo contínuo, com cada palavra visível por cerca de 2,5 segundos.
 3. The site SHALL mover a faixa de especialidades continuamente da direita para a esquerda, em ciclo sem emenda visível.
 4. WHEN o ponteiro do mouse está sobre a faixa de especialidades THEN the site SHALL pausar o movimento dela.
-5. WHEN o ponteiro passa sobre um item de Serviços THEN the site SHALL preencher o fundo do item com a cor de marca da esquerda para a direita e girar a seta em -45°.
+5. WHEN o ponteiro passa sobre um item de Serviços THEN the site SHALL preencher o fundo do item com o azul-marinho escuro da marca (`--deep`, #0A1A33) da esquerda para a direita e girar a seta em -45°.
 6. The site SHALL animar, em ciclo de 5 segundos, um marcador que percorre o fluxo de Integrações destacando cada etapa quando ele passa por ela.
 7. WHEN uma seção entra na área visível pela primeira vez THEN the site SHALL revelá-la com transição de opacidade e deslocamento vertical, uma única vez.
 8. WHILE o sistema do visitante estiver com "reduzir movimento" ativado the site SHALL exibir todo o conteúdo sem animações e com o título fixo "Construo software sob medida."
@@ -177,7 +177,7 @@ A empresa Leonardo Gomes Assunção (criação de sites, sistemas web, integraç
 
 1. The site SHALL ter contraste de no mínimo 4,5:1 em textos normais e 3:1 em textos de 24px ou mais.
 2. The site SHALL permitir alcançar e acionar por teclado todos os links, botões, perguntas frequentes e campos, com indicador de foco visível.
-3. The site SHALL associar cada campo do formulário a um `<label>` e anunciar erros e o resultado do envio para leitores de tela (`aria-live`).
+3. The site SHALL associar cada campo do formulário a um `<label>`, ligar cada mensagem de erro ao campo por `aria-describedby` com `aria-invalid="true"`, mover o foco para o primeiro campo inválido e anunciar o resultado do envio numa região `aria-live="polite"`.
 4. The site SHALL oferecer um link "Pular para o conteúdo" como primeiro elemento focável.
 5. The site SHALL usar um único `<h1>` e títulos `<h2>`/`<h3>` em ordem hierárquica.
 

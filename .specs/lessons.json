@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "promote_threshold": 2,
+  "window_days": 45,
+  "quarantine_threshold": 2,
+  "next_id": 6,
+  "lessons": [
+    {
+      "id": "L-001",
+      "key": "surviving_mutant::cover build time config validation with a test that fails when the validation call is removed from the build entry point",
+      "text": "Cover build-time config validation with a test that fails when the validation call is removed from the build entry point",
+      "signal": "surviving_mutant",
+      "scope": "build-config",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "M22 astro.config.mjs:9 (build-config)"
+      ],
+      "created": "2026-10-04T13:16:45Z",
+      "last_seen": "2026-10-04T13:16:45Z"
+    },
+    {
+      "id": "L-002",
+      "key": "surviving_mutant::export production limits and timeouts as named constants and assert their spec values because handler tests that inject their own values cannot catch wiring changes",
+      "text": "Export production limits and timeouts as named constants and assert their spec values because handler tests that inject their own values cannot catch wiring changes",
+      "signal": "surviving_mutant",
+      "scope": "endpoint-wiring",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "M18 src/pages/api/contato.ts:10; M19 src/pages/api/contato.ts:22 (endpoint-wiring)"
+      ],
+      "created": "2026-10-04T13:16:45Z",
+      "last_seen": "2026-10-04T13:16:45Z"
+    },
+    {
+      "id": "L-003",
+      "key": "ac_gap::assert self hosted font files and font display swap in the build artifact tests instead of leaving font requirements untested",
+      "text": "Assert self-hosted font files and font-display swap in the build-artifact tests instead of leaving font requirements untested",
+      "signal": "ac_gap",
+      "scope": "build-output",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "SEO-06 no test; tests/build/secrets.test.ts (build-output)"
+      ],
+      "created": "2026-10-04T13:16:45Z",
+      "last_seen": "2026-10-04T13:16:45Z"
+    },
+    {
+      "id": "L-004",
+      "key": "spec_precision_gap::state negative requirements such as no persistence as an observable check or mark them explicitly as static review items",
+      "text": "State negative requirements such as no persistence as an observable check or mark them explicitly as static-review items",
+      "signal": "spec_precision_gap",
+      "scope": "spec",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "FORM-13 (spec)"
+      ],
+      "created": "2026-10-04T13:16:45Z",
+      "last_seen": "2026-10-04T13:16:45Z"
+    },
+    {
+      "id": "L-005",
+      "key": "spec_precision_gap::specify whether field validation errors must sit in an aria live region or are announced through focus and aria describedby",
+      "text": "Specify whether field validation errors must sit in an aria-live region or are announced through focus and aria-describedby",
+      "signal": "spec_precision_gap",
+      "scope": "forms-a11y",
+      "status": "candidate",
+      "features": [
+        "site-institucional"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "A11Y-03 src/scripts/contact-form.ts:43 (forms-a11y)"
+      ],
+      "created": "2026-10-04T13:16:46Z",
+      "last_seen": "2026-10-04T13:16:46Z"
+    }
+  ]
+}
