@@ -161,7 +161,7 @@ T21 -> T22
 
 ---
 
-### T4: Cabeçalhos de segurança no `netlify.toml`
+### T4: Cabeçalhos de segurança no `netlify.toml` ✅
 
 **What**: Adicionar `[[headers]] for = "/*"` com os 8 cabeçalhos e a CSP exatos do design, e estender `tests/netlify-config.test.ts` com um leitor de `[[headers]]`.
 **Where**: `netlify.toml`

@@ -11,3 +11,17 @@
   to = "https://www.leonardoassuncao.com.br/:splat"
   status = 301
   force = true
+
+# Cabeçalhos de segurança em toda resposta, inclusive a 404 e os arquivos de texto (SECH, CSP, EDGE-13).
+# script-src 'self' sem 'unsafe-inline': nenhuma página pode ter script inline (AD-005). HSTS já vem da Netlify.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"
+    Cross-Origin-Resource-Policy = "same-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"

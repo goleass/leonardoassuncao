@@ -212,15 +212,15 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| SECH-01 | P1: Cabeçalhos de segurança | - | Pending |
-| SECH-02 | P1: Cabeçalhos de segurança | - | Pending |
-| SECH-03 | P1: Cabeçalhos de segurança | - | Pending |
-| SECH-04 | P1: Cabeçalhos de segurança | - | Pending |
-| SECH-05 | P1: Cabeçalhos de segurança | - | Pending |
-| SECH-06 | P1: Cabeçalhos de segurança | - | Pending |
-| SECH-07 | P1: Cabeçalhos de segurança | - | Pending |
-| CSP-01 | P1: Cabeçalhos de segurança | - | Pending |
-| CSP-02 | P1: Cabeçalhos de segurança | - | Pending |
+| SECH-01 | P1: Cabeçalhos de segurança | - | Implementing |
+| SECH-02 | P1: Cabeçalhos de segurança | - | Implementing |
+| SECH-03 | P1: Cabeçalhos de segurança | - | Implementing |
+| SECH-04 | P1: Cabeçalhos de segurança | - | Implementing |
+| SECH-05 | P1: Cabeçalhos de segurança | - | Implementing |
+| SECH-06 | P1: Cabeçalhos de segurança | - | Implementing |
+| SECH-07 | P1: Cabeçalhos de segurança | - | Implementing |
+| CSP-01 | P1: Cabeçalhos de segurança | - | Implementing |
+| CSP-02 | P1: Cabeçalhos de segurança | - | Implementing |
 | CSP-03 | P1: Cabeçalhos de segurança | - | Implementing |
 | CSP-04 | P1: Cabeçalhos de segurança | - | Pending |
 | CSP-05 | P1: Cabeçalhos de segurança | - | Pending |
@@ -272,7 +272,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | EDGE-10 | Edge cases | - | Pending |
 | EDGE-11 | Edge cases | - | Pending |
 | EDGE-12 | Edge cases | - | Pending |
-| EDGE-13 | Edge cases | - | Pending |
+| EDGE-13 | Edge cases | - | Implementing |
 | EDGE-14 | Edge cases | - | Pending |
 
 **Coverage:** 62 total, 0 mapped to tasks, 62 unmapped ⚠️ (Tasks ainda não criadas)
