@@ -254,7 +254,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | LD-15 | P2: Dados estruturados | - | Pending |
 | SEO-07 | P2: Ajustes pequenos | - | Pending |
 | SEO-08 | P2: Ajustes pequenos | - | Pending |
-| MANI-01 | P2: Ajustes pequenos | - | Pending |
+| MANI-01 | P2: Ajustes pequenos | - | Implementing |
 | MANI-02 | P2: Ajustes pequenos | - | Pending |
 | I18N-01 | P2: Ajustes pequenos | - | Pending |
 | I18N-02 | P2: Ajustes pequenos | - | Pending |

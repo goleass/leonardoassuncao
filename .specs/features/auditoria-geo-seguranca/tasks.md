@@ -364,7 +364,7 @@ T21 -> T22
 
 ---
 
-### T12: Ícone 192×192
+### T12: Ícone 192×192 ✅
 
 **What**: Fazer `scripts/icons.mjs` gerar `public/icon-192.png` e commitar o arquivo.
 **Where**: `scripts/icons.mjs`
