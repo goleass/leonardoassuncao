@@ -313,7 +313,7 @@ T21 -> T22
 
 ---
 
-### T10: Gerador `securityTxt`
+### T10: Gerador `securityTxt` ✅
 
 **What**: Criar `src/lib/seo/security-txt.ts` com `securityTxt(site, now)`.
 **Where**: `src/lib/seo/security-txt.ts`

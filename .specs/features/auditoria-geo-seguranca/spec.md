@@ -237,11 +237,11 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | LLMS-05 | P1: Sinais para IA | - | Pending |
 | LLMS-06 | P1: Sinais para IA | - | Implementing |
 | SECTXT-01 | P1: security.txt | - | Pending |
-| SECTXT-02 | P1: security.txt | - | Pending |
-| SECTXT-03 | P1: security.txt | - | Pending |
-| SECTXT-04 | P1: security.txt | - | Pending |
-| SECTXT-05 | P1: security.txt | - | Pending |
-| SECTXT-06 | P1: security.txt | - | Pending |
+| SECTXT-02 | P1: security.txt | - | Implementing |
+| SECTXT-03 | P1: security.txt | - | Implementing |
+| SECTXT-04 | P1: security.txt | - | Implementing |
+| SECTXT-05 | P1: security.txt | - | Implementing |
+| SECTXT-06 | P1: security.txt | - | Implementing |
 | PERF-05 | P1: CLS | - | Pending |
 | PERF-06 | P1: CLS | - | Pending |
 | PERF-07 | P1: CLS | - | Pending |
@@ -270,8 +270,8 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | LLMS-10 | P3: llms-full.txt | - | Implementing |
 | EDGE-09 | Edge cases | - | Implementing |
 | EDGE-10 | Edge cases | - | Implementing |
-| EDGE-11 | Edge cases | - | Pending |
-| EDGE-12 | Edge cases | - | Pending |
+| EDGE-11 | Edge cases | - | Implementing |
+| EDGE-12 | Edge cases | - | Implementing |
 | EDGE-13 | Edge cases | - | Implementing |
 | EDGE-14 | Edge cases | - | Pending |
 
