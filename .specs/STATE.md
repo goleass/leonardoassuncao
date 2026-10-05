@@ -44,12 +44,13 @@
 
 ## Handoff
 
-- **Feature**: `.specs/features/auditoria-geo-seguranca`
-- **Phase / Task**: Execute concluído (T1–T23); Verificador rodada 2 = PASS (62/62 ACs, 18 mutações, 0 sobreviventes)
-- **Completed**: T1–T23 + correção de teste da rodada 1 (91ec8d3)
+- **Feature**: `.specs/features/auditoria-geo-seguranca` (mergeada e publicada em 2026-10-04, `7c04999`)
+- **Phase / Task**: pós-deploy. Branch `fix/headers-ssr` (`a1022ab` + docs) com middleware de cabeçalhos para respostas da função (`/api/contato`) e `Content-Type` do manifest; não enviado
+- **Completed**: T1–T23, Verificador PASS, deploy conferido (home, llms.txt, security.txt com os 8 cabeçalhos)
 - **In-progress** (file:line): none
-- **Next step**: aprovação do usuário para merge/push/deploy; depois, checklist pós-deploy do `validation.md` (GEO Checker, PSI mobile, cabeçalhos em `/api/contato`, content-type dos `.txt`, Rich Results Test, Bing Webmaster Tools)
+- **Next step**: aprovação do usuário para enviar `fix/headers-ssr`; depois rodar o GEO Checker e o PSI em produção e o restante do checklist do `validation.md`
 - **Blockers**: none
 - **Uncommitted files**: none
-- **Branch**: feat/auditoria-geo-seguranca (não mergeada, não enviada)
+- **Branch**: fix/headers-ssr
+- **Riscos aceitos**: 404 de caminho inexistente sem cabeçalhos de segurança (decisão do usuário, ver Assumptions da spec)
 - **Fora do escopo, aberto**: formulário continua visível após envio com sucesso (`.contact-form { display: flex }` em `src/components/Contact.astro` anula `hidden`)

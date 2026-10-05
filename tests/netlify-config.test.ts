@@ -33,8 +33,12 @@ describe("netlify.toml: cabeçalhos de segurança em todo caminho (SECH-01..07, 
   const all = rules.find((rule) => rule.for === "/*");
   const header = (name: string) => all?.values[name];
 
-  it('um único bloco [[headers]], com for = "/*" (vale para 404, llms.txt, security.txt e manifest)', () => {
-    expect(rules.map((rule) => rule.for)).toEqual(["/*"]);
+  it('o primeiro bloco [[headers]] é for = "/*" (vale para 404, llms.txt, security.txt e manifest)', () => {
+    expect(rules[0].for).toBe("/*");
+  });
+
+  it("os demais blocos só ajustam o content-type do manifest, sem sobrescrever cabeçalho de segurança (MANI-01)", () => {
+    expect(rules.slice(1)).toEqual([{ for: "/site.webmanifest", values: { "Content-Type": "application/manifest+json" } }]);
   });
 
   it.each([
