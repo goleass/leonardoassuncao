@@ -78,7 +78,7 @@ T15 -> T16
 T17
 T18
 T19 -> T20
-T21 -> T22
+T21 -> T23 -> T22
 ```
 
 ---
@@ -642,7 +642,7 @@ T21 -> T22
 
 ---
 
-### T22: Script de medição Lighthouse
+### T22: Script de medição Lighthouse ✅
 
 **What**: Criar `scripts/lighthouse.mjs`, que serve `dist/`, roda Lighthouse 12 mobile 3× em `/` e `/criacao-de-sites/` e sai com código ≠ 0 se algum CLS > 0,1 ou Performance < 95.
 **Where**: `scripts/lighthouse.mjs`
