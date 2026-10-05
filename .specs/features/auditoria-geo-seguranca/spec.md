@@ -268,7 +268,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | LLMS-08 | P3: llms-full.txt | - | Pending |
 | LLMS-09 | P3: llms-full.txt | - | Pending |
 | LLMS-10 | P3: llms-full.txt | - | Pending |
-| EDGE-09 | Edge cases | - | Pending |
+| EDGE-09 | Edge cases | - | Implementing |
 | EDGE-10 | Edge cases | - | Pending |
 | EDGE-11 | Edge cases | - | Pending |
 | EDGE-12 | Edge cases | - | Pending |

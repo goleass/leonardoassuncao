@@ -136,7 +136,7 @@ T21 -> T22
 
 ---
 
-### T3: Scripts do Astro como arquivo externo + guarda de build
+### T3: Scripts do Astro como arquivo externo + guarda de build ✅
 
 **What**: Adicionar `vite: { build: { assetsInlineLimit: 0 } }` em `astro.config.mjs` e criar `tests/build/inline-scripts.test.ts`, que falha nomeando o arquivo se algum `dist/**/*.html` tiver `<script>` com corpo e `type` diferente de `application/ld+json`.
 **Where**: `astro.config.mjs`
