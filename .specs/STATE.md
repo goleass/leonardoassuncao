@@ -45,12 +45,12 @@
 ## Handoff
 
 - **Feature**: `.specs/features/auditoria-geo-seguranca` (mergeada e publicada em 2026-10-04, `7c04999`)
-- **Phase / Task**: pós-deploy. Branch `fix/headers-ssr` (`a1022ab` + docs) com middleware de cabeçalhos para respostas da função (`/api/contato`) e `Content-Type` do manifest; não enviado
+- **Phase / Task**: pós-deploy. Branch `fix/headers-ssr` (`a1022ab` + docs) com middleware de cabeçalhos para respostas da função (`/api/contato`) e `Content-Type` do manifest; mergeado e publicado
 - **Completed**: T1–T23, Verificador PASS, deploy conferido (home, llms.txt, security.txt com os 8 cabeçalhos)
 - **In-progress** (file:line): none
-- **Next step**: aprovação do usuário para enviar `fix/headers-ssr`; depois rodar o GEO Checker e o PSI em produção e o restante do checklist do `validation.md`
+- **Next step**: checklist manual restante (Rich Results Test, Bing Webmaster Tools, DNS de e-mail); GEO Checker A 98% e PSI 100 já conferidos
 - **Blockers**: none
 - **Uncommitted files**: none
-- **Branch**: fix/headers-ssr
+- **Branch**: main (fix/headers-ssr mergeada em f3cd8e0)
 - **Riscos aceitos**: 404 de caminho inexistente sem cabeçalhos de segurança (decisão do usuário, ver Assumptions da spec)
 - **Fora do escopo, aberto**: formulário continua visível após envio com sucesso (`.contact-form { display: flex }` em `src/components/Contact.astro` anula `hidden`)

@@ -234,3 +234,11 @@ Depois de um envio com sucesso, `src/scripts/contact-form.ts:98` faz `form.hidde
 **O que funciona**: cabeçalhos e CSP estrita (verificados por valor e no Chromium, com controle negativo), robots com bots de IA, llms.txt/llms-full.txt gerados dos dados, security.txt, manifest, metas e hreflang, JSON-LD enriquecido, lastmod real com fallback sem git, honeypot acessível, CLS corrigido (causa: o cabeçalho quebrava em duas linhas na troca da fonte).
 
 **Próximo passo**: commitar os documentos, fazer o deploy e rodar a lista "Pós-deploy (manual)".
+
+## Verificação em produção (2026-10-04, após `f3cd8e0`)
+
+- **GEO Checker** (`resultId` d8056687): nota **A, 98%** (237/243). Antes: C, 71% (`aa05d5d3`).
+  - Falhas restantes que contam pontos: `<noscript>` (fora de escopo), "CSS linked from `<head>`" (falso positivo: CSS embutido, PERF-01), títulos em forma de pergunta (o checker não reconhece as perguntas em português do FAQ em `<h3>`), ícone `maskable` no manifest (não estava na spec).
+  - Informativas (sem pontos): SPF, DKIM, DMARC `p=none`, MTA-STS e Google Analytics. Todas ficam fora do código.
+- **PageSpeed Insights mobile**: Performance 100, Acessibilidade 100, Boas práticas 100, SEO 100; LCP 854 ms; **CLS 0** (antes 0,32).
+- **Cabeçalhos**: home, `/llms.txt`, `/.well-known/security.txt`, `/site.webmanifest` (`application/manifest+json`) e `/api/contato` com os 8 cabeçalhos. A 404 de caminho inexistente fica sem eles (risco aceito, ver Assumptions da spec).
