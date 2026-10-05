@@ -339,7 +339,7 @@ T21 -> T22
 
 ---
 
-### T11: Rota `/.well-known/security.txt`
+### T11: Rota `/.well-known/security.txt` ✅
 
 **What**: Criar `src/pages/.well-known/security.txt.ts` respondendo `securityTxt(site, new Date())`.
 **Where**: `src/pages/.well-known/security.txt.ts`

@@ -236,7 +236,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | LLMS-04 | P1: Sinais para IA | - | Implementing |
 | LLMS-05 | P1: Sinais para IA | - | Pending |
 | LLMS-06 | P1: Sinais para IA | - | Implementing |
-| SECTXT-01 | P1: security.txt | - | Pending |
+| SECTXT-01 | P1: security.txt | - | Implementing |
 | SECTXT-02 | P1: security.txt | - | Implementing |
 | SECTXT-03 | P1: security.txt | - | Implementing |
 | SECTXT-04 | P1: security.txt | - | Implementing |
