@@ -24,7 +24,7 @@
   --gray-600: #4f5866; /* texto secundário */
 
   /* Tipografia */
-  --font-sans: "Archivo Variable", system-ui, sans-serif;
+  --font-sans: "Archivo Variable", "Archivo Fallback", system-ui, sans-serif;
   --text-base: 17px;
   --leading-base: 1.55;
   --text-label: 13px;
@@ -55,4 +55,31 @@
 
   /* Movimento */
   --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/*
+ * Fallback com as métricas da Archivo: enquanto a fonte carrega, o texto ocupa o mesmo espaço e a troca
+ * não move o conteúdo (PERF-08). Valores calculados com fontTools 4.62.1 sobre
+ * node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2, instância wght 400 /
+ * wdth 100 (texto corrido; títulos com font-stretch diferente ficam aproximados), contra a Liberation Sans
+ * (métricas idênticas às da Arial):
+ *   size-adjust = largura de um parágrafo pt-BR em Archivo / mesma largura em Arial = 98.66%
+ *   ascent-override = 878/1000 / size-adjust = 88.99%; descent-override = 210/1000 / size-adjust = 21.29%;
+ *   line-gap-override = 0 (hhea: ascent 878, descent -210, lineGap 0, UPM 1000)
+ * Comando: python3 -c 'from fontTools.ttLib import TTFont; from fontTools.varLib.instancer import
+ *   instantiateVariableFont as I; t="Sites e sistemas sob medida para empresas que precisam de presença
+ *   profissional e processos mais simples. Você recebe uma proposta fechada, com valor e prazo definidos
+ *   antes de começar."; w=lambda f: sum(f["hmtx"][f.getBestCmap()[ord(c)]][0] for c in t)/f["head"].unitsPerEm;
+ *   a=I(TTFont("node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2"),{"wght":400,"wdth":100});
+ *   r=TTFont("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"); s=w(a)/w(r);
+ *   print(s, a["hhea"].ascent/1000/s, -a["hhea"].descent/1000/s, a["hhea"].lineGap/1000/s)'
+ * (decodificar woff2 exige o pacote brotli.)
+ */
+@font-face {
+  font-family: "Archivo Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  size-adjust: 98.66%;
+  ascent-override: 88.99%;
+  descent-override: 21.29%;
+  line-gap-override: 0%;
 }

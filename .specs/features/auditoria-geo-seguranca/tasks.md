@@ -590,7 +590,7 @@ T21 -> T22
 
 ---
 
-### T21: Fonte de fallback com métricas ajustadas
+### T21: Fonte de fallback com métricas ajustadas ✅
 
 **What**: Calcular com fontTools as métricas do `archivo-latin-wdth-normal.woff2` e declarar `@font-face "Archivo Fallback"` (`local("Arial")`, `size-adjust`, `ascent-override`, `descent-override`, `line-gap-override`), colocando-a depois de "Archivo Variable" em `--font-sans`.
 **Where**: `src/styles/tokens.css`
