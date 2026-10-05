@@ -249,7 +249,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | PERF-09 | P1: CLS | - | Implementing |
 | LD-10 | P2: Dados estruturados | - | Pending |
 | LD-11 | P2: Dados estruturados | - | Pending |
-| LD-12 | P2: Dados estruturados | - | Pending |
+| LD-12 | P2: Dados estruturados | - | Implementing |
 | LD-14 | P2: Dados estruturados | - | Pending |
 | LD-15 | P2: Dados estruturados | - | Pending |
 | SEO-07 | P2: Ajustes pequenos | - | Implementing |

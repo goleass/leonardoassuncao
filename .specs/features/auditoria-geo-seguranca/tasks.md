@@ -440,7 +440,7 @@ T21 -> T22
 
 ---
 
-### T15: LinkedIn na configuração
+### T15: LinkedIn na configuração ✅
 
 **What**: Preencher `linkedin: "https://www.linkedin.com/in/leonardo-gomes-assuncao"` em `site.ts`.
 **Where**: `src/config/site.ts`
