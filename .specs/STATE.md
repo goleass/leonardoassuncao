@@ -34,6 +34,14 @@
 - **Date**: 2026-10-04
 - **Status**: active
 
+### AD-005
+- **Decision**: Nenhuma página publica script executável inline; a CSP é um cabeçalho fixo em `netlify.toml` (`[[headers]] for = "/*"`) com `script-src 'self'`. Os scripts do Astro saem como arquivo (`vite.build.assetsInlineLimit: 0`) e o estado "com JS" no CSS usa `@media (scripting: enabled)`.
+- **Reason**: Uma única regra cobre todo caminho (inclusive a 404 servida para URLs inexistentes), sem hashes por build nem recurso experimental do adaptador; o checker e `frame-ancestors` exigem cabeçalho, não `<meta>`.
+- **Trade-off**: Todo script novo precisa ser módulo externo; terceiros (analytics, widgets) exigem editar a CSP e podem esbarrar no COEP `require-corp`.
+- **Scope**: Todas as páginas e qualquer script/recurso futuro.
+- **Date**: 2026-10-04
+- **Status**: active
+
 ## Handoff
 
 - **Feature**: `.specs/features/seo-ranqueamento`
