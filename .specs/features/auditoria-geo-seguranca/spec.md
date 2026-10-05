@@ -232,7 +232,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | RMETA-02 | P1: Sinais para IA | - | Verified |
 | LLMS-01 | P1: Sinais para IA | - | Verified |
 | LLMS-02 | P1: Sinais para IA | - | Verified |
-| LLMS-03 | P1: Sinais para IA | - | Needs Fix |
+| LLMS-03 | P1: Sinais para IA | - | Verified |
 | LLMS-04 | P1: Sinais para IA | - | Verified |
 | LLMS-05 | P1: Sinais para IA | - | Verified |
 | LLMS-06 | P1: Sinais para IA | - | Verified |
@@ -246,7 +246,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | PERF-06 | P1: CLS | - | Verified |
 | PERF-07 | P1: CLS | - | Verified |
 | PERF-08 | P1: CLS | - | Verified |
-| PERF-09 | P1: CLS | - | Implementing |
+| PERF-09 | P1: CLS | - | Verified |
 | LD-10 | P2: Dados estruturados | - | Verified |
 | LD-11 | P2: Dados estruturados | - | Verified |
 | LD-12 | P2: Dados estruturados | - | Verified |

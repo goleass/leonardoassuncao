@@ -44,11 +44,12 @@
 
 ## Handoff
 
-- **Feature**: `.specs/features/seo-ranqueamento`
-- **Phase / Task**: Execute concluído (T1–T18); Verificador rodada 2 = PASS (41/41 ACs, 18 mutações, 0 sobreviventes)
-- **Completed**: T1–T18 + correção de teste da rodada 1
+- **Feature**: `.specs/features/auditoria-geo-seguranca`
+- **Phase / Task**: Execute concluído (T1–T23); Verificador rodada 2 = PASS (62/62 ACs, 18 mutações, 0 sobreviventes)
+- **Completed**: T1–T23 + correção de teste da rodada 1 (91ec8d3)
 - **In-progress** (file:line): none
-- **Next step**: deploy feito e verificado em 2026-10-04 (netlify.app e apex → 301 www; 7 URLs 200; Lighthouse produção 100/100/100/100 na home e em /integracoes/). Pendente do usuário: revisar textos de `src/data/services.ts`; Search Console (verificar domínio por DNS, enviar `sitemap-index.xml`, pedir indexação); Perfil da Empresa no Google; Rich Results Test
+- **Next step**: aprovação do usuário para merge/push/deploy; depois, checklist pós-deploy do `validation.md` (GEO Checker, PSI mobile, cabeçalhos em `/api/contato`, content-type dos `.txt`, Rich Results Test, Bing Webmaster Tools)
 - **Blockers**: none
 - **Uncommitted files**: none
-- **Branch**: main (feat/seo-ranqueamento mergeada)
+- **Branch**: feat/auditoria-geo-seguranca (não mergeada, não enviada)
+- **Fora do escopo, aberto**: formulário continua visível após envio com sucesso (`.contact-form { display: flex }` em `src/components/Contact.astro` anula `hidden`)
