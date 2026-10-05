@@ -82,6 +82,15 @@ describe("estado com JS sem script inline (CSP-03, AD-005)", () => {
     const button = parseCss(style).find((r) => r.prelude === ".menu-button" && value(r, "display") === "inline-flex");
     expect(button?.context).toEqual(["@media (max-width: 767.98px) and (scripting: enabled)"]);
   });
+
+  it("no menu compacto, a marca encolhe em vez de jogar o botão para outra linha (PERF-05)", () => {
+    const astro = readFileSync(join(process.cwd(), "src/components/Header.astro"), "utf8");
+    const style = astro.match(/<style>([\s\S]*)<\/style>/)?.[1] ?? "";
+    const brand = parseCss(style).find((r) => r.prelude === ".brand" && r.context.length > 0);
+    expect(brand?.context).toEqual(["@media (max-width: 767.98px) and (scripting: enabled)"]);
+    expect(value(brand!, "flex")).toBe("1 1 0");
+    expect(value(brand!, "min-width")).toBe("0");
+  });
 });
 
 describe("animações só com opacity, transform e background-size (PERF-09)", () => {

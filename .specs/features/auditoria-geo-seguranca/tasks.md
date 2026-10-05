@@ -615,11 +615,38 @@ T21 -> T22
 
 ---
 
+### T23: Cabeçalho mobile sem quebra de linha na troca da fonte ✅
+
+**What**: No menu compacto (`max-width: 767.98px` + `scripting: enabled`), a marca passa a `flex: 1 1 0; min-width: 0` e o `column-gap` do cabeçalho cai para 12px, para que marca e botão Menu fiquem sempre na mesma linha.
+**Where**: `src/components/Header.astro`
+**Depends on**: T21
+**Reuses**: `tests/animations-css.test.ts` (leitor de CSS)
+**Requirement**: PERF-05, PERF-06
+
+> Adicionada na execução: a T22 reproduziu o CLS 0,322 e a causa era o cabeçalho, não a fonte. Com a Archivo carregada em 412px, marca + gap 32px + "Menu" não cabem, o botão desce para uma segunda linha e o `<main>` desce 52px.
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Teste confirma `.brand { flex: 1 1 0; min-width: 0 }` dentro da media query do menu compacto
+- [x] `node scripts/lighthouse.mjs`: CLS ≤ 0,1 nas 6 execuções
+- [x] Gate check passes: `npm test`
+
+**Tests**: unit
+**Gate**: quick
+**Commit**: `fix(header): keep brand and menu button on one row on mobile`
+
+---
+
 ### T22: Script de medição Lighthouse
 
 **What**: Criar `scripts/lighthouse.mjs`, que serve `dist/`, roda Lighthouse 12 mobile 3× em `/` e `/criacao-de-sites/` e sai com código ≠ 0 se algum CLS > 0,1 ou Performance < 95.
 **Where**: `scripts/lighthouse.mjs`
-**Depends on**: T21
+**Depends on**: T23
 **Reuses**: Chrome em `/usr/bin/google-chrome`
 **Requirement**: PERF-05, PERF-06, PERF-07
 
@@ -656,7 +683,7 @@ Phase 4:  T12 → T13 → T14
 Phase 5:  T17
           T18
           T19 → T20
-          T21 → T22
+          T21 → T23 → T22
 ```
 
 Execução estritamente sequencial (T1 → T22).
@@ -706,7 +733,8 @@ Execução estritamente sequencial (T1 → T22).
 | T19 | None | — | ✅ |
 | T20 | T19 | T19 → T20 | ✅ |
 | T21 | None | — | ✅ |
-| T22 | T21 | T21 → T22 | ✅ |
+| T23 | T21 | T21 → T23 | ✅ |
+| T22 | T23 | T23 → T22 | ✅ |
 
 ### Test Co-location Validation
 
