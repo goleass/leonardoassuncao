@@ -388,7 +388,7 @@ T21 -> T22
 
 ---
 
-### T13: Rota `/site.webmanifest`
+### T13: Rota `/site.webmanifest` ✅
 
 **What**: Criar `src/pages/site.webmanifest.ts` com o JSON da spec (`application/manifest+json`).
 **Where**: `src/pages/site.webmanifest.ts`
