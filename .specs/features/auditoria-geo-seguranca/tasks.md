@@ -265,7 +265,7 @@ T21 -> T22
 
 ---
 
-### T8: Rota `/llms.txt`
+### T8: Rota `/llms.txt` ✅
 
 **What**: Criar `src/pages/llms.txt.ts` que responde `llmsText(site, services)` como `text/plain; charset=utf-8`.
 **Where**: `src/pages/llms.txt.ts`

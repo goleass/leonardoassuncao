@@ -230,7 +230,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | BOT-03 | P1: Sinais para IA | - | Implementing |
 | RMETA-01 | P1: Sinais para IA | - | Pending |
 | RMETA-02 | P1: Sinais para IA | - | Pending |
-| LLMS-01 | P1: Sinais para IA | - | Pending |
+| LLMS-01 | P1: Sinais para IA | - | Implementing |
 | LLMS-02 | P1: Sinais para IA | - | Implementing |
 | LLMS-03 | P1: Sinais para IA | - | Implementing |
 | LLMS-04 | P1: Sinais para IA | - | Implementing |
