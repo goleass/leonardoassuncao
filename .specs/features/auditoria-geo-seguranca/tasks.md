@@ -540,7 +540,7 @@ T21 -> T22
 
 ---
 
-### T19: `lastCommitDate` e `PAGE_SOURCES`
+### T19: `lastCommitDate` e `PAGE_SOURCES` ✅
 
 **What**: Criar `src/lib/seo/lastmod.ts` com `lastCommitDate(files, run?)` e o mapa `PAGE_SOURCES`, como no design.
 **Where**: `src/lib/seo/lastmod.ts`
