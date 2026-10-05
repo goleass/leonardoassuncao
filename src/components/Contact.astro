@@ -108,9 +108,9 @@ const { site } = Astro.props;
             <p class="field__error" id="mensagem-erro"></p>
           </div>
 
-          <!-- Honeypot: pessoas não veem nem alcançam este campo; robôs costumam preenchê-lo (FORM-10). -->
-          <div class="contact-form__hp" aria-hidden="true">
-            <label for="website">Site</label>
+          <!-- Honeypot: fora da tela e da tabulação; robôs costumam preenchê-lo (FORM-10). Sem aria-hidden: o rótulo avisa leitores de tela (A11Y-07/08). -->
+          <div class="contact-form__hp">
+            <label for="website">Deixe este campo em branco</label>
             <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
           </div>
 

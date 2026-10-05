@@ -261,9 +261,9 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | SMAP-01 | P2: Ajustes pequenos | - | Pending |
 | SMAP-02 | P2: Ajustes pequenos | - | Pending |
 | A11Y-06 | P2: Ajustes pequenos | - | Implementing |
-| A11Y-07 | P2: Ajustes pequenos | - | Pending |
-| A11Y-08 | P2: Ajustes pequenos | - | Pending |
-| A11Y-09 | P2: Ajustes pequenos | - | Pending |
+| A11Y-07 | P2: Ajustes pequenos | - | Implementing |
+| A11Y-08 | P2: Ajustes pequenos | - | Implementing |
+| A11Y-09 | P2: Ajustes pequenos | - | Implementing |
 | LLMS-07 | P3: llms-full.txt | - | Implementing |
 | LLMS-08 | P3: llms-full.txt | - | Implementing |
 | LLMS-09 | P3: llms-full.txt | - | Implementing |
@@ -273,7 +273,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | EDGE-11 | Edge cases | - | Implementing |
 | EDGE-12 | Edge cases | - | Implementing |
 | EDGE-13 | Edge cases | - | Implementing |
-| EDGE-14 | Edge cases | - | Pending |
+| EDGE-14 | Edge cases | - | Implementing |
 
 **Coverage:** 62 total, 0 mapped to tasks, 62 unmapped ⚠️ (Tasks ainda não criadas)
 

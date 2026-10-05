@@ -514,7 +514,7 @@ T21 -> T22
 
 ---
 
-### T18: Honeypot sem `aria-hidden`
+### T18: Honeypot sem `aria-hidden` ✅
 
 **What**: Tirar `aria-hidden` do wrapper do honeypot e trocar o rótulo para "Deixe este campo em branco", mantendo `tabindex="-1"`, `autocomplete="off"`, `name="website"` e o CSS fora da tela.
 **Where**: `src/components/Contact.astro`

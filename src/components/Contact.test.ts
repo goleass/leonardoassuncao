@@ -66,13 +66,28 @@ describe("Contact: campos e limites do formulário (FORM-04, A11Y-03)", () => {
   });
 });
 
-describe("Contact: honeypot anti-spam (FORM-10)", () => {
-  it("o campo website fica fora da tabulação, sem autocompletar e escondido de leitores de tela", () => {
+describe("Contact: honeypot anti-spam (FORM-10, A11Y-07, A11Y-08)", () => {
+  it("o campo website fica fora da tabulação, sem autocompletar e fora de qualquer aria-hidden", () => {
     const honeypot = field("website") as HTMLInputElement;
     expect(honeypot).not.toBeNull();
+    expect(honeypot.id).toBe("website");
     expect(honeypot.getAttribute("tabindex")).toBe("-1");
     expect(honeypot.getAttribute("autocomplete")).toBe("off");
-    expect(honeypot.closest('[aria-hidden="true"]')).not.toBeNull();
+    // A11Y-07: nenhum ancestral (nem o próprio campo) com aria-hidden="true".
+    expect(honeypot.closest('[aria-hidden="true"]')).toBeNull();
+  });
+
+  it('tem o rótulo "Deixe este campo em branco" (A11Y-08)', () => {
+    expect(labelOf(field("website"))).toBe("Deixe este campo em branco");
+  });
+
+  it("continua fora da tela via .contact-form__hp (A11Y-08)", async () => {
+    expect(field("website").closest(".contact-form__hp")).not.toBeNull();
+    const { readFile } = await import("node:fs/promises");
+    const source = await readFile(new URL("./Contact.astro", import.meta.url), "utf8");
+    const rule = source.match(/\.contact-form__hp\s*\{([^}]*)\}/)?.[1] ?? "";
+    expect(rule).toMatch(/position:\s*absolute;/);
+    expect(rule).toMatch(/left:\s*-10000px;/);
   });
 });
 
