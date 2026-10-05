@@ -85,7 +85,7 @@ T21 -> T22
 
 ## Task Breakdown
 
-### T1: Estado "com JS" via `@media (scripting: enabled)`
+### T1: Estado "com JS" via `@media (scripting: enabled)` ✅
 
 **What**: Trocar os seletores `html.js` de `animations.css` por regras dentro de `@media (scripting: enabled)`, mantendo os mesmos estados de `.reveal` e `.lg-draw` e a exceção de movimento reduzido.
 **Where**: `src/styles/animations.css`

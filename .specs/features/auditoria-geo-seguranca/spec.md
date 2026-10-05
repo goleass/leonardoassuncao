@@ -221,7 +221,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | SECH-07 | P1: Cabeçalhos de segurança | - | Pending |
 | CSP-01 | P1: Cabeçalhos de segurança | - | Pending |
 | CSP-02 | P1: Cabeçalhos de segurança | - | Pending |
-| CSP-03 | P1: Cabeçalhos de segurança | - | Pending |
+| CSP-03 | P1: Cabeçalhos de segurança | - | Implementing |
 | CSP-04 | P1: Cabeçalhos de segurança | - | Pending |
 | CSP-05 | P1: Cabeçalhos de segurança | - | Pending |
 | CSP-06 | P1: Cabeçalhos de segurança | - | Pending |
@@ -246,7 +246,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | PERF-06 | P1: CLS | - | Pending |
 | PERF-07 | P1: CLS | - | Pending |
 | PERF-08 | P1: CLS | - | Pending |
-| PERF-09 | P1: CLS | - | Pending |
+| PERF-09 | P1: CLS | - | Implementing |
 | LD-10 | P2: Dados estruturados | - | Pending |
 | LD-11 | P2: Dados estruturados | - | Pending |
 | LD-12 | P2: Dados estruturados | - | Pending |
