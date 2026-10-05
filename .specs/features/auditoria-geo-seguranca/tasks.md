@@ -565,7 +565,7 @@ T21 -> T22
 
 ---
 
-### T20: `lastmod` no sitemap
+### T20: `lastmod` no sitemap ✅
 
 **What**: Passar `serialize` ao `sitemap()` em `astro.config.mjs`, preenchendo `lastmod` com `lastCommitDate(PAGE_SOURCES[path])` quando existir.
 **Where**: `astro.config.mjs`

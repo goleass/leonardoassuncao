@@ -36,3 +36,10 @@ export const PAGE_SOURCES: Record<string, string[]> = {
   ),
   "/privacidade/": ["src/pages/privacidade.astro", LAYOUTS],
 };
+
+/** `serialize` do sitemap: preenche `lastmod` pelas fontes da página; sem data, deixa o item como está (SMAP-02). */
+export function withLastmod<T extends { url: string; lastmod?: string }>(item: T, run: GitRun = git): T {
+  const date = lastCommitDate(PAGE_SOURCES[new URL(item.url).pathname] ?? [], run);
+  if (date) item.lastmod = date;
+  return item;
+}

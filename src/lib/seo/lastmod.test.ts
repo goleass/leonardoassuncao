@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { services } from "../../data/services";
-import { lastCommitDate, PAGE_SOURCES } from "./lastmod";
+import { lastCommitDate, PAGE_SOURCES, withLastmod } from "./lastmod";
 
 // Dublê do git: responde por subcomando e registra as chamadas.
 function fakeGit(answers: { shallow?: string; log?: string }) {
@@ -61,5 +61,27 @@ describe("PAGE_SOURCES (SMAP-01)", () => {
       expect(PAGE_SOURCES[path]).toEqual(["src/pages/[servico].astro", "src/data/services.ts", "src/layouts"]);
     }
     expect(PAGE_SOURCES["/privacidade/"]).toEqual(["src/pages/privacidade.astro", "src/layouts"]);
+  });
+});
+
+describe("withLastmod: serialize do sitemap (SMAP-01, SMAP-02)", () => {
+  const url = "https://www.leonardoassuncao.com.br/privacidade/";
+
+  it("com histórico completo, lastmod recebe a data do último commit das fontes da página (SMAP-01)", () => {
+    const { run, calls } = fakeGit({ shallow: "false\n", log: "2026-09-30T14:05:12-03:00\n" });
+    expect(withLastmod({ url }, run)).toEqual({ url, lastmod: "2026-09-30T14:05:12-03:00" });
+    expect(calls).toContainEqual(["log", "-1", "--format=%cI", "--", "src/pages/privacidade.astro", "src/layouts"]);
+  });
+
+  it("em clone raso, o item sai sem lastmod (SMAP-02)", () => {
+    const { run } = fakeGit({ shallow: "true\n", log: "2026-09-30T14:05:12-03:00\n" });
+    expect(withLastmod({ url }, run)).toEqual({ url });
+  });
+
+  it("caminho sem fontes mapeadas sai sem lastmod", () => {
+    const { run } = fakeGit({ shallow: "false\n", log: "2026-09-30T14:05:12-03:00\n" });
+    expect(withLastmod({ url: "https://www.leonardoassuncao.com.br/outra/" }, run)).toEqual({
+      url: "https://www.leonardoassuncao.com.br/outra/",
+    });
   });
 });
