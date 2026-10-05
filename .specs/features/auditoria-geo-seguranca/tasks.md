@@ -289,7 +289,7 @@ T21 -> T22
 
 ---
 
-### T9: Rota `/llms-full.txt`
+### T9: Rota `/llms-full.txt` ✅
 
 **What**: Criar `src/pages/llms-full.txt.ts` que responde `llmsFullText(site, services, questions)`.
 **Where**: `src/pages/llms-full.txt.ts`
