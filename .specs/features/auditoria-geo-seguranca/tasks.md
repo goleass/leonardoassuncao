@@ -111,7 +111,7 @@ T21 -> T22
 
 ---
 
-### T2: Remover o script inline da classe `js`
+### T2: Remover o script inline da classe `js` ✅
 
 **What**: Apagar o `<script is:inline>` que adiciona a classe `js` no `BaseLayout` e ajustar o teste que hoje cobra essa classe.
 **Where**: `src/layouts/BaseLayout.astro`

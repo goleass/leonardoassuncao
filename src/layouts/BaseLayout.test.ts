@@ -166,12 +166,21 @@ describe("BaseLayout: pular para o conteúdo (A11Y-04)", () => {
   });
 });
 
-describe("BaseLayout: classe js para animações (ANIM-09)", () => {
-  it('o script inline do <head> adiciona a classe "js" ao <html>', () => {
-    const script = [...doc.head.querySelectorAll("script:not([type])")].map((s) => s.textContent ?? "").join("\n");
-    const target = parseHtml("<html><body></body></html>");
-    new Function("document", script)(target);
-    expect(target.documentElement.classList.contains("js")).toBe(true);
+// O estado "com JS" vem de @media (scripting: enabled) (tests/animations-css.test.ts, ANIM-09),
+// não de um script inline que a CSP bloquearia.
+describe("BaseLayout: nenhum script executável inline (CSP-03, ANIM-09)", () => {
+  it("todo <script> tem src ou é JSON-LD", () => {
+    const scripts = [...doc.querySelectorAll("script")];
+    const inline = scripts.filter((s) => !s.hasAttribute("src") && s.getAttribute("type") !== "application/ld+json");
+    expect(inline.map((s) => s.outerHTML)).toEqual([]);
+  });
+
+  it("o script de revelação continua carregado, como módulo externo", () => {
+    const modules = [...doc.querySelectorAll('script[type="module"][src]')];
+    expect(modules.some((s) => s.getAttribute("src")?.includes("BaseLayout.astro?astro&type=script"))).toBe(true);
+  });
+
+  it('o HTML não depende da classe "js" no <html>', () => {
     expect(doc.documentElement.classList.contains("js")).toBe(false);
   });
 });
