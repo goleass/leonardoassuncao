@@ -131,7 +131,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 2. WHEN Lighthouse mobile runs against `/criacao-de-sites/` served locally THEN Cumulative Layout Shift SHALL be ≤ 0.1 in each of 3 consecutive runs. <!-- PERF-06 -->
 3. WHEN Lighthouse mobile runs against the built home THEN the Performance score SHALL be ≥ 95. <!-- PERF-07 -->
 4. WHILE the web font has not loaded the page SHALL render with a fallback font whose metrics are adjusted (`size-adjust`/`ascent-override` or equivalent) so the font swap does not move content. <!-- PERF-08 -->
-5. The reveal animations (ANIM) SHALL animate only `opacity` and `transform`, never properties that change layout (height, margin, top). <!-- PERF-09 -->
+5. The animations (`@keyframes` and `transition`) SHALL animate only `opacity`, `transform` and `background-size` (the set already allowed by ANIM-10), never properties that change layout (height, margin, top). <!-- PERF-09 -->
 
 **Independent Test**: Script de Lighthouse local (Chrome em `/usr/bin/google-chrome`) roda 3× na home e em uma página de serviço e grava o CLS; PSI em produção depois do deploy.
 
@@ -212,68 +212,68 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| SECH-01 | P1: Cabeçalhos de segurança | - | Implementing |
-| SECH-02 | P1: Cabeçalhos de segurança | - | Implementing |
-| SECH-03 | P1: Cabeçalhos de segurança | - | Implementing |
-| SECH-04 | P1: Cabeçalhos de segurança | - | Implementing |
-| SECH-05 | P1: Cabeçalhos de segurança | - | Implementing |
-| SECH-06 | P1: Cabeçalhos de segurança | - | Implementing |
-| SECH-07 | P1: Cabeçalhos de segurança | - | Implementing |
-| CSP-01 | P1: Cabeçalhos de segurança | - | Implementing |
-| CSP-02 | P1: Cabeçalhos de segurança | - | Implementing |
-| CSP-03 | P1: Cabeçalhos de segurança | - | Implementing |
-| CSP-04 | P1: Cabeçalhos de segurança | - | Implementing |
-| CSP-05 | P1: Cabeçalhos de segurança | - | Implementing |
-| CSP-06 | P1: Cabeçalhos de segurança | - | Implementing |
-| BOT-01 | P1: Sinais para IA | - | Implementing |
-| BOT-02 | P1: Sinais para IA | - | Implementing |
-| BOT-03 | P1: Sinais para IA | - | Implementing |
-| RMETA-01 | P1: Sinais para IA | - | Implementing |
-| RMETA-02 | P1: Sinais para IA | - | Implementing |
-| LLMS-01 | P1: Sinais para IA | - | Implementing |
-| LLMS-02 | P1: Sinais para IA | - | Implementing |
-| LLMS-03 | P1: Sinais para IA | - | Implementing |
-| LLMS-04 | P1: Sinais para IA | - | Implementing |
-| LLMS-05 | P1: Sinais para IA | - | Implementing |
-| LLMS-06 | P1: Sinais para IA | - | Implementing |
-| SECTXT-01 | P1: security.txt | - | Implementing |
-| SECTXT-02 | P1: security.txt | - | Implementing |
-| SECTXT-03 | P1: security.txt | - | Implementing |
-| SECTXT-04 | P1: security.txt | - | Implementing |
-| SECTXT-05 | P1: security.txt | - | Implementing |
-| SECTXT-06 | P1: security.txt | - | Implementing |
-| PERF-05 | P1: CLS | - | Implementing |
-| PERF-06 | P1: CLS | - | Implementing |
-| PERF-07 | P1: CLS | - | Implementing |
-| PERF-08 | P1: CLS | - | Implementing |
+| SECH-01 | P1: Cabeçalhos de segurança | - | Verified |
+| SECH-02 | P1: Cabeçalhos de segurança | - | Verified |
+| SECH-03 | P1: Cabeçalhos de segurança | - | Verified |
+| SECH-04 | P1: Cabeçalhos de segurança | - | Verified |
+| SECH-05 | P1: Cabeçalhos de segurança | - | Verified |
+| SECH-06 | P1: Cabeçalhos de segurança | - | Verified |
+| SECH-07 | P1: Cabeçalhos de segurança | - | Verified |
+| CSP-01 | P1: Cabeçalhos de segurança | - | Verified |
+| CSP-02 | P1: Cabeçalhos de segurança | - | Verified |
+| CSP-03 | P1: Cabeçalhos de segurança | - | Verified |
+| CSP-04 | P1: Cabeçalhos de segurança | - | Verified |
+| CSP-05 | P1: Cabeçalhos de segurança | - | Verified |
+| CSP-06 | P1: Cabeçalhos de segurança | - | Verified |
+| BOT-01 | P1: Sinais para IA | - | Verified |
+| BOT-02 | P1: Sinais para IA | - | Verified |
+| BOT-03 | P1: Sinais para IA | - | Verified |
+| RMETA-01 | P1: Sinais para IA | - | Verified |
+| RMETA-02 | P1: Sinais para IA | - | Verified |
+| LLMS-01 | P1: Sinais para IA | - | Verified |
+| LLMS-02 | P1: Sinais para IA | - | Verified |
+| LLMS-03 | P1: Sinais para IA | - | Needs Fix |
+| LLMS-04 | P1: Sinais para IA | - | Verified |
+| LLMS-05 | P1: Sinais para IA | - | Verified |
+| LLMS-06 | P1: Sinais para IA | - | Verified |
+| SECTXT-01 | P1: security.txt | - | Verified |
+| SECTXT-02 | P1: security.txt | - | Verified |
+| SECTXT-03 | P1: security.txt | - | Verified |
+| SECTXT-04 | P1: security.txt | - | Verified |
+| SECTXT-05 | P1: security.txt | - | Verified |
+| SECTXT-06 | P1: security.txt | - | Verified |
+| PERF-05 | P1: CLS | - | Verified |
+| PERF-06 | P1: CLS | - | Verified |
+| PERF-07 | P1: CLS | - | Verified |
+| PERF-08 | P1: CLS | - | Verified |
 | PERF-09 | P1: CLS | - | Implementing |
-| LD-10 | P2: Dados estruturados | - | Implementing |
-| LD-11 | P2: Dados estruturados | - | Implementing |
-| LD-12 | P2: Dados estruturados | - | Implementing |
-| LD-14 | P2: Dados estruturados | - | Implementing |
-| LD-15 | P2: Dados estruturados | - | Implementing |
-| SEO-07 | P2: Ajustes pequenos | - | Implementing |
-| SEO-08 | P2: Ajustes pequenos | - | Implementing |
-| MANI-01 | P2: Ajustes pequenos | - | Implementing |
-| MANI-02 | P2: Ajustes pequenos | - | Implementing |
-| I18N-01 | P2: Ajustes pequenos | - | Implementing |
-| I18N-02 | P2: Ajustes pequenos | - | Implementing |
-| SMAP-01 | P2: Ajustes pequenos | - | Implementing |
-| SMAP-02 | P2: Ajustes pequenos | - | Implementing |
-| A11Y-06 | P2: Ajustes pequenos | - | Implementing |
-| A11Y-07 | P2: Ajustes pequenos | - | Implementing |
-| A11Y-08 | P2: Ajustes pequenos | - | Implementing |
-| A11Y-09 | P2: Ajustes pequenos | - | Implementing |
-| LLMS-07 | P3: llms-full.txt | - | Implementing |
-| LLMS-08 | P3: llms-full.txt | - | Implementing |
-| LLMS-09 | P3: llms-full.txt | - | Implementing |
-| LLMS-10 | P3: llms-full.txt | - | Implementing |
-| EDGE-09 | Edge cases | - | Implementing |
-| EDGE-10 | Edge cases | - | Implementing |
-| EDGE-11 | Edge cases | - | Implementing |
-| EDGE-12 | Edge cases | - | Implementing |
-| EDGE-13 | Edge cases | - | Implementing |
-| EDGE-14 | Edge cases | - | Implementing |
+| LD-10 | P2: Dados estruturados | - | Verified |
+| LD-11 | P2: Dados estruturados | - | Verified |
+| LD-12 | P2: Dados estruturados | - | Verified |
+| LD-14 | P2: Dados estruturados | - | Verified |
+| LD-15 | P2: Dados estruturados | - | Verified |
+| SEO-07 | P2: Ajustes pequenos | - | Verified |
+| SEO-08 | P2: Ajustes pequenos | - | Verified |
+| MANI-01 | P2: Ajustes pequenos | - | Verified |
+| MANI-02 | P2: Ajustes pequenos | - | Verified |
+| I18N-01 | P2: Ajustes pequenos | - | Verified |
+| I18N-02 | P2: Ajustes pequenos | - | Verified |
+| SMAP-01 | P2: Ajustes pequenos | - | Verified |
+| SMAP-02 | P2: Ajustes pequenos | - | Verified |
+| A11Y-06 | P2: Ajustes pequenos | - | Verified |
+| A11Y-07 | P2: Ajustes pequenos | - | Verified |
+| A11Y-08 | P2: Ajustes pequenos | - | Verified |
+| A11Y-09 | P2: Ajustes pequenos | - | Verified |
+| LLMS-07 | P3: llms-full.txt | - | Verified |
+| LLMS-08 | P3: llms-full.txt | - | Verified |
+| LLMS-09 | P3: llms-full.txt | - | Verified |
+| LLMS-10 | P3: llms-full.txt | - | Verified |
+| EDGE-09 | Edge cases | - | Verified |
+| EDGE-10 | Edge cases | - | Verified |
+| EDGE-11 | Edge cases | - | Verified |
+| EDGE-12 | Edge cases | - | Verified |
+| EDGE-13 | Edge cases | - | Verified |
+| EDGE-14 | Edge cases | - | Verified |
 
 **Coverage:** 62 total, 0 mapped to tasks, 62 unmapped ⚠️ (Tasks ainda não criadas)
 

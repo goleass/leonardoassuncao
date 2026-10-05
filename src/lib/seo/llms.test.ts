@@ -26,7 +26,9 @@ describe("llmsText (LLMS-02, LLMS-03, LLMS-04, LLMS-06, LLMS-10)", () => {
     for (const s of services) {
       expect(linhas).toContain(`- [${s.name}](https://www.exemplo.com.br/${s.slug}/): ${s.description}`);
     }
-    expect(linhas.some((l) => l.startsWith("- [Privacidade](https://www.exemplo.com.br/privacidade/): "))).toBe(true);
+    expect(linhas).toContain(
+      "- [Privacidade](https://www.exemplo.com.br/privacidade/): Como os dados enviados pelo formulário e pelo WhatsApp são tratados.",
+    );
     expect(txt).not.toContain("leonardoassuncao.com.br");
   });
 
