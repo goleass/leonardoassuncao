@@ -3,7 +3,7 @@ import { parseHtml, renderComponent } from "../../tests/render";
 import { siteComLinkedinFixture, siteFixture } from "../../tests/fixtures/site";
 import BaseLayout from "./BaseLayout.astro";
 
-const TITLE = "Criação de Sites e Sistemas Web em Canoas/RS | Leonardo Assunção";
+const TITLE = "Criação de Sites e Sistemas em Canoas/RS | Leonardo Assunção";
 
 let doc: Document;
 
@@ -55,8 +55,12 @@ describe("BaseLayout: ícones e cor do tema (ICON-02, ICON-03)", () => {
 });
 
 describe("BaseLayout: canônica, Open Graph e Twitter Card (SEO-02, SEO-03)", () => {
-  it("sem noindex, não publica meta robots (NOIDX-01)", () => {
-    expect(doc.querySelector('meta[name="robots"]')).toBeNull();
+  it("sem noindex, publica o meta robots de indexação exato (RMETA-01)", () => {
+    const robots = doc.querySelectorAll('meta[name="robots"]');
+    expect(robots).toHaveLength(1);
+    expect(robots[0]?.getAttribute("content")).toBe(
+      "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+    );
   });
 
   it("aponta a URL canônica para o domínio configurado", () => {
@@ -79,6 +83,37 @@ describe("BaseLayout: canônica, Open Graph e Twitter Card (SEO-02, SEO-03)", ()
     expect(meta('name="twitter:title"')).toBe(TITLE);
     expect(meta('name="twitter:description"')).toBe(meta('name="description"'));
     expect(meta('name="twitter:image"')).toBe("https://exemplo.com.br/og.png");
+  });
+});
+
+describe("BaseLayout: hreflang, manifest e llms.txt (I18N-01, I18N-02, MANI-02, LLMS-05, RMETA-02)", () => {
+  const hreflangs = (d: Document) =>
+    [...d.querySelectorAll('link[rel="alternate"][hreflang]')].map((l) => [l.getAttribute("hreflang"), l.getAttribute("href")]);
+
+  it("página indexável declara pt-BR e x-default apontando para a canônica", () => {
+    expect(hreflangs(doc)).toEqual([
+      ["pt-BR", "https://exemplo.com.br/"],
+      ["x-default", "https://exemplo.com.br/"],
+    ]);
+  });
+
+  it("página noindex só tem noindex: sem hreflang e sem index, follow", async () => {
+    const other = parseHtml(await renderComponent(BaseLayout, { site: siteFixture, noindex: true }));
+    expect(other.querySelectorAll('meta[name="robots"]')).toHaveLength(1);
+    expect(other.querySelector('meta[name="robots"]')?.getAttribute("content")).toBe("noindex");
+    expect(hreflangs(other)).toEqual([]);
+    expect(other.documentElement.innerHTML).not.toContain("index, follow");
+  });
+
+  it.each([
+    ["indexável", false],
+    ["noindex", true],
+  ])("página %s linka o manifest e o llms.txt", async (_nome, noindex) => {
+    const page = parseHtml(await renderComponent(BaseLayout, { site: siteFixture, noindex }));
+    expect(page.querySelector('link[rel="manifest"]')?.getAttribute("href")).toBe("/site.webmanifest");
+    const llms = page.querySelector('link[rel="alternate"][type="text/plain"]');
+    expect(llms?.getAttribute("href")).toBe("/llms.txt");
+    expect(llms?.getAttribute("title")).toBe("llms.txt");
   });
 });
 

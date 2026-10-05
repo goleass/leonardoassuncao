@@ -228,13 +228,13 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | BOT-01 | P1: Sinais para IA | - | Implementing |
 | BOT-02 | P1: Sinais para IA | - | Implementing |
 | BOT-03 | P1: Sinais para IA | - | Implementing |
-| RMETA-01 | P1: Sinais para IA | - | Pending |
-| RMETA-02 | P1: Sinais para IA | - | Pending |
+| RMETA-01 | P1: Sinais para IA | - | Implementing |
+| RMETA-02 | P1: Sinais para IA | - | Implementing |
 | LLMS-01 | P1: Sinais para IA | - | Implementing |
 | LLMS-02 | P1: Sinais para IA | - | Implementing |
 | LLMS-03 | P1: Sinais para IA | - | Implementing |
 | LLMS-04 | P1: Sinais para IA | - | Implementing |
-| LLMS-05 | P1: Sinais para IA | - | Pending |
+| LLMS-05 | P1: Sinais para IA | - | Implementing |
 | LLMS-06 | P1: Sinais para IA | - | Implementing |
 | SECTXT-01 | P1: security.txt | - | Implementing |
 | SECTXT-02 | P1: security.txt | - | Implementing |
@@ -252,12 +252,12 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | LD-12 | P2: Dados estruturados | - | Pending |
 | LD-14 | P2: Dados estruturados | - | Pending |
 | LD-15 | P2: Dados estruturados | - | Pending |
-| SEO-07 | P2: Ajustes pequenos | - | Pending |
-| SEO-08 | P2: Ajustes pequenos | - | Pending |
+| SEO-07 | P2: Ajustes pequenos | - | Implementing |
+| SEO-08 | P2: Ajustes pequenos | - | Implementing |
 | MANI-01 | P2: Ajustes pequenos | - | Implementing |
-| MANI-02 | P2: Ajustes pequenos | - | Pending |
-| I18N-01 | P2: Ajustes pequenos | - | Pending |
-| I18N-02 | P2: Ajustes pequenos | - | Pending |
+| MANI-02 | P2: Ajustes pequenos | - | Implementing |
+| I18N-01 | P2: Ajustes pequenos | - | Implementing |
+| I18N-02 | P2: Ajustes pequenos | - | Implementing |
 | SMAP-01 | P2: Ajustes pequenos | - | Pending |
 | SMAP-02 | P2: Ajustes pequenos | - | Pending |
 | A11Y-06 | P2: Ajustes pequenos | - | Pending |

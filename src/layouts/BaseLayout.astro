@@ -17,7 +17,7 @@ interface Props {
 
 const {
   site,
-  title = "Criação de Sites e Sistemas Web em Canoas/RS | Leonardo Assunção",
+  title = "Criação de Sites e Sistemas em Canoas/RS | Leonardo Assunção",
   description = HOME_DESCRIPTION,
   noindex = false,
   schema = [],
@@ -38,7 +38,23 @@ const jsonLdText = buildJsonLdText([...siteNodes(site), ...schema]);
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {
+      noindex ? (
+        <meta name="robots" content="noindex" />
+      ) : (
+        <>
+          <meta
+            name="robots"
+            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+          />
+          <link rel="canonical" href={canonical} />
+          <link rel="alternate" hreflang="pt-BR" href={canonical} />
+          <link rel="alternate" hreflang="x-default" href={canonical} />
+        </>
+      )
+    }
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />

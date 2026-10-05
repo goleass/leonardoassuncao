@@ -412,7 +412,7 @@ T21 -> T22
 
 ---
 
-### T14: `<head>` do BaseLayout
+### T14: `<head>` do BaseLayout ✅
 
 **What**: Adicionar robots meta de indexação, `hreflang` pt-BR e x-default, `<link rel="manifest">`, `<link rel="alternate" type="text/plain" href="/llms.txt">` e o título padrão novo; criar `tests/build/titles.test.ts` (todo `<title>` ≤ 60).
 **Where**: `src/layouts/BaseLayout.astro`
