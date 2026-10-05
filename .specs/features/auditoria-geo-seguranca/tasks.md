@@ -237,7 +237,7 @@ T21 -> T22
 
 ---
 
-### T7: Geradores `llmsText` e `llmsFullText`
+### T7: Geradores `llmsText` e `llmsFullText` ✅
 
 **What**: Criar `src/lib/seo/llms.ts` com as duas funções puras do design.
 **Where**: `src/lib/seo/llms.ts`

@@ -231,11 +231,11 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | RMETA-01 | P1: Sinais para IA | - | Pending |
 | RMETA-02 | P1: Sinais para IA | - | Pending |
 | LLMS-01 | P1: Sinais para IA | - | Pending |
-| LLMS-02 | P1: Sinais para IA | - | Pending |
-| LLMS-03 | P1: Sinais para IA | - | Pending |
-| LLMS-04 | P1: Sinais para IA | - | Pending |
+| LLMS-02 | P1: Sinais para IA | - | Implementing |
+| LLMS-03 | P1: Sinais para IA | - | Implementing |
+| LLMS-04 | P1: Sinais para IA | - | Implementing |
 | LLMS-05 | P1: Sinais para IA | - | Pending |
-| LLMS-06 | P1: Sinais para IA | - | Pending |
+| LLMS-06 | P1: Sinais para IA | - | Implementing |
 | SECTXT-01 | P1: security.txt | - | Pending |
 | SECTXT-02 | P1: security.txt | - | Pending |
 | SECTXT-03 | P1: security.txt | - | Pending |
@@ -265,9 +265,9 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | A11Y-08 | P2: Ajustes pequenos | - | Pending |
 | A11Y-09 | P2: Ajustes pequenos | - | Pending |
 | LLMS-07 | P3: llms-full.txt | - | Pending |
-| LLMS-08 | P3: llms-full.txt | - | Pending |
-| LLMS-09 | P3: llms-full.txt | - | Pending |
-| LLMS-10 | P3: llms-full.txt | - | Pending |
+| LLMS-08 | P3: llms-full.txt | - | Implementing |
+| LLMS-09 | P3: llms-full.txt | - | Implementing |
+| LLMS-10 | P3: llms-full.txt | - | Implementing |
 | EDGE-09 | Edge cases | - | Implementing |
 | EDGE-10 | Edge cases | - | Implementing |
 | EDGE-11 | Edge cases | - | Pending |
