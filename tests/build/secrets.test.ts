@@ -203,7 +203,9 @@ describe("SEO: invariantes da saída do build (HOST-02, HOST-06, SVC-03, PERF-02
     // Só o @graph: o @context é o vocabulário schema.org, não uma URL do site.
     const urls = urlsIn(JSON.parse(json ?? "null")["@graph"]);
     expect(urls.length).toBeGreaterThan(0);
-    expect(urls.filter((url) => !url.startsWith(`${DOMAIN}/`))).toEqual([]);
+    // Única URL externa permitida: o perfil do LinkedIn em sameAs (LD-12).
+    const LINKEDIN = "https://www.linkedin.com/in/leonardo-gomes-assuncao";
+    expect(urls.filter((url) => !url.startsWith(`${DOMAIN}/`) && url !== LINKEDIN)).toEqual([]);
   });
 
   it("nenhum arquivo público (páginas, sitemap, robots) cita o domínio sem www", () => {

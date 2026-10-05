@@ -464,7 +464,7 @@ T21 -> T22
 
 ---
 
-### T16: Nó da empresa como Organization + `knowsAbout`
+### T16: Nó da empresa como Organization + `knowsAbout` ✅
 
 **What**: Em `siteNodes`, `@type` vira `["Organization", "ProfessionalService"]` e entra `knowsAbout` com os nomes dos serviços em ordem; o helper `byType` dos testes aceita `@type` em array.
 **Where**: `src/lib/seo/schema.ts`

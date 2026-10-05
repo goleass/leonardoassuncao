@@ -121,7 +121,7 @@ describe("BaseLayout: JSON-LD em @graph (SEO-04, LD-01)", () => {
   const scripts = (d: Document) => d.querySelectorAll('script[type="application/ld+json"]');
   const graph = (d: Document = doc) => JSON.parse(scripts(d)[0]?.textContent ?? "null");
   const empresa = (d: Document = doc) =>
-    graph(d)["@graph"].find((node: { "@type": string }) => node["@type"] === "ProfessionalService");
+    graph(d)["@graph"].find((node: { "@type": string | string[] }) => [node["@type"]].flat().includes("ProfessionalService"));
 
   it("publica um único script JSON-LD com @context e @graph", () => {
     expect(scripts(doc)).toHaveLength(1);
@@ -130,7 +130,7 @@ describe("BaseLayout: JSON-LD em @graph (SEO-04, LD-01)", () => {
   });
 
   it("o @graph traz empresa, site e pessoa", () => {
-    const types = graph()["@graph"].map((node: { "@type": string }) => node["@type"]);
+    const types = graph()["@graph"].flatMap((node: { "@type": string | string[] }) => node["@type"]);
     expect(types).toEqual(expect.arrayContaining(["ProfessionalService", "WebSite", "Person"]));
   });
 
@@ -237,7 +237,7 @@ describe("BaseLayout: título e descrição por página (LEGAL-01, LEGAL-03)", (
     expect(content('name="twitter:description"')).toBe(PAGE_DESCRIPTION);
     // O JSON-LD descreve a empresa (SEO-04), não a página: mantém a descrição da página inicial.
     const data = JSON.parse(page.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
-    const empresa = data["@graph"].find((node: { "@type": string }) => node["@type"] === "ProfessionalService");
+    const empresa = data["@graph"].find((node: { "@type": string | string[] }) => [node["@type"]].flat().includes("ProfessionalService"));
     expect(empresa.description).toBe(meta('name="description"'));
   });
 

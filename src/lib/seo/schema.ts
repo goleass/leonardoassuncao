@@ -25,7 +25,7 @@ export function siteNodes(site: SiteConfig): Node[] {
   const [locality, region] = site.cidade.split(",").map((part) => part.trim());
   return [
     {
-      "@type": "ProfessionalService",
+      "@type": ["Organization", "ProfessionalService"],
       ...ref(site, "empresa"),
       name: NAME,
       description: HOME_DESCRIPTION,
@@ -39,6 +39,7 @@ export function siteNodes(site: SiteConfig): Node[] {
       areaServed: AREA_SERVED,
       founder: ref(site, "leonardo"),
       ...sameAs(site),
+      knowsAbout: services.map((s) => s.name),
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Serviços",
