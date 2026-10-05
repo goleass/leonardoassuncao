@@ -212,7 +212,7 @@ T21 -> T22
 
 ---
 
-### T6: Bots de IA no robots.txt
+### T6: Bots de IA no robots.txt ✅
 
 **What**: Exportar `AI_BOTS` (9 user-agents) e gerar um grupo por bot com `Allow: /` e `Disallow: /api/`, mantendo o grupo `*` e o `Sitemap:`.
 **Where**: `src/pages/robots.txt.ts`
