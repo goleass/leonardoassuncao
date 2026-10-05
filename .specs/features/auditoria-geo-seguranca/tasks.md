@@ -186,7 +186,7 @@ T21 -> T22
 
 ---
 
-### T5: Teste de navegador com os cabeçalhos reais
+### T5: Teste de navegador com os cabeçalhos reais ✅
 
 **What**: Adicionar `playwright-core` (devDependency) e o script `test:browser`, e criar `tests/browser/csp.test.ts`: servidor `node:http` sobre `dist/` com os cabeçalhos lidos do `netlify.toml`; abre `/`, `/criacao-de-sites/`, `/privacidade/` e `/nao-existe/` (404); falha em qualquer violação de CSP, erro de COEP/CORP ou requisição a outra origem; confere `.reveal.is-visible`, o menu em 390 px e o envio do formulário com `/api/contato` interceptado.
 **Where**: `tests/browser/csp.test.ts`

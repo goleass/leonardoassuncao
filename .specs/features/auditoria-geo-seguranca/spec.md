@@ -222,9 +222,9 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | CSP-01 | P1: Cabeçalhos de segurança | - | Implementing |
 | CSP-02 | P1: Cabeçalhos de segurança | - | Implementing |
 | CSP-03 | P1: Cabeçalhos de segurança | - | Implementing |
-| CSP-04 | P1: Cabeçalhos de segurança | - | Pending |
-| CSP-05 | P1: Cabeçalhos de segurança | - | Pending |
-| CSP-06 | P1: Cabeçalhos de segurança | - | Pending |
+| CSP-04 | P1: Cabeçalhos de segurança | - | Implementing |
+| CSP-05 | P1: Cabeçalhos de segurança | - | Implementing |
+| CSP-06 | P1: Cabeçalhos de segurança | - | Implementing |
 | BOT-01 | P1: Sinais para IA | - | Pending |
 | BOT-02 | P1: Sinais para IA | - | Pending |
 | BOT-03 | P1: Sinais para IA | - | Pending |
@@ -269,7 +269,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | LLMS-09 | P3: llms-full.txt | - | Pending |
 | LLMS-10 | P3: llms-full.txt | - | Pending |
 | EDGE-09 | Edge cases | - | Implementing |
-| EDGE-10 | Edge cases | - | Pending |
+| EDGE-10 | Edge cases | - | Implementing |
 | EDGE-11 | Edge cases | - | Pending |
 | EDGE-12 | Edge cases | - | Pending |
 | EDGE-13 | Edge cases | - | Implementing |

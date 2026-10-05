@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+// Sem compilação via `Function`: com a CSP sem 'unsafe-eval', a sonda do zod já gera uma violação (CSP-04).
+z.config({ jitless: true });
+
 export const PROJECT_TYPES = ["Site", "Sistema web", "Integração", "Outro"] as const;
 export type ProjectType = (typeof PROJECT_TYPES)[number];
 export type ContactField = "nome" | "email" | "tipo" | "mensagem";
