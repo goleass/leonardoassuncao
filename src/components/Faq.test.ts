@@ -44,4 +44,23 @@ describe("Faq: perguntas frequentes (PAGE-07)", () => {
   it('tem o título <h2> "Perguntas frequentes" (A11Y-05)', () => {
     expect(doc.querySelector("#faq h2")?.textContent?.trim()).toBe("Perguntas frequentes");
   });
+
+  it("cada <summary> tem exatamente um <h3> com o texto da pergunta (A11Y-06)", () => {
+    const summaries = [...doc.querySelectorAll("#faq summary")];
+    expect(summaries).toHaveLength(4);
+    for (const summary of summaries) {
+      const headings = summary.querySelectorAll("h3");
+      expect(headings).toHaveLength(1);
+      expect(headings[0].textContent?.trim()).toBe(summary.textContent?.trim());
+    }
+  });
+
+  it("o <h3> herda a fonte do <summary> e fica na mesma linha do marcador, sem mudar o visual (A11Y-06)", async () => {
+    const { readFile } = await import("node:fs/promises");
+    const source = await readFile(new URL("./Faq.astro", import.meta.url), "utf8");
+    const rule = source.match(/\.faq__q\s*\{([^}]*)\}/)?.[1] ?? "";
+    expect(rule).toMatch(/font:\s*inherit;/);
+    expect(rule).toMatch(/margin:\s*0;/);
+    expect(rule).toMatch(/display:\s*inline;/);
+  });
 });

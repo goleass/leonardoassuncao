@@ -490,7 +490,7 @@ T21 -> T22
 
 ---
 
-### T17: Perguntas do FAQ como `<h3>`
+### T17: Perguntas do FAQ como `<h3>` ✅
 
 **What**: Colocar o texto de cada pergunta num `<h3 class="faq__q">` dentro do `<summary>`, com `font: inherit; margin: 0`.
 **Where**: `src/components/Faq.astro`

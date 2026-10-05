@@ -9,7 +9,7 @@ import { questions } from "../data/faq";
       {
         questions.map(({ q, a }, index) => (
           <details class="faq__item" open={index === 0}>
-            <summary class="faq__question">{q}</summary>
+            <summary class="faq__question"><h3 class="faq__q">{q}</h3></summary>
             <p class="faq__answer">{a}</p>
           </details>
         ))
@@ -59,6 +59,13 @@ import { questions } from "../data/faq";
     font-weight: 600;
     font-stretch: 108%;
     cursor: pointer;
+  }
+
+  /* Pergunta como título (A11Y-06): herda o visual do summary; inline mantém o marcador na mesma linha. */
+  .faq__q {
+    display: inline;
+    font: inherit;
+    margin: 0;
   }
 
   .faq__answer {

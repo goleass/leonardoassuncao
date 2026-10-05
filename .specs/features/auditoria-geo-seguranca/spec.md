@@ -260,7 +260,7 @@ O GEO Checker (check.outrun.at, resultado `aa05d5d3`, 2026-10-04) deu nota **C (
 | I18N-02 | P2: Ajustes pequenos | - | Implementing |
 | SMAP-01 | P2: Ajustes pequenos | - | Pending |
 | SMAP-02 | P2: Ajustes pequenos | - | Pending |
-| A11Y-06 | P2: Ajustes pequenos | - | Pending |
+| A11Y-06 | P2: Ajustes pequenos | - | Implementing |
 | A11Y-07 | P2: Ajustes pequenos | - | Pending |
 | A11Y-08 | P2: Ajustes pequenos | - | Pending |
 | A11Y-09 | P2: Ajustes pequenos | - | Pending |
