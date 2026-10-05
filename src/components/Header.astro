@@ -133,32 +133,45 @@ const links = [
   }
 
   /*
-   * Abaixo de 768px (RESP-02, EDGE-04) o botão Menu substitui os links. Só com JavaScript:
-   * sem ele os links continuam visíveis, quebrando linha.
+   * Abaixo de 768px (RESP-02, EDGE-04) o botão Menu substitui os links. Só com JavaScript
+   * (`scripting: enabled`, sem script inline: CSP-03): sem ele os links continuam visíveis, quebrando linha.
    */
-  @media (max-width: 767.98px) {
-    :global(html.js) .menu-button {
+  @media (max-width: 767.98px) and (scripting: enabled) {
+    /*
+     * Marca e botão Menu numa linha só, com qualquer fonte: a marca encolhe e quebra o próprio texto em vez de
+     * empurrar o botão para uma segunda linha quando a Archivo carrega (CLS 0,32 medido: PERF-05).
+     */
+    .site-header__inner {
+      column-gap: 12px;
+    }
+
+    .brand {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .menu-button {
       display: inline-flex;
       align-items: center;
     }
 
-    :global(html.js) .site-nav {
+    .site-nav {
       display: none;
       flex-basis: 100%;
     }
 
-    :global(html.js) .menu-button[aria-expanded="true"] + .site-nav {
+    .menu-button[aria-expanded="true"] + .site-nav {
       display: block;
     }
 
-    :global(html.js) .site-nav__list {
+    .site-nav__list {
       flex-direction: column;
       align-items: stretch;
       gap: 4px;
       padding-block: 8px 12px;
     }
 
-    :global(html.js) .site-nav__cta {
+    .site-nav__cta {
       justify-content: center;
       margin-top: 8px;
     }

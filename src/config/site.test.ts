@@ -16,12 +16,13 @@ describe("site.ts: dados reais da empresa (PAGE-08, PAGE-09)", () => {
       cidade: "Canoas, RS",
       cnpj: "44.053.654/0001-59",
       prazoResposta: "24 horas úteis",
+      linkedin: "https://www.linkedin.com/in/leonardo-gomes-assuncao",
       projetos: [],
     });
   });
 
-  it("sem LinkedIn, projetos nem depoimento (a empresa não tem)", () => {
-    expect(site).not.toHaveProperty("linkedin");
+  it("tem o LinkedIn exato da spec (LD-12), mas sem projetos nem depoimento", () => {
+    expect(site.linkedin).toBe("https://www.linkedin.com/in/leonardo-gomes-assuncao");
     expect(site.projetos).toEqual([]);
     expect(site).not.toHaveProperty("depoimento");
   });

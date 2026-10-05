@@ -32,6 +32,11 @@ describe("Página 404 fora do índice (NOIDX-01, NOIDX-02)", () => {
     expect(doc.querySelector('meta[name="robots"]')?.getAttribute("content")).toBe("noindex");
   });
 
+  it("não tem hreflang nem o robots index, follow (I18N-02, RMETA-02)", () => {
+    expect(doc.querySelector("link[hreflang]")).toBeNull();
+    expect(doc.documentElement.innerHTML).not.toContain("index, follow");
+  });
+
   it("não declara URL canônica nem og:url", () => {
     expect(doc.querySelector('link[rel="canonical"]')).toBeNull();
     expect(doc.querySelector('meta[property="og:url"]')).toBeNull();

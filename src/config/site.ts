@@ -9,5 +9,6 @@ export const site: SiteConfig = {
   cidade: "Canoas, RS",
   cnpj: "44.053.654/0001-59",
   prazoResposta: "24 horas úteis",
+  linkedin: "https://www.linkedin.com/in/leonardo-gomes-assuncao",
   projetos: [],
 };

@@ -8,6 +8,7 @@ const svg = readFileSync("public/favicon.svg");
 const png = (size) => sharp(svg, { density: 72 * (size / 48) }).resize(size, size).png().toBuffer();
 
 writeFileSync("public/apple-touch-icon.png", await png(180));
+writeFileSync("public/icon-192.png", await png(192));
 writeFileSync("public/icon-512.png", await png(512));
 
 // ICO com uma única entrada PNG 48×48: cabeçalho de 6 bytes + diretório de 16 bytes + imagem.

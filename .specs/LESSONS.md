@@ -98,6 +98,30 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: tasks.md T18 SPEC_DEVIATION (tests/build/secrets.test.ts:171) (tests/build)
 - last seen: 2026-10-04T22:11:20Z
 
+### L-015 - Assert every generated list entry as the full exact line, not a prefix, so an emptied description is caught
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `generated-text` · harmful: 0
+- features: auditoria-geo-seguranca
+- evidence: M18 src/lib/seo/llms.test.ts:29 (generated-text)
+- last seen: 2026-10-05T01:05:31Z
+
+### L-016 - When a new requirement restricts something an earlier requirement allowed, state in the spec whether the earlier allowance still holds
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `spec` · harmful: 0
+- features: auditoria-geo-seguranca
+- evidence: PERF-09 tests/animations-css.test.ts:97 (spec)
+- last seen: 2026-10-05T01:05:31Z
+
+### L-017 - Verify a strict CSP by loading the built pages in a real browser and failing on any console violation, because library runtime probes such as eval detection only show up there
+- signal: `gate_fail` · recurrence: 1 feature(s) · scope: `security-headers` · harmful: 0
+- features: auditoria-geo-seguranca
+- evidence: M16 src/lib/contact/validation.ts:4 tests/browser/csp.test.ts:115 (security-headers)
+- last seen: 2026-10-05T01:05:31Z
+
+### L-018 - Reproduce layout shift with a fallback font whose metrics match what real devices render, because a wider local system fallback hides wrapping caused by the font swap
+- signal: `gate_fail` · recurrence: 1 feature(s) · scope: `performance` · harmful: 0
+- features: auditoria-geo-seguranca
+- evidence: PERF-05 commits bdde9b7 fd4fbd5 tasks.md T23 (performance)
+- last seen: 2026-10-05T01:05:31Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

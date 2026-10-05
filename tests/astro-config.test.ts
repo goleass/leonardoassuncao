@@ -37,3 +37,11 @@ describe("astro.config.mjs: CSS embutido no HTML (PERF-01)", { timeout: 30_000 }
     expect(config.build?.inlineStylesheets).toBe("always");
   });
 });
+
+describe("astro.config.mjs: scripts como arquivo externo (CSP-03, EDGE-09)", { timeout: 30_000 }, () => {
+  it("define vite.build.assetsInlineLimit como 0", async () => {
+    vi.resetModules();
+    const { default: config } = await loadConfig();
+    expect(config.vite?.build?.assetsInlineLimit).toBe(0);
+  });
+});

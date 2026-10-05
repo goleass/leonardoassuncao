@@ -118,7 +118,7 @@ describe("Página inicial: FAQ em dados estruturados (LD-07)", () => {
 describe("Página inicial: título e descrição para a busca (HOME-01, HOME-02)", () => {
   it("publica o título e a descrição exatos da spec", async () => {
     const doc = await render(siteFixture);
-    expect(doc.querySelector("title")?.textContent).toBe("Criação de Sites e Sistemas Web em Canoas/RS | Leonardo Assunção");
+    expect(doc.querySelector("title")?.textContent).toBe("Criação de Sites e Sistemas em Canoas/RS | Leonardo Assunção");
     expect(doc.querySelector('meta[name="description"]')?.getAttribute("content")).toBe(
       "Criação de sites, sistemas web, integrações e software sob medida em Canoas/RS. Um só responsável técnico, do diagnóstico ao suporte. Atendo todo o Brasil.",
     );

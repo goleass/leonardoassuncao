@@ -134,11 +134,21 @@ describe("fontes servidas pelo próprio domínio (SEO-06)", () => {
 
   it("toda @font-face da Archivo aponta para /_astro/ e usa font-display: swap", () => {
     const faces = publicText().flatMap(({ content }) => content.match(/@font-face\{[^}]*\}/g) ?? []);
-    const archivo = faces.filter((face) => /font-family:\s*["']?Archivo/.test(face));
+    const archivo = faces.filter((face) => /font-family:\s*["']?Archivo Variable/.test(face));
     expect(archivo.length).toBeGreaterThan(0);
     for (const face of archivo) {
       expect(face).toMatch(/font-display:\s*swap/);
       expect(face).toMatch(/url\(["']?\/_astro\/archivo-[^)]+\.woff2/);
+    }
+    // Qualquer outra @font-face baixada também vem do próprio domínio; o fallback (PERF-08) só usa local().
+    for (const face of faces) {
+      for (const [, url] of face.matchAll(/url\(["']?([^"')]+)/g)) expect(url, face).toMatch(/^\/_astro\/archivo-[^/]+\.woff2$/);
+    }
+    const fallback = faces.filter((face) => /font-family:\s*["']?Archivo Fallback/.test(face));
+    expect(fallback.length).toBeGreaterThan(0);
+    for (const face of fallback) {
+      expect(face).toMatch(/src:\s*local\(/);
+      expect(face).not.toMatch(/url\(/);
     }
   });
 
@@ -203,7 +213,9 @@ describe("SEO: invariantes da saída do build (HOST-02, HOST-06, SVC-03, PERF-02
     // Só o @graph: o @context é o vocabulário schema.org, não uma URL do site.
     const urls = urlsIn(JSON.parse(json ?? "null")["@graph"]);
     expect(urls.length).toBeGreaterThan(0);
-    expect(urls.filter((url) => !url.startsWith(`${DOMAIN}/`))).toEqual([]);
+    // Única URL externa permitida: o perfil do LinkedIn em sameAs (LD-12).
+    const LINKEDIN = "https://www.linkedin.com/in/leonardo-gomes-assuncao";
+    expect(urls.filter((url) => !url.startsWith(`${DOMAIN}/`) && url !== LINKEDIN)).toEqual([]);
   });
 
   it("nenhum arquivo público (páginas, sitemap, robots) cita o domínio sem www", () => {

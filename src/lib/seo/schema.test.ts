@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { siteComLinkedinFixture, siteFixture } from "../../../tests/fixtures/site";
+import { site as siteReal } from "../../config/site";
 import { services } from "../../data/services";
 import { breadcrumbNode, faqNode, jsonLdText, serviceNode, siteNodes } from "./schema";
 
@@ -10,7 +11,9 @@ const AREA = [
   { "@type": "Country", name: "Brasil" },
 ];
 
-const byType = (nodes: Record<string, unknown>[], type: string) => nodes.find((n) => n["@type"] === type) as Record<string, any>;
+// @type pode ser string ou array (a empresa é Organization e ProfessionalService, LD-10).
+const byType = (nodes: Record<string, unknown>[], type: string) =>
+  nodes.find((n) => [n["@type"]].flat().includes(type)) as Record<string, any>;
 
 describe("siteNodes: empresa (LD-02, LD-03, LD-05)", () => {
   const empresa = byType(siteNodes(siteFixture), "ProfessionalService");
@@ -69,11 +72,45 @@ describe("siteNodes: site e pessoa (LD-04)", () => {
   });
 });
 
+describe("siteNodes: Organization e knowsAbout (LD-10, LD-11, LD-14)", () => {
+  const nodes = siteNodes(siteFixture);
+  const empresa = nodes.find((n) => n["@id"] === `${BASE}#empresa`) as Record<string, any>;
+
+  it('a empresa tem @type ["Organization", "ProfessionalService"]', () => {
+    expect(empresa["@type"]).toEqual(["Organization", "ProfessionalService"]);
+  });
+
+  it("knowsAbout lista o nome de cada serviço, na ordem do arquivo", () => {
+    expect(empresa.knowsAbout).toEqual([
+      "Criação de sites",
+      "Sistemas web",
+      "Integrações e APIs",
+      "Software sob medida",
+      "Manutenção e evolução",
+    ]);
+    expect(empresa.knowsAbout).toEqual(services.map((s) => s.name));
+  });
+
+  it("mantém hasOfferCatalog, address, name e url", () => {
+    expect(empresa.hasOfferCatalog.itemListElement).toHaveLength(services.length);
+    expect(empresa.address.addressCountry).toBe("BR");
+    expect(empresa.name).toBe("Leonardo Gomes Assunção");
+    expect(empresa.url).toBe(BASE);
+  });
+});
+
 describe("siteNodes: LinkedIn (LD-09)", () => {
-  it("sem LinkedIn, empresa e pessoa não têm sameAs", () => {
+  it("sem LinkedIn, empresa e pessoa não têm a chave sameAs (LD-15)", () => {
     const nodes = siteNodes(siteFixture);
     expect(byType(nodes, "ProfessionalService")).not.toHaveProperty("sameAs");
     expect(byType(nodes, "Person")).not.toHaveProperty("sameAs");
+  });
+
+  it("com o site real, empresa e pessoa têm sameAs com o LinkedIn da spec (LD-12)", () => {
+    const nodes = siteNodes(siteReal);
+    const url = "https://www.linkedin.com/in/leonardo-gomes-assuncao";
+    expect(byType(nodes, "ProfessionalService").sameAs).toEqual([url]);
+    expect(byType(nodes, "Person").sameAs).toEqual([url]);
   });
 
   it("com LinkedIn, empresa e pessoa listam o perfil em sameAs", () => {

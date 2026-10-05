@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 15,
+  "next_id": 19,
   "lessons": [
     {
       "id": "L-001",
@@ -256,6 +256,78 @@
       ],
       "created": "2026-10-04T22:11:20Z",
       "last_seen": "2026-10-04T22:11:20Z"
+    },
+    {
+      "id": "L-015",
+      "key": "surviving_mutant::assert every generated list entry as the full exact line not a prefix so an emptied description is caught",
+      "text": "Assert every generated list entry as the full exact line, not a prefix, so an emptied description is caught",
+      "signal": "surviving_mutant",
+      "scope": "generated-text",
+      "status": "candidate",
+      "features": [
+        "auditoria-geo-seguranca"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "M18 src/lib/seo/llms.test.ts:29 (generated-text)"
+      ],
+      "created": "2026-10-05T01:05:31Z",
+      "last_seen": "2026-10-05T01:05:31Z"
+    },
+    {
+      "id": "L-016",
+      "key": "spec_precision_gap::when a new requirement restricts something an earlier requirement allowed state in the spec whether the earlier allowance still holds",
+      "text": "When a new requirement restricts something an earlier requirement allowed, state in the spec whether the earlier allowance still holds",
+      "signal": "spec_precision_gap",
+      "scope": "spec",
+      "status": "candidate",
+      "features": [
+        "auditoria-geo-seguranca"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "PERF-09 tests/animations-css.test.ts:97 (spec)"
+      ],
+      "created": "2026-10-05T01:05:31Z",
+      "last_seen": "2026-10-05T01:05:31Z"
+    },
+    {
+      "id": "L-017",
+      "key": "gate_fail::verify a strict csp by loading the built pages in a real browser and failing on any console violation because library runtime probes such as eval detection only show up there",
+      "text": "Verify a strict CSP by loading the built pages in a real browser and failing on any console violation, because library runtime probes such as eval detection only show up there",
+      "signal": "gate_fail",
+      "scope": "security-headers",
+      "status": "candidate",
+      "features": [
+        "auditoria-geo-seguranca"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "M16 src/lib/contact/validation.ts:4 tests/browser/csp.test.ts:115 (security-headers)"
+      ],
+      "created": "2026-10-05T01:05:31Z",
+      "last_seen": "2026-10-05T01:05:31Z"
+    },
+    {
+      "id": "L-018",
+      "key": "gate_fail::reproduce layout shift with a fallback font whose metrics match what real devices render because a wider local system fallback hides wrapping caused by the font swap",
+      "text": "Reproduce layout shift with a fallback font whose metrics match what real devices render, because a wider local system fallback hides wrapping caused by the font swap",
+      "signal": "gate_fail",
+      "scope": "performance",
+      "status": "candidate",
+      "features": [
+        "auditoria-geo-seguranca"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "PERF-05 commits bdde9b7 fd4fbd5 tasks.md T23 (performance)"
+      ],
+      "created": "2026-10-05T01:05:31Z",
+      "last_seen": "2026-10-05T01:05:31Z"
     }
   ]
 }

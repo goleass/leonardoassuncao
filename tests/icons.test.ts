@@ -30,6 +30,10 @@ describe("Ícones do site (ICON-01)", () => {
     expect(pngSize(file("apple-touch-icon.png"))).toEqual({ width: 180, height: 180 });
   });
 
+  it("icon-192.png tem 192×192 (MANI-01)", () => {
+    expect(pngSize(file("icon-192.png"))).toEqual({ width: 192, height: 192 });
+  });
+
   it("icon-512.png tem 512×512", () => {
     expect(pngSize(file("icon-512.png"))).toEqual({ width: 512, height: 512 });
   });

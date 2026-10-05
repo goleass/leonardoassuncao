@@ -3,7 +3,7 @@ import { parseHtml, renderComponent } from "../../tests/render";
 import { siteComLinkedinFixture, siteFixture } from "../../tests/fixtures/site";
 import BaseLayout from "./BaseLayout.astro";
 
-const TITLE = "Criação de Sites e Sistemas Web em Canoas/RS | Leonardo Assunção";
+const TITLE = "Criação de Sites e Sistemas em Canoas/RS | Leonardo Assunção";
 
 let doc: Document;
 
@@ -55,8 +55,12 @@ describe("BaseLayout: ícones e cor do tema (ICON-02, ICON-03)", () => {
 });
 
 describe("BaseLayout: canônica, Open Graph e Twitter Card (SEO-02, SEO-03)", () => {
-  it("sem noindex, não publica meta robots (NOIDX-01)", () => {
-    expect(doc.querySelector('meta[name="robots"]')).toBeNull();
+  it("sem noindex, publica o meta robots de indexação exato (RMETA-01)", () => {
+    const robots = doc.querySelectorAll('meta[name="robots"]');
+    expect(robots).toHaveLength(1);
+    expect(robots[0]?.getAttribute("content")).toBe(
+      "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+    );
   });
 
   it("aponta a URL canônica para o domínio configurado", () => {
@@ -82,11 +86,42 @@ describe("BaseLayout: canônica, Open Graph e Twitter Card (SEO-02, SEO-03)", ()
   });
 });
 
+describe("BaseLayout: hreflang, manifest e llms.txt (I18N-01, I18N-02, MANI-02, LLMS-05, RMETA-02)", () => {
+  const hreflangs = (d: Document) =>
+    [...d.querySelectorAll('link[rel="alternate"][hreflang]')].map((l) => [l.getAttribute("hreflang"), l.getAttribute("href")]);
+
+  it("página indexável declara pt-BR e x-default apontando para a canônica", () => {
+    expect(hreflangs(doc)).toEqual([
+      ["pt-BR", "https://exemplo.com.br/"],
+      ["x-default", "https://exemplo.com.br/"],
+    ]);
+  });
+
+  it("página noindex só tem noindex: sem hreflang e sem index, follow", async () => {
+    const other = parseHtml(await renderComponent(BaseLayout, { site: siteFixture, noindex: true }));
+    expect(other.querySelectorAll('meta[name="robots"]')).toHaveLength(1);
+    expect(other.querySelector('meta[name="robots"]')?.getAttribute("content")).toBe("noindex");
+    expect(hreflangs(other)).toEqual([]);
+    expect(other.documentElement.innerHTML).not.toContain("index, follow");
+  });
+
+  it.each([
+    ["indexável", false],
+    ["noindex", true],
+  ])("página %s linka o manifest e o llms.txt", async (_nome, noindex) => {
+    const page = parseHtml(await renderComponent(BaseLayout, { site: siteFixture, noindex }));
+    expect(page.querySelector('link[rel="manifest"]')?.getAttribute("href")).toBe("/site.webmanifest");
+    const llms = page.querySelector('link[rel="alternate"][type="text/plain"]');
+    expect(llms?.getAttribute("href")).toBe("/llms.txt");
+    expect(llms?.getAttribute("title")).toBe("llms.txt");
+  });
+});
+
 describe("BaseLayout: JSON-LD em @graph (SEO-04, LD-01)", () => {
   const scripts = (d: Document) => d.querySelectorAll('script[type="application/ld+json"]');
   const graph = (d: Document = doc) => JSON.parse(scripts(d)[0]?.textContent ?? "null");
   const empresa = (d: Document = doc) =>
-    graph(d)["@graph"].find((node: { "@type": string }) => node["@type"] === "ProfessionalService");
+    graph(d)["@graph"].find((node: { "@type": string | string[] }) => [node["@type"]].flat().includes("ProfessionalService"));
 
   it("publica um único script JSON-LD com @context e @graph", () => {
     expect(scripts(doc)).toHaveLength(1);
@@ -95,7 +130,7 @@ describe("BaseLayout: JSON-LD em @graph (SEO-04, LD-01)", () => {
   });
 
   it("o @graph traz empresa, site e pessoa", () => {
-    const types = graph()["@graph"].map((node: { "@type": string }) => node["@type"]);
+    const types = graph()["@graph"].flatMap((node: { "@type": string | string[] }) => node["@type"]);
     expect(types).toEqual(expect.arrayContaining(["ProfessionalService", "WebSite", "Person"]));
   });
 
@@ -166,12 +201,21 @@ describe("BaseLayout: pular para o conteúdo (A11Y-04)", () => {
   });
 });
 
-describe("BaseLayout: classe js para animações (ANIM-09)", () => {
-  it('o script inline do <head> adiciona a classe "js" ao <html>', () => {
-    const script = [...doc.head.querySelectorAll("script:not([type])")].map((s) => s.textContent ?? "").join("\n");
-    const target = parseHtml("<html><body></body></html>");
-    new Function("document", script)(target);
-    expect(target.documentElement.classList.contains("js")).toBe(true);
+// O estado "com JS" vem de @media (scripting: enabled) (tests/animations-css.test.ts, ANIM-09),
+// não de um script inline que a CSP bloquearia.
+describe("BaseLayout: nenhum script executável inline (CSP-03, ANIM-09)", () => {
+  it("todo <script> tem src ou é JSON-LD", () => {
+    const scripts = [...doc.querySelectorAll("script")];
+    const inline = scripts.filter((s) => !s.hasAttribute("src") && s.getAttribute("type") !== "application/ld+json");
+    expect(inline.map((s) => s.outerHTML)).toEqual([]);
+  });
+
+  it("o script de revelação continua carregado, como módulo externo", () => {
+    const modules = [...doc.querySelectorAll('script[type="module"][src]')];
+    expect(modules.some((s) => s.getAttribute("src")?.includes("BaseLayout.astro?astro&type=script"))).toBe(true);
+  });
+
+  it('o HTML não depende da classe "js" no <html>', () => {
     expect(doc.documentElement.classList.contains("js")).toBe(false);
   });
 });
@@ -193,7 +237,7 @@ describe("BaseLayout: título e descrição por página (LEGAL-01, LEGAL-03)", (
     expect(content('name="twitter:description"')).toBe(PAGE_DESCRIPTION);
     // O JSON-LD descreve a empresa (SEO-04), não a página: mantém a descrição da página inicial.
     const data = JSON.parse(page.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
-    const empresa = data["@graph"].find((node: { "@type": string }) => node["@type"] === "ProfessionalService");
+    const empresa = data["@graph"].find((node: { "@type": string | string[] }) => [node["@type"]].flat().includes("ProfessionalService"));
     expect(empresa.description).toBe(meta('name="description"'));
   });
 
