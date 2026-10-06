@@ -109,4 +109,11 @@ describe("animações só com opacity, transform e background-size (PERF-09)", (
     const props = transitions.flatMap((v) => v.split(",").map((part) => part.trim().split(/\s+/)[0]));
     expect(props.filter((p) => p !== "none" && !ALLOWED.includes(p))).toEqual([]);
   });
+
+  it("o formulário de contato some quando o script o esconde após o envio (FORM-02)", () => {
+    const astro = readFileSync(join(process.cwd(), "src/components/Contact.astro"), "utf8");
+    const style = astro.match(/<style>([\s\S]*)<\/style>/)?.[1] ?? "";
+    const hidden = parseCss(style).find((r) => r.prelude === ".contact-form[hidden]");
+    expect(hidden && value(hidden, "display")).toBe("none");
+  });
 });

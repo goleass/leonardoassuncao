@@ -113,7 +113,8 @@ export function initContactForm(form: HTMLFormElement, deps: ContactFormDeps): v
     } catch {
       failed();
     } finally {
-      setSending(false);
+      // Após o sucesso o botão fica travado: um novo clique não reenvia a mensagem.
+      if (!form.hidden) setSending(false);
     }
   });
 }

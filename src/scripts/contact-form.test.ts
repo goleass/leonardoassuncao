@@ -165,6 +165,20 @@ describe("initContactForm: sucesso (FORM-02, FORM-03)", () => {
   });
 });
 
+describe("initContactForm: envio único", () => {
+  it("cliques repetidos durante e depois do envio geram uma única requisição", async () => {
+    fetchMock.mockReturnValue(reply(200, { ok: true }));
+    fill();
+    submit();
+    submit();
+    await flush();
+    submit();
+    await flush();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(button().disabled).toBe(true);
+  });
+});
+
 describe("initContactForm: erros do servidor", () => {
   it("400 mostra as mensagens do servidor abaixo dos campos e mantém o formulário (FORM-06)", async () => {
     fetchMock.mockReturnValue(reply(400, { ok: false, errors: { email: "Informe um e-mail válido." } }));

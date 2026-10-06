@@ -256,6 +256,11 @@ const { site } = Astro.props;
     gap: 28px;
   }
 
+  /* `display: flex` acima anularia o `hidden` que o script põe após o envio com sucesso. */
+  .contact-form[hidden] {
+    display: none;
+  }
+
   .contact-form__row {
     display: flex;
     flex-wrap: wrap;
