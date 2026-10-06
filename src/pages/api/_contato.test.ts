@@ -20,16 +20,19 @@ const valid = { nome: "Ana Lima", email: "ana@empresa.com.br", tipo: "Sistema we
 async function loadPost() {
   vi.resetModules();
   const { POST } = await import("./contato");
-  return (ip = "203.0.113.7") =>
+  return (ip = "203.0.113.7", mensagem = valid.mensagem) =>
     POST({
       request: new Request("https://leonardoassuncao.com.br/api/contato", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(valid),
+        body: JSON.stringify({ ...valid, mensagem }),
       }),
       clientAddress: ip,
     } as never) as Promise<Response>;
 }
+
+// Mensagens diferentes, para os testes de limite não esbarrarem na deduplicação.
+const msg = (i: number) => `${valid.mensagem} (${i})`;
 
 beforeEach(() => {
   send.mockReset();
@@ -46,7 +49,7 @@ describe("POST /api/contato", () => {
   it("o mesmo IP consegue 5 envios e o 6º recebe 429 sem enviar e-mail (FORM-11)", async () => {
     const post = await loadPost();
     const statuses: number[] = [];
-    for (let i = 0; i < 6; i++) statuses.push((await post()).status);
+    for (let i = 0; i < 6; i++) statuses.push((await post(undefined, msg(i))).status);
     expect(statuses).toEqual([200, 200, 200, 200, 200, 429]);
     expect(send).toHaveBeenCalledTimes(5);
   });
@@ -54,17 +57,24 @@ describe("POST /api/contato", () => {
   it("a janela do limite é de 60 minutos: bloqueado aos 59min59s, liberado aos 60min (FORM-11)", async () => {
     vi.useFakeTimers({ now: new Date("2026-10-04T12:00:00Z") });
     const post = await loadPost();
-    for (let i = 0; i < 5; i++) expect((await post()).status).toBe(200);
+    for (let i = 0; i < 5; i++) expect((await post(undefined, msg(i))).status).toBe(200);
     vi.setSystemTime(new Date("2026-10-04T12:59:59Z"));
-    expect((await post()).status).toBe(429);
+    expect((await post(undefined, msg(5))).status).toBe(429);
     vi.setSystemTime(new Date("2026-10-04T13:00:00Z"));
-    expect((await post()).status).toBe(200);
+    expect((await post(undefined, msg(6))).status).toBe(200);
   });
 
   it("outro IP não é afetado pelo limite do primeiro (FORM-11)", async () => {
     const post = await loadPost();
-    for (let i = 0; i < 5; i++) await post("203.0.113.7");
+    for (let i = 0; i < 5; i++) await post("203.0.113.7", msg(i));
     expect((await post("198.51.100.9")).status).toBe(200);
+  });
+
+  it("cliques repetidos com a mesma mensagem geram um único e-mail", async () => {
+    const post = await loadPost();
+    const statuses = [(await post()).status, (await post()).status, (await post()).status];
+    expect(statuses).toEqual([200, 200, 200]);
+    expect(send).toHaveBeenCalledTimes(1);
   });
 
   it("envia para o destino configurado com o visitante em Responder para (FORM-01)", async () => {
