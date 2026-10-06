@@ -1,0 +1,29 @@
+---
+// Monograma LGA: L, G e A dividem traços; a barra do G atravessa e vira a barra do A (em azul).
+// As letras usam currentColor; a barra usa --mark.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg class:list={["logo", className]} viewBox="0 0 104 60" aria-hidden="true" focusable="false">
+  <path
+    fill="currentColor"
+    d="M0 0h10v60H0zM0 50h72v10H0zM26 0h10v60H26zM26 0h26v10H26zM62 0h10v60H62zM62 0h42v10H62zM94 0h10v60H94z"
+  ></path>
+  <path class="logo__bar" d="M46 30h48v10H46z"></path>
+</svg>
+
+<style>
+  .logo {
+    flex: none;
+    aspect-ratio: 104 / 60;
+    width: auto;
+  }
+
+  .logo__bar {
+    fill: var(--mark);
+  }
+</style>
