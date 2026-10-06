@@ -53,4 +53,4 @@
 - **Uncommitted files**: none
 - **Branch**: main (fix/headers-ssr mergeada em f3cd8e0)
 - **Riscos aceitos**: 404 de caminho inexistente sem cabeçalhos de segurança (decisão do usuário, ver Assumptions da spec)
-- **Fora do escopo, aberto**: formulário continua visível após envio com sucesso (`.contact-form { display: flex }` em `src/components/Contact.astro` anula `hidden`)
+- **Contato (branch `feat/contact-feedback-dedupe`)**: `.contact-form[hidden] { display: none }` faz a confirmação substituir o formulário; botão travado após sucesso; servidor ignora mensagem idêntica por 10 min (só hash SHA-256 em memória, por instância, como o rate limit)

@@ -1,3 +1,4 @@
+import { contactFingerprint, type SentLog } from "./dedupe";
 import { renderContactEmail } from "./email";
 import type { RateLimiter } from "./rate-limit";
 import { validateContact } from "./validation";
@@ -14,6 +15,7 @@ export interface OutgoingMail {
 export interface ContactDeps {
   send(mail: OutgoingMail): Promise<void>;
   limiter: RateLimiter;
+  sentLog: SentLog;
   to: string;
   from: string;
   timeoutMs: number;
@@ -37,7 +39,8 @@ function withTimeout(promise: Promise<void>, ms: number): Promise<void> {
   return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
 }
 
-// Nada é gravado: a mensagem só existe na memória desta requisição e no e-mail enviado (FORM-13).
+// Nada é gravado: a mensagem só existe na memória desta requisição e no e-mail enviado (FORM-13);
+// para barrar reenvios idênticos, guarda-se apenas o hash dela por alguns minutos.
 export async function handleContact(request: Request, deps: ContactDeps): Promise<Response> {
   let body: unknown;
   try {
@@ -52,6 +55,10 @@ export async function handleContact(request: Request, deps: ContactDeps): Promis
   const result = validateContact(body);
   if (!result.ok) return reply(400, { ok: false, errors: result.errors });
 
+  // Reenvio idêntico (clique duplo, nova tentativa): responde como sucesso sem mandar outro e-mail.
+  const fingerprint = contactFingerprint(result.data);
+  if (deps.sentLog.has(fingerprint)) return reply(200, { ok: true });
+
   if (!deps.limiter.hit(deps.clientIp)) return reply(429, { ok: false, code: "rate_limited" });
 
   const { subject, text, html } = renderContactEmail(result.data);
@@ -65,5 +72,6 @@ export async function handleContact(request: Request, deps: ContactDeps): Promis
     deps.log({ at: new Date().toISOString(), code: error instanceof SendTimeout ? "send_timeout" : "send_failed" });
     return reply(502, { ok: false, code: "send_failed" });
   }
+  deps.sentLog.add(fingerprint);
   return reply(200, { ok: true });
 }

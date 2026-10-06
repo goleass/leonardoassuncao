@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { handleContact, type ContactDeps, type OutgoingMail } from "./handler";
+import { createSentLog } from "./dedupe";
 import { createRateLimiter } from "./rate-limit";
 import { CONTACT_MESSAGES as M } from "./validation";
 
@@ -26,6 +27,7 @@ function makeDeps(overrides: Partial<ContactDeps> = {}) {
       sent.push(mail);
     }),
     limiter: createRateLimiter({ limit: 5, windowMs: 3_600_000 }),
+    sentLog: createSentLog({ windowMs: 600_000 }),
     to: "leonardo@empresa.com.br",
     from: "Site <site@empresa.com.br>",
     timeoutMs: 10_000,
@@ -35,6 +37,9 @@ function makeDeps(overrides: Partial<ContactDeps> = {}) {
   };
   return { deps, sent, logs };
 }
+
+// Mensagens diferentes, para os testes de limite não esbarrarem na deduplicação.
+const nth = (i: number) => ({ ...valid, mensagem: `${valid.mensagem} (${i})` });
 
 async function json(res: Response) {
   return { status: res.status, body: await res.json() };
@@ -96,10 +101,10 @@ describe("handleContact", () => {
   it("6º envio do mesmo IP em 60 min → 429 { ok: false, code: 'rate_limited' } sem envio", async () => {
     const { deps, sent } = makeDeps();
     const statuses: number[] = [];
-    for (let i = 0; i < 6; i++) statuses.push((await handleContact(post(valid), deps)).status);
+    for (let i = 0; i < 6; i++) statuses.push((await handleContact(post(nth(i)), deps)).status);
     expect(statuses).toEqual([200, 200, 200, 200, 200, 429]);
     expect(sent).toHaveLength(5);
-    expect(await json(await handleContact(post(valid), deps))).toEqual({
+    expect(await json(await handleContact(post(nth(6)), deps))).toEqual({
       status: 429,
       body: { ok: false, code: "rate_limited" },
     });
@@ -109,10 +114,32 @@ describe("handleContact", () => {
   it("o limite é contado pelo IP do cliente", async () => {
     const limiter = createRateLimiter({ limit: 5, windowMs: 3_600_000 });
     const a = makeDeps({ limiter, clientIp: "198.51.100.1" });
-    for (let i = 0; i < 5; i++) await handleContact(post(valid), a.deps);
-    expect((await handleContact(post(valid), a.deps)).status).toBe(429);
+    for (let i = 0; i < 5; i++) await handleContact(post(nth(i)), a.deps);
+    expect((await handleContact(post(nth(5)), a.deps)).status).toBe(429);
     const b = makeDeps({ limiter, clientIp: "198.51.100.2" });
     expect((await handleContact(post(valid), b.deps)).status).toBe(200);
+  });
+
+  it("mensagem idêntica já enviada → 200 { ok: true } sem novo e-mail e sem gastar o limite", async () => {
+    const { deps, sent } = makeDeps({ limiter: createRateLimiter({ limit: 1, windowMs: 3_600_000 }) });
+    expect((await handleContact(post(valid), deps)).status).toBe(200);
+    expect(await json(await handleContact(post(valid), deps))).toEqual({ status: 200, body: { ok: true } });
+    expect(sent).toHaveLength(1);
+  });
+
+  it("mensagem diferente do mesmo visitante é enviada normalmente", async () => {
+    const { deps, sent } = makeDeps();
+    await handleContact(post(valid), deps);
+    await handleContact(post(nth(1)), deps);
+    expect(sent).toHaveLength(2);
+  });
+
+  it("depois de falha no envio, a mesma mensagem pode ser reenviada", async () => {
+    const send = vi.fn().mockRejectedValueOnce(new Error("boom")).mockResolvedValueOnce(undefined);
+    const { deps } = makeDeps({ send });
+    expect((await handleContact(post(valid), deps)).status).toBe(502);
+    expect((await handleContact(post(valid), deps)).status).toBe(200);
+    expect(send).toHaveBeenCalledTimes(2);
   });
 
   it("falha do serviço de e-mail → 502 { ok: false, code: 'send_failed' }", async () => {
