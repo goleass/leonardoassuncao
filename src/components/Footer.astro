@@ -1,6 +1,7 @@
 ---
 import type { SiteConfig } from "../config/schema";
 import { services } from "../data/services";
+import Logo from "./Logo.astro";
 
 interface Props {
   site: SiteConfig;
@@ -13,7 +14,7 @@ const year = new Date().getFullYear();
 <footer class="site-footer surface-dark">
   <div class="container site-footer__inner">
     <span class="site-footer__brand">
-      <span class="site-footer__mark" aria-hidden="true"></span>
+      <Logo class="site-footer__mark" />
       Leonardo Gomes Assunção
     </span>
     <nav class="site-footer__nav" aria-label="Serviços">
@@ -62,10 +63,8 @@ const year = new Date().getFullYear();
     font-size: var(--text-body-sm);
   }
 
-  .site-footer__mark {
-    width: 12px;
-    height: 12px;
-    background: var(--mark);
+  .site-footer__brand :global(.site-footer__mark) {
+    height: 20px;
   }
 
   .site-footer__nav {

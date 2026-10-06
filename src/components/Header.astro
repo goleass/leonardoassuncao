@@ -1,5 +1,6 @@
 ---
 import type { SiteConfig } from "../config/schema";
+import Logo from "./Logo.astro";
 
 interface Props {
   site: SiteConfig;
@@ -18,7 +19,7 @@ const links = [
 <header class="site-header surface-dark">
   <div class="container site-header__inner">
     <a class="brand" href="/">
-      <span class="brand__mark" aria-hidden="true"></span>
+      <Logo class="brand__mark" />
       <span>Leonardo Gomes Assunção</span>
     </a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
@@ -81,11 +82,8 @@ const links = [
     letter-spacing: -0.01em;
   }
 
-  .brand__mark {
-    flex: none;
-    width: 14px;
-    height: 14px;
-    background: var(--mark);
+  .brand :global(.brand__mark) {
+    height: 24px;
   }
 
   .site-nav__list {

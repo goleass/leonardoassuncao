@@ -42,7 +42,10 @@ const wordmarkTop = lineY - 48 - wordmark.height;
 const base = Buffer.from(`
 <svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
   <rect width="${W}" height="${H}" fill="${DEEP}"/>
-  <rect x="${PAD}" y="${PAD}" width="20" height="20" fill="${MARK}"/>
+  <g transform="translate(${PAD} ${PAD - 8}) scale(${48 / 60})">
+    <path fill="${ON_DARK}" d="M0 0h10v60H0zM0 50h72v10H0zM26 0h10v60H26zM26 0h26v10H26zM62 0h10v60H62zM62 0h42v10H62zM94 0h10v60H94z"/>
+    <path fill="${MARK}" d="M46 30h48v10H46z"/>
+  </g>
   <rect x="${PAD}" y="${lineY}" width="${W - PAD * 2}" height="1" fill="#FFFFFF" fill-opacity="0.2"/>
 </svg>`);
 
