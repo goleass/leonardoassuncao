@@ -2,17 +2,17 @@
 title: "Quanto Custa um Sistema Sob Medida | Leonardo Assunção"
 description: "Entenda o que define o custo de um sistema sob medida: escopo, perfis, telas, integrações, relatórios e manutenção. Compare com SaaS e saiba pedir orçamento."
 h1: "Quanto custa desenvolver um sistema sob medida?"
-resumo: "O custo de um sistema sob medida depende principalmente do escopo: quantos perfis de usuário, telas, regras de negócio, integrações e relatórios ele precisa ter. [PREÇO: faixa para um MVP de sistema interno] Começar por uma primeira versão enxuta (MVP) reduz o investimento inicial e o risco."
+resumo: "O custo de um sistema sob medida depende principalmente do escopo: quantos perfis de usuário, telas, regras de negócio, integrações e relatórios ele precisa ter. Como referência de mercado em 2026, o MVP de um sistema interno fica entre R$ 25.000 e R$ 80.000. Começar por uma primeira versão enxuta (MVP) reduz o investimento inicial e o risco."
 servico: software-sob-medida
 publishedAt: 2026-10-17
-draft: true
+draft: false
 faq:
   - q: "Dá para ter um preço fechado antes de começar?"
     a: "Sim, desde que o escopo esteja descrito com clareza. Por isso o orçamento vem depois de uma conversa de diagnóstico. Quando parte do escopo ainda é incerta, o projeto pode ser dividido em etapas, cada uma com valor e prazo próprios."
   - q: "Quanto tempo leva para desenvolver um sistema sob medida?"
     a: "Depende do tamanho da primeira versão. Um MVP com poucas telas e um fluxo principal fica pronto bem antes de um sistema completo. O prazo de cada etapa vai na proposta, junto com o que será entregue em cada uma."
   - q: "Depois de pronto, o sistema tem mensalidade?"
-    a: "Não há mensalidade por usuário como num SaaS. Os custos recorrentes são o servidor onde o sistema roda e a manutenção: correções, atualizações de segurança e pequenas melhorias. [PREÇO: faixa mensal de infraestrutura e manutenção]"
+    a: "Não há mensalidade por usuário como num SaaS. Os custos recorrentes são o servidor onde o sistema roda e a manutenção: correções, atualizações de segurança e pequenas melhorias. Como referência, servidor e manutenção somam de R$ 800 a R$ 3.000 por mês, conforme o tamanho do sistema."
   - q: "E se eu quiser trocar de desenvolvedor no futuro?"
     a: "O código-fonte, o banco de dados, a documentação e os acessos ficam com a sua empresa. Com isso, outro desenvolvedor consegue continuar o trabalho sem começar do zero."
 ---
@@ -49,7 +49,7 @@ Na prática, um bom MVP:
 - deixa relatórios avançados e integrações secundárias para as próximas etapas;
 - já roda em produção, com login, permissões e cópias de segurança.
 
-O MVP reduz o investimento inicial e o risco de pagar por funções que ninguém usa. [PREÇO: faixa para um MVP de sistema interno] As etapas seguintes são orçadas separadamente, já com o aprendizado da primeira.
+O MVP reduz o investimento inicial e o risco de pagar por funções que ninguém usa. Como referência de mercado em 2026, o MVP de um sistema interno fica entre R$ 25.000 e R$ 80.000. As etapas seguintes são orçadas separadamente, já com o aprendizado da primeira.
 
 ## Sistema sob medida ou SaaS pronto: qual sai mais barato em 3 anos?
 
@@ -57,9 +57,9 @@ SaaS é o sistema pronto que você assina e paga por mês, geralmente por usuár
 
 | Critério | SaaS pronto | Sistema sob medida |
 | --- | --- | --- |
-| Investimento inicial | Baixo ou nenhum | [PREÇO: faixa de investimento inicial] |
+| Investimento inicial | Baixo ou nenhum | R$ 25 mil a R$ 80 mil (MVP) |
 | Custo mensal | Mensalidade por usuário, que cresce com a equipe | Servidor e manutenção, sem cobrança por usuário |
-| Custo em 3 anos (equipe de 10 pessoas) | [PREÇO: estimativa de 36 meses de SaaS para 10 usuários] | [PREÇO: estimativa de 36 meses de sistema sob medida] |
+| Custo em 3 anos (equipe de 10 pessoas) | R$ 36 mil a R$ 108 mil (R$ 100 a R$ 300 por usuário/mês) | R$ 55 mil a R$ 190 mil (MVP + servidor e manutenção) |
 | Aderência ao processo | A empresa se adapta à ferramenta | A ferramenta se adapta à empresa |
 | Regras específicas | Só as que o produto oferece | As que o negócio precisa |
 | Dados | Ficam na plataforma do fornecedor | Ficam no banco de dados da empresa |

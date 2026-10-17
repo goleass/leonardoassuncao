@@ -112,6 +112,8 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
       `${DOMAIN}/guias/`,
       `${DOMAIN}/guias/integracao-bling-api/`,
       `${DOMAIN}/guias/integracao-rastreamento-veicular/`,
+      `${DOMAIN}/guias/quanto-custa-um-sistema-sob-medida/`,
+      `${DOMAIN}/guias/quanto-custa-um-site/`,
       `${DOMAIN}/integracoes/`,
       `${DOMAIN}/manutencao-de-sistemas/`,
       `${DOMAIN}/privacidade/`,

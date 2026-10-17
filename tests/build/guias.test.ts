@@ -6,11 +6,15 @@ import { parseHtml } from "../render";
 
 // Lê o dist/ do `npm run build` anterior (gate: `npm run build && npm run test:build`).
 const dist = join(process.cwd(), "dist");
-const PUBLISHED = ["integracao-bling-api", "integracao-rastreamento-veicular"];
-const DRAFTS = ["quanto-custa-um-site", "quanto-custa-um-sistema-sob-medida"];
+const LAUNCH = ["integracao-bling-api", "integracao-rastreamento-veicular", "quanto-custa-um-sistema-sob-medida", "quanto-custa-um-site"];
+const CONTENT = join(process.cwd(), "src", "content", "guias");
 
 const front = (slug: string) =>
-  parse(readFileSync(join(process.cwd(), "src", "content", "guias", `${slug}.md`), "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/)![1]);
+  parse(readFileSync(join(CONTENT, `${slug}.md`), "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/)![1]);
+// Publicados e rascunhos saem do frontmatter: publicar um guia não exige editar este teste.
+const slugs = readdirSync(CONTENT).filter((f) => f.endsWith(".md")).map((f) => f.slice(0, -3));
+const PUBLISHED = slugs.filter((slug) => !front(slug).draft);
+const DRAFTS = slugs.filter((slug) => front(slug).draft);
 /** `updatedAt ?? publishedAt` do frontmatter, em milissegundos (o YAML lê a data como meia-noite UTC). */
 const guideTime = (slug: string) => {
   const data = front(slug);
@@ -26,9 +30,8 @@ const urls = new Map(
 );
 
 describe("build: guias no sitemap (guias SMAP-01, SMAP-02, SMAP-03)", () => {
-  it("os guias publicados não são rascunho e os do teste de rascunho são", () => {
-    expect(PUBLISHED.map((slug) => front(slug).draft ?? false)).toEqual([false, false]);
-    expect(DRAFTS.map((slug) => front(slug).draft)).toEqual([true, true]);
+  it("os 4 guias do lançamento estão publicados (guias CONT-01)", () => {
+    expect(PUBLISHED).toEqual(expect.arrayContaining(LAUNCH));
   });
 
   it.each(PUBLISHED)("/guias/%s/ está no sitemap com <lastmod> igual ao frontmatter", (slug) => {
@@ -48,11 +51,14 @@ describe("build: rascunhos fora da saída (guias COL-08)", () => {
   const llms = readFileSync(join(dist, "llms.txt"), "utf8");
   const hub = readFileSync(join(dist, "guias", "index.html"), "utf8");
 
-  it.each(DRAFTS)("%s não gera página nem aparece no sitemap, no llms.txt ou em /guias/", (slug) => {
-    expect(existsSync(join(dist, "guias", slug))).toBe(false);
-    expect(urls.has(`/guias/${slug}/`)).toBe(false);
-    expect(llms).not.toContain(`/guias/${slug}/`);
-    expect(hub).not.toContain(`/guias/${slug}/`);
+  // Um único teste com laço: sem rascunhos no momento, a lista fica vazia e o teste continua válido.
+  it("nenhum rascunho gera página nem aparece no sitemap, no llms.txt ou em /guias/", () => {
+    for (const slug of DRAFTS) {
+      expect(existsSync(join(dist, "guias", slug))).toBe(false);
+      expect(urls.has(`/guias/${slug}/`)).toBe(false);
+      expect(llms).not.toContain(`/guias/${slug}/`);
+      expect(hub).not.toContain(`/guias/${slug}/`);
+    }
   });
 
   it.each(PUBLISHED)("%s gera página e aparece no llms.txt", (slug) => {

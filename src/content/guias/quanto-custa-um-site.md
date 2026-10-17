@@ -2,10 +2,10 @@
 title: "Quanto Custa um Site Profissional | Leonardo Assunção"
 description: "O que define o preço de um site profissional: tipo de site, páginas, textos, integrações, SEO, hospedagem e manutenção. Veja faixas e como pedir orçamento."
 h1: "Quanto custa um site profissional para empresa?"
-resumo: "O preço de um site profissional depende do tipo de site, da quantidade de páginas, de quem produz os textos e das integrações necessárias. [PREÇO: faixa para site institucional de até 5 páginas] Além do projeto, entram custos recorrentes de domínio, hospedagem e manutenção."
+resumo: "O preço de um site profissional depende do tipo de site, da quantidade de páginas, de quem produz os textos e das integrações necessárias. Como referência de mercado em 2026, um site institucional de até 5 páginas feito por profissional fica entre R$ 3.000 e R$ 10.000. Além do projeto, entram custos recorrentes de domínio, hospedagem e manutenção."
 servico: criacao-de-sites
 publishedAt: 2026-10-17
-draft: true
+draft: false
 faq:
   - q: "Por que dois orçamentos para o mesmo site têm valores tão diferentes?"
     a: "Porque raramente descrevem o mesmo site. Um pode incluir textos, SEO técnico e formulário integrado, e o outro só a montagem de um modelo pronto. Compare item por item: páginas, quem escreve o conteúdo, integrações, hospedagem, prazo e a quem pertence o código."
@@ -14,7 +14,7 @@ faq:
   - q: "O domínio e a hospedagem estão incluídos no preço do site?"
     a: "Depende da proposta. O domínio .com.br é registrado no Registro.br e renovado todo ano, e a hospedagem pode ser cobrada à parte ou ficar dentro de um plano de manutenção. Peça para isso estar escrito no orçamento."
   - q: "Quanto custa manter um site depois que ele vai ao ar?"
-    a: "Além de domínio e hospedagem, um site precisa de atualizações de segurança, ajustes de conteúdo e correções. Algumas empresas contratam um plano mensal; outras pagam por demanda. [PREÇO: faixa mensal de manutenção]"
+    a: "Além de domínio e hospedagem, um site precisa de atualizações de segurança, ajustes de conteúdo e correções. Algumas empresas contratam um plano mensal; outras pagam por demanda. Um plano mensal de manutenção costuma ficar entre R$ 150 e R$ 800, conforme o que está incluído."
 ---
 
 Quem pesquisa "quanto custa um site" encontra respostas que vão de quase nada a valores bem altos, e quase nenhuma explica o motivo da diferença. A verdade é que "site" é uma palavra que cobre coisas muito diferentes: uma página única para uma campanha no Google, um site institucional de cinco páginas ou um catálogo com centenas de produtos.
@@ -41,10 +41,10 @@ Nenhum desses fatores sozinho decide o preço. Um site com poucas páginas, mas 
 
 Cada tipo de site resolve um problema diferente. Antes de pedir orçamento, vale saber qual deles a sua empresa precisa agora, para não pagar por páginas que ninguém vai visitar.
 
-- **Landing page:** uma página focada numa única oferta ou campanha, com um caminho curto até o contato. Funciona bem com anúncios no Google e nas redes sociais. [PREÇO: faixa para landing page]
-- **Site institucional:** apresenta a empresa, os serviços e as formas de contato. Costuma ter de três a oito páginas: início, sobre, serviços, contato e, às vezes, uma página por serviço. [PREÇO: faixa para site institucional de até 5 páginas]
-- **Catálogo de produtos:** mostra o que você vende com fotos, descrições e categorias, e leva o cliente para o WhatsApp ou para um formulário de pedido. O preço cresce com o número de produtos e com a forma de cadastro. [PREÇO: faixa para catálogo]
-- **Site com área de conteúdo:** além das páginas fixas, tem artigos e guias que ajudam o site a aparecer em mais buscas ao longo do tempo. [PREÇO: faixa para site com área de conteúdo]
+- **Landing page:** uma página focada numa única oferta ou campanha, com um caminho curto até o contato. Funciona bem com anúncios no Google e nas redes sociais. Referência de mercado: R$ 1.500 a R$ 6.000.
+- **Site institucional:** apresenta a empresa, os serviços e as formas de contato. Costuma ter de três a oito páginas: início, sobre, serviços, contato e, às vezes, uma página por serviço. Referência de mercado para até 5 páginas: R$ 3.000 a R$ 10.000.
+- **Catálogo de produtos:** mostra o que você vende com fotos, descrições e categorias, e leva o cliente para o WhatsApp ou para um formulário de pedido. O preço cresce com o número de produtos e com a forma de cadastro. Referência de mercado: R$ 5.000 a R$ 15.000.
+- **Site com área de conteúdo:** além das páginas fixas, tem artigos e guias que ajudam o site a aparecer em mais buscas ao longo do tempo. Referência de mercado: R$ 6.000 a R$ 18.000.
 
 Loja virtual com carrinho e pagamento online é outro tipo de projeto, com plataforma, meios de pagamento e frete. Por isso ela não entra nessa lista.
 
@@ -70,9 +70,9 @@ Nos sites que eu desenvolvo, o código-fonte e os acessos são entregues à sua 
 O valor do projeto não é o único custo. Antes de fechar, some os custos recorrentes:
 
 1. **Domínio:** o endereço do site. Domínios `.com.br` são registrados no Registro.br e renovados todo ano.
-2. **Hospedagem:** o servidor onde o site fica publicado. O preço varia conforme o tipo de site e o volume de visitas. [PREÇO: faixa anual de hospedagem para site institucional]
+2. **Hospedagem:** o servidor onde o site fica publicado. O preço varia conforme o tipo de site e o volume de visitas. Para um site institucional, vai de zero (sites estáticos cabem em planos gratuitos de hospedagens como Netlify) a cerca de R$ 900 por ano.
 3. **E-mail profissional:** endereços com o nome da empresa costumam ser um serviço à parte, cobrado por usuário.
-4. **Manutenção:** atualizações de segurança, correções, pequenos ajustes de texto e acompanhamento do site no Google. [PREÇO: faixa mensal de manutenção]
+4. **Manutenção:** atualizações de segurança, correções, pequenos ajustes de texto e acompanhamento do site no Google. Referência de mercado: R$ 150 a R$ 800 por mês.
 5. **Conteúdo novo:** páginas e artigos novos, se a ideia é crescer nas buscas.
 
 Pergunte sempre o que está incluído na mensalidade e o que é cobrado à parte. Um projeto barato com mensalidade alta pode sair mais caro em dois ou três anos do que um projeto mais caro com custo mensal baixo.
