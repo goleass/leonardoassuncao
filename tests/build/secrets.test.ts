@@ -119,6 +119,7 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
       `${DOMAIN}/guias/quanto-custa-um-sistema-sob-medida/`,
       `${DOMAIN}/guias/quanto-custa-um-site/`,
       `${DOMAIN}/guias/sistema-aluguel-de-cacambas/`,
+      `${DOMAIN}/guias/sistema-fabrica-de-uniformes/`,
       `${DOMAIN}/guias/sistema-ordem-de-servico-ar-condicionado/`,
       `${DOMAIN}/guias/software-recarga-de-extintores/`,
       `${DOMAIN}/integracoes/`,
