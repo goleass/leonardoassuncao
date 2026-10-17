@@ -473,7 +473,7 @@ T17
 
 ---
 
-### T16: Guia "Integrar rastreamento veicular ao sistema"
+### T16: Guia "Integrar rastreamento veicular ao sistema" ✅
 
 **What**: `src/content/guias/integracao-rastreamento-veicular.md` (`servico: integracoes`, `draft: false`); o teste de conteúdo passa a exigir os 4 arquivos (CONT-01).
 **Where**: `src/content/guias/integracao-rastreamento-veicular.md`
