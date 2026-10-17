@@ -58,14 +58,14 @@ describe("guideSchema: serviço (COL-03)", () => {
 });
 
 describe("guideSchema: tamanhos de title e description (COL-04)", () => {
-  it("aceita title com 30 e 65 caracteres", () => {
+  it("aceita title com 30 e 60 caracteres", () => {
     expect(guideSchema.safeParse({ ...valid, title: "a".repeat(30) }).success).toBe(true);
-    expect(guideSchema.safeParse({ ...valid, title: "a".repeat(65) }).success).toBe(true);
+    expect(guideSchema.safeParse({ ...valid, title: "a".repeat(60) }).success).toBe(true);
   });
 
-  it("falha com title de 29 ou 66 caracteres, apontando o campo", () => {
+  it("falha com title de 29 ou 61 caracteres, apontando o campo", () => {
     expect(issuePaths({ ...valid, title: "a".repeat(29) })).toEqual(["title"]);
-    expect(issuePaths({ ...valid, title: "a".repeat(66) })).toEqual(["title"]);
+    expect(issuePaths({ ...valid, title: "a".repeat(61) })).toEqual(["title"]);
   });
 
   it("aceita description com 70 e 160 caracteres", () => {

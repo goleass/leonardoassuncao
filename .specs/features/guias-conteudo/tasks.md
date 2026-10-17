@@ -97,7 +97,7 @@ T17
 **Done when**:
 
 - [ ] `src/content.config.ts` registra a coleção com o schema
-- [ ] Testes: frontmatter válido passa; `servico` desconhecido, `title` com 29 e 66 caracteres, `description` com 69 e 161, `updatedAt` < `publishedAt` e campo obrigatório ausente falham; `faq` assume `[]` e `draft` assume `false`
+- [ ] Testes: frontmatter válido passa; `servico` desconhecido, `title` com 29 e 61 caracteres, `description` com 69 e 161, `updatedAt` < `publishedAt` e campo obrigatório ausente falham; `faq` assume `[]` e `draft` assume `false`
 - [ ] Gate check passes: `npm test`
 
 **Tests**: unit

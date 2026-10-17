@@ -43,7 +43,7 @@ O site tem 6 páginas indexáveis (home + 5 serviços) e todas disputam termos a
 | Autor | Todos os guias são assinados por "Leonardo Gomes Assunção", com link para o LinkedIn e o nó `Person` (`/#leonardo`) do JSON-LD | Sem a página Sobre, o LinkedIn é a prova de autoria disponível (E-E-A-T). | n |
 | Datas | `publishedAt` obrigatório e `updatedAt` opcional, ambos visíveis na página e usados no JSON-LD e no `<lastmod>` do sitemap | Data real de atualização é o sinal de frescor que o Google e as IAs usam; aqui ela reflete mudança real do texto, ao contrário da data do build. | n |
 | Tipo no JSON-LD | `Article` | Tipo genérico aceito pelo Google para conteúdo editorial; `BlogPosting` sugeriria post datado. | n |
-| Limites de título e descrição | `title` entre 30 e 65 caracteres; `description` entre 70 e 160 caracteres | Faixa que o Google mostra sem cortar no resultado de busca. | n |
+| Limites de título e descrição | `title` entre 30 e 60 caracteres; `description` entre 70 e 160 caracteres | Faixa que o Google mostra sem cortar; 60 é o limite que `tests/build/titles.test.ts` (SEO-08) já impõe a todas as páginas. | n |
 | Link "Guias" no menu | Entra no menu do cabeçalho, entre "Processo" e "Fale comigo", e no rodapé | A seção precisa estar a 1 clique de qualquer página para receber autoridade interna. | n |
 | Ordem dos guias | Do mais recente para o mais antigo, por `updatedAt ?? publishedAt` | Leitor e Google veem primeiro o conteúdo mais novo. | n |
 | Resposta direta no topo | Todo guia abre com um parágrafo de resumo (campo `resumo`, 1 a 3 frases) que responde à pergunta do título | É o trecho que AI Overviews e ChatGPT costumam citar; também serve de `description` estendida no `llms.txt`. | n |
@@ -66,7 +66,7 @@ O site tem 6 páginas indexáveis (home + 5 serviços) e todas disputam termos a
 1. The build SHALL read guides from Markdown files in `src/content/guias/`, one file per guide, with the file name (without extension) as the slug. <!-- COL-01 -->
 2. The guide frontmatter SHALL require `title`, `description`, `h1`, `resumo`, `servico` and `publishedAt`, and SHALL accept optional `updatedAt`, `faq` (list of `{ q, a }`) and `draft` (boolean, default `false`). <!-- COL-02 -->
 3. IF a guide `servico` is not the slug of one of the 5 services in `src/data/services.ts` THEN the build SHALL fail naming the guide file. <!-- COL-03 -->
-4. IF a guide `title` length is outside 30–65 characters or its `description` length is outside 70–160 characters THEN the build SHALL fail naming the guide file and the field. <!-- COL-04 -->
+4. IF a guide `title` length is outside 30–60 characters or its `description` length is outside 70–160 characters THEN the build SHALL fail naming the guide file and the field. <!-- COL-04 -->
 5. IF a guide slug does not match `^[a-z0-9]+(-[a-z0-9]+)*$` THEN the build SHALL fail naming the guide file. <!-- COL-05 -->
 6. IF a guide has `updatedAt` earlier than `publishedAt` THEN the build SHALL fail naming the guide file. <!-- COL-06 -->
 7. IF a guide with `draft: false` contains `[PREÇO:`, `[REVISAR:` or `[...]` in its frontmatter or body THEN the build SHALL fail naming the guide file. <!-- COL-07 -->
@@ -108,7 +108,7 @@ O site tem 6 páginas indexáveis (home + 5 serviços) e todas disputam termos a
 
 **Acceptance Criteria**:
 
-1. The build SHALL generate `/guias/` with `<title>` "Guias sobre Sites, Sistemas e Integrações | Leonardo Assunção" and a meta description of 70–160 characters. <!-- HUB-01 -->
+1. The build SHALL generate `/guias/` with `<title>` "Guias de Sites, Sistemas e Integrações | Leonardo Assunção" and a meta description of 70–160 characters. <!-- HUB-01 -->
 2. The `/guias/` page SHALL group non-draft guides under one `<h2>` per service that has at least one guide, in the order of `src/data/services.ts`. <!-- HUB-02 -->
 3. The `/guias/` page SHALL list each guide with a link to `/guias/<slug>/`, its `h1` as link text, its `description` and its most recent date (`updatedAt ?? publishedAt`). <!-- HUB-03 -->
 4. Within each service group the `/guias/` page SHALL order guides by `updatedAt ?? publishedAt`, most recent first. <!-- HUB-04 -->

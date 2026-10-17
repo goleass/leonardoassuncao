@@ -48,7 +48,7 @@ describe("/guias/ com guias de 2 serviços", () => {
   });
 
   it("usa o título exato e uma meta description de 70 a 160 caracteres (guias HUB-01)", () => {
-    expect(doc.querySelector("title")?.textContent).toBe("Guias sobre Sites, Sistemas e Integrações | Leonardo Assunção");
+    expect(doc.querySelector("title")?.textContent).toBe("Guias de Sites, Sistemas e Integrações | Leonardo Assunção");
     const description = doc.querySelector('meta[name="description"]')?.getAttribute("content") ?? "";
     expect(description.length).toBeGreaterThanOrEqual(70);
     expect(description.length).toBeLessThanOrEqual(160);

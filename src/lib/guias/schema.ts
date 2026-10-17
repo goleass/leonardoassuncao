@@ -7,7 +7,7 @@ const slugs = services.map((s) => s.slug) as [string, ...string[]];
 export const guideSchema = z
   .object({
     // Faixa que o Google mostra sem cortar (COL-04).
-    title: z.string().min(30).max(65),
+    title: z.string().min(30).max(60),
     description: z.string().min(70).max(160),
     h1: z.string().min(1),
     resumo: z.string().min(1),
