@@ -15,6 +15,8 @@ const EXPECTED_SOURCES: Record<string, string[]> = {
   "/manutencao-de-sistemas/": SERVICE,
   "/privacidade/": ["src/pages/privacidade.astro", LAYOUTS],
 };
+// /guias/ tira o <lastmod> das datas dos guias, não do git (guias SMAP-03; verificado no T17).
+const GUIDE_PAGES = ["/guias/"];
 
 const git = (...args: string[]) => execFileSync("git", args, { encoding: "utf8" }).trim();
 
@@ -25,8 +27,8 @@ describe("sitemap com <lastmod> real (SMAP-01)", () => {
     lastmod: body.match(/<lastmod>(.*?)<\/lastmod>/)?.[1],
   }));
 
-  it("tem exatamente as 7 páginas indexáveis", () => {
-    expect(urls.map((u) => u.path).sort()).toEqual(Object.keys(EXPECTED_SOURCES).sort());
+  it("tem exatamente as 8 páginas indexáveis", () => {
+    expect(urls.map((u) => u.path).sort()).toEqual([...Object.keys(EXPECTED_SOURCES), ...GUIDE_PAGES].sort());
   });
 
   it("com histórico completo, cada <lastmod> é a data do último commit nas fontes da página; em clone raso, não há <lastmod> (SMAP-02)", () => {
@@ -34,7 +36,7 @@ describe("sitemap com <lastmod> real (SMAP-01)", () => {
       expect(urls.filter((u) => u.lastmod !== undefined)).toEqual([]);
       return;
     }
-    for (const { path, lastmod } of urls) {
+    for (const { path, lastmod } of urls.filter((u) => !GUIDE_PAGES.includes(u.path))) {
       const expected = git("log", "-1", "--format=%cI", "--", ...EXPECTED_SOURCES[path]);
       expect(expected, path).not.toBe("");
       // O sitemap reescreve a data em UTC; compara o instante.

@@ -106,6 +106,7 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
     expect(urls).toEqual([
       `${DOMAIN}/`,
       `${DOMAIN}/criacao-de-sites/`,
+      `${DOMAIN}/guias/`,
       `${DOMAIN}/integracoes/`,
       `${DOMAIN}/manutencao-de-sistemas/`,
       `${DOMAIN}/privacidade/`,

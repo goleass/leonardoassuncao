@@ -1,8 +1,34 @@
 // O prefixo "_" impede o Astro de tratar este arquivo de teste como rota de src/pages.
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { parseHtml, renderComponent } from "../../tests/render";
 import { services } from "../data/services";
-import ServicePage, { getStaticPaths } from "./[servico].astro";
+import type { Guide } from "../lib/guias/guias";
+
+function guide(slug: string, servico: string, publishedAt: string): Guide {
+  return {
+    slug,
+    title: "Título de teste com tamanho suficiente | Leonardo Assunção",
+    description: "Descrição de teste com tamanho suficiente para passar na validação do schema dos guias do site.",
+    h1: `H1 ${slug}`,
+    resumo: "Resumo.",
+    servico,
+    publishedAt: new Date(publishedAt),
+    faq: [],
+    draft: false,
+    body: "",
+    html: "",
+  } as Guide;
+}
+
+const bling = guide("integracao-bling-api", "integracoes", "2026-09-01");
+const rastreamento = guide("integracao-rastreamento-veicular", "integracoes", "2026-10-17");
+const site = guide("quanto-custa-um-site", "criacao-de-sites", "2026-10-01");
+
+// Sem astro:content nos testes: a rota recebe os guias de um dublê.
+const loadGuides = vi.fn(async () => [bling, rastreamento, site]);
+vi.mock("../lib/guias/collection", () => ({ loadGuides }));
+
+const { default: ServicePage, getStaticPaths } = await import("./[servico].astro");
 
 // Conta nó de texto por nó de texto: o HTML gerado não tem espaço entre tags, e textContent colaria palavras vizinhas.
 function words(element: Element): number {
@@ -15,8 +41,8 @@ function words(element: Element): number {
 }
 
 describe("Rotas das páginas de serviço (SVC-01)", () => {
-  it("gera exatamente as 5 páginas, uma por slug", () => {
-    const paths = getStaticPaths();
+  it("gera exatamente as 5 páginas, uma por slug", async () => {
+    const paths = await getStaticPaths();
     expect(paths.map((p) => p.params.servico)).toEqual([
       "criacao-de-sites",
       "sistemas-web",
@@ -38,7 +64,7 @@ describe.each(services)("Página /$slug/", (service) => {
   const node = (type: string) => graph().find((n) => n["@type"] === type);
 
   beforeAll(async () => {
-    doc = parseHtml(await renderComponent(ServicePage, { service }));
+    doc = parseHtml(await renderComponent(ServicePage, { service, guides: [] }));
   });
 
   it("tem um único <h1> com o título do serviço (SVC-02)", () => {
@@ -107,5 +133,45 @@ describe.each(services)("Página /$slug/", (service) => {
     ]);
     const structured = node("FAQPage")?.mainEntity.map((q: any) => [q.name, q.acceptedAnswer.text]);
     expect(structured).toEqual(visible);
+  });
+});
+
+describe("Guias nas rotas de serviço (guias LINK-01)", () => {
+  it("cada serviço recebe só os próprios guias, do mais recente ao mais antigo", async () => {
+    const paths = await getStaticPaths();
+    const bySlug = Object.fromEntries(paths.map((p) => [p.params.servico, p.props.guides.map((g) => g.slug)]));
+    expect(bySlug).toEqual({
+      "criacao-de-sites": ["quanto-custa-um-site"],
+      "sistemas-web": [],
+      integracoes: ["integracao-rastreamento-veicular", "integracao-bling-api"],
+      "software-sob-medida": [],
+      "manutencao-de-sistemas": [],
+    });
+  });
+});
+
+describe('Bloco "Guias sobre" na página de serviço', () => {
+  const service = services.find((s) => s.slug === "integracoes")!;
+  const section = (doc: Document) =>
+    [...doc.querySelectorAll("h2")].find((h) => h.textContent?.trim().startsWith("Guias sobre"))?.closest("nav, section");
+
+  it('com 2 guias, mostra "Guias sobre <name>" com os links, mais recente primeiro (guias LINK-01)', async () => {
+    const doc = parseHtml(await renderComponent(ServicePage, { service, guides: [rastreamento, bling] }));
+    const block = section(doc);
+    expect(block?.querySelector("h2")?.textContent?.trim()).toBe("Guias sobre Integrações e APIs");
+    const links = [...(block?.querySelectorAll("a") ?? [])].map((a) => [a.textContent?.trim(), a.getAttribute("href")]);
+    expect(links).toEqual([
+      ["H1 integracao-rastreamento-veicular", "/guias/integracao-rastreamento-veicular/"],
+      ["H1 integracao-bling-api", "/guias/integracao-bling-api/"],
+    ]);
+    // Antes de "Outros serviços".
+    const others = doc.querySelector('nav[aria-label="Outros serviços"]')!;
+    expect(block!.compareDocumentPosition(others) & 4 /* DOCUMENT_POSITION_FOLLOWING */).toBeTruthy();
+  });
+
+  it("sem guias, a seção não existe (guias LINK-02)", async () => {
+    const doc = parseHtml(await renderComponent(ServicePage, { service, guides: [] }));
+    expect(section(doc)).toBeUndefined();
+    expect(doc.querySelector('main a[href^="/guias/"]')).toBeNull();
   });
 });

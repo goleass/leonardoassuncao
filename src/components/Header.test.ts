@@ -27,11 +27,22 @@ describe("Header: navegação por âncoras da página inicial (PAGE-06, PAGE-15)
     expect(brand?.textContent?.trim()).toBe("Leonardo Gomes Assunção");
   });
 
-  it("nenhum link do cabeçalho depende da página atual (só /#id ou /)", async () => {
+  it("nenhum link do cabeçalho depende da página atual (só /#id, / ou /guias/)", async () => {
     const doc = await render({ ...siteFixture, projetos: [projetoFixture] });
     const hrefs = [...doc.querySelectorAll("header a")].map((a) => a.getAttribute("href"));
-    expect(hrefs.length).toBe(6);
-    hrefs.forEach((href) => expect(href).toMatch(/^\/(#[a-z]+)?$/));
+    expect(hrefs.length).toBe(7);
+    hrefs.forEach((href) => expect(href).toMatch(/^\/(#[a-z]+|guias\/)?$/));
+  });
+});
+
+describe('Header: link "Guias" (guias LINK-03)', () => {
+  it('aponta para /guias/ e vem logo depois de "Processo"', async () => {
+    for (const site of [siteFixture, { ...siteFixture, projetos: [projetoFixture] }]) {
+      const doc = await render(site);
+      expect(linkHref(doc, "Guias")).toBe("/guias/");
+      const texts = [...doc.querySelectorAll("nav a")].map((a) => a.textContent?.trim());
+      expect(texts[texts.indexOf("Processo") + 1]).toBe("Guias");
+    }
   });
 });
 
@@ -45,7 +56,7 @@ describe("Header: link Projetos condicional (PAGE-11)", () => {
   it('com projetos configurados, o link "Projetos" aparece entre Processo e Fale comigo', async () => {
     const doc = await render({ ...siteFixture, projetos: [projetoFixture] });
     const texts = [...doc.querySelectorAll("nav a")].map((a) => a.textContent?.trim());
-    expect(texts).toEqual(["Serviços", "Integrações", "Processo", "Projetos", "Fale comigo"]);
+    expect(texts).toEqual(["Serviços", "Integrações", "Processo", "Guias", "Projetos", "Fale comigo"]);
   });
 });
 
@@ -64,6 +75,6 @@ describe("Header: botão Menu para telas pequenas (RESP-02, RESP-03)", () => {
     const panel = doc.getElementById(controls);
     expect(panel).not.toBeNull();
     const texts = [...(panel?.querySelectorAll("a") ?? [])].map((a) => a.textContent?.trim());
-    expect(texts).toEqual(["Serviços", "Integrações", "Processo", "Fale comigo"]);
+    expect(texts).toEqual(["Serviços", "Integrações", "Processo", "Guias", "Fale comigo"]);
   });
 });

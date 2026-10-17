@@ -9,6 +9,7 @@ const STATIC = join(process.cwd(), "dist");
 const PAGES = [
   "404.html",
   "criacao-de-sites/index.html",
+  "guias/index.html",
   "index.html",
   "integracoes/index.html",
   "manutencao-de-sistemas/index.html",
@@ -40,7 +41,7 @@ describe("nenhuma página publica script executável inline (CSP-03, EDGE-09)", 
     .filter((file) => file.endsWith(".html"))
     .map((file) => ({ file: relative(STATIC, file), html: readFileSync(file, "utf8") }));
 
-  it("o build gera as 8 páginas", () => {
+  it("o build gera as 9 páginas", () => {
     expect(built.map(({ file }) => file).sort()).toEqual(PAGES);
   });
 
