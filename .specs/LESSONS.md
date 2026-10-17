@@ -122,6 +122,42 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: PERF-05 commits bdde9b7 fd4fbd5 tasks.md T23 (performance)
 - last seen: 2026-10-05T01:05:31Z
 
+### L-019 - Specify displayed dates with an exact example string such as 3 de novembro de 2026 instead of a dd/mm pattern
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `content-pages` · harmful: 0
+- features: guias-conteudo
+- evidence: PAGE-03 src/pages/guias/_slug.test.ts:108 (content-pages)
+- last seen: 2026-10-17T05:40:41Z
+
+### L-020 - When a build error comes from Astro content-collection validation, say so in the AC and assert only the field-level rejection in tests
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `content-collections` · harmful: 0
+- features: guias-conteudo
+- evidence: COL-03 src/lib/guias/schema.test.ts:56 (content-collections)
+- last seen: 2026-10-17T05:40:41Z
+
+### L-021 - Mark qualitative clauses of a content AC (phrasing, context) as human review so count-based tests are not read as covering them
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `content` · harmful: 0
+- features: guias-conteudo
+- evidence: CONT-04 tests/content/guias.test.ts:72 (content)
+- last seen: 2026-10-17T05:40:41Z
+
+### L-022 - Assert draft exclusion in the built output of every surface the spec lists, not only through the shared loader
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `build-tests` · harmful: 0
+- features: guias-conteudo
+- evidence: COL-08 tests/build/guias.test.ts:52 (build-tests)
+- last seen: 2026-10-17T05:40:41Z
+
+### L-023 - Check every new page title and description in a spec against the site-wide 60-character title rule before confirming the spec
+- signal: `spec_deviation` · recurrence: 1 feature(s) · scope: `seo` · harmful: 0
+- features: guias-conteudo
+- evidence: c43b170 HUB-01 vs SEO-08 (seo)
+- last seen: 2026-10-17T05:40:41Z
+
+### L-024 - Decide dev-only behavior from import.meta.env.MODE, never import.meta.env.DEV, which inherited environment variables can set
+- signal: `spec_deviation` · recurrence: 1 feature(s) · scope: `astro-env` · harmful: 0
+- features: guias-conteudo
+- evidence: 5535607 src/lib/guias/collection.ts:7 (astro-env)
+- last seen: 2026-10-17T05:40:41Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

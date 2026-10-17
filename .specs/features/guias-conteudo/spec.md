@@ -87,8 +87,8 @@ O site tem 6 páginas indexáveis (home + 5 serviços) e todas disputam termos a
 
 1. The build SHALL generate one static page at `/guias/<slug>/` for each non-draft guide. <!-- PAGE-01 -->
 2. The guide page SHALL use the guide `title` as `<title>`, its `description` as meta description, and its `h1` as the only `<h1>`. <!-- PAGE-02 -->
-3. The guide page SHALL show, before the body, the `resumo` paragraph, the author name "Leonardo Gomes Assunção" linking to `site.linkedin`, and the date "Publicado em <dd de mês de aaaa>" in pt-BR inside a `<time datetime>` element. <!-- PAGE-03 -->
-4. WHERE a guide has `updatedAt` the guide page SHALL also show "Atualizado em <dd de mês de aaaa>" inside a `<time datetime>` element. <!-- PAGE-04 -->
+3. The guide page SHALL show, before the body, the `resumo` paragraph, the author name "Leonardo Gomes Assunção" linking to `site.linkedin`, and the date "Publicado em <d de mês de aaaa>" in pt-BR inside a `<time datetime>` element. <!-- PAGE-03 -->
+4. WHERE a guide has `updatedAt` the guide page SHALL also show "Atualizado em <d de mês de aaaa>" inside a `<time datetime>` element. <!-- PAGE-04 -->
 5. The guide page SHALL show a breadcrumb "Início › Guias › <h1>" linking to `/` and `/guias/`. <!-- PAGE-05 -->
 6. The guide page SHALL end with a call-to-action block naming the related service, linking to `/<servico>/`, to `#contato` and to `https://wa.me/<site.whatsapp>`. <!-- PAGE-06 -->
 7. WHERE a guide has `faq` the guide page SHALL render each item as a `<details>` element under the heading "Perguntas frequentes". <!-- PAGE-07 -->
