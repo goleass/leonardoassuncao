@@ -224,11 +224,11 @@ Implicit-requirement dimensions sweep:
 | COL-02 | P1: Coleção de guias validada | Design | Implementing |
 | COL-03 | P1: Coleção de guias validada | Design | Implementing |
 | COL-04 | P1: Coleção de guias validada | Design | Implementing |
-| COL-05 | P1: Coleção de guias validada | Design | Pending |
+| COL-05 | P1: Coleção de guias validada | Design | Implementing |
 | COL-06 | P1: Coleção de guias validada | Design | Implementing |
-| COL-07 | P1: Coleção de guias validada | Design | Pending |
-| COL-08 | P1: Coleção de guias validada | Design | Pending |
-| COL-09 | P1: Coleção de guias validada | Design | Pending |
+| COL-07 | P1: Coleção de guias validada | Design | Implementing |
+| COL-08 | P1: Coleção de guias validada | Design | Implementing |
+| COL-09 | P1: Coleção de guias validada | Design | Implementing |
 | PAGE-01 | P1: Página do guia | Design | Pending |
 | PAGE-02 | P1: Página do guia | Design | Pending |
 | PAGE-03 | P1: Página do guia | Design | Pending |
@@ -236,13 +236,13 @@ Implicit-requirement dimensions sweep:
 | PAGE-05 | P1: Página do guia | Design | Pending |
 | PAGE-06 | P1: Página do guia | Design | Pending |
 | PAGE-07 | P1: Página do guia | Design | Pending |
-| PAGE-08 | P1: Página do guia | Design | Pending |
+| PAGE-08 | P1: Página do guia | Design | Implementing |
 | PAGE-09 | P1: Página do guia | Design | Pending |
 | PAGE-10 | P1: Página do guia | Design | Pending |
 | HUB-01 | P1: Página índice /guias/ | Design | Pending |
 | HUB-02 | P1: Página índice /guias/ | Design | Pending |
 | HUB-03 | P1: Página índice /guias/ | Design | Pending |
-| HUB-04 | P1: Página índice /guias/ | Design | Pending |
+| HUB-04 | P1: Página índice /guias/ | Design | Implementing |
 | HUB-05 | P1: Página índice /guias/ | Design | Pending |
 | HUB-06 | P1: Página índice /guias/ | Design | Pending |
 | LINK-01 | P1: Links internos | Design | Pending |
@@ -268,8 +268,8 @@ Implicit-requirement dimensions sweep:
 | CONT-06 | P1: Os 4 guias do lançamento | Design | Pending |
 | CONT-07 | P1: Os 4 guias do lançamento | Design | Pending |
 | EDGE-01 | Edge cases | Design | Pending |
-| EDGE-02 | Edge cases | Design | Pending |
-| EDGE-03 | Edge cases | Design | Pending |
+| EDGE-02 | Edge cases | Design | Implementing |
+| EDGE-03 | Edge cases | Design | Implementing |
 | EDGE-04 | Edge cases | Design | Pending |
 
 **Coverage:** 51 total, 0 mapped to tasks, 51 unmapped ⚠️ (mapeamento na fase Tasks)

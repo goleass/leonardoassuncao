@@ -107,7 +107,7 @@ T17
 
 ---
 
-### T2: Seleção, ordenação e datas dos guias
+### T2: Seleção, ordenação e datas dos guias ✅
 
 **What**: `toGuide`, `selectGuides`, `lastDate`, `guidesFor`, `related` e `formatDate`, conforme o design.
 **Where**: `src/lib/guias/guias.ts`
