@@ -221,24 +221,24 @@ Implicit-requirement dimensions sweep:
 | TEST-02 | P1: Testes de conteúdo | Tasks | Implementing |
 | TEST-03 | P1: Testes de conteúdo | Tasks | Implementing |
 | TEST-04 | P1: Testes de conteúdo | Tasks | Implementing |
-| GN-01 | P1: Onda 1 | Tasks | Pending |
+| GN-01 | P1: Onda 1 | Tasks | Implementing |
 | GN-02 | Regras de conteúdo | Tasks | Implementing |
 | GN-03 | Regras de conteúdo | Tasks | Implementing |
 | GN-04 | Regras de conteúdo | Tasks | Implementing |
 | GN-05 | Regras de conteúdo | Tasks | Implementing |
 | GN-06 | Regras de conteúdo | Tasks | Implementing |
 | GN-07 | Regras de conteúdo | Tasks | Implementing |
-| GN-08 | Regras de conteúdo | Tasks | Pending |
-| GN-09 | Regras de conteúdo | Tasks | Pending |
-| GN-10 | Regras de conteúdo | Tasks | Pending |
-| GN-11 | Regras de conteúdo | Tasks | Pending |
+| GN-08 | Regras de conteúdo | Tasks | Implementing |
+| GN-09 | Regras de conteúdo | Tasks | Implementing |
+| GN-10 | Regras de conteúdo | Tasks | Implementing |
+| GN-11 | Regras de conteúdo | Tasks | Implementing |
 | GN-12 | P2: Onda 2 | Tasks | Pending |
 | GN-13 | P3: Onda 3 | Tasks | Pending |
-| GN-14 | Regras de conteúdo | Tasks | Pending |
-| GN-15 | Regras de conteúdo | Tasks | Pending |
-| GN-16 | Regras de conteúdo | Tasks | Pending |
+| GN-14 | Regras de conteúdo | Tasks | Implementing |
+| GN-15 | Regras de conteúdo | Tasks | Implementing |
+| GN-16 | Regras de conteúdo | Tasks | Implementing |
 | EDGE-01 | Edge cases | Tasks | Pending |
-| EDGE-02 | Edge cases | Tasks | Pending |
+| EDGE-02 | Edge cases | Tasks | Implementing |
 | EDGE-03 | Edge cases | Tasks | Pending |
 
 **Coverage:** 23 total, 23 mapped to tasks, 0 unmapped

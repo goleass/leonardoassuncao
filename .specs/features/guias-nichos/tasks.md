@@ -125,7 +125,7 @@ T1 → T2
 
 ---
 
-### T3: Escrever o guia Bling não sincroniza pedidos
+### T3: Escrever o guia Bling não sincroniza pedidos ✅
 
 **What**: Criar o guia `bling-nao-sincroniza-pedidos` com `servico: integracoes`, o `title` de GN-02, o `h1` da tabela de prioridade, o ângulo e o link de cluster de GN-11.
 **Where**: `src/content/guias/bling-nao-sincroniza-pedidos.md`
@@ -140,14 +140,14 @@ T1 → T2
 
 **Done when**:
 
-- [ ] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
-- [ ] Conferir na documentação oficial do Bling (API v3, webhooks, limites de requisição) todo comportamento citado; diagnóstico passo a passo (status de pedido, mapeamento de SKU, estoque multiloja) antes de propor integração personalizada.
-- [ ] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
-- [ ] Links para `/integracoes/` e para o guia de cluster de GN-11
-- [ ] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
-- [ ] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
-- [ ] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
-- [ ] Gate check passes: `npm test`
+- [x] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
+- [x] Conferir na documentação oficial do Bling (API v3, webhooks, limites de requisição) todo comportamento citado; diagnóstico passo a passo (status de pedido, mapeamento de SKU, estoque multiloja) antes de propor integração personalizada.
+- [x] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
+- [x] Links para `/integracoes/` e para o guia de cluster de GN-11
+- [x] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
+- [x] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
+- [x] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
