@@ -15,6 +15,7 @@ const PAGES = [
   "guias/integracao-rastreamento-veicular/index.html",
   "guias/portal-de-pedidos-para-distribuidora/index.html",
   "guias/portal-de-pedidos-salgados-congelados/index.html",
+  "guias/portal-do-cliente-contabilidade/index.html",
   "guias/quanto-custa-site-para-vidracaria/index.html",
   "guias/quanto-custa-um-sistema-sob-medida/index.html",
   "guias/quanto-custa-um-site/index.html",
@@ -53,7 +54,7 @@ describe("nenhuma página publica script executável inline (CSP-03, EDGE-09)", 
     .filter((file) => file.endsWith(".html"))
     .map((file) => ({ file: relative(STATIC, file), html: readFileSync(file, "utf8") }));
 
-  it("o build gera as 21 páginas", () => {
+  it("o build gera as 22 páginas", () => {
     expect(built.map(({ file }) => file).sort()).toEqual(PAGES);
   });
 
