@@ -31,6 +31,7 @@ const GUIDE_PAGES = [
   "/guias/sistema-fabrica-de-uniformes/",
   "/guias/sistema-ordem-de-servico-ar-condicionado/",
   "/guias/sistema-portoes-automaticos/",
+  "/guias/site-aluguel-de-inflaveis/",
   "/guias/software-recarga-de-extintores/",
 ];
 
@@ -43,7 +44,7 @@ describe("sitemap com <lastmod> real (SMAP-01)", () => {
     lastmod: body.match(/<lastmod>(.*?)<\/lastmod>/)?.[1],
   }));
 
-  it("tem exatamente as 22 páginas indexáveis", () => {
+  it("tem exatamente as 23 páginas indexáveis", () => {
     expect(urls.map((u) => u.path).sort()).toEqual([...Object.keys(EXPECTED_SOURCES), ...GUIDE_PAGES].sort());
   });
 

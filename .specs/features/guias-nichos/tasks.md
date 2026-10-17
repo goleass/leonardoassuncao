@@ -435,7 +435,7 @@ T1 → T2
 
 ---
 
-### T13: Escrever o guia site para aluguel de infláveis
+### T13: Escrever o guia site para aluguel de infláveis ✅
 
 **What**: Criar o guia `site-aluguel-de-inflaveis` com `servico: criacao-de-sites`, o `title` de GN-02, o `h1` da tabela de prioridade, o ângulo e o link de cluster de GN-11.
 **Where**: `src/content/guias/site-aluguel-de-inflaveis.md`
@@ -450,14 +450,14 @@ T1 → T2
 
 **Done when**:
 
-- [ ] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
-- [ ] Calendário de disponibilidade por brinquedo e pedido por data; sem preço de site (linkar `quanto-custa-um-site`).
-- [ ] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
-- [ ] Links para `/criacao-de-sites/` e para o guia de cluster de GN-11
-- [ ] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
-- [ ] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
-- [ ] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
-- [ ] Gate check passes: `npm test`
+- [x] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
+- [x] Calendário de disponibilidade por brinquedo e pedido por data; sem preço de site (linkar `quanto-custa-um-site`).
+- [x] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
+- [x] Links para `/criacao-de-sites/` e para o guia de cluster de GN-11
+- [x] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
+- [x] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
+- [x] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
