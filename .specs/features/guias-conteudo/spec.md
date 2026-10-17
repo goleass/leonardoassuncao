@@ -247,7 +247,7 @@ Implicit-requirement dimensions sweep:
 | HUB-06 | P1: Página índice /guias/ | Design | Implementing |
 | LINK-01 | P1: Links internos | Design | Implementing |
 | LINK-02 | P1: Links internos | Design | Implementing |
-| LINK-03 | P1: Links internos | Design | Pending |
+| LINK-03 | P1: Links internos | Design | Implementing |
 | LINK-04 | P1: Links internos | Design | Pending |
 | LINK-05 | P1: Links internos | Design | Pending |
 | LD-01 | P1: Dados estruturados e sitemap | Design | Implementing |

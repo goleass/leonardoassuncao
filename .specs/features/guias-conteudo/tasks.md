@@ -347,7 +347,7 @@ T17
 
 ---
 
-### T11: Link "Guias" no cabeçalho
+### T11: Link "Guias" no cabeçalho ✅
 
 **What**: `{ href: "/guias/", label: "Guias" }` depois de "Processo".
 **Where**: `src/components/Header.astro`
