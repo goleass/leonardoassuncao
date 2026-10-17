@@ -23,6 +23,7 @@ const GUIDE_PAGES = [
   "/guias/integracao-rastreamento-veicular/",
   "/guias/portal-de-pedidos-para-distribuidora/",
   "/guias/portal-de-pedidos-salgados-congelados/",
+  "/guias/quanto-custa-site-para-vidracaria/",
   "/guias/quanto-custa-um-sistema-sob-medida/",
   "/guias/quanto-custa-um-site/",
   "/guias/sistema-ordem-de-servico-ar-condicionado/",
@@ -38,7 +39,7 @@ describe("sitemap com <lastmod> real (SMAP-01)", () => {
     lastmod: body.match(/<lastmod>(.*?)<\/lastmod>/)?.[1],
   }));
 
-  it("tem exatamente as 17 páginas indexáveis", () => {
+  it("tem exatamente as 18 páginas indexáveis", () => {
     expect(urls.map((u) => u.path).sort()).toEqual([...Object.keys(EXPECTED_SOURCES), ...GUIDE_PAGES].sort());
   });
 
