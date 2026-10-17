@@ -423,7 +423,7 @@ T17
 
 ---
 
-### T14: Guia "Quanto custa um sistema sob medida"
+### T14: Guia "Quanto custa um sistema sob medida" ✅
 
 **What**: `src/content/guias/quanto-custa-um-sistema-sob-medida.md` (`servico: software-sob-medida`, `draft: true`, marcadores `[PREÇO: ...]`).
 **Where**: `src/content/guias/quanto-custa-um-sistema-sob-medida.md`
