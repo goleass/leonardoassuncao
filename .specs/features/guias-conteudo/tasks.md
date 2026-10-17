@@ -238,7 +238,7 @@ T17
 
 ---
 
-### T7: Guias no llms.txt
+### T7: Guias no llms.txt ✅
 
 **What**: `llmsText(site, list, guides = [])` com `/guias/` em "Páginas" e seção `## Guias`; `src/pages/llms.txt.ts` passa `await loadGuides()`.
 **Where**: `src/lib/seo/llms.ts`

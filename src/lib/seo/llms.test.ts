@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { siteFixture } from "../../../tests/fixtures/site";
 import { services, type Service } from "../../data/services";
 import { questions } from "../../data/faq";
+import type { Guide } from "../guias/guias";
 import { llmsFullText, llmsText } from "./llms";
 
 // Host, cidade, e-mail, WhatsApp e CNPJ do dublê diferem dos de produção: os valores vêm da config (LLMS-04).
@@ -48,6 +49,57 @@ describe("llmsText (LLMS-02, LLMS-03, LLMS-04, LLMS-06, LLMS-10)", () => {
   it("aponta /llms-full.txt sob ## Optional (LLMS-10)", () => {
     const opcional = txt.slice(txt.indexOf("## Optional"));
     expect(opcional).toContain("(https://www.exemplo.com.br/llms-full.txt)");
+  });
+});
+
+// Guia fixture para a seção ## Guias.
+function guide(over: Partial<Guide>): Guide {
+  return {
+    slug: "guia",
+    title: "Título do guia com tamanho suficiente",
+    description: "Descrição.",
+    h1: "Guia",
+    resumo: "Resumo.",
+    servico: "integracoes",
+    publishedAt: new Date("2026-10-01"),
+    faq: [],
+    draft: false,
+    body: "",
+    html: "",
+    ...over,
+  };
+}
+
+describe("llmsText: guias (guias LLMS-01, LLMS-02, LLMS-03)", () => {
+  const antigo = guide({ slug: "integracao-bling-api", h1: "Como integrar o Bling via API", resumo: "Resumo do Bling." });
+  const recente = guide({
+    slug: "quanto-custa-um-site",
+    h1: "Quanto custa um site",
+    resumo: "Resumo do custo.",
+    publishedAt: new Date("2026-09-01"),
+    updatedAt: new Date("2026-10-15"),
+  });
+  const linhaGuias = "- [Guias](https://www.exemplo.com.br/guias/): Guias práticos sobre custo e contratação de sites, sistemas e integrações.";
+
+  it("com 2 guias, lista cada um com h1, URL absoluta e resumo, mais recente primeiro (LLMS-01)", () => {
+    const txt = llmsText(site, services, [antigo, recente]);
+    const secao = txt.slice(txt.indexOf("## Guias\n"), txt.indexOf("## Optional"));
+    expect(secao.split("\n").filter((l) => l.startsWith("- "))).toEqual([
+      "- [Quanto custa um site](https://www.exemplo.com.br/guias/quanto-custa-um-site/): Resumo do custo.",
+      "- [Como integrar o Bling via API](https://www.exemplo.com.br/guias/integracao-bling-api/): Resumo do Bling.",
+    ]);
+  });
+
+  it("sem guias, não há a seção ## Guias (LLMS-02)", () => {
+    expect(llmsText(site, services)).not.toContain("## Guias");
+    expect(llmsText(site, services, [])).not.toContain("## Guias");
+  });
+
+  it("\"Páginas\" lista /guias/ com e sem guias (LLMS-03)", () => {
+    for (const txt of [llmsText(site, services), llmsText(site, services, [antigo])]) {
+      const paginas = txt.slice(txt.indexOf("## Páginas"), txt.indexOf("\n## ", txt.indexOf("## Páginas") + 1));
+      expect(paginas.split("\n")).toContain(linhaGuias);
+    }
   });
 });
 
