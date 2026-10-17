@@ -69,7 +69,7 @@ T1 → T2
 
 ## Task Breakdown
 
-### T1: Ligar o guia quanto-custa-um-site a outro guia
+### T1: Ligar o guia quanto-custa-um-site a outro guia ✅
 
 **What**: Adicionar ao corpo de `quanto-custa-um-site` um link contextual para `/guias/quanto-custa-um-sistema-sob-medida/`, único guia atual sem link para outro guia (pré-requisito de TEST-04).
 **Where**: `src/content/guias/quanto-custa-um-site.md`
@@ -84,8 +84,8 @@ T1 → T2
 
 **Done when**:
 
-- [ ] Uma frase existente ou nova liga para `/guias/quanto-custa-um-sistema-sob-medida/`
-- [ ] Gate check passes: `npm test`
+- [x] Uma frase existente ou nova liga para `/guias/quanto-custa-um-sistema-sob-medida/`
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick

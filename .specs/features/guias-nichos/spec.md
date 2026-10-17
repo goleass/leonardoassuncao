@@ -220,7 +220,7 @@ Implicit-requirement dimensions sweep:
 | TEST-01 | P1: Testes de conteúdo | Tasks | Pending |
 | TEST-02 | P1: Testes de conteúdo | Tasks | Pending |
 | TEST-03 | P1: Testes de conteúdo | Tasks | Pending |
-| TEST-04 | P1: Testes de conteúdo | Tasks | Pending |
+| TEST-04 | P1: Testes de conteúdo | Tasks | Implementing |
 | GN-01 | P1: Onda 1 | Tasks | Pending |
 | GN-02 | Regras de conteúdo | Tasks | Pending |
 | GN-03 | Regras de conteúdo | Tasks | Pending |
