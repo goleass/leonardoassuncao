@@ -11,62 +11,73 @@ const LAUNCH: Record<string, string> = {
   "integracao-rastreamento-veicular": "integracoes",
 };
 
-// Guias por nicho: servico, title e h1 de GN-02 e da tabela de prioridade.
-const NICHE: Record<string, { servico: string; title: string; h1: string }> = {
+// Guias por nicho: servico, title e h1 de GN-02 e da tabela de prioridade; cluster = link obrigatório de GN-11.
+const NICHE: Record<string, { servico: string; title: string; h1: string; cluster: string }> = {
   "bling-nao-sincroniza-pedidos": {
     servico: "integracoes",
     title: "Bling Não Sincroniza Pedidos da Loja? | Leonardo Assunção",
     h1: "Minha loja virtual e o Bling não sincronizam os pedidos corretamente: quando preciso de uma integração personalizada?",
+    cluster: "/guias/integracao-bling-api/",
   },
   "portal-de-pedidos-para-distribuidora": {
     servico: "sistemas-web",
     title: "Portal de Pedidos para Distribuidora | Leonardo Assunção",
     h1: "Portal de pedidos para distribuidora: como parar de receber todos os pedidos pelo WhatsApp",
+    cluster: "/guias/bling-nao-sincroniza-pedidos/",
   },
   "sistema-ordem-de-servico-ar-condicionado": {
     servico: "sistemas-web",
     title: "Sistema de OS para Ar-Condicionado | Leonardo Assunção",
     h1: "Sistema de ordens de serviço para empresa de ar-condicionado: visitas, técnicos e manutenção recorrente",
+    cluster: "/guias/quanto-custa-um-sistema-sob-medida/",
   },
   "software-recarga-de-extintores": {
     servico: "software-sob-medida",
     title: "Software para Recarga de Extintores | Leonardo Assunção",
     h1: "Software para empresa de recarga de extintores controlar equipamentos, clientes e vencimentos",
+    cluster: "/guias/sistema-ordem-de-servico-ar-condicionado/",
   },
   "portal-de-pedidos-salgados-congelados": {
     servico: "sistemas-web",
     title: "Portal de Pedidos: Salgados Congelados | Leonardo Assunção",
     h1: "Portal de pedidos para fábrica de salgados congelados que vende para mercados e lanchonetes",
+    cluster: "/guias/portal-de-pedidos-para-distribuidora/",
   },
   "quanto-custa-site-para-vidracaria": {
     servico: "criacao-de-sites",
     title: "Quanto Custa um Site para Vidraçaria | Leonardo Assunção",
     h1: "Quanto custa criar um site para vidraçaria com orçamento de box, espelhos e fachadas?",
+    cluster: "/guias/quanto-custa-um-site/",
   },
   "sistema-aluguel-de-cacambas": {
     servico: "software-sob-medida",
     title: "Sistema para Aluguel de Caçambas | Leonardo Assunção",
     h1: "Sistema para empresa de aluguel de caçambas: controlar entregas, retiradas e trocas por endereço",
+    cluster: "/guias/integracao-rastreamento-veicular/",
   },
   "sistema-fabrica-de-uniformes": {
     servico: "software-sob-medida",
     title: "Sistema para Fábrica de Uniformes | Leonardo Assunção",
     h1: "Sistema de pedidos e produção para fábrica de uniformes personalizados",
+    cluster: "/guias/quanto-custa-um-sistema-sob-medida/",
   },
   "portal-do-cliente-contabilidade": {
     servico: "sistemas-web",
     title: "Portal do Cliente para Contabilidade | Leonardo Assunção",
     h1: "Portal do cliente para escritório de contabilidade: como organizar documentos e pendências sem depender de mensagens",
+    cluster: "/guias/quanto-custa-um-sistema-sob-medida/",
   },
   "sistema-portoes-automaticos": {
     servico: "software-sob-medida",
     title: "Sistema para Portões Automáticos | Leonardo Assunção",
     h1: "Sistema para empresa de instalação de portões automáticos: orçamento, instalação e manutenção",
+    cluster: "/guias/sistema-ordem-de-servico-ar-condicionado/",
   },
   "site-aluguel-de-inflaveis": {
     servico: "criacao-de-sites",
     title: "Site para Aluguel de Infláveis | Leonardo Assunção",
     h1: "Site para aluguel de brinquedos infláveis: como consultar disponibilidade e pedir orçamento por data",
+    cluster: "/guias/quanto-custa-um-site/",
   },
 };
 
@@ -173,6 +184,10 @@ describe("guias de src/content/guias (TEST-01 a TEST-04, CONT-01 a CONT-07, GN-0
       it("tem o title e o h1 de GN-02", () => {
         expect(data.title).toBe(niche.title);
         expect(data.h1).toBe(niche.h1);
+      });
+
+      it("liga para o guia de cluster de GN-11", () => {
+        expect(links).toContain(niche.cluster);
       });
     }
 
