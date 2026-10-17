@@ -137,7 +137,7 @@ T17
 
 ---
 
-### T3: Carregador da coleção
+### T3: Carregador da coleção ✅
 
 **What**: `loadGuides()`: `getCollection("guias")` → `toGuide` → `selectGuides` com `includeDrafts: import.meta.env.DEV`.
 **Where**: `src/lib/guias/collection.ts`
