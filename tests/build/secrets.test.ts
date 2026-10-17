@@ -122,6 +122,7 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
       `${DOMAIN}/guias/sistema-aluguel-de-cacambas/`,
       `${DOMAIN}/guias/sistema-fabrica-de-uniformes/`,
       `${DOMAIN}/guias/sistema-ordem-de-servico-ar-condicionado/`,
+      `${DOMAIN}/guias/sistema-portoes-automaticos/`,
       `${DOMAIN}/guias/software-recarga-de-extintores/`,
       `${DOMAIN}/integracoes/`,
       `${DOMAIN}/manutencao-de-sistemas/`,

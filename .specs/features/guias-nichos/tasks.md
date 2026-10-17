@@ -404,7 +404,7 @@ T1 → T2
 
 ---
 
-### T12: Escrever o guia sistema para portões automáticos
+### T12: Escrever o guia sistema para portões automáticos ✅
 
 **What**: Criar o guia `sistema-portoes-automaticos` com `servico: software-sob-medida`, o `title` de GN-02, o `h1` da tabela de prioridade, o ângulo e o link de cluster de GN-11.
 **Where**: `src/content/guias/sistema-portoes-automaticos.md`
@@ -419,14 +419,14 @@ T1 → T2
 
 **Done when**:
 
-- [ ] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
-- [ ] Ângulo de visita técnica → orçamento → instalação → contrato de manutenção; não repetir o guia de ar-condicionado, linkar para ele.
-- [ ] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
-- [ ] Links para `/software-sob-medida/` e para o guia de cluster de GN-11
-- [ ] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
-- [ ] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
-- [ ] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
-- [ ] Gate check passes: `npm test`
+- [x] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
+- [x] Ângulo de visita técnica → orçamento → instalação → contrato de manutenção; não repetir o guia de ar-condicionado, linkar para ele.
+- [x] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
+- [x] Links para `/software-sob-medida/` e para o guia de cluster de GN-11
+- [x] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
+- [x] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
+- [x] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
