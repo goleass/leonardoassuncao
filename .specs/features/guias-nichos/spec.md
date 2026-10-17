@@ -217,17 +217,17 @@ Implicit-requirement dimensions sweep:
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| TEST-01 | P1: Testes de conteúdo | Tasks | Pending |
-| TEST-02 | P1: Testes de conteúdo | Tasks | Pending |
-| TEST-03 | P1: Testes de conteúdo | Tasks | Pending |
+| TEST-01 | P1: Testes de conteúdo | Tasks | Implementing |
+| TEST-02 | P1: Testes de conteúdo | Tasks | Implementing |
+| TEST-03 | P1: Testes de conteúdo | Tasks | Implementing |
 | TEST-04 | P1: Testes de conteúdo | Tasks | Implementing |
 | GN-01 | P1: Onda 1 | Tasks | Pending |
-| GN-02 | Regras de conteúdo | Tasks | Pending |
-| GN-03 | Regras de conteúdo | Tasks | Pending |
-| GN-04 | Regras de conteúdo | Tasks | Pending |
-| GN-05 | Regras de conteúdo | Tasks | Pending |
-| GN-06 | Regras de conteúdo | Tasks | Pending |
-| GN-07 | Regras de conteúdo | Tasks | Pending |
+| GN-02 | Regras de conteúdo | Tasks | Implementing |
+| GN-03 | Regras de conteúdo | Tasks | Implementing |
+| GN-04 | Regras de conteúdo | Tasks | Implementing |
+| GN-05 | Regras de conteúdo | Tasks | Implementing |
+| GN-06 | Regras de conteúdo | Tasks | Implementing |
+| GN-07 | Regras de conteúdo | Tasks | Implementing |
 | GN-08 | Regras de conteúdo | Tasks | Pending |
 | GN-09 | Regras de conteúdo | Tasks | Pending |
 | GN-10 | Regras de conteúdo | Tasks | Pending |

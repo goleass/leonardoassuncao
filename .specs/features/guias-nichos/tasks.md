@@ -94,7 +94,7 @@ T1 → T2
 
 ---
 
-### T2: Generalizar o teste de conteúdo para todos os guias
+### T2: Generalizar o teste de conteúdo para todos os guias ✅
 
 **What**: Fazer `tests/content/guias.test.ts` rodar as regras em todo `.md` da pasta, com o mapa dos 15 slugs, o conjunto obrigatório (4 do lançamento) e a checagem de link para outro guia.
 **Where**: `tests/content/guias.test.ts`
@@ -109,14 +109,14 @@ T1 → T2
 
 **Done when**:
 
-- [ ] `describe.each` percorre os arquivos da pasta, não a lista do lançamento (TEST-01)
-- [ ] Mapa com os 15 slugs → `servico`; guia presente com `servico` diferente falha; slug obrigatório ausente falha (TEST-02)
-- [ ] Arquivo fora do mapa falha com o slug na mensagem (TEST-03)
-- [ ] Todo guia liga para outro `/guias/<slug>/` existente (TEST-04)
-- [ ] Guias desta feature: ≥ 4 FAQ e ≥ 4 `##` (GN-04, GN-05); os 4 do lançamento mantêm ≥ 3 (CONT-03, CONT-04)
-- [ ] Guias desta feature: `title` igual ao de GN-02
-- [ ] Prova de discriminação registrada no commit: fixture temporária fora do mapa e com 100 palavras faz o teste falhar; removida, passa
-- [ ] Gate check passes: `npm test`; nenhum teste existente removido
+- [x] `describe.each` percorre os arquivos da pasta, não a lista do lançamento (TEST-01)
+- [x] Mapa com os 15 slugs → `servico`; guia presente com `servico` diferente falha; slug obrigatório ausente falha (TEST-02)
+- [x] Arquivo fora do mapa falha com o slug na mensagem (TEST-03)
+- [x] Todo guia liga para outro `/guias/<slug>/` existente (TEST-04)
+- [x] Guias desta feature: ≥ 4 FAQ e ≥ 4 `##` (GN-04, GN-05); os 4 do lançamento mantêm ≥ 3 (CONT-03, CONT-04)
+- [x] Guias desta feature: `title` igual ao de GN-02
+- [x] Prova de discriminação registrada no commit: fixture temporária fora do mapa e com 100 palavras faz o teste falhar; removida, passa
+- [x] Gate check passes: `npm test`; nenhum teste existente removido
 
 **Tests**: unit
 **Gate**: quick
