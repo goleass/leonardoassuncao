@@ -30,6 +30,12 @@ describe("Footer: rodapé (LEGAL-04)", () => {
     ]);
   });
 
+  it('tem link "Guias" para /guias/ (guias LINK-04)', async () => {
+    const doc = parseHtml(await renderComponent(Footer, { site: siteFixture }));
+    const links = [...doc.querySelectorAll("footer a")].filter((a) => a.textContent?.trim() === "Guias");
+    expect(links.map((a) => a.getAttribute("href"))).toEqual(["/guias/"]);
+  });
+
   it("mostra o ano atual, lido da data do sistema", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date("2031-03-15T12:00:00Z"));

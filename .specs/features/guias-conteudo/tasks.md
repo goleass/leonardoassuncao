@@ -372,7 +372,7 @@ T17
 
 ---
 
-### T12: Link "Guias" no rodapé
+### T12: Link "Guias" no rodapé ✅
 
 **What**: Link "Guias" para `/guias/` no rodapé, junto da lista de serviços.
 **Where**: `src/components/Footer.astro`
