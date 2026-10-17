@@ -250,10 +250,10 @@ Implicit-requirement dimensions sweep:
 | LINK-03 | P1: Links internos | Design | Pending |
 | LINK-04 | P1: Links internos | Design | Pending |
 | LINK-05 | P1: Links internos | Design | Pending |
-| LD-01 | P1: Dados estruturados e sitemap | Design | Pending |
+| LD-01 | P1: Dados estruturados e sitemap | Design | Implementing |
 | LD-02 | P1: Dados estruturados e sitemap | Design | Pending |
 | LD-03 | P1: Dados estruturados e sitemap | Design | Pending |
-| LD-04 | P1: Dados estruturados e sitemap | Design | Pending |
+| LD-04 | P1: Dados estruturados e sitemap | Design | Implementing |
 | SMAP-01 | P1: Dados estruturados e sitemap | Design | Pending |
 | SMAP-02 | P1: Dados estruturados e sitemap | Design | Pending |
 | SMAP-03 | P1: Dados estruturados e sitemap | Design | Pending |

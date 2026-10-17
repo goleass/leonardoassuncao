@@ -1,5 +1,6 @@
 import type { SiteConfig } from "../../config/schema";
 import { services, type Service } from "../../data/services";
+import type { Guide } from "../guias/guias";
 
 // Nós JSON-LD (schema.org) publicados num único @graph por página (LD-01).
 
@@ -95,6 +96,36 @@ export function faqNode(faq: { q: string; a: string }[]): Node {
   return {
     "@type": "FAQPage",
     mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+  };
+}
+
+const day = (d: Date) => d.toISOString().slice(0, 10);
+
+/** Guia como Article, ligado ao autor, à empresa e ao serviço (guias LD-01). */
+export function articleNode(site: SiteConfig, guide: Guide, service: Service): Node {
+  const url = abs(site, `/guias/${guide.slug}/`);
+  return {
+    "@type": "Article",
+    headline: guide.h1,
+    description: guide.description,
+    datePublished: day(guide.publishedAt),
+    dateModified: day(guide.updatedAt ?? guide.publishedAt),
+    author: ref(site, "leonardo"),
+    publisher: ref(site, "empresa"),
+    mainEntityOfPage: url,
+    inLanguage: "pt-BR",
+    about: { "@type": "Service", name: service.name, url: abs(site, `/${service.slug}/`) },
+  };
+}
+
+/** Índice /guias/ com a URL de cada guia, na ordem recebida (guias LD-04). */
+export function collectionNode(site: SiteConfig, guides: Guide[]): Node {
+  return {
+    "@type": "CollectionPage",
+    url: abs(site, "/guias/"),
+    name: "Guias sobre Sites, Sistemas e Integrações",
+    inLanguage: "pt-BR",
+    hasPart: guides.map((g) => ({ "@type": "Article", url: abs(site, `/guias/${g.slug}/`), headline: g.h1 })),
   };
 }
 

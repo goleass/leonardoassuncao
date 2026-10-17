@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { siteComLinkedinFixture, siteFixture } from "../../../tests/fixtures/site";
 import { site as siteReal } from "../../config/site";
 import { services } from "../../data/services";
-import { breadcrumbNode, faqNode, jsonLdText, serviceNode, siteNodes } from "./schema";
+import type { Guide } from "../guias/guias";
+import { articleNode, breadcrumbNode, collectionNode, faqNode, jsonLdText, serviceNode, siteNodes } from "./schema";
 
 const BASE = "https://exemplo.com.br/";
 const AREA = [
@@ -169,5 +170,63 @@ describe("jsonLdText (LD-01, LD-08)", () => {
     expect(text).not.toContain("<");
     expect(text).toContain("\\u003c/script>");
     expect(JSON.parse(text)["@graph"][0].name).toBe("</script><b>");
+  });
+});
+
+// Guia fixture para os nós da seção /guias/.
+function guide(over: Partial<Guide> = {}): Guide {
+  return {
+    slug: "integracao-bling-api",
+    title: "Integração com o Bling via API | Leonardo Assunção",
+    description: "Descrição do guia.",
+    h1: "Como integrar o Bling via API",
+    resumo: "Resumo.",
+    servico: "integracoes",
+    publishedAt: new Date("2026-10-01"),
+    faq: [],
+    draft: false,
+    body: "",
+    html: "",
+    ...over,
+  };
+}
+
+describe("articleNode (guias LD-01)", () => {
+  const service = services.find((s) => s.slug === "integracoes")!;
+
+  it("descreve o guia como Article ligado ao autor, à empresa e ao serviço", () => {
+    expect(articleNode(siteFixture, guide({ updatedAt: new Date("2026-10-15") }), service)).toEqual({
+      "@type": "Article",
+      headline: "Como integrar o Bling via API",
+      description: "Descrição do guia.",
+      datePublished: "2026-10-01",
+      dateModified: "2026-10-15",
+      author: { "@id": `${BASE}#leonardo` },
+      publisher: { "@id": `${BASE}#empresa` },
+      mainEntityOfPage: `${BASE}guias/integracao-bling-api/`,
+      inLanguage: "pt-BR",
+      about: { "@type": "Service", name: service.name, url: `${BASE}integracoes/` },
+    });
+  });
+
+  it("sem updatedAt, dateModified = publishedAt", () => {
+    expect(articleNode(siteFixture, guide(), service).dateModified).toBe("2026-10-01");
+  });
+});
+
+describe("collectionNode (guias LD-04)", () => {
+  it("é um CollectionPage de /guias/ com a URL de cada guia na ordem recebida", () => {
+    const node = collectionNode(siteFixture, [guide({ slug: "b-guia", h1: "B" }), guide({ slug: "a-guia", h1: "A" })]) as Record<
+      string,
+      any
+    >;
+    expect(node["@type"]).toBe("CollectionPage");
+    expect(node.url).toBe(`${BASE}guias/`);
+    expect(node.hasPart.map((p: any) => p.url)).toEqual([`${BASE}guias/b-guia/`, `${BASE}guias/a-guia/`]);
+    expect(node.hasPart[0]).toEqual({ "@type": "Article", url: `${BASE}guias/b-guia/`, headline: "B" });
+  });
+
+  it("sem guias, hasPart é []", () => {
+    expect((collectionNode(siteFixture, []) as Record<string, any>).hasPart).toEqual([]);
   });
 });

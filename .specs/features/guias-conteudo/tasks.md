@@ -187,7 +187,7 @@ T17
 
 ---
 
-### T5: JSON-LD de guia e de coleção
+### T5: JSON-LD de guia e de coleção ✅
 
 **What**: `articleNode(site, guide, service)` e `collectionNode(site, guides)`.
 **Where**: `src/lib/seo/schema.ts`
