@@ -266,7 +266,7 @@ T17
 
 ---
 
-### T8: Página do guia
+### T8: Página do guia ✅
 
 **What**: Rota `src/pages/guias/[slug].astro` com `getStaticPaths` async (props `guide`, `related`), conforme o design.
 **Where**: `src/pages/guias/[slug].astro`

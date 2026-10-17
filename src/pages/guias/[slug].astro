@@ -1,0 +1,260 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/article.css";
+import { site } from "../../config/site";
+import { services } from "../../data/services";
+import { loadGuides } from "../../lib/guias/collection";
+import { formatDate, related, type Guide } from "../../lib/guias/guias";
+import { NAME, articleNode, breadcrumbNode, faqNode } from "../../lib/seo/schema";
+
+// Uma página estática por guia publicado (guias PAGE-01), com até 3 guias do mesmo serviço (PAGE-08).
+export const getStaticPaths = (async () => {
+  const guides = await loadGuides();
+  return guides.map((guide) => ({ params: { slug: guide.slug }, props: { guide, related: related(guides, guide) } }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  guide: Guide;
+  related: Guide[];
+}
+
+const { guide, related: others } = Astro.props;
+const service = services.find((s) => s.slug === guide.servico)!;
+const day = (d: Date) => d.toISOString().slice(0, 10);
+
+const schema = [
+  articleNode(site, guide, service),
+  breadcrumbNode(site, [
+    { name: "Início", path: "/" },
+    { name: "Guias", path: "/guias/" },
+    { name: guide.h1, path: `/guias/${guide.slug}/` },
+  ]),
+  ...(guide.faq.length > 0 ? [faqNode(guide.faq)] : []),
+];
+---
+
+<BaseLayout site={site} title={guide.title} description={guide.description} schema={schema}>
+  <Header slot="header" site={site} />
+
+  <article class="svc guide">
+    <header class="svc-hero surface-dark">
+      <div class="container svc-hero__inner">
+        <nav aria-label="Trilha de navegação">
+          <ol class="crumbs">
+            <li><a class="crumbs__link lg-ul" href="/">Início</a></li>
+            <li><a class="crumbs__link lg-ul" href="/guias/">Guias</a></li>
+            <li aria-current="page">{guide.h1}</li>
+          </ol>
+        </nav>
+        <h1 class="svc-hero__title guide__title">{guide.h1}</h1>
+        <p class="svc-hero__intro">{guide.resumo}</p>
+        <p class="guide__meta">
+          <span>
+            Por {site.linkedin ? <a class="guide__author lg-ul" href={site.linkedin}>{NAME}</a> : NAME}
+          </span>
+          <span>Publicado em <time datetime={day(guide.publishedAt)}>{formatDate(guide.publishedAt)}</time></span>
+          {
+            guide.updatedAt && (
+              <span>
+                Atualizado em <time datetime={day(guide.updatedAt)}>{formatDate(guide.updatedAt)}</time>
+              </span>
+            )
+          }
+        </p>
+      </div>
+    </header>
+
+    <div class="container svc__body">
+      <div class="guide__body"><Fragment set:html={guide.html} /></div>
+    </div>
+
+    {
+      guide.faq.length > 0 && (
+        <section class="svc-faq">
+          <div class="container svc-faq__inner">
+            <h2 class="svc-faq__title">Perguntas frequentes</h2>
+            <div class="svc-faq__list">
+              {guide.faq.map(({ q, a }, index) => (
+                <details class="svc-faq__item" open={index === 0}>
+                  <summary class="svc-faq__question">{q}</summary>
+                  <p class="svc-faq__answer">{a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="guide-cta surface-dark">
+      <div class="container guide-cta__inner">
+        <h2 class="guide-cta__title">Quer tirar isso do papel?</h2>
+        <p class="guide-cta__text">
+          Veja como funciona o serviço <a class="guide-cta__link lg-ul" href={`/${service.slug}/`}>{service.name}</a> ou
+          fale comigo para um orçamento.
+        </p>
+        <div class="svc-hero__actions">
+          <a class="button button--mark lg-btn lg-btn-m" href="#contato">Pedir orçamento</a>
+          <a class="button button--outline lg-btn lg-btn-o" href={`https://wa.me/${site.whatsapp}`}>Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  {
+    others.length > 0 && (
+      <nav class="svc-others" aria-label="Leia também">
+        <div class="container">
+          <h2 class="svc-others__title">Leia também</h2>
+          <ul class="svc-others__list">
+            {others.map((other) => (
+              <li>
+                <a class="svc-others__link lg-ul" href={`/guias/${other.slug}/`}>
+                  {other.h1}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    )
+  }
+
+  <Contact site={site} />
+  <Footer slot="footer" site={site} />
+</BaseLayout>
+
+<style>
+  .guide__title {
+    max-width: 22ch;
+  }
+
+  .guide__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    font-size: var(--text-small);
+    color: var(--on-dark-subtle);
+  }
+
+  .guide__author {
+    color: var(--on-dark);
+    text-decoration: none;
+  }
+
+  /* Texto corrido gerado do Markdown: escopado sob .guide__body. */
+  .guide__body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: var(--text-body-lg);
+  }
+
+  .guide__body :global(h2) {
+    margin-top: 32px;
+    font-size: var(--text-h3);
+    line-height: 1.1;
+    font-weight: 700;
+    font-stretch: var(--stretch-title);
+  }
+
+  .guide__body :global(h3) {
+    margin-top: 16px;
+    font-size: var(--text-lead);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .guide__body :global(ul),
+  .guide__body :global(ol) {
+    margin: 0;
+    padding-left: 1.2em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .guide__body :global(a) {
+    color: var(--brand);
+    font-weight: 600;
+  }
+
+  .guide__body :global(table) {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: var(--text-body-sm);
+  }
+
+  .guide__body :global(th),
+  .guide__body :global(td) {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-200);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .guide__body :global(th) {
+    border-bottom-color: var(--ink);
+    font-weight: 600;
+  }
+
+  .guide-cta {
+    padding: 96px var(--gutter);
+  }
+
+  .guide-cta__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .guide-cta__title {
+    max-width: 20ch;
+    font-size: var(--text-h2-faq);
+    line-height: 1;
+    letter-spacing: var(--tracking-display);
+    font-weight: 700;
+    font-stretch: var(--stretch-display);
+  }
+
+  .guide-cta__text {
+    max-width: 640px;
+    font-size: var(--text-lead);
+    color: var(--on-dark-muted);
+  }
+
+  .guide-cta__link {
+    color: var(--on-dark);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 18px 26px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .button--mark {
+    background-color: var(--mark);
+    color: var(--deep);
+  }
+
+  .button--outline {
+    padding-inline: 24px;
+    border: 1px solid var(--on-dark-line-strong);
+    color: var(--on-dark);
+    font-weight: 500;
+  }
+</style>
