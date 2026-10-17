@@ -40,8 +40,8 @@ describe("contagem de palavras do corpo (CONT-02)", () => {
 });
 
 describe("guias do lançamento (CONT-01 a CONT-05, CONT-07, LINK-05)", () => {
-  it("existe pelo menos um guia do lançamento", () => {
-    expect(present.length).toBeGreaterThan(0);
+  it("tem os 4 guias do lançamento (CONT-01)", () => {
+    expect(present).toEqual(Object.keys(LAUNCH));
   });
 
   describe.each(present)("%s", (slug) => {

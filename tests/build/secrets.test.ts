@@ -18,9 +18,12 @@ function listFiles(dir: string): string[] {
 
 beforeAll(() => {
   // Build com um valor-sentinela na chave: se ela vazar, aparece nos arquivos públicos.
+  // O vitest põe NODE_ENV=test, DEV=1, MODE, PROD, SSR e BASE_URL no process.env; o Astro leva essas variáveis para
+  // import.meta.env e o build passaria a publicar rascunhos (guias COL-08). O build roda sem elas, como em produção.
+  const { NODE_ENV: _n, DEV: _d, PROD: _p, MODE: _m, SSR: _s, BASE_URL: _b, ...env } = process.env;
   execFileSync("npx", ["astro", "build"], {
     env: {
-      ...process.env,
+      ...env,
       RESEND_API_KEY: SENTINEL,
       CONTACT_TO: "destino@exemplo.com.br",
       CONTACT_FROM: "Site <site@exemplo.com.br>",
@@ -107,6 +110,10 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
       `${DOMAIN}/`,
       `${DOMAIN}/criacao-de-sites/`,
       `${DOMAIN}/guias/`,
+      `${DOMAIN}/guias/integracao-bling-api/`,
+      `${DOMAIN}/guias/integracao-rastreamento-veicular/`,
+      `${DOMAIN}/guias/quanto-custa-um-sistema-sob-medida/`,
+      `${DOMAIN}/guias/quanto-custa-um-site/`,
       `${DOMAIN}/integracoes/`,
       `${DOMAIN}/manutencao-de-sistemas/`,
       `${DOMAIN}/privacidade/`,

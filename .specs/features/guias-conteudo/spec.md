@@ -36,7 +36,7 @@ O site tem 6 páginas indexáveis (home + 5 serviços) e todas disputam termos a
 | Escopo da entrega | Estrutura + 4 guias escritos pelo agente, revisados pelo usuário antes do deploy | Decisão do usuário (2026-10-17). | y |
 | Nichos dos guias | Logística e transportadoras (telemetria) e distribuidoras/atacado com ERP (Bling, Tiny, Omie) como nichos principais | O usuário trabalha com ERPs, WhatsApp/CRM, pagamentos e NF-e, telemetria veicular, automação e scraping, e pediu sugestão (2026-10-17). Canoas fica no eixo da BR-116, com muitas transportadoras e distribuidoras; quase não existe conteúdo em português sobre integração de telemetria com sistemas de gestão. | y |
 | Os 4 guias do lançamento | (1) `quanto-custa-um-site` → Criação de sites; (2) `quanto-custa-um-sistema-sob-medida` → Software sob medida; (3) `integracao-bling-api` → Integrações; (4) `integracao-rastreamento-veicular` → Integrações | Dois "quanto custa" (alta intenção de compra) e dois de integração (nicho, pouca concorrência, experiência comprovada do usuário). | n |
-| Valores nos guias "quanto custa" | O agente escreve o texto com marcadores `[PREÇO: ...]` onde entram as faixas de preço, e o guia fica como rascunho até o usuário preencher | Preço inventado fere a confiança e as diretrizes do Google; só o usuário conhece os valores que pratica. O guia sem faixa de preço não responde à pergunta da busca. | n |
+| Valores nos guias "quanto custa" | Faixas de referência de mercado em 2026 (profissional autônomo ou estúdio pequeno), apresentadas como referência e não como orçamento; os dois guias são publicados | Decisão do usuário (2026-10-17): usar valores de mercado recomendados. Faixas tiradas de levantamentos públicos de agências e hospedagens, conferidas na data. | y |
 | Rascunho | Campo `draft: true` no guia: aparece no `astro dev`, mas não é gerado no build de produção nem entra em índice, sitemap, `llms.txt` ou links | Permite mesclar a estrutura sem publicar texto que ainda falta revisar. | n |
 | Marcador pendente | Guia com `draft: false` que contém `[PREÇO:`, `[REVISAR:` ou `[...]` faz o build falhar | Mesmo mecanismo da validação de dados do site (PAGE-09): nada publica com lacuna. | n |
 | Formato dos guias | Markdown numa coleção de conteúdo do Astro, com o frontmatter validado por zod | O Astro e o zod já estão no projeto; Markdown é o formato mais simples para o usuário escrever guias futuros. | n |
@@ -87,8 +87,8 @@ O site tem 6 páginas indexáveis (home + 5 serviços) e todas disputam termos a
 
 1. The build SHALL generate one static page at `/guias/<slug>/` for each non-draft guide. <!-- PAGE-01 -->
 2. The guide page SHALL use the guide `title` as `<title>`, its `description` as meta description, and its `h1` as the only `<h1>`. <!-- PAGE-02 -->
-3. The guide page SHALL show, before the body, the `resumo` paragraph, the author name "Leonardo Gomes Assunção" linking to `site.linkedin`, and the date "Publicado em <dd de mês de aaaa>" in pt-BR inside a `<time datetime>` element. <!-- PAGE-03 -->
-4. WHERE a guide has `updatedAt` the guide page SHALL also show "Atualizado em <dd de mês de aaaa>" inside a `<time datetime>` element. <!-- PAGE-04 -->
+3. The guide page SHALL show, before the body, the `resumo` paragraph, the author name "Leonardo Gomes Assunção" linking to `site.linkedin`, and the date "Publicado em <d de mês de aaaa>" in pt-BR inside a `<time datetime>` element. <!-- PAGE-03 -->
+4. WHERE a guide has `updatedAt` the guide page SHALL also show "Atualizado em <d de mês de aaaa>" inside a `<time datetime>` element. <!-- PAGE-04 -->
 5. The guide page SHALL show a breadcrumb "Início › Guias › <h1>" linking to `/` and `/guias/`. <!-- PAGE-05 -->
 6. The guide page SHALL end with a call-to-action block naming the related service, linking to `/<servico>/`, to `#contato` and to `https://wa.me/<site.whatsapp>`. <!-- PAGE-06 -->
 7. WHERE a guide has `faq` the guide page SHALL render each item as a `<details>` element under the heading "Perguntas frequentes". <!-- PAGE-07 -->
@@ -254,7 +254,7 @@ Implicit-requirement dimensions sweep:
 | LD-02 | P1: Dados estruturados e sitemap | Design | Implementing |
 | LD-03 | P1: Dados estruturados e sitemap | Design | Implementing |
 | LD-04 | P1: Dados estruturados e sitemap | Design | Implementing |
-| SMAP-01 | P1: Dados estruturados e sitemap | Design | Pending |
+| SMAP-01 | P1: Dados estruturados e sitemap | Design | Implementing |
 | SMAP-02 | P1: Dados estruturados e sitemap | Design | Implementing |
 | SMAP-03 | P1: Dados estruturados e sitemap | Design | Implementing |
 | LLMS-01 | P1: Guias visíveis para IAs | Design | Implementing |

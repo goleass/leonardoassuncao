@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 19,
+  "next_id": 25,
   "lessons": [
     {
       "id": "L-001",
@@ -328,6 +328,114 @@
       ],
       "created": "2026-10-05T01:05:31Z",
       "last_seen": "2026-10-05T01:05:31Z"
+    },
+    {
+      "id": "L-019",
+      "key": "spec_precision_gap::specify displayed dates with an exact example string such as 3 de novembro de 2026 instead of a dd mm pattern",
+      "text": "Specify displayed dates with an exact example string such as 3 de novembro de 2026 instead of a dd/mm pattern",
+      "signal": "spec_precision_gap",
+      "scope": "content-pages",
+      "status": "candidate",
+      "features": [
+        "guias-conteudo"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "PAGE-03 src/pages/guias/_slug.test.ts:108 (content-pages)"
+      ],
+      "created": "2026-10-17T05:40:41Z",
+      "last_seen": "2026-10-17T05:40:41Z"
+    },
+    {
+      "id": "L-020",
+      "key": "spec_precision_gap::when a build error comes from astro content collection validation say so in the ac and assert only the field level rejection in tests",
+      "text": "When a build error comes from Astro content-collection validation, say so in the AC and assert only the field-level rejection in tests",
+      "signal": "spec_precision_gap",
+      "scope": "content-collections",
+      "status": "candidate",
+      "features": [
+        "guias-conteudo"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "COL-03 src/lib/guias/schema.test.ts:56 (content-collections)"
+      ],
+      "created": "2026-10-17T05:40:41Z",
+      "last_seen": "2026-10-17T05:40:41Z"
+    },
+    {
+      "id": "L-021",
+      "key": "spec_precision_gap::mark qualitative clauses of a content ac phrasing context as human review so count based tests are not read as covering them",
+      "text": "Mark qualitative clauses of a content AC (phrasing, context) as human review so count-based tests are not read as covering them",
+      "signal": "spec_precision_gap",
+      "scope": "content",
+      "status": "candidate",
+      "features": [
+        "guias-conteudo"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "CONT-04 tests/content/guias.test.ts:72 (content)"
+      ],
+      "created": "2026-10-17T05:40:41Z",
+      "last_seen": "2026-10-17T05:40:41Z"
+    },
+    {
+      "id": "L-022",
+      "key": "spec_precision_gap::assert draft exclusion in the built output of every surface the spec lists not only through the shared loader",
+      "text": "Assert draft exclusion in the built output of every surface the spec lists, not only through the shared loader",
+      "signal": "spec_precision_gap",
+      "scope": "build-tests",
+      "status": "candidate",
+      "features": [
+        "guias-conteudo"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "COL-08 tests/build/guias.test.ts:52 (build-tests)"
+      ],
+      "created": "2026-10-17T05:40:41Z",
+      "last_seen": "2026-10-17T05:40:41Z"
+    },
+    {
+      "id": "L-023",
+      "key": "spec_deviation::check every new page title and description in a spec against the site wide 60 character title rule before confirming the spec",
+      "text": "Check every new page title and description in a spec against the site-wide 60-character title rule before confirming the spec",
+      "signal": "spec_deviation",
+      "scope": "seo",
+      "status": "candidate",
+      "features": [
+        "guias-conteudo"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "c43b170 HUB-01 vs SEO-08 (seo)"
+      ],
+      "created": "2026-10-17T05:40:41Z",
+      "last_seen": "2026-10-17T05:40:41Z"
+    },
+    {
+      "id": "L-024",
+      "key": "spec_deviation::decide dev only behavior from import meta env mode never import meta env dev which inherited environment variables can set",
+      "text": "Decide dev-only behavior from import.meta.env.MODE, never import.meta.env.DEV, which inherited environment variables can set",
+      "signal": "spec_deviation",
+      "scope": "astro-env",
+      "status": "candidate",
+      "features": [
+        "guias-conteudo"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "5535607 src/lib/guias/collection.ts:7 (astro-env)"
+      ],
+      "created": "2026-10-17T05:40:41Z",
+      "last_seen": "2026-10-17T05:40:41Z"
     }
   ]
 }

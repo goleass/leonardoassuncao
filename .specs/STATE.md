@@ -44,13 +44,11 @@
 
 ## Handoff
 
-- **Feature**: `.specs/features/auditoria-geo-seguranca` (mergeada e publicada em 2026-10-04, `7c04999`)
-- **Phase / Task**: pós-deploy. Branch `fix/headers-ssr` (`a1022ab` + docs) com middleware de cabeçalhos para respostas da função (`/api/contato`) e `Content-Type` do manifest; mergeado e publicado
-- **Completed**: T1–T23, Verificador PASS, deploy conferido (home, llms.txt, security.txt com os 8 cabeçalhos)
+- **Feature**: `.specs/features/guias-conteudo` (branch `feat/guias-conteudo`, não mergeada, não publicada)
+- **Phase / Task**: Execute concluído, T1–T17 + correções (c43b170 títulos ≤ 60, 5535607 rascunho por `MODE`, 4d515b7 guias de preço publicados com faixas de mercado)
+- **Completed**: Verificador PASS (51 ACs, sensor 14/14), `validation.md` gravado; gate completo verde (547 unitários, 76 de build)
 - **In-progress** (file:line): none
-- **Next step**: checklist manual restante (Rich Results Test, Bing Webmaster Tools, DNS de e-mail); GEO Checker A 98% e PSI 100 já conferidos
+- **Next step**: usuário revisar os 4 guias em `src/content/guias/` (fatos da API do Bling, faixas de preço); depois merge em main e push (deploy na Netlify) com autorização explícita
 - **Blockers**: none
 - **Uncommitted files**: none
-- **Branch**: main (fix/headers-ssr mergeada em f3cd8e0)
-- **Riscos aceitos**: 404 de caminho inexistente sem cabeçalhos de segurança (decisão do usuário, ver Assumptions da spec)
-- **Contato (branch `feat/contact-feedback-dedupe`)**: `.contact-form[hidden] { display: none }` faz a confirmação substituir o formulário; botão travado após sucesso; servidor ignora mensagem idêntica por 10 min (só hash SHA-256 em memória, por instância, como o rate limit)
+- **Branch**: feat/guias-conteudo
