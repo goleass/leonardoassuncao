@@ -158,6 +158,12 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: 5535607 src/lib/guias/collection.ts:7 (astro-env)
 - last seen: 2026-10-17T05:40:41Z
 
+### L-025 - When the spec names an exact required link per content file, assert that specific link in the content test instead of only any link of the same kind
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `content-tests` · harmful: 0
+- features: guias-nichos
+- evidence: validation.md M1b (tests/content/guias.test.ts:165-170) (content-tests)
+- last seen: 2026-10-17T14:33:37Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

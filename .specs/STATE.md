@@ -44,11 +44,11 @@
 
 ## Handoff
 
-- **Feature**: `.specs/features/guias-conteudo` (branch `feat/guias-conteudo`, não mergeada, não publicada)
-- **Phase / Task**: Execute concluído, T1–T17 + correções (c43b170 títulos ≤ 60, 5535607 rascunho por `MODE`, 4d515b7 guias de preço publicados com faixas de mercado)
-- **Completed**: Verificador PASS (51 ACs, sensor 14/14), `validation.md` gravado; gate completo verde (547 unitários, 76 de build)
+- **Feature**: `.specs/features/guias-nichos` (branch `feat/guias-nichos`, criada de `feat/guias-conteudo`; nenhuma das duas mesclada nem publicada)
+- **Phase / Task**: Execute concluído, T1–T14 + correção do mutante M1b (teste do link de cluster de GN-11)
+- **Completed**: Verificador PASS (sensor 13/13 após a correção), `validation.md` gravado; gate completo verde (687 unitários, 120 de build, 24 páginas)
 - **In-progress** (file:line): none
-- **Next step**: usuário revisar os 4 guias em `src/content/guias/` (fatos da API do Bling, faixas de preço); depois merge em main e push (deploy na Netlify) com autorização explícita
+- **Next step**: usuário revisar os 11 guias de nicho em `src/content/guias/` (faixas de preço da vidraçaria, fatos citados); depois merge de `feat/guias-conteudo` e `feat/guias-nichos` em main e push (deploy na Netlify) por onda, com autorização explícita
 - **Blockers**: none
 - **Uncommitted files**: none
-- **Branch**: feat/guias-conteudo
+- **Branch**: feat/guias-nichos
