@@ -26,6 +26,7 @@ const GUIDE_PAGES = [
   "/guias/quanto-custa-site-para-vidracaria/",
   "/guias/quanto-custa-um-sistema-sob-medida/",
   "/guias/quanto-custa-um-site/",
+  "/guias/sistema-aluguel-de-cacambas/",
   "/guias/sistema-ordem-de-servico-ar-condicionado/",
   "/guias/software-recarga-de-extintores/",
 ];
@@ -39,7 +40,7 @@ describe("sitemap com <lastmod> real (SMAP-01)", () => {
     lastmod: body.match(/<lastmod>(.*?)<\/lastmod>/)?.[1],
   }));
 
-  it("tem exatamente as 18 páginas indexáveis", () => {
+  it("tem exatamente as 19 páginas indexáveis", () => {
     expect(urls.map((u) => u.path).sort()).toEqual([...Object.keys(EXPECTED_SOURCES), ...GUIDE_PAGES].sort());
   });
 

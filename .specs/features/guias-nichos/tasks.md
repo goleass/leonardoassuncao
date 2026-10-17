@@ -311,7 +311,7 @@ T1 → T2
 
 ---
 
-### T9: Escrever o guia sistema para aluguel de caçambas
+### T9: Escrever o guia sistema para aluguel de caçambas ✅
 
 **What**: Criar o guia `sistema-aluguel-de-cacambas` com `servico: software-sob-medida`, o `title` de GN-02, o `h1` da tabela de prioridade, o ângulo e o link de cluster de GN-11.
 **Where**: `src/content/guias/sistema-aluguel-de-cacambas.md`
@@ -326,14 +326,14 @@ T1 → T2
 
 **Done when**:
 
-- [ ] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
-- [ ] Explicar CTR/MTR só se conferido na fonte oficial (ex.: SINIR/MTR do Ministério do Meio Ambiente, regras municipais de Canoas e Porto Alegre); ligar ao guia de rastreamento veicular.
-- [ ] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
-- [ ] Links para `/software-sob-medida/` e para o guia de cluster de GN-11
-- [ ] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
-- [ ] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
-- [ ] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
-- [ ] Gate check passes: `npm test`
+- [x] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
+- [x] Explicar CTR/MTR só se conferido na fonte oficial (ex.: SINIR/MTR do Ministério do Meio Ambiente, regras municipais de Canoas e Porto Alegre); ligar ao guia de rastreamento veicular.
+- [x] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
+- [x] Links para `/software-sob-medida/` e para o guia de cluster de GN-11
+- [x] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
+- [x] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
+- [x] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
