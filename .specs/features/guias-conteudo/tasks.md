@@ -293,7 +293,7 @@ T17
 
 ---
 
-### T9: Página índice /guias/
+### T9: Página índice /guias/ ✅
 
 **What**: `src/pages/guias/index.astro` usando `Astro.props.guides ?? await loadGuides()`.
 **Where**: `src/pages/guias/index.astro`

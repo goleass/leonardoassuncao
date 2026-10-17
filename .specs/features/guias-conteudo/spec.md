@@ -239,12 +239,12 @@ Implicit-requirement dimensions sweep:
 | PAGE-08 | P1: Página do guia | Design | Implementing |
 | PAGE-09 | P1: Página do guia | Design | Implementing |
 | PAGE-10 | P1: Página do guia | Design | Implementing |
-| HUB-01 | P1: Página índice /guias/ | Design | Pending |
-| HUB-02 | P1: Página índice /guias/ | Design | Pending |
-| HUB-03 | P1: Página índice /guias/ | Design | Pending |
+| HUB-01 | P1: Página índice /guias/ | Design | Implementing |
+| HUB-02 | P1: Página índice /guias/ | Design | Implementing |
+| HUB-03 | P1: Página índice /guias/ | Design | Implementing |
 | HUB-04 | P1: Página índice /guias/ | Design | Implementing |
-| HUB-05 | P1: Página índice /guias/ | Design | Pending |
-| HUB-06 | P1: Página índice /guias/ | Design | Pending |
+| HUB-05 | P1: Página índice /guias/ | Design | Implementing |
+| HUB-06 | P1: Página índice /guias/ | Design | Implementing |
 | LINK-01 | P1: Links internos | Design | Pending |
 | LINK-02 | P1: Links internos | Design | Pending |
 | LINK-03 | P1: Links internos | Design | Pending |
@@ -267,7 +267,7 @@ Implicit-requirement dimensions sweep:
 | CONT-05 | P1: Os 4 guias do lançamento | Design | Pending |
 | CONT-06 | P1: Os 4 guias do lançamento | Design | Pending |
 | CONT-07 | P1: Os 4 guias do lançamento | Design | Pending |
-| EDGE-01 | Edge cases | Design | Pending |
+| EDGE-01 | Edge cases | Design | Implementing |
 | EDGE-02 | Edge cases | Design | Implementing |
 | EDGE-03 | Edge cases | Design | Implementing |
 | EDGE-04 | Edge cases | Design | Implementing |

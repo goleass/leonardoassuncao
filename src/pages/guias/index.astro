@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/article.css";
+import { site } from "../../config/site";
+import { services } from "../../data/services";
+import { loadGuides } from "../../lib/guias/collection";
+import { formatDate, guidesFor, lastDate, type Guide } from "../../lib/guias/guias";
+import { breadcrumbNode, collectionNode } from "../../lib/seo/schema";
+
+interface Props {
+  /** Só nos testes; no build os guias vêm de loadGuides(). */
+  guides?: Guide[];
+}
+
+const guides = Astro.props.guides ?? (await loadGuides());
+// Um grupo por serviço com guias, na ordem de services (guias HUB-02, HUB-04).
+const groups = services
+  .map((service) => ({ service, guides: guidesFor(guides, service.slug) }))
+  .filter((group) => group.guides.length > 0);
+const day = (d: Date) => d.toISOString().slice(0, 10);
+
+const title = "Guias sobre Sites, Sistemas e Integrações | Leonardo Assunção";
+const description =
+  "Guias práticos sobre criação de sites, sistemas web, integrações e software sob medida: custos, prazos e como contratar.";
+
+const schema = [
+  collectionNode(site, guides),
+  breadcrumbNode(site, [
+    { name: "Início", path: "/" },
+    { name: "Guias", path: "/guias/" },
+  ]),
+];
+---
+
+<BaseLayout site={site} title={title} description={description} schema={schema}>
+  <Header slot="header" site={site} />
+
+  <header class="svc-hero surface-dark">
+    <div class="container svc-hero__inner">
+      <nav aria-label="Trilha de navegação">
+        <ol class="crumbs">
+          <li><a class="crumbs__link lg-ul" href="/">Início</a></li>
+          <li aria-current="page">Guias</li>
+        </ol>
+      </nav>
+      <h1 class="svc-hero__title">Guias</h1>
+      <p class="svc-hero__intro">
+        Respostas diretas sobre custo, prazo e integração de sites e sistemas, organizadas por serviço.
+      </p>
+    </div>
+  </header>
+
+  <div class="container svc__body">
+    {
+      groups.length === 0 ? (
+        <p class="hub__empty">Os primeiros guias estão a caminho.</p>
+      ) : (
+        groups.map(({ service, guides: list }) => (
+          <section class="svc-section">
+            <h2 class="svc-section__title">{service.name}</h2>
+            <a class="hub__service lg-ul" href={`/${service.slug}/`}>
+              Ver o serviço {service.name}
+            </a>
+            <ul class="hub__list">
+              {list.map((g) => (
+                <li class="hub__item">
+                  <a class="hub__link lg-ul" href={`/guias/${g.slug}/`}>
+                    {g.h1}
+                  </a>
+                  <p class="hub__description">{g.description}</p>
+                  <time class="hub__date" datetime={day(lastDate(g))}>
+                    {formatDate(lastDate(g))}
+                  </time>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      )
+    }
+  </div>
+
+  <Footer slot="footer" site={site} />
+</BaseLayout>
+
+<style>
+  .hub__empty {
+    font-size: var(--text-lead);
+    color: var(--gray-600);
+  }
+
+  .hub__service {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--brand);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .hub__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--ink);
+  }
+
+  .hub__item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--gray-250);
+  }
+
+  .hub__link {
+    align-self: flex-start;
+    color: var(--ink);
+    font-size: var(--text-lead);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .hub__description {
+    color: var(--gray-600);
+  }
+
+  .hub__date {
+    font-size: var(--text-small);
+    color: var(--gray-500);
+  }
+</style>
