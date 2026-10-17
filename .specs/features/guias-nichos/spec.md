@@ -232,7 +232,7 @@ Implicit-requirement dimensions sweep:
 | GN-09 | Regras de conteúdo | Tasks | Implementing |
 | GN-10 | Regras de conteúdo | Tasks | Implementing |
 | GN-11 | Regras de conteúdo | Tasks | Implementing |
-| GN-12 | P2: Onda 2 | Tasks | Pending |
+| GN-12 | P2: Onda 2 | Tasks | Implementing |
 | GN-13 | P3: Onda 3 | Tasks | Pending |
 | GN-14 | Regras de conteúdo | Tasks | Implementing |
 | GN-15 | Regras de conteúdo | Tasks | Implementing |

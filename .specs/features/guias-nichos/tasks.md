@@ -249,7 +249,7 @@ T1 → T2
 
 ---
 
-### T7: Escrever o guia portal de pedidos para salgados congelados
+### T7: Escrever o guia portal de pedidos para salgados congelados ✅
 
 **What**: Criar o guia `portal-de-pedidos-salgados-congelados` com `servico: sistemas-web`, o `title` de GN-02, o `h1` da tabela de prioridade, o ângulo e o link de cluster de GN-11.
 **Where**: `src/content/guias/portal-de-pedidos-salgados-congelados.md`
@@ -264,14 +264,14 @@ T1 → T2
 
 **Done when**:
 
-- [ ] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
-- [ ] Ângulo de produção por lote e rota de entrega; não repetir o conteúdo do guia de distribuidora, linkar para ele.
-- [ ] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
-- [ ] Links para `/sistemas-web/` e para o guia de cluster de GN-11
-- [ ] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
-- [ ] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
-- [ ] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
-- [ ] Gate check passes: `npm test`
+- [x] Top 5 da SERP do h1 lido; o ângulo do guia não repete o de nenhum resultado nem o de outro guia (GN-11)
+- [x] Ângulo de produção por lote e rota de entrega; não repetir o conteúdo do guia de distribuidora, linkar para ele.
+- [x] `resumo` responde o h1 na primeira frase (GN-08); ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre
+- [x] Links para `/sistemas-web/` e para o guia de cluster de GN-11
+- [x] Nenhum cliente, número, resultado ou experiência no nicho não confirmados (GN-09); fontes nomeadas no texto (GN-10)
+- [x] Seção `##` sobre como o ramo controla hoje (planilha, papel, WhatsApp) com ≥ 3 perdas concretas do nicho (GN-15)
+- [x] Seção `##` sobre sistema que não atende 100%: quando o pronto basta e quando vale sob medida ou integração (GN-16)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
