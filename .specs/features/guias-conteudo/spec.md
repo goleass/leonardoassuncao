@@ -255,8 +255,8 @@ Implicit-requirement dimensions sweep:
 | LD-03 | P1: Dados estruturados e sitemap | Design | Pending |
 | LD-04 | P1: Dados estruturados e sitemap | Design | Implementing |
 | SMAP-01 | P1: Dados estruturados e sitemap | Design | Pending |
-| SMAP-02 | P1: Dados estruturados e sitemap | Design | Pending |
-| SMAP-03 | P1: Dados estruturados e sitemap | Design | Pending |
+| SMAP-02 | P1: Dados estruturados e sitemap | Design | Implementing |
+| SMAP-03 | P1: Dados estruturados e sitemap | Design | Implementing |
 | LLMS-01 | P1: Guias visíveis para IAs | Design | Pending |
 | LLMS-02 | P1: Guias visíveis para IAs | Design | Pending |
 | LLMS-03 | P1: Guias visíveis para IAs | Design | Pending |

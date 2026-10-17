@@ -213,7 +213,7 @@ T17
 
 ---
 
-### T6: `<lastmod>` dos guias no sitemap
+### T6: `<lastmod>` dos guias no sitemap ✅
 
 **What**: `guideDates()` lê `publishedAt`, `updatedAt` e `draft` do frontmatter; `withLastmod` usa essas datas para `/guias/<slug>/` e a maior delas para `/guias/`.
 **Where**: `src/lib/seo/lastmod.ts`
