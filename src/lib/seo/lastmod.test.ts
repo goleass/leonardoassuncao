@@ -126,13 +126,16 @@ describe("withLastmod: guias (guias SMAP-02, SMAP-03)", () => {
       url: `${base}/guias/atualizado/`,
       lastmod: "2026-10-10",
     });
-    expect(withLastmod({ url: `${base}/guias/so-publicado/` }, run, pasta).lastmod).toBe("2026-08-15");
+    expect(withLastmod({ url: `${base}/guias/so-publicado/` }, run, pasta)).toEqual({
+      url: `${base}/guias/so-publicado/`,
+      lastmod: "2026-08-15",
+    });
     expect(calls).toEqual([]);
   });
 
   it("/guias/ recebe a maior data entre os guias publicados, ignorando rascunhos (SMAP-03)", () => {
     const { run } = fakeGit({ shallow: "false\n", log: "2026-01-01T00:00:00-03:00\n" });
-    expect(withLastmod({ url: `${base}/guias/` }, run, pasta).lastmod).toBe("2026-10-10");
+    expect(withLastmod({ url: `${base}/guias/` }, run, pasta)).toEqual({ url: `${base}/guias/`, lastmod: "2026-10-10" });
   });
 
   it("guia em rascunho e /guias/ sem guias saem sem lastmod", () => {
@@ -143,7 +146,10 @@ describe("withLastmod: guias (guias SMAP-02, SMAP-03)", () => {
 
   it("caminhos que não são de guia continuam usando o git", () => {
     const { run, calls } = fakeGit({ shallow: "false\n", log: "2026-09-30T14:05:12-03:00\n" });
-    expect(withLastmod({ url: `${base}/privacidade/` }, run, pasta).lastmod).toBe("2026-09-30T14:05:12-03:00");
+    expect(withLastmod({ url: `${base}/privacidade/` }, run, pasta)).toEqual({
+      url: `${base}/privacidade/`,
+      lastmod: "2026-09-30T14:05:12-03:00",
+    });
     expect(calls).toContainEqual(["log", "-1", "--format=%cI", "--", "src/pages/privacidade.astro", "src/layouts"]);
   });
 });
