@@ -498,7 +498,7 @@ T17
 
 ---
 
-### T17: Verificação da saída do build
+### T17: Verificação da saída do build ✅
 
 **What**: Testes de build: sitemap lista `/guias/` e os guias publicados com `<lastmod>`; rascunhos ausentes de `dist/`, sitemap e `llms.txt`; listas `PAGES` de `titles.test.ts` e `inline-scripts.test.ts` incluem `guias/index.html` e os guias publicados.
 **Where**: `tests/build/guias.test.ts`

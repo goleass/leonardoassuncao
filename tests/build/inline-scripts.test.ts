@@ -10,6 +10,8 @@ const PAGES = [
   "404.html",
   "criacao-de-sites/index.html",
   "guias/index.html",
+  "guias/integracao-bling-api/index.html",
+  "guias/integracao-rastreamento-veicular/index.html",
   "index.html",
   "integracoes/index.html",
   "manutencao-de-sistemas/index.html",
@@ -41,7 +43,7 @@ describe("nenhuma página publica script executável inline (CSP-03, EDGE-09)", 
     .filter((file) => file.endsWith(".html"))
     .map((file) => ({ file: relative(STATIC, file), html: readFileSync(file, "utf8") }));
 
-  it("o build gera as 9 páginas", () => {
+  it("o build gera as 11 páginas", () => {
     expect(built.map(({ file }) => file).sort()).toEqual(PAGES);
   });
 
