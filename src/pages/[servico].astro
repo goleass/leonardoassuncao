@@ -7,17 +7,25 @@ import Footer from "../components/Footer.astro";
 import "../styles/article.css";
 import { site } from "../config/site";
 import { services, type Service } from "../data/services";
+import { loadGuides } from "../lib/guias/collection";
+import { guidesFor, type Guide } from "../lib/guias/guias";
 import { breadcrumbNode, faqNode, serviceNode } from "../lib/seo/schema";
 
-// Uma página estática por serviço (SVC-01).
-export const getStaticPaths = (() =>
-  services.map((service) => ({ params: { servico: service.slug }, props: { service } }))) satisfies GetStaticPaths;
+// Uma página estática por serviço (SVC-01), com os guias do serviço (guias LINK-01).
+export const getStaticPaths = (async () => {
+  const guides = await loadGuides();
+  return services.map((service) => ({
+    params: { servico: service.slug },
+    props: { service, guides: guidesFor(guides, service.slug) },
+  }));
+}) satisfies GetStaticPaths;
 
 interface Props {
   service: Service;
+  guides: Guide[];
 }
 
-const { service } = Astro.props;
+const { service, guides } = Astro.props;
 const path = `/${service.slug}/`;
 const others = services.filter((s) => s !== service);
 
@@ -88,6 +96,25 @@ const schema = [
       </div>
     </section>
   </article>
+
+  {
+    guides.length > 0 && (
+      <nav class="svc-others" aria-label={`Guias sobre ${service.name}`}>
+        <div class="container">
+          <h2 class="svc-others__title">Guias sobre {service.name}</h2>
+          <ul class="svc-others__list">
+            {guides.map((guide) => (
+              <li>
+                <a class="svc-others__link lg-ul" href={`/guias/${guide.slug}/`}>
+                  {guide.h1}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    )
+  }
 
   <nav class="svc-others" aria-label="Outros serviços">
     <div class="container">

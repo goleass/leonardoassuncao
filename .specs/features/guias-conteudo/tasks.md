@@ -320,7 +320,7 @@ T17
 
 ---
 
-### T10: Bloco "Guias sobre" nas páginas de serviço
+### T10: Bloco "Guias sobre" nas páginas de serviço ✅
 
 **What**: `getStaticPaths` async com `guides: guidesFor(await loadGuides(), slug)`; seção "Guias sobre <name>" antes de "Outros serviços", só com lista não vazia.
 **Where**: `src/pages/[servico].astro`
