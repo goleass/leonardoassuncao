@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 25,
+  "next_id": 26,
   "lessons": [
     {
       "id": "L-001",
@@ -436,6 +436,24 @@
       ],
       "created": "2026-10-17T05:40:41Z",
       "last_seen": "2026-10-17T05:40:41Z"
+    },
+    {
+      "id": "L-025",
+      "key": "surviving_mutant::when the spec names an exact required link per content file assert that specific link in the content test instead of only any link of the same kind",
+      "text": "When the spec names an exact required link per content file, assert that specific link in the content test instead of only any link of the same kind",
+      "signal": "surviving_mutant",
+      "scope": "content-tests",
+      "status": "candidate",
+      "features": [
+        "guias-nichos"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "validation.md M1b (tests/content/guias.test.ts:165-170) (content-tests)"
+      ],
+      "created": "2026-10-17T14:33:37Z",
+      "last_seen": "2026-10-17T14:33:37Z"
     }
   ]
 }

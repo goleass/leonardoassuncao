@@ -217,29 +217,29 @@ Implicit-requirement dimensions sweep:
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| TEST-01 | P1: Testes de conteúdo | Tasks | Implementing |
-| TEST-02 | P1: Testes de conteúdo | Tasks | Implementing |
-| TEST-03 | P1: Testes de conteúdo | Tasks | Implementing |
-| TEST-04 | P1: Testes de conteúdo | Tasks | Implementing |
-| GN-01 | P1: Onda 1 | Tasks | Implementing |
-| GN-02 | Regras de conteúdo | Tasks | Implementing |
-| GN-03 | Regras de conteúdo | Tasks | Implementing |
-| GN-04 | Regras de conteúdo | Tasks | Implementing |
-| GN-05 | Regras de conteúdo | Tasks | Implementing |
-| GN-06 | Regras de conteúdo | Tasks | Implementing |
-| GN-07 | Regras de conteúdo | Tasks | Implementing |
-| GN-08 | Regras de conteúdo | Tasks | Implementing |
-| GN-09 | Regras de conteúdo | Tasks | Implementing |
-| GN-10 | Regras de conteúdo | Tasks | Implementing |
-| GN-11 | Regras de conteúdo | Tasks | Implementing |
-| GN-12 | P2: Onda 2 | Tasks | Implementing |
-| GN-13 | P3: Onda 3 | Tasks | Implementing |
-| GN-14 | Regras de conteúdo | Tasks | Implementing |
-| GN-15 | Regras de conteúdo | Tasks | Implementing |
-| GN-16 | Regras de conteúdo | Tasks | Implementing |
-| EDGE-01 | Edge cases | Tasks | Pending |
-| EDGE-02 | Edge cases | Tasks | Implementing |
-| EDGE-03 | Edge cases | Tasks | Pending |
+| TEST-01 | P1: Testes de conteúdo | Tasks | Verified |
+| TEST-02 | P1: Testes de conteúdo | Tasks | Verified |
+| TEST-03 | P1: Testes de conteúdo | Tasks | Verified |
+| TEST-04 | P1: Testes de conteúdo | Tasks | Verified |
+| GN-01 | P1: Onda 1 | Tasks | Verified |
+| GN-02 | Regras de conteúdo | Tasks | Verified |
+| GN-03 | Regras de conteúdo | Tasks | Verified |
+| GN-04 | Regras de conteúdo | Tasks | Verified |
+| GN-05 | Regras de conteúdo | Tasks | Verified |
+| GN-06 | Regras de conteúdo | Tasks | Verified |
+| GN-07 | Regras de conteúdo | Tasks | Verified |
+| GN-08 | Regras de conteúdo | Tasks | Verified |
+| GN-09 | Regras de conteúdo | Tasks | Verified |
+| GN-10 | Regras de conteúdo | Tasks | Verified |
+| GN-11 | Regras de conteúdo | Tasks | Verified |
+| GN-12 | P2: Onda 2 | Tasks | Verified |
+| GN-13 | P3: Onda 3 | Tasks | Verified |
+| GN-14 | Regras de conteúdo | Tasks | Verified |
+| GN-15 | Regras de conteúdo | Tasks | Verified |
+| GN-16 | Regras de conteúdo | Tasks | Verified |
+| EDGE-01 | Edge cases | Tasks | Verified |
+| EDGE-02 | Edge cases | Tasks | Verified |
+| EDGE-03 | Edge cases | Tasks | Verified |
 
 **Coverage:** 23 total, 23 mapped to tasks, 0 unmapped
 

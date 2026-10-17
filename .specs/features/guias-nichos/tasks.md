@@ -11,7 +11,7 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 **Spec**: `.specs/features/guias-nichos/spec.md`
 **Design**: skipped — só conteúdo Markdown e um teste; nenhuma decisão de arquitetura (a estrutura é a de `guias-conteudo`).
 **Branch**: `feat/guias-nichos`, criada a partir de `feat/guias-conteudo`
-**Status**: Approved
+**Status**: Done
 
 ---
 
