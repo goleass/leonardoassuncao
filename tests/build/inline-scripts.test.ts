@@ -9,11 +9,15 @@ const STATIC = join(process.cwd(), "dist");
 const PAGES = [
   "404.html",
   "criacao-de-sites/index.html",
+  "guias/bling-nao-sincroniza-pedidos/index.html",
   "guias/index.html",
   "guias/integracao-bling-api/index.html",
   "guias/integracao-rastreamento-veicular/index.html",
+  "guias/portal-de-pedidos-para-distribuidora/index.html",
   "guias/quanto-custa-um-sistema-sob-medida/index.html",
   "guias/quanto-custa-um-site/index.html",
+  "guias/sistema-ordem-de-servico-ar-condicionado/index.html",
+  "guias/software-recarga-de-extintores/index.html",
   "index.html",
   "integracoes/index.html",
   "manutencao-de-sistemas/index.html",
@@ -45,7 +49,7 @@ describe("nenhuma página publica script executável inline (CSP-03, EDGE-09)", 
     .filter((file) => file.endsWith(".html"))
     .map((file) => ({ file: relative(STATIC, file), html: readFileSync(file, "utf8") }));
 
-  it("o build gera as 13 páginas", () => {
+  it("o build gera as 17 páginas", () => {
     expect(built.map(({ file }) => file).sort()).toEqual(PAGES);
   });
 

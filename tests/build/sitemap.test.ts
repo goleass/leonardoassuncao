@@ -16,9 +16,16 @@ const EXPECTED_SOURCES: Record<string, string[]> = {
   "/privacidade/": ["src/pages/privacidade.astro", LAYOUTS],
 };
 // /guias/ e os guias tiram o <lastmod> do frontmatter, não do git (guias SMAP-02/03; verificado em guias.test.ts).
-const GUIDE_PAGES = ["/guias/", "/guias/integracao-bling-api/", "/guias/integracao-rastreamento-veicular/",
+const GUIDE_PAGES = [
+  "/guias/",
+  "/guias/bling-nao-sincroniza-pedidos/",
+  "/guias/integracao-bling-api/",
+  "/guias/integracao-rastreamento-veicular/",
+  "/guias/portal-de-pedidos-para-distribuidora/",
   "/guias/quanto-custa-um-sistema-sob-medida/",
   "/guias/quanto-custa-um-site/",
+  "/guias/sistema-ordem-de-servico-ar-condicionado/",
+  "/guias/software-recarga-de-extintores/",
 ];
 
 const git = (...args: string[]) => execFileSync("git", args, { encoding: "utf8" }).trim();
@@ -30,7 +37,7 @@ describe("sitemap com <lastmod> real (SMAP-01)", () => {
     lastmod: body.match(/<lastmod>(.*?)<\/lastmod>/)?.[1],
   }));
 
-  it("tem exatamente as 12 páginas indexáveis", () => {
+  it("tem exatamente as 16 páginas indexáveis", () => {
     expect(urls.map((u) => u.path).sort()).toEqual([...Object.keys(EXPECTED_SOURCES), ...GUIDE_PAGES].sort());
   });
 
