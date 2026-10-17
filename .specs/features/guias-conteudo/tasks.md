@@ -81,7 +81,7 @@ T17
 
 ## Task Breakdown
 
-### T1: Schema zod da coleção de guias
+### T1: Schema zod da coleção de guias ✅
 
 **What**: Schema do frontmatter (`guideSchema`) com as regras de COL-02/03/04/06, registrado como coleção `guias` em `src/content.config.ts` (glob `**/*.md` em `src/content/guias`, `generateId` com o nome cru do arquivo).
 **Where**: `src/lib/guias/schema.ts`

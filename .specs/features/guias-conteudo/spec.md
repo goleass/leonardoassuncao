@@ -220,12 +220,12 @@ Implicit-requirement dimensions sweep:
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| COL-01 | P1: Coleção de guias validada | Design | Pending |
-| COL-02 | P1: Coleção de guias validada | Design | Pending |
-| COL-03 | P1: Coleção de guias validada | Design | Pending |
-| COL-04 | P1: Coleção de guias validada | Design | Pending |
+| COL-01 | P1: Coleção de guias validada | Design | Implementing |
+| COL-02 | P1: Coleção de guias validada | Design | Implementing |
+| COL-03 | P1: Coleção de guias validada | Design | Implementing |
+| COL-04 | P1: Coleção de guias validada | Design | Implementing |
 | COL-05 | P1: Coleção de guias validada | Design | Pending |
-| COL-06 | P1: Coleção de guias validada | Design | Pending |
+| COL-06 | P1: Coleção de guias validada | Design | Implementing |
 | COL-07 | P1: Coleção de guias validada | Design | Pending |
 | COL-08 | P1: Coleção de guias validada | Design | Pending |
 | COL-09 | P1: Coleção de guias validada | Design | Pending |
