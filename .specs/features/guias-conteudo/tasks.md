@@ -162,7 +162,7 @@ T17
 
 ---
 
-### T4: Extrair estilos de artigo para CSS compartilhado
+### T4: Extrair estilos de artigo para CSS compartilhado ✅
 
 **What**: Mover sem alteração as regras `.svc-*` e `.crumbs*` do `<style>` de `src/pages/[servico].astro` para `src/styles/article.css`, importado no frontmatter da página de serviço.
 **Where**: `src/styles/article.css`
