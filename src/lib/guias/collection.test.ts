@@ -31,7 +31,7 @@ afterEach(() => vi.unstubAllEnvs());
 
 describe("loadGuides (COL-08, COL-09)", () => {
   it("lê a coleção guias e devolve guias convertidos, mais recente primeiro", async () => {
-    vi.stubEnv("DEV", false);
+    vi.stubEnv("MODE", "production");
     const guides = await loadGuides();
     expect(getCollection).toHaveBeenCalledWith("guias");
     expect(guides.map((g) => g.slug)).toEqual(["recente", "antigo"]);
@@ -39,17 +39,17 @@ describe("loadGuides (COL-08, COL-09)", () => {
   });
 
   it("no build de produção remove rascunhos (COL-08)", async () => {
-    vi.stubEnv("DEV", false);
+    vi.stubEnv("MODE", "production");
     expect((await loadGuides()).some((g) => g.draft)).toBe(false);
   });
 
   it("no astro dev mantém rascunhos (COL-09)", async () => {
-    vi.stubEnv("DEV", true);
+    vi.stubEnv("MODE", "development");
     expect((await loadGuides()).map((g) => g.slug)).toEqual(["rascunho", "recente", "antigo"]);
   });
 
   it("propaga o erro de validação com o nome do arquivo", async () => {
-    vi.stubEnv("DEV", false);
+    vi.stubEnv("MODE", "production");
     getCollection.mockResolvedValueOnce([entry("Guia_1", "2026-01-01")]);
     await expect(loadGuides()).rejects.toThrow("guias/Guia_1.md");
   });
