@@ -397,7 +397,7 @@ T17
 
 ---
 
-### T13: Guia "Quanto custa um site"
+### T13: Guia "Quanto custa um site" ✅
 
 **What**: `src/content/guias/quanto-custa-um-site.md` (`servico: criacao-de-sites`, `draft: true`, marcadores `[PREÇO: ...]` onde entram as faixas), e o teste de conteúdo `tests/content/guias.test.ts`, que roda para cada guia de lançamento existente.
 **Where**: `src/content/guias/quanto-custa-um-site.md`

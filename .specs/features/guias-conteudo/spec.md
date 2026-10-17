@@ -249,7 +249,7 @@ Implicit-requirement dimensions sweep:
 | LINK-02 | P1: Links internos | Design | Implementing |
 | LINK-03 | P1: Links internos | Design | Implementing |
 | LINK-04 | P1: Links internos | Design | Implementing |
-| LINK-05 | P1: Links internos | Design | Pending |
+| LINK-05 | P1: Links internos | Design | Implementing |
 | LD-01 | P1: Dados estruturados e sitemap | Design | Implementing |
 | LD-02 | P1: Dados estruturados e sitemap | Design | Implementing |
 | LD-03 | P1: Dados estruturados e sitemap | Design | Implementing |
@@ -260,13 +260,13 @@ Implicit-requirement dimensions sweep:
 | LLMS-01 | P1: Guias visíveis para IAs | Design | Implementing |
 | LLMS-02 | P1: Guias visíveis para IAs | Design | Implementing |
 | LLMS-03 | P1: Guias visíveis para IAs | Design | Implementing |
-| CONT-01 | P1: Os 4 guias do lançamento | Design | Pending |
-| CONT-02 | P1: Os 4 guias do lançamento | Design | Pending |
-| CONT-03 | P1: Os 4 guias do lançamento | Design | Pending |
-| CONT-04 | P1: Os 4 guias do lançamento | Design | Pending |
-| CONT-05 | P1: Os 4 guias do lançamento | Design | Pending |
-| CONT-06 | P1: Os 4 guias do lançamento | Design | Pending |
-| CONT-07 | P1: Os 4 guias do lançamento | Design | Pending |
+| CONT-01 | P1: Os 4 guias do lançamento | Design | Implementing |
+| CONT-02 | P1: Os 4 guias do lançamento | Design | Implementing |
+| CONT-03 | P1: Os 4 guias do lançamento | Design | Implementing |
+| CONT-04 | P1: Os 4 guias do lançamento | Design | Implementing |
+| CONT-05 | P1: Os 4 guias do lançamento | Design | Implementing |
+| CONT-06 | P1: Os 4 guias do lançamento | Design | Implementing |
+| CONT-07 | P1: Os 4 guias do lançamento | Design | Implementing |
 | EDGE-01 | Edge cases | Design | Implementing |
 | EDGE-02 | Edge cases | Design | Implementing |
 | EDGE-03 | Edge cases | Design | Implementing |
