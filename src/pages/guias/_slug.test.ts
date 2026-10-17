@@ -55,7 +55,7 @@ const heading = (doc: Document, text: string) =>
 
 describe("Rotas dos guias (guias PAGE-01, PAGE-08, EDGE-03)", () => {
   it("gera um caminho por guia, com os relacionados do mesmo serviço (até 3, mais recentes)", async () => {
-    const paths = await getStaticPaths({} as never);
+    const paths = await getStaticPaths();
     expect(paths.map((p) => p.params.slug)).toEqual([
       "quanto-custa-um-sistema-sob-medida",
       "guia-a",
