@@ -448,7 +448,7 @@ T17
 
 ---
 
-### T15: Guia "Integração com o Bling via API"
+### T15: Guia "Integração com o Bling via API" ✅
 
 **What**: `src/content/guias/integracao-bling-api.md` (`servico: integracoes`, `draft: false`).
 **Where**: `src/content/guias/integracao-bling-api.md`
