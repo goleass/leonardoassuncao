@@ -466,7 +466,7 @@ T1 → T2
 
 ---
 
-### T14: Exigir os 15 guias no teste de conteúdo
+### T14: Exigir os 15 guias no teste de conteúdo ✅
 
 **What**: Trocar o conjunto obrigatório do teste de conteúdo dos 4 guias do lançamento pelos 15 do mapa (TEST-02, fim da feature).
 **Where**: `tests/content/guias.test.ts`
@@ -481,8 +481,8 @@ T1 → T2
 
 **Done when**:
 
-- [ ] Conjunto obrigatório = 15 slugs
-- [ ] Gate check passes: `npm run check && npm test && npm run build && npm run test:build`
+- [x] Conjunto obrigatório = 15 slugs
+- [x] Gate check passes: `npm run check && npm test && npm run build && npm run test:build`
 
 **Tests**: unit
 **Gate**: build

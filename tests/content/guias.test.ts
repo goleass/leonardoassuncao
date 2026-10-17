@@ -76,8 +76,8 @@ const EXPECTED: Record<string, string> = {
   ...Object.fromEntries(Object.entries(NICHE).map(([slug, g]) => [slug, g.servico])),
 };
 
-// Guias que precisam existir. Passa a ser Object.keys(EXPECTED) na última tarefa da feature (TEST-02).
-const REQUIRED = Object.keys(LAUNCH);
+// Guias que precisam existir: os 15 do mapa, ao fim da feature guias-nichos (TEST-02).
+const REQUIRED = Object.keys(EXPECTED);
 
 const DIR = join(process.cwd(), "src", "content", "guias");
 // Todo arquivo .md da pasta, e não só os do mapa (TEST-01).
