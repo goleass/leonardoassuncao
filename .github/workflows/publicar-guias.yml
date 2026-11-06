@@ -1,0 +1,26 @@
+# Reconstrói o site todo dia para publicar os guias cuja data chegou (SCHED-06 a SCHED-08).
+# Só aciona o build hook da Netlify: o conteúdo publicado é o que já está na main.
+name: Publicar guias agendados
+
+on:
+  schedule:
+    # 9h07 em Brasília. Fora da hora cheia, quando a fila do GitHub costuma atrasar mais.
+    - cron: "7 12 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Acionar o build da Netlify
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
+            echo "::error::Secret NETLIFY_BUILD_HOOK não configurado"
+            exit 1
+          fi
+          curl --fail --silent --show-error -X POST -d '{}' "$NETLIFY_BUILD_HOOK"

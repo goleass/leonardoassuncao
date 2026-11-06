@@ -278,9 +278,9 @@ Implicit-requirement dimensions sweep:
 | SCHED-03 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-04 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-05 | P1: Publicação automática | Tasks | Implementing |
-| SCHED-06 | P1: Publicação automática | Tasks | Pending |
-| SCHED-07 | P1: Publicação automática | Tasks | Pending |
-| SCHED-08 | P1: Publicação automática | Tasks | Pending |
+| SCHED-06 | P1: Publicação automática | Tasks | Implementing |
+| SCHED-07 | P1: Publicação automática | Tasks | Implementing |
+| SCHED-08 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-09 | P1: Publicação automática | Tasks | Pending |
 | EDGE-01 | Edge cases | Tasks | Pending |
 | EDGE-02 | Edge cases | Tasks | Pending |

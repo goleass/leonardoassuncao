@@ -216,7 +216,7 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
-### T4: Criar o workflow de publicação diária
+### T4: Criar o workflow de publicação diária ✅
 
 **What**: Criar o GitHub Actions que aciona o build hook da Netlify todos os dias às 12:07 UTC e também por disparo manual.
 **Where**: `.github/workflows/publicar-guias.yml`
@@ -231,10 +231,10 @@ Termina com o gate Build e a revisão do usuário.
 
 **Done when**:
 
-- [ ] Agenda `7 12 * * *` e `workflow_dispatch` (SCHED-06)
-- [ ] POST para `secrets.NETLIFY_BUILD_HOOK`, sem URL de hook no repositório (SCHED-07)
-- [ ] `curl --fail` e erro explícito quando o secret está vazio (SCHED-08)
-- [ ] Gate check passes: `npm test`
+- [x] Agenda `7 12 * * *` e `workflow_dispatch` (SCHED-06)
+- [x] POST para `secrets.NETLIFY_BUILD_HOOK`, sem URL de hook no repositório (SCHED-07)
+- [x] `curl --fail` e erro explícito quando o secret está vazio (SCHED-08)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
