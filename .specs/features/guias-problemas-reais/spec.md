@@ -261,9 +261,9 @@ Implicit-requirement dimensions sweep:
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| PRB-01 | Regras do roadmap | Tasks | Pending |
-| PRB-02 | Regras do roadmap | Tasks | Pending |
-| PRB-03 | Regras do roadmap | Tasks | Pending |
+| PRB-01 | Regras do roadmap | Tasks | Implementing |
+| PRB-02 | Regras do roadmap | Tasks | Implementing |
+| PRB-03 | Regras do roadmap | Tasks | Implementing |
 | PRB-04 | Regras do roadmap | Tasks | Pending |
 | PRB-05 | Regras do roadmap | Tasks | Pending |
 | PRB-06 | Regras do roadmap | Tasks | Pending |
@@ -281,7 +281,7 @@ Implicit-requirement dimensions sweep:
 | SCHED-06 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-07 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-08 | P1: Publicação automática | Tasks | Implementing |
-| SCHED-09 | P1: Publicação automática | Tasks | Pending |
+| SCHED-09 | P1: Publicação automática | Tasks | Implementing |
 | EDGE-01 | Edge cases | Tasks | Pending |
 | EDGE-02 | Edge cases | Tasks | Pending |
 | EDGE-03 | Edge cases | Tasks | Pending |

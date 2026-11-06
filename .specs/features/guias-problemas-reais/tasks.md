@@ -243,7 +243,7 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
-### T5: Colocar os 27 guias no mapa do teste de conteúdo
+### T5: Colocar os 27 guias no mapa do teste de conteúdo ✅
 
 **What**: Incluir no mapa os 27 slugs do calendário, reprovar datas com mais de 3 guias desta feature e links para guias com data posterior.
 **Where**: `tests/content/guias.test.ts`
@@ -258,12 +258,12 @@ Termina com o gate Build e a revisão do usuário.
 
 **Done when**:
 
-- [ ] Os 27 slugs estão no mapa com `servico`, `title`, `h1` e link de cluster do calendário (PRB-01)
-- [ ] Mais de 3 guias desta feature na mesma data reprovam o teste com a data na mensagem (PRB-02)
-- [ ] Guias do calendário ainda sem arquivo não reprovam o teste (PRB-03)
-- [ ] Link para guia com data posterior reprova o teste com os dois slugs (SCHED-09)
-- [ ] Prova de discriminação registrada para PRB-02 e SCHED-09
-- [ ] Gate check passes: `npm test`; nenhum teste existente removido
+- [x] Os 27 slugs estão no mapa com `servico`, `title`, `h1` e link de cluster do calendário (PRB-01)
+- [x] Mais de 3 guias desta feature na mesma data reprovam o teste com a data na mensagem (PRB-02)
+- [x] Guias do calendário ainda sem arquivo não reprovam o teste (PRB-03)
+- [x] Link para guia com data posterior reprova o teste com os dois slugs (SCHED-09)
+- [x] Prova de discriminação registrada para PRB-02 e SCHED-09
+- [x] Gate check passes: `npm test`; nenhum teste existente removido
 
 **Tests**: unit
 **Gate**: quick
