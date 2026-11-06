@@ -131,3 +131,29 @@ describe("formatDate (PAGE-03)", () => {
     expect(formatDate(new Date("2026-10-17"))).toBe("17 de outubro de 2026");
   });
 });
+
+describe("selectGuides: guias agendados (SCHED-01, SCHED-02, SCHED-04, SCHED-05)", () => {
+  const agendado = guide({ slug: "agendado", publishedAt: new Date("2026-11-06") });
+  const atual = guide({ slug: "atual", publishedAt: new Date("2026-11-05") });
+
+  it("omite o guia até o fim do dia anterior em Brasília (SCHED-01)", () => {
+    const now = new Date("2026-11-06T02:59:59Z"); // 23:59:59 de 05/11 em Brasília
+    expect(slugs(selectGuides([agendado, atual], { includeDrafts: false, now }))).toEqual(["atual"]);
+  });
+
+  it("inclui o guia à meia-noite da data em Brasília (SCHED-02)", () => {
+    const now = new Date("2026-11-06T03:00:00Z"); // 00:00 de 06/11 em Brasília
+    expect(slugs(selectGuides([agendado, atual], { includeDrafts: false, now }))).toEqual(["agendado", "atual"]);
+  });
+
+  it("guia futuro com marcador pendente lança erro com o arquivo (SCHED-04)", () => {
+    const now = new Date("2026-11-05T12:00:00Z");
+    const comMarcador = { ...agendado, body: "Custa [PREÇO: x]." };
+    expect(() => selectGuides([comMarcador], { includeDrafts: false, now })).toThrow("guias/agendado.md");
+  });
+
+  it("no astro dev mantém o guia futuro para revisão (SCHED-05)", () => {
+    const now = new Date("2026-11-05T12:00:00Z");
+    expect(slugs(selectGuides([agendado, atual], { includeDrafts: true, now }))).toEqual(["agendado", "atual"]);
+  });
+});

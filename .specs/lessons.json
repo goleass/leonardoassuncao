@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 26,
+  "next_id": 32,
   "lessons": [
     {
       "id": "L-001",
@@ -454,6 +454,114 @@
       ],
       "created": "2026-10-17T14:33:37Z",
       "last_seen": "2026-10-17T14:33:37Z"
+    },
+    {
+      "id": "L-026",
+      "key": "surviving_mutant::when a test fakes an external command make the fake depend on the flags under test instead of returning a fixed exit code",
+      "text": "When a test fakes an external command, make the fake depend on the flags under test instead of returning a fixed exit code",
+      "signal": "surviving_mutant",
+      "scope": "ci",
+      "status": "candidate",
+      "features": [
+        "guias-problemas-reais"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "M07 .github/workflows/publicar-guias.yml:26 (ci)"
+      ],
+      "created": "2026-11-06T02:30:28Z",
+      "last_seen": "2026-11-06T02:30:28Z"
+    },
+    {
+      "id": "L-027",
+      "key": "ac_gap::normalize links before checking them in content tests covering anchors absolute urls and missing trailing slashes",
+      "text": "Normalize links before checking them in content tests, covering anchors, absolute URLs and missing trailing slashes",
+      "signal": "ac_gap",
+      "scope": "content-tests",
+      "status": "candidate",
+      "features": [
+        "guias-problemas-reais"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "SCHED-09 tests/content/guias.test.ts:362 (F17-F19) (content-tests)"
+      ],
+      "created": "2026-11-06T02:30:28Z",
+      "last_seen": "2026-11-06T02:30:28Z"
+    },
+    {
+      "id": "L-028",
+      "key": "surviving_mutant::extract rules checked against live content into pure functions with a passing and a failing fixture",
+      "text": "Extract rules checked against live content into pure functions with a passing and a failing fixture",
+      "signal": "surviving_mutant",
+      "scope": "content-tests",
+      "status": "candidate",
+      "features": [
+        "guias-problemas-reais"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "M13 M14 tests/content/guias.test.ts:306,368 (content-tests)"
+      ],
+      "created": "2026-11-06T02:30:28Z",
+      "last_seen": "2026-11-06T02:30:28Z"
+    },
+    {
+      "id": "L-029",
+      "key": "spec_precision_gap::state in the spec whether a rule on scheduled content also applies to drafts",
+      "text": "State in the spec whether a rule on scheduled content also applies to drafts",
+      "signal": "spec_precision_gap",
+      "scope": "spec",
+      "status": "candidate",
+      "features": [
+        "guias-problemas-reais"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "SCHED-04 src/lib/guias/guias.ts:46 (spec)"
+      ],
+      "created": "2026-11-06T02:30:28Z",
+      "last_seen": "2026-11-06T02:30:28Z"
+    },
+    {
+      "id": "L-030",
+      "key": "ac_gap::check each guide sentence against what the source literally says and drop inferred results or frequencies",
+      "text": "Check each guide sentence against what the source literally says and drop inferred results or frequencies",
+      "signal": "ac_gap",
+      "scope": "content",
+      "status": "candidate",
+      "features": [
+        "guias-problemas-reais"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "PRB-09 PRB-10 pix-sem-txid-erp-nao-da-baixa.md:24,67 erp-preenche-ibs-cbs-nfe.md:24,47 (content)"
+      ],
+      "created": "2026-11-06T02:30:28Z",
+      "last_seen": "2026-11-06T02:30:28Z"
+    },
+    {
+      "id": "L-031",
+      "key": "surviving_mutant::reject or resolve relative internal links in content tests so link rules cannot be bypassed",
+      "text": "Reject or resolve relative internal links in content tests so link rules cannot be bypassed",
+      "signal": "surviving_mutant",
+      "scope": "content-tests",
+      "status": "candidate",
+      "features": [
+        "guias-problemas-reais"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "F22 tests/content/guide-rules.ts:6 (content-tests)"
+      ],
+      "created": "2026-11-06T02:47:51Z",
+      "last_seen": "2026-11-06T02:47:51Z"
     }
   ]
 }

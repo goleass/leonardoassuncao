@@ -2,6 +2,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { PUBLISHED_GUIDES } from "./published-guides";
 
 // Lê o dist/ do `npm run build` anterior. Fontes de cada página conforme o design (SMAP-01).
 const LAYOUTS = "src/layouts";
@@ -18,21 +19,7 @@ const EXPECTED_SOURCES: Record<string, string[]> = {
 // /guias/ e os guias tiram o <lastmod> do frontmatter, não do git (guias SMAP-02/03; verificado em guias.test.ts).
 const GUIDE_PAGES = [
   "/guias/",
-  "/guias/bling-nao-sincroniza-pedidos/",
-  "/guias/integracao-bling-api/",
-  "/guias/integracao-rastreamento-veicular/",
-  "/guias/portal-de-pedidos-para-distribuidora/",
-  "/guias/portal-de-pedidos-salgados-congelados/",
-  "/guias/portal-do-cliente-contabilidade/",
-  "/guias/quanto-custa-site-para-vidracaria/",
-  "/guias/quanto-custa-um-sistema-sob-medida/",
-  "/guias/quanto-custa-um-site/",
-  "/guias/sistema-aluguel-de-cacambas/",
-  "/guias/sistema-fabrica-de-uniformes/",
-  "/guias/sistema-ordem-de-servico-ar-condicionado/",
-  "/guias/sistema-portoes-automaticos/",
-  "/guias/site-aluguel-de-inflaveis/",
-  "/guias/software-recarga-de-extintores/",
+  ...PUBLISHED_GUIDES.map((slug) => `/guias/${slug}/`),
 ];
 
 const git = (...args: string[]) => execFileSync("git", args, { encoding: "utf8" }).trim();
@@ -44,7 +31,7 @@ describe("sitemap com <lastmod> real (SMAP-01)", () => {
     lastmod: body.match(/<lastmod>(.*?)<\/lastmod>/)?.[1],
   }));
 
-  it("tem exatamente as 23 páginas indexáveis", () => {
+  it("tem exatamente as páginas fixas e os guias já publicados", () => {
     expect(urls.map((u) => u.path).sort()).toEqual([...Object.keys(EXPECTED_SOURCES), ...GUIDE_PAGES].sort());
   });
 

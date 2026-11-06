@@ -4,6 +4,7 @@ import { execFileSync } from "node:child_process";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { services } from "../../data/services.ts";
+import { isDue } from "../guias/guias.ts";
 
 type GitRun = (args: string[]) => string | undefined;
 
@@ -53,13 +54,15 @@ const readDir: ReadDir = (dir) => {
   }
 };
 
-/** slug → `updatedAt ?? publishedAt` (AAAA-MM-DD) dos guias publicados, lido do frontmatter (guias SMAP-02). */
-export function guideDates(dir = "src/content/guias", read: ReadDir = readDir): Record<string, string> {
+/** slug → `updatedAt ?? publishedAt` (AAAA-MM-DD) dos guias publicados, lido do frontmatter (guias SMAP-02, SCHED-03). */
+export function guideDates(dir = "src/content/guias", read: ReadDir = readDir, now: Date = new Date()): Record<string, string> {
   const dates: Record<string, string> = {};
   for (const { name, text } of read(dir)) {
     const front = text.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
     const field = (key: string) => front.match(new RegExp(`^${key}:\\s*["']?([^"'\\s]+)["']?\\s*$`, "m"))?.[1];
     if (field("draft") === "true") continue;
+    const publishedAt = field("publishedAt");
+    if (publishedAt && !isDue(new Date(publishedAt), now)) continue;
     const date = field("updatedAt") ?? field("publishedAt");
     if (date) dates[name.replace(/\.md$/, "")] = date;
   }

@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
 import { parseHtml } from "../render";
+import { isDue } from "../../src/lib/guias/guias";
 
 // Lê o dist/ do `npm run build` anterior (gate: `npm run build && npm run test:build`).
 const dist = join(process.cwd(), "dist");
@@ -13,8 +14,11 @@ const front = (slug: string) =>
   parse(readFileSync(join(CONTENT, `${slug}.md`), "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/)![1]);
 // Publicados e rascunhos saem do frontmatter: publicar um guia não exige editar este teste.
 const slugs = readdirSync(CONTENT).filter((f) => f.endsWith(".md")).map((f) => f.slice(0, -3));
-const PUBLISHED = slugs.filter((slug) => !front(slug).draft);
+const isScheduled = (slug: string) => !front(slug).draft && !isDue(new Date(front(slug).publishedAt));
+const PUBLISHED = slugs.filter((slug) => !front(slug).draft && !isScheduled(slug));
 const DRAFTS = slugs.filter((slug) => front(slug).draft);
+// Com data futura em Brasília: já estão na main, mas só entram no build da sua data (SCHED-01).
+const SCHEDULED = slugs.filter(isScheduled);
 /** `updatedAt ?? publishedAt` do frontmatter, em milissegundos (o YAML lê a data como meia-noite UTC). */
 const guideTime = (slug: string) => {
   const data = front(slug);
@@ -58,6 +62,24 @@ describe("build: rascunhos fora da saída (guias COL-08)", () => {
       expect(urls.has(`/guias/${slug}/`)).toBe(false);
       expect(llms).not.toContain(`/guias/${slug}/`);
       expect(hub).not.toContain(`/guias/${slug}/`);
+    }
+  });
+
+  // Mesmo formato do teste de rascunhos: sem guias agendados, a lista fica vazia e o teste continua válido.
+  it("nenhum guia agendado gera página nem aparece no sitemap, no llms.txt ou em /guias/ (SCHED-01)", () => {
+    for (const slug of SCHEDULED) {
+      expect(existsSync(join(dist, "guias", slug))).toBe(false);
+      expect(urls.has(`/guias/${slug}/`)).toBe(false);
+      expect(llms).not.toContain(`/guias/${slug}/`);
+      expect(hub).not.toContain(`/guias/${slug}/`);
+    }
+  });
+
+  it("nenhuma página do build cita um guia agendado, inclusive serviços e relacionados (SCHED-01)", () => {
+    const pages = (readdirSync(dist, { recursive: true }) as string[]).filter((file) => file.endsWith(".html"));
+    for (const file of pages) {
+      const html = readFileSync(join(dist, file), "utf8");
+      for (const slug of SCHEDULED) expect(html, `${file} cita ${slug}`).not.toContain(`/guias/${slug}`);
     }
   });
 
