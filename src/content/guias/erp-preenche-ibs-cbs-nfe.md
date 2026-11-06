@@ -4,7 +4,7 @@ description: "A nota sai autorizada, mas o IBS e a CBS estão certos? Veja como 
 h1: "Meu ERP já preenche IBS e CBS na NF-e? Como conferir antes de ter problema"
 resumo: "Para saber se o seu ERP já preenche IBS e CBS, abra o XML de uma NF-e autorizada recente e confira se cada item traz CST, cClassTrib, base, alíquotas e valores desses tributos, além dos totais da nota. Uma nota autorizada não prova que está tudo certo, porque a Receita Federal e o Comitê Gestor do IBS adiaram a rejeição automática sem suspender a obrigação de informar esses dados."
 servico: integracoes
-publishedAt: 2026-11-05
+publishedAt: 2026-11-06
 draft: false
 faq:
   - q: "Se a nota foi autorizada, o IBS e a CBS estão corretos?"

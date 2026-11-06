@@ -293,7 +293,7 @@ Termina com o gate Build e a revisão do usuário.
 - [x] Links para `/integracoes/` e `/guias/integracao-bling-api/` (PRB-07, PRB-08)
 - [x] Nenhum cliente, número, resultado ou experiência não confirmados (PRB-09); fontes oficiais nomeadas no texto (PRB-10)
 - [x] Seções de controle atual, com ≥ 3 perdas concretas, e de pronto × sob medida (PRB-11); sem preço de site ou sistema (PRB-12)
-- [x] `publishedAt` igual à data do calendário: 2026-11-05 (PRB-05)
+- [x] `publishedAt` igual à data do calendário: 2026-11-06 (PRB-05)
 - [x] Gate check passes: `npm test`
 
 **Tests**: unit
@@ -324,7 +324,7 @@ Termina com o gate Build e a revisão do usuário.
 - [x] Links para `/integracoes/` e `/guias/integracao-bling-api/` (PRB-07, PRB-08)
 - [x] Nenhum cliente, número, resultado ou experiência não confirmados (PRB-09); fontes oficiais nomeadas no texto (PRB-10)
 - [x] Seções de controle atual, com ≥ 3 perdas concretas, e de pronto × sob medida (PRB-11); sem preço de site ou sistema (PRB-12)
-- [x] `publishedAt` igual à data do calendário: 2026-11-05 (PRB-05)
+- [x] `publishedAt` igual à data do calendário: 2026-11-07 (PRB-05)
 - [x] Gate check passes: `npm test`
 
 **Tests**: unit
@@ -355,7 +355,7 @@ Termina com o gate Build e a revisão do usuário.
 - [x] Links para `/software-sob-medida/` e `/guias/sistema-aluguel-de-cacambas/` (PRB-07, PRB-08)
 - [x] Nenhum cliente, número, resultado ou experiência não confirmados (PRB-09); fontes oficiais nomeadas no texto (PRB-10)
 - [x] Seções de controle atual, com ≥ 3 perdas concretas, e de pronto × sob medida (PRB-11); sem preço de site ou sistema (PRB-12)
-- [x] `publishedAt` igual à data do calendário: 2026-11-05 (PRB-05)
+- [x] `publishedAt` igual à data do calendário: 2026-11-08 (PRB-05)
 - [x] Gate check passes: `npm test`
 
 **Tests**: unit

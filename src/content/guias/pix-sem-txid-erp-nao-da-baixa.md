@@ -4,7 +4,7 @@ description: "Cliente pagou direto na chave Pix e o ERP não baixou a cobrança?
 h1: "Cliente pagou o Pix direto na chave e o ERP não deu baixa: como resolver"
 resumo: "Para resolver, a empresa precisa conciliar esses recebimentos pelo extrato ou pela consulta de Pix recebidos, porque um pagamento feito direto na chave não tem txid e, pela regra do Banco Central, o webhook da API Pix só informa Pix associado a um txid. A consulta traz candidatos, regras de pagador, valor e data sugerem a cobrança certa, e os casos duvidosos ficam para uma pessoa decidir."
 servico: integracoes
-publishedAt: 2026-11-05
+publishedAt: 2026-11-07
 draft: false
 faq:
   - q: "Por que o webhook não avisou do Pix pago direto na chave?"

@@ -4,7 +4,7 @@ description: "O cliente devolveu só parte dos andaimes ou equipamentos? Veja co
 h1: "Como cobrar diárias quando o cliente devolve só parte dos andaimes ou equipamentos?"
 resumo: "Para cobrar diárias em uma devolução parcial, calcule cada período pelo saldo de itens que continua com o cliente: a cada devolução registrada, a quantidade diminui e a cobrança seguinte usa o novo saldo, conforme as regras do contrato. Isso exige registrar cada saída e cada retorno por item, com data e conferência, porque um único total no contrato não mostra quanto ficou na obra em cada dia."
 servico: software-sob-medida
-publishedAt: 2026-11-05
+publishedAt: 2026-11-08
 draft: false
 faq:
   - q: "O dia da devolução entra na cobrança?"

@@ -26,13 +26,13 @@ O site tem 15 guias, a maioria organizada por nicho ou por tema amplo. Falta cob
 
 ## Calendário
 
-As datas são as de `publishedAt`. Guia ainda não revisado na sua data sai para o próximo dia com vaga, sem passar de 3 guias por dia.
+Os 3 guias previstos para 05/11 foram aprovados em 06/11 e seguiram EDGE-05: um entrou em 06/11, um em 07/11 e um em 08/11. As datas são as de `publishedAt`. Guia ainda não revisado na sua data sai para o próximo dia com vaga, sem passar de 3 guias por dia.
 
 | # | Dia | Slug | Title (+ "| Leonardo Assunção") | Serviço | H1 (pesquisa do usuário) | Link de cluster |
 | - | --- | ---- | ----- | ------- | ------------------------ | --------------- |
-| 1 | qui 05/11 | `erp-preenche-ibs-cbs-nfe` | IBS e CBS na NF-e: Seu ERP Está Pronto? | integracoes | Meu ERP já preenche IBS e CBS na NF-e? Como conferir antes de ter problema | `/guias/integracao-bling-api/` |
-| 2 | qui 05/11 | `pix-sem-txid-erp-nao-da-baixa` | Pix na Chave: ERP Não Dá Baixa Sozinho | integracoes | Cliente pagou o Pix direto na chave e o ERP não deu baixa: como resolver | `/guias/integracao-bling-api/` |
-| 3 | qui 05/11 | `locacao-equipamentos-devolucao-parcial` | Locação: Cobrança na Devolução Parcial | software-sob-medida | Como cobrar diárias quando o cliente devolve só parte dos andaimes ou equipamentos? | `/guias/sistema-aluguel-de-cacambas/` |
+| 1 | sex 06/11 | `erp-preenche-ibs-cbs-nfe` | IBS e CBS na NF-e: Seu ERP Está Pronto? | integracoes | Meu ERP já preenche IBS e CBS na NF-e? Como conferir antes de ter problema | `/guias/integracao-bling-api/` |
+| 2 | sáb 07/11 | `pix-sem-txid-erp-nao-da-baixa` | Pix na Chave: ERP Não Dá Baixa Sozinho | integracoes | Cliente pagou o Pix direto na chave e o ERP não deu baixa: como resolver | `/guias/integracao-bling-api/` |
+| 3 | dom 08/11 | `locacao-equipamentos-devolucao-parcial` | Locação: Cobrança na Devolução Parcial | software-sob-medida | Como cobrar diárias quando o cliente devolve só parte dos andaimes ou equipamentos? | `/guias/sistema-aluguel-de-cacambas/` |
 | 4 | sex 06/11 | `custo-api-whatsapp-mensagens-servico` | Custo da API do WhatsApp Subiu? Entenda | integracoes | A conta da API do WhatsApp subiu depois de outubro: como descobrir o que está gerando custo | `/guias/portal-de-pedidos-para-distribuidora/` |
 | 5 | sex 06/11 | `aluguel-trajes-reserva-duplicada` | Aluguel de Trajes sem Reserva Duplicada | software-sob-medida | Como evitar alugar o mesmo vestido ou traje para duas festas na mesma data? | `/guias/site-aluguel-de-inflaveis/` |
 | 6 | sáb 07/11 | `omie-erro-425-bloqueio-api` | Erro 425 na API do Omie: Como Resolver | manutencao-de-sistemas | Erro 425 na API do Omie: por que a integração foi bloqueada por 30 minutos? | `/guias/integracao-bling-api/` |
