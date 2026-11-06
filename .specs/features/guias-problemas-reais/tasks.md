@@ -527,7 +527,7 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
-### T10: Escrever o guia aluguel-trajes-reserva-duplicada
+### T10: Escrever o guia aluguel-trajes-reserva-duplicada ✅
 
 **What**: Criar o guia `aluguel-trajes-reserva-duplicada` com `servico: software-sob-medida`, o `title`, o `h1`, o ângulo e o link de cluster do calendário.
 **Where**: `src/content/guias/aluguel-trajes-reserva-duplicada.md`
@@ -542,14 +542,14 @@ Termina com o gate Build e a revisão do usuário.
 
 **Done when**:
 
-- [ ] Resultados de busca do h1 lidos; o ângulo não repete o de outro guia (PRB-08)
-- [ ] Cuidados da spec aplicados: Sem norma obrigatória
-- [ ] `resumo` responde o h1 na primeira frase; ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre (PRB-07)
-- [ ] Links para `/software-sob-medida/` e `/guias/site-aluguel-de-inflaveis/` (PRB-07, PRB-08)
-- [ ] Nenhum cliente, número, resultado ou experiência não confirmados (PRB-09); fontes oficiais nomeadas no texto (PRB-10)
-- [ ] Seções de controle atual, com ≥ 3 perdas concretas, e de pronto × sob medida (PRB-11); sem preço de site ou sistema (PRB-12)
-- [ ] `publishedAt` igual à data do calendário: 2026-11-06 (PRB-05)
-- [ ] Gate check passes: `npm test`
+- [x] Resultados de busca do h1 lidos; o ângulo não repete o de outro guia (PRB-08)
+- [x] Cuidados da spec aplicados: Sem norma obrigatória
+- [x] `resumo` responde o h1 na primeira frase; ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre (PRB-07)
+- [x] Links para `/software-sob-medida/` e `/guias/site-aluguel-de-inflaveis/` (PRB-07, PRB-08)
+- [x] Nenhum cliente, número, resultado ou experiência não confirmados (PRB-09); fontes oficiais nomeadas no texto (PRB-10)
+- [x] Seções de controle atual, com ≥ 3 perdas concretas, e de pronto × sob medida (PRB-11); sem preço de site ou sistema (PRB-12)
+- [x] `publishedAt` igual à data do calendário: 2026-11-06 (PRB-05)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
