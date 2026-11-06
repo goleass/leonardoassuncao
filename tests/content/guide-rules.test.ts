@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { datesOverLimit, guideTargets, laterTargets, missingTargets } from "./guide-rules";
+import { datesOverLimit, guideTargets, laterTargets, missingTargets, relativeLinks } from "./guide-rules";
 
 describe("guideTargets (SCHED-09, SCHED-10)", () => {
   it.each([
@@ -15,6 +15,16 @@ describe("guideTargets (SCHED-09, SCHED-10)", () => {
 
   it("ignora o hub, outras páginas e outros domínios", () => {
     expect(guideTargets("[a](/guias/) [b](/integracoes/) [c](https://exemplo.com/guias/alvo/)")).toEqual([]);
+  });
+});
+
+describe("relativeLinks (SCHED-09, SCHED-10)", () => {
+  it.each([["[a](../alvo/)"], ["[a](./alvo/)"], ['<a href="../alvo/">a</a>']])("reprova %s", (body) => {
+    expect(relativeLinks(body)).toHaveLength(1);
+  });
+
+  it("aceita links absolutos e o texto comum", () => {
+    expect(relativeLinks("[a](/guias/alvo/) [b](https://exemplo.com/x) e ../texto solto")).toEqual([]);
   });
 });
 

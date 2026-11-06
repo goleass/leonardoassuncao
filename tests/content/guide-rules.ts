@@ -7,6 +7,10 @@ export function guideTargets(body: string): string[] {
   return hrefs.map((href) => href.match(/^\/guias\/([^/#?]+)\/?(?:[#?].*)?$/)?.[1]).filter((slug): slug is string => !!slug);
 }
 
+/** Links relativos: dependem da página de origem e escapariam de guideTargets (SCHED-09, SCHED-10). */
+export const relativeLinks = (body: string): string[] =>
+  [...body.matchAll(/(?:\]\(|href=["'])(\.{1,2}\/[^)\s"']*)/g)].map(([, href]) => href);
+
 /** Alvos com data posterior à do guia de origem (SCHED-09). */
 export const laterTargets = (own: string, targets: string[], dateOf: (slug: string) => string): string[] =>
   targets.filter((target) => dateOf(target).slice(0, 10) > own.slice(0, 10));

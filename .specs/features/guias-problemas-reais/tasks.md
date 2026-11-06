@@ -47,14 +47,14 @@ Cada fase reúne os guias de uma data de publicação. A escrita pode adiantar v
 Primeiro o filtro, o workflow e o mapa do teste, depois os 3 guias do dia. Termina com o gate Build e a revisão do usuário.
 
 ```
-T1 → T2 → T3 → T4 → T5 → T6 → T7 → T8 → T34 → T35 → T36
+T1 → T2 → T3 → T4 → T5 → T6 → T7 → T8 → T34 → T35 → T36 → T37 → T38
 ```
 ### Phase 2: Lote de 06/11 (sex)
 
 Termina com o gate Build e a revisão do usuário.
 
 ```
-(T36) → T9 → T10
+(T38) → T9 → T10
 ```
 ### Phase 3: Lote de 07/11 (sáb)
 
@@ -446,11 +446,61 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
+### T37: Reprovar links relativos nos guias ✅
+
+**What**: Fazer o teste de conteúdo reprovar links `./` e `../` no corpo dos guias.
+**Where**: `tests/content/guide-rules.ts`
+**Depends on**: T36
+**Reuses**: `guideTargets` do mesmo arquivo
+**Requirement**: SCHED-11
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] Link relativo reprova o teste com o nome do guia; link absoluto passa (SCHED-11)
+- [x] Gate check passes: `npm test`
+
+**Tests**: unit
+**Gate**: quick
+
+**Commit**: `test(guias): reject relative links in guides`
+
+---
+
+### T38: Neutralizar frequências sem fonte nos guias de 05/11
+
+**What**: Trocar as frases de frequência ou resultado sem medida que restaram nos guias de 05/11.
+**Where**: `src/content/guias/locacao-equipamentos-devolucao-parcial.md`
+**Depends on**: T37
+**Reuses**: gaps do relatório de validação
+**Requirement**: PRB-09
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [ ] Frases apontadas viram texto neutro (PRB-09)
+- [ ] Gate check passes: `npm run check && npm test && npm run build && npm run test:build`
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `fix(guias): remove unsourced frequency claims from first guides`
+
+---
+
 ### T9: Escrever o guia custo-api-whatsapp-mensagens-servico
 
 **What**: Criar o guia `custo-api-whatsapp-mensagens-servico` com `servico: integracoes`, o `title`, o `h1`, o ângulo e o link de cluster do calendário.
 **Where**: `src/content/guias/custo-api-whatsapp-mensagens-servico.md`
-**Depends on**: T36
+**Depends on**: T38
 **Reuses**: frontmatter e estrutura de `src/content/guias/bling-nao-sincroniza-pedidos.md`
 **Requirement**: PRB-05, PRB-06, PRB-07, PRB-08, PRB-09, PRB-10, PRB-11, PRB-12, EDGE-01, EDGE-04
 
@@ -1223,7 +1273,7 @@ Termina com o gate Build e a revisão do usuário.
 ```
 Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 5 → Phase 6 → Phase 7 → Phase 8 → Phase 9 → Phase 10 → Phase 11 → Phase 12 → Phase 13
 
-Phase 1:  T1 → T2 → T3 → T4 → T5 → T6 → T7 → T8 → T34 → T35 → T36  (05/11)
+Phase 1:  T1 → T2 → T3 → T4 → T5 → T6 → T7 → T8 → T34 → T35 → T36 → T37 → T38  (05/11)
 Phase 2:  T9 → T10  (06/11)
 Phase 3:  T11 → T12  (07/11)
 Phase 4:  T13 → T14  (08/11)
@@ -1238,7 +1288,7 @@ Phase 12:  T29 → T30  (16/11)
 Phase 13:  T31 → T32 → T33  (17/11)
 ```
 
-36 tarefas no total. Cada bloco de escrita cabe em um lote e roda inline. O Verificador roda ao fim da Fase 1, que vai ao ar sozinha, e depois da última tarefa.
+38 tarefas no total. Cada bloco de escrita cabe em um lote e roda inline. O Verificador roda ao fim da Fase 1, que vai ao ar sozinha, e depois da última tarefa.
 
 ---
 
@@ -1257,6 +1307,8 @@ Phase 13:  T31 → T32 → T33  (17/11)
 | T34 | 1 helper de teste usado em 3 testes | ✅ Granular |
 | T35 | 1 módulo de regras e seus testes | ✅ Granular |
 | T36 | Ajustes de texto em 2 guias | ✅ Granular |
+| T37 | 1 função e seus testes | ✅ Granular |
+| T38 | Ajustes de texto em guias | ✅ Granular |
 | T9 | 1 guia (1 arquivo Markdown) | ✅ Granular |
 | T10 | 1 guia (1 arquivo Markdown) | ✅ Granular |
 | T11 | 1 guia (1 arquivo Markdown) | ✅ Granular |
@@ -1298,7 +1350,9 @@ Phase 13:  T31 → T32 → T33  (17/11)
 | T34 | T8 | T8 → T34 | ✅ Match |
 | T35 | T34 | T34 → T35 | ✅ Match |
 | T36 | T35 | T35 → T36 | ✅ Match |
-| T9 | T36 | início da fase, (T36) em fase anterior | ✅ Match |
+| T37 | T36 | T36 → T37 | ✅ Match |
+| T38 | T37 | T37 → T38 | ✅ Match |
+| T9 | T38 | início da fase, (T38) em fase anterior | ✅ Match |
 | T10 | T9 | T9 → T10 | ✅ Match |
 | T11 | T10 | início da fase, (T10) em fase anterior | ✅ Match |
 | T12 | T11 | T11 → T12 | ✅ Match |
@@ -1339,6 +1393,8 @@ Phase 13:  T31 → T32 → T33  (17/11)
 | T34 | Saída do build | integration | unit (gate build) | ✅ OK |
 | T35 | Teste de conteúdo | unit | unit (gate build) | ✅ OK |
 | T36 | Conteúdo | unit | unit | ✅ OK |
+| T37 | Teste de conteúdo | unit | unit | ✅ OK |
+| T38 | Conteúdo | unit | unit (gate build) | ✅ OK |
 | T9 | Conteúdo | unit | unit | ✅ OK |
 | T10 | Conteúdo | unit | unit | ✅ OK |
 | T11 | Conteúdo | unit | unit | ✅ OK |
@@ -1376,6 +1432,7 @@ Phase 13:  T31 → T32 → T33  (17/11)
 | SCHED-06, SCHED-07, SCHED-08 | T4 |
 | PRB-01, PRB-02, SCHED-09 | T5, T35 |
 | SCHED-10 | T35 |
+| SCHED-11 | T37 |
 | PRB-03 | T5, T33 |
 | PRB-04 | T6–T8 |
 | PRB-05 a PRB-12, EDGE-01, EDGE-04 | T6–T32 |

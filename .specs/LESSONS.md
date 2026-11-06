@@ -194,6 +194,12 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: PRB-09 PRB-10 pix-sem-txid-erp-nao-da-baixa.md:24,67 erp-preenche-ibs-cbs-nfe.md:24,47 (content)
 - last seen: 2026-11-06T02:30:28Z
 
+### L-031 - Reject or resolve relative internal links in content tests so link rules cannot be bypassed
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `content-tests` · harmful: 0
+- features: guias-problemas-reais
+- evidence: F22 tests/content/guide-rules.ts:6 (content-tests)
+- last seen: 2026-11-06T02:47:51Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

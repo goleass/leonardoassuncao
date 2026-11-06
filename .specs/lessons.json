@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 31,
+  "next_id": 32,
   "lessons": [
     {
       "id": "L-001",
@@ -544,6 +544,24 @@
       ],
       "created": "2026-11-06T02:30:28Z",
       "last_seen": "2026-11-06T02:30:28Z"
+    },
+    {
+      "id": "L-031",
+      "key": "surviving_mutant::reject or resolve relative internal links in content tests so link rules cannot be bypassed",
+      "text": "Reject or resolve relative internal links in content tests so link rules cannot be bypassed",
+      "signal": "surviving_mutant",
+      "scope": "content-tests",
+      "status": "candidate",
+      "features": [
+        "guias-problemas-reais"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "F22 tests/content/guide-rules.ts:6 (content-tests)"
+      ],
+      "created": "2026-11-06T02:47:51Z",
+      "last_seen": "2026-11-06T02:47:51Z"
     }
   ]
 }

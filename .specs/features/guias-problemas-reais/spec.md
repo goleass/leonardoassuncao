@@ -171,6 +171,7 @@ As datas são as de `publishedAt`. Guia ainda não revisado na sua data sai para
 8. IF the secret is missing or the request fails THEN the workflow job SHALL fail. <!-- SCHED-08 -->
 9. IF a guide body links to a guide with a later `publishedAt` THEN the content test SHALL fail naming both slugs. <!-- SCHED-09 -->
 10. IF a guide body links to `/guias/<slug>` without a file in `src/content/guias/` THEN the content test SHALL fail naming both slugs. <!-- SCHED-10 -->
+11. IF a guide body uses a relative link (`./` or `../`) THEN the content test SHALL fail naming the guide. <!-- SCHED-11 -->
 
 **Independent Test**: Testes unitários com datas na virada do dia em Brasília; disparo manual do workflow depois que o secret existir.
 
@@ -284,13 +285,14 @@ Implicit-requirement dimensions sweep:
 | SCHED-08 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-09 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-10 | P1: Publicação automática | Tasks | Implementing |
+| SCHED-11 | P1: Publicação automática | Tasks | Implementing |
 | EDGE-01 | Edge cases | Tasks | Implementing |
 | EDGE-02 | Edge cases | Tasks | Pending |
 | EDGE-03 | Edge cases | Tasks | Pending |
 | EDGE-04 | Edge cases | Tasks | Implementing |
 | EDGE-05 | Edge cases | Tasks | Pending |
 
-**Coverage:** 27 total, 27 mapped to tasks, 0 unmapped
+**Coverage:** 28 total, 28 mapped to tasks, 0 unmapped
 
 ---
 

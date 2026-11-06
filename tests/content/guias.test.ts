@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
-import { datesOverLimit, guideTargets, laterTargets, missingTargets } from "./guide-rules";
+import { datesOverLimit, guideTargets, laterTargets, missingTargets, relativeLinks } from "./guide-rules";
 
 // Os guias do lançamento e o serviço de cada um (CONT-01).
 const LAUNCH: Record<string, string> = {
@@ -357,6 +357,7 @@ describe("guias de src/content/guias (TEST-01 a TEST-04, CONT-01 a CONT-07, GN-0
     });
 
     it("só liga para guias existentes e com data igual ou anterior (SCHED-09, SCHED-10)", () => {
+      expect(relativeLinks(body), `${slug} usa link relativo`).toEqual([]);
       const targets = guideTargets(body);
       const missing = missingTargets(targets, files);
       expect(missing, `${slug} liga para guia sem arquivo: ${missing.join(", ")}`).toEqual([]);
