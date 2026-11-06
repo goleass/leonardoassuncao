@@ -91,22 +91,22 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| CLAR-01 | P1: Rastrear | Execute | Implementing |
-| CLAR-02 | P1: Rastrear | Execute | Implementing |
-| CLAR-03 | P1: Rastrear | Execute | Implementing |
-| CLAR-04 | P1: Rastrear | Execute | Implementing |
-| CLAR-05 | P1: Rastrear | Execute | Implementing |
-| CLAR-06 | P1: Rastrear | Execute | Implementing |
-| CLAR-07 | P1: Rastrear | Execute | Implementing |
-| CLAR-08 | P1: Rastrear | Execute | Implementing |
-| CLAR-09 | P1: Política | Execute | Implementing |
-| CLAR-10 | P1: Política | Execute | Implementing |
-| CLAR-11 | P1: Política | Execute | Implementing |
-| CLAR-12 | P1: Rastrear | Execute | Implementing |
-| CLAR-13 | P1: Rastrear | Execute | Implementing |
-| CLAR-14 | P1: Política | Execute | Implementing |
-| CLAR-15 | P1: Política | Execute | Implementing |
-| CLAR-16 | P1: Política | Execute | Implementing |
+| CLAR-01 | P1: Rastrear | Execute | Verified |
+| CLAR-02 | P1: Rastrear | Execute | Verified |
+| CLAR-03 | P1: Rastrear | Execute | Verified |
+| CLAR-04 | P1: Rastrear | Execute | Verified |
+| CLAR-05 | P1: Rastrear | Execute | Verified |
+| CLAR-06 | P1: Rastrear | Execute | Verified |
+| CLAR-07 | P1: Rastrear | Execute | Verified |
+| CLAR-08 | P1: Rastrear | Execute | Verified |
+| CLAR-09 | P1: Política | Execute | Verified |
+| CLAR-10 | P1: Política | Execute | Verified |
+| CLAR-11 | P1: Política | Execute | Verified |
+| CLAR-12 | P1: Rastrear | Execute | Verified |
+| CLAR-13 | P1: Rastrear | Execute | Verified |
+| CLAR-14 | P1: Política | Execute | Verified |
+| CLAR-15 | P1: Política | Execute | Verified |
+| CLAR-16 | P1: Política | Execute | Verified |
 
 **Coverage:** 16 total, 16 mapped to execute steps, 0 unmapped.
 
