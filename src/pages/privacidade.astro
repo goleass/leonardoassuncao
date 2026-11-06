@@ -8,7 +8,7 @@ import { site } from "../config/site";
 <BaseLayout
   site={site}
   title="Política de privacidade — Leonardo Gomes Assunção"
-  description="Quais dados o formulário de contato coleta, para que servem e como pedir informações sobre os seus dados pessoais."
+  description="Quais dados o formulário de contato e a análise de navegação coletam, para que servem e como pedir informações sobre os seus dados pessoais."
 >
   <Header slot="header" site={site} />
   <article class="legal">
@@ -16,10 +16,11 @@ import { site } from "../config/site";
       <h1 class="legal__title">Política de privacidade</h1>
 
       <p class="legal__lead">
-        Esta página explica o que acontece com os dados que você envia pelo formulário de contato deste site.
+        Esta página explica o que acontece com os dados que você envia pelo formulário de contato deste site e com os
+        dados da análise de navegação.
       </p>
 
-      <h2 id="dados-coletados" class="legal__heading">Dados coletados</h2>
+      <h2 id="dados-coletados" class="legal__heading">Dados coletados no formulário</h2>
       <ul class="legal__list">
         <li>Nome</li>
         <li>E-mail</li>
@@ -38,6 +39,19 @@ import { site } from "../config/site";
         As mensagens não são armazenadas no site: o formulário envia o conteúdo por e-mail ao responsável e não grava
         nada em disco ou banco de dados. Para limitar envios repetidos, o endereço IP fica em memória por até 60 minutos.
         Em caso de falha no envio, o registro guarda só a data, a hora e o código do erro.
+      </p>
+
+      <h2 id="analise-de-navegacao" class="legal__heading">Análise de navegação</h2>
+      <p>
+        Este site usa o Microsoft Clarity para entender como as páginas são usadas e melhorar o site. O Clarity registra
+        as páginas visitadas, os cliques, a rolagem e gravações da sessão, e os dados são tratados pela Microsoft.
+      </p>
+      <p>
+        O conteúdo dos campos do formulário de contato é mascarado nas gravações. O Clarity guarda os cookies
+        {" "}<code>_clck</code> e <code>_clsk</code> no seu navegador para reconhecer a visita, e você pode bloqueá-los nas configurações do
+        navegador. Saiba mais na <a class="legal__link lg-ul" href="https://privacy.microsoft.com/pt-br/privacystatement"
+          >política de privacidade da Microsoft</a
+        >.
       </p>
 
       <h2 class="legal__heading">Seus direitos</h2>

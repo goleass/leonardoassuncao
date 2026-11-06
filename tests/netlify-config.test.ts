@@ -47,7 +47,7 @@ describe("netlify.toml: cabeçalhos de segurança em todo caminho (SECH-01..07, 
     ["Referrer-Policy", "strict-origin-when-cross-origin"], // SECH-03
     ["Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"], // SECH-04
     ["Cross-Origin-Opener-Policy", "same-origin"], // SECH-05
-    ["Cross-Origin-Embedder-Policy", "require-corp"], // SECH-06
+    ["Cross-Origin-Embedder-Policy", "credentialless"], // SECH-06, CLAR-06
     ["Cross-Origin-Resource-Policy", "same-origin"], // SECH-07
   ])("%s = %s", (name, value) => {
     expect(header(name)).toBe(value);
@@ -62,7 +62,7 @@ describe("netlify.toml: cabeçalhos de segurança em todo caminho (SECH-01..07, 
 
   it("envia Content-Security-Policy com o valor do design (CSP-01)", () => {
     expect(header("Content-Security-Policy")).toBe(
-      "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests",
+      "default-src 'self'; script-src 'self' https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.clarity.ms https://c.bing.com; font-src 'self'; connect-src 'self' https://*.clarity.ms https://c.bing.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests",
     );
   });
 
@@ -86,9 +86,9 @@ describe("netlify.toml: cabeçalhos de segurança em todo caminho (SECH-01..07, 
       expect(csp()[name]).toEqual(sources);
     });
 
-    it("script-src (ou default-src) sem 'unsafe-inline' nem 'unsafe-eval' (CSP-03)", () => {
+    it("script-src só aceita o próprio site e o Clarity, sem 'unsafe-inline' nem 'unsafe-eval' (CSP-03, CLAR-05)", () => {
       const scripts = csp()["script-src"] ?? csp()["default-src"];
-      expect(scripts).toEqual(["'self'"]);
+      expect(scripts).toEqual(["'self'", "https://www.clarity.ms", "https://scripts.clarity.ms"]);
       expect(scripts).not.toContain("'unsafe-inline'");
       expect(scripts).not.toContain("'unsafe-eval'");
     });

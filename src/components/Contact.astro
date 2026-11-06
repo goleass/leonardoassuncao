@@ -52,6 +52,7 @@ const { site } = Astro.props;
           class="contact-form"
           action="/api/contato"
           method="post"
+          data-clarity-mask="true"
           data-whatsapp={site.whatsapp}
           data-email={site.email}
           data-prazo={site.prazoResposta}

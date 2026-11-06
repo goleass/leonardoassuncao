@@ -165,6 +165,109 @@ describe("scripts rodam sob a CSP (CSP-05, CSP-06)", { timeout: 60_000 }, () => 
   });
 });
 
+const OFFICIAL = "https://www.leonardoassuncao.com.br";
+const TAG = "https://www.clarity.ms/tag/z96a82cx1w";
+const LOADER = "https://scripts.clarity.ms/0.0.0/clarity.js";
+const PIXEL = "https://c.clarity.ms/c.gif";
+const COLLECT = "https://u.clarity.ms/collect";
+const GIF = Buffer.from("R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", "base64");
+
+/** Abre a home na URL oficial, servindo o dist/ com os cabeçalhos dados. O Clarity é simulado como o real: CORS sim, CORP não. */
+async function openOfficial(override: Record<string, string> = {}) {
+  const page = await browser.newPage();
+  const violations: string[] = [];
+  const finished = new Set<string>();
+  page.on("console", (message) => {
+    if (message.type() === "error") violations.push(message.text());
+  });
+  page.on("requestfailed", (request) => violations.push(`requestfailed: ${request.url()} ${request.failure()?.errorText}`));
+  page.on("requestfinished", (request) => void finished.add(request.url()));
+  await page.route(`${OFFICIAL}/**`, (route) => {
+    const path = new URL(route.request().url()).pathname;
+    const file = join(STATIC, normalize(path.endsWith("/") ? `${path}index.html` : path));
+    return route.fulfill({
+      status: 200,
+      contentType: TYPES[extname(file)] ?? "application/octet-stream",
+      headers: headersFor(path, override),
+      body: readFileSync(file),
+    });
+  });
+  const cors = { "access-control-allow-origin": "*" };
+  await page.route(TAG, (route) =>
+    route.fulfill({
+      headers: cors,
+      contentType: "application/javascript",
+      body: `const s = document.createElement("script"); s.src = ${JSON.stringify(LOADER)}; document.head.append(s); new Image().src = ${JSON.stringify(PIXEL)};`,
+    }),
+  );
+  await page.route(LOADER, (route) =>
+    route.fulfill({
+      headers: cors,
+      contentType: "application/javascript",
+      body: `window.__clarityRan = true; fetch(${JSON.stringify(COLLECT)}, { method: "POST", body: "x" });`,
+    }),
+  );
+  await page.route(PIXEL, (route) => route.fulfill({ headers: cors, contentType: "image/gif", body: GIF }));
+  await page.route(COLLECT, (route) => route.fulfill({ headers: cors, contentType: "text/plain", body: "ok" }));
+  await page.goto(`${OFFICIAL}/`, { waitUntil: "networkidle" });
+  return { page, violations, finished };
+}
+
+describe("Clarity sob os cabeçalhos publicados (CLAR-07)", { timeout: 60_000 }, () => {
+  it("na URL oficial, a tag, o clarity.js, o pixel e o envio funcionam sem violação", async () => {
+    const { page, violations, finished } = await openOfficial();
+    expect(violations).toEqual([]);
+    expect([...finished]).toEqual(expect.arrayContaining([TAG, LOADER, PIXEL, COLLECT]));
+    expect(await page.evaluate(() => (window as unknown as { __clarityRan?: boolean }).__clarityRan)).toBe(true);
+    await page.close();
+  });
+
+  it("controle: com a CSP antiga, a tag é bloqueada", async () => {
+    const { page, violations, finished } = await openOfficial({ "Content-Security-Policy": "script-src 'self'" });
+    expect(finished.has(TAG)).toBe(false);
+    expect(violations.some((issue) => /Content Security Policy/.test(issue))).toBe(true);
+    await page.close();
+  });
+});
+
+// O route.fulfill do Playwright não passa pela checagem de COEP, então o COEP é testado com servidores de verdade.
+describe("script de outra origem sem CORP, como o do Clarity (CLAR-07)", { timeout: 60_000 }, () => {
+  async function scriptRuns(coep: string): Promise<boolean> {
+    const listen = (handler: Parameters<typeof createServer>[1]) =>
+      new Promise<Server>((resolve) => {
+        const server = createServer(handler);
+        server.listen(0, "127.0.0.1", () => resolve(server));
+      });
+    const third = await listen((_req, res) => {
+      res.writeHead(200, { "content-type": "text/javascript", "access-control-allow-origin": "*" });
+      res.end("window.__thirdPartyRan = true;");
+    });
+    const scriptUrl = `http://127.0.0.1:${(third.address() as AddressInfo).port}/tag.js`;
+    const host = await listen((_req, res) => {
+      res.writeHead(200, { "content-type": "text/html", "Cross-Origin-Embedder-Policy": coep });
+      res.end(`<!doctype html><script src="${scriptUrl}"></script>`);
+    });
+    const page = await browser.newPage();
+    try {
+      await page.goto(`http://127.0.0.1:${(host.address() as AddressInfo).port}/`, { waitUntil: "load" });
+      return await page.evaluate(() => (window as unknown as { __thirdPartyRan?: boolean }).__thirdPartyRan === true);
+    } finally {
+      await page.close();
+      third.close();
+      host.close();
+    }
+  }
+
+  it("carrega sob o COEP publicado", async () => {
+    const coep = netlifyHeaders().find((rule) => rule.for === "/*")?.values["Cross-Origin-Embedder-Policy"] as string;
+    expect(await scriptRuns(coep)).toBe(true);
+  });
+
+  it("controle: é bloqueado sob require-corp", async () => {
+    expect(await scriptRuns("require-corp")).toBe(false);
+  });
+});
+
 describe("controle: o teste enxerga script bloqueado", { timeout: 60_000 }, () => {
   it("com script-src 'none', o reveal falha e a violação de CSP é registrada", async () => {
     const blocked = await serve({ "Content-Security-Policy": "default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'" });

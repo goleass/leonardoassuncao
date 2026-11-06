@@ -42,6 +42,23 @@ describe("Página /privacidade (LEGAL-01)", () => {
     expect(link?.textContent?.trim()).toBe("dados@exemplo.com.br");
   });
 
+  it('tem a seção "Análise de navegação" com o Clarity, os dados, os cookies e a finalidade (CLAR-09)', () => {
+    expect(doc.querySelector("#analise-de-navegacao")?.textContent?.trim()).toBe("Análise de navegação");
+    expect(text).toContain("Microsoft Clarity");
+    expect(text).toContain("as páginas visitadas, os cliques, a rolagem e gravações da sessão");
+    expect(text).toContain("cookies _clck e _clsk");
+    expect(text).toContain("melhorar o site");
+    expect(text).toContain("Saiba mais na política de privacidade da Microsoft.");
+  });
+
+  it("informa que os campos do formulário são mascarados nas gravações (CLAR-10)", () => {
+    expect(text).toContain("O conteúdo dos campos do formulário de contato é mascarado nas gravações.");
+  });
+
+  it("a introdução cita também a análise de navegação (CLAR-11)", () => {
+    expect(doc.querySelector(".legal__lead")?.textContent?.replace(/\s+/g, " ")).toContain("dados da análise de navegação");
+  });
+
   it("usa o visual do site: cabeçalho e rodapé", () => {
     expect(doc.querySelector("header.site-header")).not.toBeNull();
     expect(doc.querySelector("footer.site-footer")).not.toBeNull();
