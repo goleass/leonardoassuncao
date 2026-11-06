@@ -31,6 +31,7 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 | Origens de script | `https://www.clarity.ms` e `https://scripts.clarity.ms` | São as duas observadas na tag; menor superfície que `*.clarity.ms` em script-src | n |
 | Origens de conexão e imagem | `https://*.clarity.ms` e `https://c.bing.com` | Lista da documentação da Microsoft, que faz balanceamento entre subdomínios | n |
 | Formulário nas gravações | `data-clarity-mask="true"` no formulário de contato | Garante a máscara mesmo se o modo do projeto mudar no painel | n |
+| Cobertura de páginas no navegador | Amostra: página inicial e um guia. Excluir outra página não é detectado | Decisão do dono na validação: o layout carrega o Clarity sem condição, e testar todas as páginas deixaria a suíte mais lenta | y |
 
 **Open questions:** none - all resolved or logged above.
 

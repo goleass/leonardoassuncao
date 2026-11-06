@@ -59,6 +59,7 @@ describe("initClarity fora do domínio oficial (CLAR-03)", () => {
     "deploy-preview-1--leonardoassuncao.netlify.app",
     "leonardoassuncao.com.br",
     "staging.leonardoassuncao.com.br",
+    "foo.www.leonardoassuncao.com.br",
     "www.leonardoassuncao.com.br.exemplo.com",
   ])(
     "%s: não cria a fila nem carrega a tag",
