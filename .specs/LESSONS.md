@@ -164,6 +164,36 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: validation.md M1b (tests/content/guias.test.ts:165-170) (content-tests)
 - last seen: 2026-10-17T14:33:37Z
 
+### L-026 - When a test fakes an external command, make the fake depend on the flags under test instead of returning a fixed exit code
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `ci` · harmful: 0
+- features: guias-problemas-reais
+- evidence: M07 .github/workflows/publicar-guias.yml:26 (ci)
+- last seen: 2026-11-06T02:30:28Z
+
+### L-027 - Normalize links before checking them in content tests, covering anchors, absolute URLs and missing trailing slashes
+- signal: `ac_gap` · recurrence: 1 feature(s) · scope: `content-tests` · harmful: 0
+- features: guias-problemas-reais
+- evidence: SCHED-09 tests/content/guias.test.ts:362 (F17-F19) (content-tests)
+- last seen: 2026-11-06T02:30:28Z
+
+### L-028 - Extract rules checked against live content into pure functions with a passing and a failing fixture
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `content-tests` · harmful: 0
+- features: guias-problemas-reais
+- evidence: M13 M14 tests/content/guias.test.ts:306,368 (content-tests)
+- last seen: 2026-11-06T02:30:28Z
+
+### L-029 - State in the spec whether a rule on scheduled content also applies to drafts
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `spec` · harmful: 0
+- features: guias-problemas-reais
+- evidence: SCHED-04 src/lib/guias/guias.ts:46 (spec)
+- last seen: 2026-11-06T02:30:28Z
+
+### L-030 - Check each guide sentence against what the source literally says and drop inferred results or frequencies
+- signal: `ac_gap` · recurrence: 1 feature(s) · scope: `content` · harmful: 0
+- features: guias-problemas-reais
+- evidence: PRB-09 PRB-10 pix-sem-txid-erp-nao-da-baixa.md:24,67 erp-preenche-ibs-cbs-nfe.md:24,47 (content)
+- last seen: 2026-11-06T02:30:28Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

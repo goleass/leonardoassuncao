@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
+import { datesOverLimit, guideTargets, laterTargets, missingTargets } from "./guide-rules";
 
 // Os guias do lançamento e o serviço de cada um (CONT-01).
 const LAUNCH: Record<string, string> = {
@@ -298,12 +299,8 @@ describe("guias de src/content/guias (TEST-01 a TEST-04, CONT-01 a CONT-07, GN-0
   });
 
   it("não passa de 3 guias de problemas reais na mesma data (PRB-02)", () => {
-    const perDate = new Map<string, number>();
-    for (const slug of files.filter((name) => name in PROBLEM)) {
-      const date = String(read(slug).data.publishedAt);
-      perDate.set(date, (perDate.get(date) ?? 0) + 1);
-    }
-    const over = [...perDate].filter(([, count]) => count > 3).map(([date]) => date);
+    const dates = files.filter((name) => name in PROBLEM).map((slug) => String(read(slug).data.publishedAt));
+    const over = datesOverLimit(dates);
     expect(over, `datas com mais de 3 guias: ${over.join(", ")}`).toEqual([]);
   });
 
@@ -359,12 +356,11 @@ describe("guias de src/content/guias (TEST-01 a TEST-04, CONT-01 a CONT-07, GN-0
       expect(guides.length).toBeGreaterThan(0);
     });
 
-    it("só liga para guias com data igual ou anterior (SCHED-09)", () => {
-      const own = String(data.publishedAt);
-      const later = links
-        .map((href) => href.match(/^\/guias\/([^/#?]+)\/$/)?.[1])
-        .filter((target): target is string => !!target && files.includes(target))
-        .filter((target) => String(read(target).data.publishedAt) > own);
+    it("só liga para guias existentes e com data igual ou anterior (SCHED-09, SCHED-10)", () => {
+      const targets = guideTargets(body);
+      const missing = missingTargets(targets, files);
+      expect(missing, `${slug} liga para guia sem arquivo: ${missing.join(", ")}`).toEqual([]);
+      const later = laterTargets(String(data.publishedAt), targets, (target) => String(read(target).data.publishedAt));
       expect(later, `${slug} liga para guia com data posterior: ${later.join(", ")}`).toEqual([]);
     });
 

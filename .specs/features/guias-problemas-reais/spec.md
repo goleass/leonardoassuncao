@@ -102,7 +102,7 @@ As datas são as de `publishedAt`. Guia ainda não revisado na sua data sai para
 
 | Slug | Fontes e cuidados |
 | ---- | ----------------- |
-| `erp-preenche-ibs-cbs-nfe` | Ato Técnico Conjunto CGIBS/RFB nº 1/2026, Ato Conjunto RFB/CGIBS nº 4/2026, Nota Técnica 2025.002 e calendário oficial do Simples; orientar a validar a parte tributária com o contador |
+| `erp-preenche-ibs-cbs-nfe` | Ato Técnico Conjunto RFB/CGIBS nº 1/2026, Ato Conjunto RFB/CGIBS nº 4/2026, Nota Técnica 2025.002 e calendário oficial do Simples; orientar a validar a parte tributária com o contador |
 | `pix-sem-txid-erp-nao-da-baixa` | Manual e API Pix do Banco Central; documentação do provedor citado |
 | `locacao-equipamentos-devolucao-parcial` | Sem norma obrigatória; não afirmar regra contratual como universal |
 | `custo-api-whatsapp-mensagens-servico` | Tabela e documentação oficial da Meta na data; valores só da fonte oficial |
@@ -164,12 +164,13 @@ As datas são as de `publishedAt`. Guia ainda não revisado na sua data sai para
 1. WHILE a guide's `publishedAt` is later than today in `America/Sao_Paulo`, the production build SHALL omit it from guide pages, `/guias/`, related guides, service pages and `llms.txt`. <!-- SCHED-01 -->
 2. WHEN today in `America/Sao_Paulo` reaches a guide's `publishedAt` THEN the production build SHALL include it. <!-- SCHED-02 -->
 3. WHILE a guide's `publishedAt` is in the future, the sitemap SHALL NOT use its date as `<lastmod>` of `/guias/`. <!-- SCHED-03 -->
-4. IF a guide with a future `publishedAt` has a pending marker THEN the build SHALL fail naming the file. <!-- SCHED-04 -->
+4. IF a guide with `draft: false` and a future `publishedAt` has a pending marker THEN the build SHALL fail naming the file. <!-- SCHED-04 -->
 5. WHILE running `astro dev`, the site SHALL show guides with a future `publishedAt`, so they can be reviewed. <!-- SCHED-05 -->
 6. The workflow `.github/workflows/publicar-guias.yml` SHALL run every day at 12:07 UTC and on manual dispatch. <!-- SCHED-06 -->
 7. The workflow SHALL send a POST to the URL in the secret `NETLIFY_BUILD_HOOK`, and the repository SHALL NOT contain that URL. <!-- SCHED-07 -->
 8. IF the secret is missing or the request fails THEN the workflow job SHALL fail. <!-- SCHED-08 -->
 9. IF a guide body links to a guide with a later `publishedAt` THEN the content test SHALL fail naming both slugs. <!-- SCHED-09 -->
+10. IF a guide body links to `/guias/<slug>` without a file in `src/content/guias/` THEN the content test SHALL fail naming both slugs. <!-- SCHED-10 -->
 
 **Independent Test**: Testes unitários com datas na virada do dia em Brasília; disparo manual do workflow depois que o secret existir.
 
@@ -282,13 +283,14 @@ Implicit-requirement dimensions sweep:
 | SCHED-07 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-08 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-09 | P1: Publicação automática | Tasks | Implementing |
+| SCHED-10 | P1: Publicação automática | Tasks | Implementing |
 | EDGE-01 | Edge cases | Tasks | Implementing |
 | EDGE-02 | Edge cases | Tasks | Pending |
 | EDGE-03 | Edge cases | Tasks | Pending |
 | EDGE-04 | Edge cases | Tasks | Implementing |
 | EDGE-05 | Edge cases | Tasks | Pending |
 
-**Coverage:** 26 total, 26 mapped to tasks, 0 unmapped
+**Coverage:** 27 total, 27 mapped to tasks, 0 unmapped
 
 ---
 

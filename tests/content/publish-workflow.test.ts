@@ -15,12 +15,13 @@ afterEach(() => {
   for (const dir of dirs.splice(0)) rmSync(dir, { recursive: true });
 });
 
-/** Roda o script do passo como o GitHub roda (`bash -e`), com um `curl` falso que grava os argumentos. */
-function runStep(hook: string, curlExit: number) {
+/** Roda o script do passo como o GitHub roda (`bash -e`), com um `curl` falso que grava os argumentos. Com `httpError`, ele imita o curl real: só sai com erro se recebeu `--fail`. */
+function runStep(hook: string, httpError = false) {
   const dir = mkdtempSync(join(tmpdir(), "publicar-guias-"));
   dirs.push(dir);
   const log = join(dir, "args");
-  writeFileSync(join(dir, "curl"), `#!/bin/sh\necho "$@" > "${log}"\nexit ${curlExit}\n`);
+  const onError = httpError ? 'case " $* " in *" --fail "*) exit 22;; esac' : "";
+  writeFileSync(join(dir, "curl"), `#!/bin/sh\necho "$@" > "${log}"\n${onError}\nexit 0\n`);
   chmodSync(join(dir, "curl"), 0o755);
   const result = spawnSync("bash", ["-e", "-c", step.run!], {
     env: { PATH: `${dir}:${process.env.PATH}`, NETLIFY_BUILD_HOOK: hook },
@@ -50,19 +51,19 @@ describe("workflow de publicação diária", () => {
   });
 
   it("envia POST para a URL do hook (SCHED-07)", () => {
-    const { status, args } = runStep("https://hook.example/abc", 0);
+    const { status, args } = runStep("https://hook.example/abc");
     expect(status).toBe(0);
     expect(args).toContain("-X POST");
     expect(args).toContain("https://hook.example/abc");
   });
 
   it("falha sem chamar o curl quando o secret está vazio (SCHED-08)", () => {
-    const { status, args } = runStep("", 0);
+    const { status, args } = runStep("");
     expect(status).not.toBe(0);
     expect(args).toBe("");
   });
 
-  it("falha quando a requisição falha (SCHED-08)", () => {
-    expect(runStep("https://hook.example/abc", 22).status).not.toBe(0);
+  it("falha quando o hook responde com erro HTTP (SCHED-08)", () => {
+    expect(runStep("https://hook.example/abc", true).status).toBe(22);
   });
 });

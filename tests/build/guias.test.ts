@@ -75,6 +75,14 @@ describe("build: rascunhos fora da saída (guias COL-08)", () => {
     }
   });
 
+  it("nenhuma página do build cita um guia agendado, inclusive serviços e relacionados (SCHED-01)", () => {
+    const pages = (readdirSync(dist, { recursive: true }) as string[]).filter((file) => file.endsWith(".html"));
+    for (const file of pages) {
+      const html = readFileSync(join(dist, file), "utf8");
+      for (const slug of SCHEDULED) expect(html, `${file} cita ${slug}`).not.toContain(`/guias/${slug}`);
+    }
+  });
+
   it.each(PUBLISHED)("%s gera página e aparece no llms.txt", (slug) => {
     expect(existsSync(join(dist, "guias", slug, "index.html"))).toBe(true);
     expect(llms).toContain(`/guias/${slug}/`);
