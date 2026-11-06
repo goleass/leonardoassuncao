@@ -13,6 +13,12 @@ const form = () => doc.querySelector("#contato form") as HTMLFormElement;
 const field = (name: string) => form().querySelector(`[name="${name}"]`) as HTMLElement;
 const labelOf = (el: Element) => doc.querySelector(`label[for="${el.id}"]`)?.textContent?.trim();
 
+describe("Contact: privacidade nas gravações do Clarity (CLAR-08)", () => {
+  it('o formulário tem data-clarity-mask="true"', () => {
+    expect(form().getAttribute("data-clarity-mask")).toBe("true");
+  });
+});
+
 describe("Contact: campos e limites do formulário (FORM-04, A11Y-03)", () => {
   it("cada campo tem <label for> com o nome da spec e é obrigatório", () => {
     const fields = ["nome", "email", "tipo", "mensagem"].map((name) => {
@@ -134,6 +140,7 @@ describe("Contact: título da seção (A11Y-05)", () => {
 describe("Contact: dados passados ao script do formulário (FORM-02, FORM-03, FORM-09)", () => {
   it("o formulário leva o WhatsApp só com dígitos, o e-mail e o prazo da configuração", () => {
     expect({ ...form().dataset }).toEqual({
+      clarityMask: "true",
       whatsapp: siteFixture.whatsapp,
       email: siteFixture.email,
       prazo: siteFixture.prazoResposta,

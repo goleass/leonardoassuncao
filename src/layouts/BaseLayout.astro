@@ -82,9 +82,11 @@ const jsonLdText = buildJsonLdText([...siteNodes(site), ...schema]);
     </main>
     <slot name="footer" />
     <script>
+      import { initClarity } from "../scripts/clarity";
       import { initReveal } from "../scripts/reveal";
 
       initReveal(document, { reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches });
+      initClarity(window, document);
     </script>
   </body>
 </html>
