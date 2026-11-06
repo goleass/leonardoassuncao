@@ -303,7 +303,7 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
-### T7: Escrever o guia pix-sem-txid-erp-nao-da-baixa
+### T7: Escrever o guia pix-sem-txid-erp-nao-da-baixa ✅
 
 **What**: Criar o guia `pix-sem-txid-erp-nao-da-baixa` com `servico: integracoes`, o `title`, o `h1`, o ângulo e o link de cluster do calendário.
 **Where**: `src/content/guias/pix-sem-txid-erp-nao-da-baixa.md`
@@ -318,14 +318,14 @@ Termina com o gate Build e a revisão do usuário.
 
 **Done when**:
 
-- [ ] Resultados de busca do h1 lidos; o ângulo não repete o de outro guia (PRB-08)
-- [ ] Cuidados da spec aplicados: Manual e API Pix do Banco Central; documentação do provedor citado
-- [ ] `resumo` responde o h1 na primeira frase; ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre (PRB-07)
-- [ ] Links para `/integracoes/` e `/guias/integracao-bling-api/` (PRB-07, PRB-08)
-- [ ] Nenhum cliente, número, resultado ou experiência não confirmados (PRB-09); fontes oficiais nomeadas no texto (PRB-10)
-- [ ] Seções de controle atual, com ≥ 3 perdas concretas, e de pronto × sob medida (PRB-11); sem preço de site ou sistema (PRB-12)
-- [ ] `publishedAt` igual à data do calendário: 2026-11-05 (PRB-05)
-- [ ] Gate check passes: `npm test`
+- [x] Resultados de busca do h1 lidos; o ângulo não repete o de outro guia (PRB-08)
+- [x] Cuidados da spec aplicados: Manual e API Pix do Banco Central; documentação do provedor citado
+- [x] `resumo` responde o h1 na primeira frase; ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre (PRB-07)
+- [x] Links para `/integracoes/` e `/guias/integracao-bling-api/` (PRB-07, PRB-08)
+- [x] Nenhum cliente, número, resultado ou experiência não confirmados (PRB-09); fontes oficiais nomeadas no texto (PRB-10)
+- [x] Seções de controle atual, com ≥ 3 perdas concretas, e de pronto × sob medida (PRB-11); sem preço de site ou sistema (PRB-12)
+- [x] `publishedAt` igual à data do calendário: 2026-11-05 (PRB-05)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
