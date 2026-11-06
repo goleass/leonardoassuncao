@@ -94,9 +94,9 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 | CLAR-06 | P1: Rastrear | Execute | Implementing |
 | CLAR-07 | P1: Rastrear | Execute | Implementing |
 | CLAR-08 | P1: Rastrear | Execute | Implementing |
-| CLAR-09 | P1: Política | Execute | Pending |
-| CLAR-10 | P1: Política | Execute | Pending |
-| CLAR-11 | P1: Política | Execute | Pending |
+| CLAR-09 | P1: Política | Execute | Implementing |
+| CLAR-10 | P1: Política | Execute | Implementing |
+| CLAR-11 | P1: Política | Execute | Implementing |
 | CLAR-12 | P1: Rastrear | Execute | Implementing |
 
 **Coverage:** 12 total, 12 mapped to execute steps, 0 unmapped.

@@ -42,6 +42,14 @@
 - **Date**: 2026-10-04
 - **Status**: active
 
+### AD-006
+- **Decision**: O Microsoft Clarity roda só em `www.leonardoassuncao.com.br`, por módulo externo. A CSP libera apenas as origens do Clarity e o COEP passa de `require-corp` para `credentialless`. Não há banner de consentimento; `/privacidade` declara a coleta.
+- **Reason**: As respostas do Clarity não enviam CORP, e `require-corp` as bloqueia (testado com os servidores reais). `credentialless` mantém o isolamento e aceita o script. O usuário escolheu ativar sem banner.
+- **Trade-off**: A CSP passa a confiar em script da Microsoft. A base legal é legítimo interesse, sem orientação específica da ANPD sobre gravação de sessão. Se o Clarity mudar a origem do script, a coleta para até `script-src` ser atualizado. `Cross-Origin-Resource-Policy: same-origin` pode deixar imagens e fontes de fora na reprodução das gravações.
+- **Scope**: Cabeçalhos de segurança, carregamento de scripts de terceiros e política de privacidade. Complementa AD-005, que continua proibindo script inline.
+- **Date**: 2026-11-05
+- **Status**: active
+
 ## Handoff
 
 - **Feature**: `.specs/features/guias-nichos` (branch `feat/guias-nichos`, criada de `feat/guias-conteudo`; nenhuma das duas mesclada nem publicada)
