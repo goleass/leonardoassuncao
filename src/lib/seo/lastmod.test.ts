@@ -139,7 +139,8 @@ describe("guideDates: guias agendados (SCHED-03)", () => {
       { name: "agendado.md", text: md("publishedAt: 2999-01-01") },
     ];
     const { run } = fakeGit({ shallow: "false\n", log: "" });
-    expect(withLastmod({ url: "https://www.leonardoassuncao.com.br/guias/" }, run, futuro).lastmod).toBe("2020-01-01");
+    const item: { url: string; lastmod?: string } = { url: "https://www.leonardoassuncao.com.br/guias/" };
+    expect(withLastmod(item, run, futuro).lastmod).toBe("2020-01-01");
   });
 });
 
