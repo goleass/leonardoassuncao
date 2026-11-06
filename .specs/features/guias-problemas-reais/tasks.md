@@ -47,14 +47,14 @@ Cada fase reúne os guias de uma data de publicação. A escrita pode adiantar v
 Primeiro o filtro, o workflow e o mapa do teste, depois os 3 guias do dia. Termina com o gate Build e a revisão do usuário.
 
 ```
-T1 → T2 → T3 → T4 → T5 → T6 → T7 → T8
+T1 → T2 → T3 → T4 → T5 → T6 → T7 → T8 → T34
 ```
 ### Phase 2: Lote de 06/11 (sex)
 
 Termina com o gate Build e a revisão do usuário.
 
 ```
-(T8) → T9 → T10
+(T34) → T9 → T10
 ```
 ### Phase 3: Lote de 07/11 (sáb)
 
@@ -365,11 +365,37 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
+### T34: Derivar as páginas de guias nos testes de build ✅
+
+**What**: Trocar as listas fixas de guias dos testes de build por uma lista calculada dos arquivos e das datas, mantendo a comparação exata.
+**Where**: `tests/build/published-guides.ts`
+**Depends on**: T8
+**Reuses**: `isDue` de `src/lib/guias/guias.ts`
+**Requirement**: SCHED-01, SCHED-02
+
+**Tools**:
+
+- MCP: NONE
+- Skill: NONE
+
+**Done when**:
+
+- [x] `inline-scripts`, `secrets` e `sitemap` comparam a saída com as páginas fixas mais os guias com data até hoje
+- [x] Guia novo com data vencida e fora do `dist/` reprova o teste; guia agendado não é exigido (SCHED-01, SCHED-02)
+- [x] Gate check passes: `npm run check && npm test && npm run build && npm run test:build`
+
+**Tests**: unit
+**Gate**: build
+
+**Commit**: `test(guias): derive expected guide pages from dates`
+
+---
+
 ### T9: Escrever o guia custo-api-whatsapp-mensagens-servico
 
 **What**: Criar o guia `custo-api-whatsapp-mensagens-servico` com `servico: integracoes`, o `title`, o `h1`, o ângulo e o link de cluster do calendário.
 **Where**: `src/content/guias/custo-api-whatsapp-mensagens-servico.md`
-**Depends on**: T8
+**Depends on**: T34
 **Reuses**: frontmatter e estrutura de `src/content/guias/bling-nao-sincroniza-pedidos.md`
 **Requirement**: PRB-05, PRB-06, PRB-07, PRB-08, PRB-09, PRB-10, PRB-11, PRB-12, EDGE-01, EDGE-04
 
@@ -1142,7 +1168,7 @@ Termina com o gate Build e a revisão do usuário.
 ```
 Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 5 → Phase 6 → Phase 7 → Phase 8 → Phase 9 → Phase 10 → Phase 11 → Phase 12 → Phase 13
 
-Phase 1:  T1 → T2 → T3 → T4 → T5 → T6 → T7 → T8  (05/11)
+Phase 1:  T1 → T2 → T3 → T4 → T5 → T6 → T7 → T8 → T34  (05/11)
 Phase 2:  T9 → T10  (06/11)
 Phase 3:  T11 → T12  (07/11)
 Phase 4:  T13 → T14  (08/11)
@@ -1157,7 +1183,7 @@ Phase 12:  T29 → T30  (16/11)
 Phase 13:  T31 → T32 → T33  (17/11)
 ```
 
-33 tarefas no total. Cada bloco de escrita cabe em um lote e roda inline. O Verificador roda ao fim da Fase 1, que vai ao ar sozinha, e depois da última tarefa.
+34 tarefas no total. Cada bloco de escrita cabe em um lote e roda inline. O Verificador roda ao fim da Fase 1, que vai ao ar sozinha, e depois da última tarefa.
 
 ---
 
@@ -1173,6 +1199,7 @@ Phase 13:  T31 → T32 → T33  (17/11)
 | T6 | 1 guia (1 arquivo Markdown) | ✅ Granular |
 | T7 | 1 guia (1 arquivo Markdown) | ✅ Granular |
 | T8 | 1 guia (1 arquivo Markdown) | ✅ Granular |
+| T34 | 1 helper de teste usado em 3 testes | ✅ Granular |
 | T9 | 1 guia (1 arquivo Markdown) | ✅ Granular |
 | T10 | 1 guia (1 arquivo Markdown) | ✅ Granular |
 | T11 | 1 guia (1 arquivo Markdown) | ✅ Granular |
@@ -1211,7 +1238,8 @@ Phase 13:  T31 → T32 → T33  (17/11)
 | T6 | T5 | T5 → T6 | ✅ Match |
 | T7 | T6 | T6 → T7 | ✅ Match |
 | T8 | T7 | T7 → T8 | ✅ Match |
-| T9 | T8 | início da fase, (T8) em fase anterior | ✅ Match |
+| T34 | T8 | T8 → T34 | ✅ Match |
+| T9 | T34 | início da fase, (T34) em fase anterior | ✅ Match |
 | T10 | T9 | T9 → T10 | ✅ Match |
 | T11 | T10 | início da fase, (T10) em fase anterior | ✅ Match |
 | T12 | T11 | T11 → T12 | ✅ Match |
@@ -1249,6 +1277,7 @@ Phase 13:  T31 → T32 → T33  (17/11)
 | T6 | Conteúdo | unit | unit | ✅ OK |
 | T7 | Conteúdo | unit | unit | ✅ OK |
 | T8 | Conteúdo | unit | unit | ✅ OK |
+| T34 | Saída do build | integration | unit (gate build) | ✅ OK |
 | T9 | Conteúdo | unit | unit | ✅ OK |
 | T10 | Conteúdo | unit | unit | ✅ OK |
 | T11 | Conteúdo | unit | unit | ✅ OK |
@@ -1280,6 +1309,7 @@ Phase 13:  T31 → T32 → T33  (17/11)
 | Requirement | Tasks |
 | ----------- | ----- |
 | SCHED-01 | T1, T3 |
+| SCHED-01, SCHED-02 | T34 |
 | SCHED-02, SCHED-04, SCHED-05 | T1 |
 | SCHED-03 | T2, T3 |
 | SCHED-06, SCHED-07, SCHED-08 | T4 |

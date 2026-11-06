@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { describe, expect, it } from "vitest";
+import { PUBLISHED_GUIDES } from "./published-guides";
 
 // Lê o dist/ do `npm run build` anterior (gate: `npm run build && npm run test:build`). O test:build roda
 // os arquivos em sequência, então o build do secrets.test.ts não reescreve o dist/ durante a leitura.
@@ -9,29 +10,15 @@ const STATIC = join(process.cwd(), "dist");
 const PAGES = [
   "404.html",
   "criacao-de-sites/index.html",
-  "guias/bling-nao-sincroniza-pedidos/index.html",
   "guias/index.html",
-  "guias/integracao-bling-api/index.html",
-  "guias/integracao-rastreamento-veicular/index.html",
-  "guias/portal-de-pedidos-para-distribuidora/index.html",
-  "guias/portal-de-pedidos-salgados-congelados/index.html",
-  "guias/portal-do-cliente-contabilidade/index.html",
-  "guias/quanto-custa-site-para-vidracaria/index.html",
-  "guias/quanto-custa-um-sistema-sob-medida/index.html",
-  "guias/quanto-custa-um-site/index.html",
-  "guias/sistema-aluguel-de-cacambas/index.html",
-  "guias/sistema-fabrica-de-uniformes/index.html",
-  "guias/sistema-ordem-de-servico-ar-condicionado/index.html",
-  "guias/sistema-portoes-automaticos/index.html",
-  "guias/site-aluguel-de-inflaveis/index.html",
-  "guias/software-recarga-de-extintores/index.html",
+  ...PUBLISHED_GUIDES.map((slug) => `guias/${slug}/index.html`),
   "index.html",
   "integracoes/index.html",
   "manutencao-de-sistemas/index.html",
   "privacidade/index.html",
   "sistemas-web/index.html",
   "software-sob-medida/index.html",
-];
+].sort();
 
 function listFiles(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
@@ -56,7 +43,7 @@ describe("nenhuma página publica script executável inline (CSP-03, EDGE-09)", 
     .filter((file) => file.endsWith(".html"))
     .map((file) => ({ file: relative(STATIC, file), html: readFileSync(file, "utf8") }));
 
-  it("o build gera as 24 páginas", () => {
+  it("o build gera as páginas fixas e os guias já publicados", () => {
     expect(built.map(({ file }) => file).sort()).toEqual(PAGES);
   });
 

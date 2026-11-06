@@ -2,6 +2,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { beforeAll, describe, expect, it } from "vitest";
+import { PUBLISHED_GUIDES } from "./published-guides";
 
 // Pastas confirmadas após o build com @astrojs/netlify 8 + Astro 7: o que vai ao navegador fica em dist/,
 // e a função que atende /api/contato e a 404 fica em .netlify/v1/functions/ssr/.
@@ -110,21 +111,7 @@ describe("SEO: imagem de compartilhamento, sitemap e robots (SEO-02, SEO-03)", (
       `${DOMAIN}/`,
       `${DOMAIN}/criacao-de-sites/`,
       `${DOMAIN}/guias/`,
-      `${DOMAIN}/guias/bling-nao-sincroniza-pedidos/`,
-      `${DOMAIN}/guias/integracao-bling-api/`,
-      `${DOMAIN}/guias/integracao-rastreamento-veicular/`,
-      `${DOMAIN}/guias/portal-de-pedidos-para-distribuidora/`,
-      `${DOMAIN}/guias/portal-de-pedidos-salgados-congelados/`,
-      `${DOMAIN}/guias/portal-do-cliente-contabilidade/`,
-      `${DOMAIN}/guias/quanto-custa-site-para-vidracaria/`,
-      `${DOMAIN}/guias/quanto-custa-um-sistema-sob-medida/`,
-      `${DOMAIN}/guias/quanto-custa-um-site/`,
-      `${DOMAIN}/guias/sistema-aluguel-de-cacambas/`,
-      `${DOMAIN}/guias/sistema-fabrica-de-uniformes/`,
-      `${DOMAIN}/guias/sistema-ordem-de-servico-ar-condicionado/`,
-      `${DOMAIN}/guias/sistema-portoes-automaticos/`,
-      `${DOMAIN}/guias/site-aluguel-de-inflaveis/`,
-      `${DOMAIN}/guias/software-recarga-de-extintores/`,
+      ...PUBLISHED_GUIDES.map((slug) => `${DOMAIN}/guias/${slug}/`),
       `${DOMAIN}/integracoes/`,
       `${DOMAIN}/manutencao-de-sistemas/`,
       `${DOMAIN}/privacidade/`,
