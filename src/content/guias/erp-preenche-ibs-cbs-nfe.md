@@ -21,17 +21,17 @@ faq:
 
 A nota foi emitida, a SEFAZ autorizou e o cliente recebeu. Olhando só para a tela do ERP, parece que a reforma tributária não mudou nada. O problema é que, neste momento, a autorização deixou de ser uma boa prova de que os campos de IBS e CBS estão certos.
 
-A obrigação existe, mas a trava automática foi adiada. Na prática, uma empresa pode passar meses emitindo notas sem esses dados, ou com códigos errados, sem receber nenhum aviso da SEFAZ. Neste guia eu mostro como conferir isso no XML e no ERP e o que fazer com o resultado. As informações legais foram conferidas em 5 de novembro de 2026 nas publicações da Receita Federal, do Comitê Gestor do IBS (CGIBS) e do Portal da NF-e. A classificação de cada produto continua sendo uma decisão a validar com o seu contador.
+A obrigação existe, mas a trava automática foi adiada. Na prática, a ausência de determinados campos não causa rejeição automática por enquanto, e a autorização da nota não confirma que os códigos informados estão corretos. Neste guia eu mostro como conferir isso no XML e no ERP e o que fazer com o resultado. As informações legais foram conferidas em 5 de novembro de 2026 nas publicações da Receita Federal, do Comitê Gestor do IBS (CGIBS) e do Portal da NF-e. A classificação de cada produto continua sendo uma decisão a validar com o seu contador.
 
 ## O que já é obrigatório na NF-e e o que foi adiado?
 
-São dois assuntos diferentes, e confundir os dois é o erro mais comum.
+São dois assuntos diferentes, e vale não confundir um com o outro.
 
 **A obrigação de informar.** O Ato Conjunto RFB/CGIBS nº 4, de 30 de julho de 2026, trouxe o cronograma de implementação dos documentos fiscais. Para a NF-e e a NFC-e do regime regular, nos casos listados pela Receita Federal, o início foi 3 de agosto de 2026. O próprio cronograma traz outras datas, como 1º de dezembro de 2026 para a NF-e de quem é sujeito passivo de IBS e CBS sem ser contribuinte de ICMS, e 1º de janeiro de 2027 para os documentos do Simples Nacional.
 
 **A rejeição automática.** O Ato Técnico Conjunto RFB/CGIBS nº 1, de 31 de julho de 2026, é o ato citado pelo CGIBS para o adiamento das validações que começariam em 3 de agosto. A nota do CGIBS publicada em 6 de agosto de 2026 é direta: "não houve suspensão da obrigatoriedade de destaque e prestação das informações". O texto também afirma que o cronograma "permanece integralmente válido e sem alterações".
 
-Resumindo: a nota pode ser autorizada sem os campos, mas isso não significa que a empresa esteja dispensada de informá-los.
+Resumindo: a ausência de determinados campos não gera rejeição automática por enquanto, mas isso não dispensa a empresa de informá-los. O CGIBS também cita um programa de conformidade, ainda em regulamentação, para estimular a regularização durante a implantação.
 
 Em 2026, os documentos usam a alíquota de teste de 0,1% para o IBS e 0,9% para a CBS. O CGIBS informou que a apuração desse período é apenas informativa, sem efeitos tributários, desde que as obrigações acessórias sejam cumpridas. Essa condição é mais um motivo para conferir os dados agora.
 
@@ -44,16 +44,16 @@ A tela do ERP mostra o que o sistema guarda. O XML mostra o que foi enviado. Por
 3. **Abra o XML de cada nota.** Em cada item, localize o grupo de IBS e CBS dentro dos impostos do produto. Confira se aparecem o CST, o cClassTrib, a base de cálculo, as alíquotas e os valores.
 4. **Confira os totais.** A soma dos itens precisa bater com os totais de IBS e CBS da nota. Uma divergência aqui pode indicar arredondamento ou regra aplicada só em parte do documento.
 5. **Compare com a tabela oficial.** Os três primeiros dígitos do cClassTrib correspondem ao CST de IBS e CBS. As tabelas são divulgadas pelo Informe Técnico 2025.002, cuja versão mais recente que localizei no Portal da NF-e foi a 1.70, de 1º de outubro de 2026. Confirme a versão vigente antes de usar.
-6. **Teste em homologação.** Se o emissor permitir, envie notas de teste nesse ambiente. A documentação técnica traz validações para os dados informados, e descobrir uma rejeição em teste é muito melhor do que descobri-la quando a trava voltar a valer em produção.
+6. **Teste em homologação.** Se o emissor permitir, envie notas de teste nesse ambiente. A documentação técnica traz validações para os dados informados, e descobrir uma rejeição em teste é muito melhor do que descobri-la quando a validação entrar em produção.
 7. **Pergunte ao fornecedor.** Peça, por escrito, qual versão da Nota Técnica 2025.002 o ERP implementa. O Ato Técnico Conjunto nº 1 aprovou a versão 1.51, e novas versões podem ter sido publicadas depois.
 
 Os nomes exatos das tags podem mudar entre versões da documentação, então use a Nota Técnica vigente como referência, e não um print antigo.
 
 ## Como a empresa controla isso hoje e o que pode dar errado?
 
-Em muitas empresas, a informação fiscal do produto está espalhada. O cadastro principal fica no ERP, mas a classificação nova aparece em uma planilha enviada pela contabilidade. A exceção de uma venda fica em um papel na mesa do faturamento. A dúvida sobre um item é resolvida em uma mensagem de WhatsApp com o contador, que ninguém mais consegue encontrar depois.
+A informação fiscal do produto pode acabar espalhada. O cadastro principal fica no ERP, mas a classificação nova aparece em uma planilha enviada pela contabilidade. A exceção de uma venda fica em um papel na mesa do faturamento. A dúvida sobre um item é resolvida em uma mensagem de WhatsApp com o contador, que ninguém mais consegue encontrar depois.
 
-Esse arranjo funciona até alguém precisar responder quem definiu aquele código e quando. As perdas mais comuns são:
+Esse arranjo funciona até alguém precisar responder quem definiu aquele código e quando. Alguns exemplos do que pode dar errado:
 
 - **Produto novo sem classificação.** O comprador cadastra o item às pressas, o campo fica vazio ou recebe um código padrão, e todas as notas daquele produto saem iguais.
 - **Código aplicado em massa.** Uma planilha preenche o mesmo cClassTrib para uma família inteira, mesmo havendo item com tratamento diferente. O erro se repete em todas as vendas e só aparece em uma revisão.
@@ -67,7 +67,7 @@ O risco também é operacional. Quando a validação for ativada em produção, 
 
 Para os optantes do Simples Nacional, o cronograma aponta 1º de janeiro de 2027, e a Receita Federal informou que as mudanças da Resolução CGSN nº 190/2026 produzem efeitos, em regra, a partir dessa data.
 
-O prazo está perto, e a parte demorada costuma ser o cadastro, não o ERP. Vale usar as próximas semanas para:
+O prazo está perto, e revisar o cadastro pode levar mais tempo do que atualizar o ERP. Vale usar as próximas semanas para:
 
 - listar os produtos que a empresa realmente vende e remover os cadastros mortos;
 - pedir ao contador a orientação de classificação dos itens mais vendidos;
@@ -78,7 +78,7 @@ Quem optou pelo regime regular para IBS e CBS deve tratar o assunto com o contad
 
 ## O ERP não atende 100% da operação: o que fazer?
 
-Muitas vezes o ERP pronto resolve. Ele costuma ser o lugar certo para os cadastros fiscais, e o fornecedor tem interesse em acompanhar as notas técnicas. **O sistema pronto basta** quando as notas saem de dentro dele, os itens são simples e o teste do XML passa em todos os tipos de operação.
+O ERP pronto pode resolver. Ele é um lugar natural para os cadastros fiscais, e o fornecedor tem interesse em acompanhar as notas técnicas. **O sistema pronto basta** quando as notas saem de dentro dele, os itens são simples e o teste do XML passa em todos os tipos de operação.
 
 Às vezes o problema está em volta do ERP. **Um ajuste na integração ou um desenvolvimento sob medida vale a pena** quando:
 
@@ -87,9 +87,9 @@ Muitas vezes o ERP pronto resolve. Ele costuma ser o lugar certo para os cadastr
 - a empresa precisa de uma conferência automática que aponte itens sem classificação antes da emissão;
 - o volume de exceções é tão alto que depender de alguém olhando nota por nota deixou de ser viável.
 
-Nesses casos, normalmente não é preciso substituir o ERP. Um relatório diário que leia os XMLs e aponte as notas com campos ausentes, por exemplo, já mostra o tamanho do problema e dá tempo de corrigir. O guia sobre [integração com o Bling via API](/guias/integracao-bling-api/) explica como essa camada funciona em um ERP popular, e a mesma lógica vale para outros sistemas.
+Nesses casos, pode não ser preciso substituir o ERP. Um relatório diário que leia os XMLs e aponte as notas com campos ausentes, por exemplo, já mostra o tamanho do problema e dá tempo de corrigir. O guia sobre [integração com o Bling via API](/guias/integracao-bling-api/) explica como essa camada funciona em um ERP popular, e a mesma lógica vale para outros sistemas.
 
-Trocar de ERP só por causa da reforma raramente é o primeiro passo. Se o fornecedor atende à documentação e a falha está no cadastro, o sistema novo receberá o mesmo cadastro errado.
+Trocar de ERP só por causa da reforma não deveria ser o primeiro passo. Se o fornecedor atende à documentação e a falha está no cadastro, o sistema novo receberá o mesmo cadastro errado.
 
 ## Por onde começar se a conferência encontrou erro?
 

@@ -420,7 +420,7 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
-### T36: Alinhar os guias de 05/11 às fontes
+### T36: Alinhar os guias de 05/11 às fontes ✅
 
 **What**: Corrigir as frases que afirmavam mais do que a fonte ou traziam frequência sem medida.
 **Where**: `src/content/guias/erp-preenche-ibs-cbs-nfe.md`
@@ -435,9 +435,9 @@ Termina com o gate Build e a revisão do usuário.
 
 **Done when**:
 
-- [ ] Nenhuma frase apontada pelo Verificador continua afirmando mais do que a fonte (PRB-10)
-- [ ] Frequências e resultados sem medida viram texto neutro (PRB-09)
-- [ ] Gate check passes: `npm test`
+- [x] Nenhuma frase apontada pelo Verificador continua afirmando mais do que a fonte (PRB-10)
+- [x] Frequências e resultados sem medida viram texto neutro (PRB-09)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick

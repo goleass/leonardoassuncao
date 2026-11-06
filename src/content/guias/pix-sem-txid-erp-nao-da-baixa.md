@@ -21,7 +21,7 @@ faq:
 
 O cliente manda o comprovante às 10h. O dinheiro está na conta, mas o ERP continua mostrando a cobrança em aberto. À tarde, o financeiro envia uma mensagem automática de atraso para quem já pagou. O cliente reclama, alguém procura o valor no extrato e dá a baixa manualmente.
 
-Se esse cenário é comum na sua empresa, a integração pode até estar funcionando. O pagamento só chegou por um caminho que o webhook da cobrança não cobre. Neste guia eu explico por que isso acontece e como montar uma conciliação que resolve a maior parte dos casos. As informações técnicas foram conferidas em 5 de novembro de 2026 no Manual de Padrões para Iniciação do Pix (versão 2.10.0) e na especificação da API Pix publicada pelo Banco Central.
+Se esse cenário é comum na sua empresa, a integração pode até estar funcionando. O pagamento só chegou por um caminho que o webhook da cobrança não cobre. Neste guia eu explico por que isso acontece e como montar uma conciliação que reduz a conferência manual. As informações técnicas foram conferidas em 5 de novembro de 2026 no Manual de Padrões para Iniciação do Pix (versão 2.10.0) e na especificação da API Pix publicada pelo Banco Central.
 
 ## Por que o ERP não dá baixa quando o Pix vem direto na chave?
 
@@ -38,13 +38,13 @@ Quando o cliente abre o aplicativo do banco e digita a chave Pix da empresa, o p
 
 O manual do Banco Central é claro ao descrever o webhook: "Somente Pix associados a um txid serão informados via a funcionalidade webhook". Portanto, a falta do aviso, nesse caso, não indica que o webhook está quebrado. A funcionalidade foi definida assim.
 
-O problema aparece em discussões técnicas públicas. Em uma [issue do repositório da API Pix](https://github.com/bacen/pix-api/issues/522), um integrador descreve exatamente esse cenário: clientes pagam na chave, o webhook não chega, e o ERP não consegue baixar a cobrança.
+O problema aparece em discussões técnicas públicas. Em uma [discussão de 2022 no repositório da API Pix](https://github.com/bacen/pix-api/issues/522), um integrador descreve exatamente esse cenário: clientes pagam na chave, o webhook não chega, e o ERP não consegue baixar a cobrança.
 
 Vale um cuidado com o QR Code estático. Ele pode ter um txid próprio ou usar `***`, valor que o manual indica para quando se opta por não usar um identificador. E o Banco Central alerta que a consistência desses pagamentos fica a cargo do recebedor, porque o provedor não tem como garantir que o txid não se repita. Um QR Code fixo no balcão, com o mesmo txid em todas as vendas, não identifica qual venda foi paga.
 
 ## Como a empresa controla isso hoje e o que perde?
 
-O controle costuma ser manual e dividido entre várias pessoas:
+Sem conciliação automática, o controle fica manual e dividido entre várias pessoas:
 
 - **Extrato em uma planilha.** O financeiro exporta o extrato, cola em uma planilha e procura cada valor nas cobranças abertas.
 - **Comprovante no WhatsApp.** O cliente envia a imagem para o vendedor, que repassa para o financeiro, que precisa achar o pagamento correspondente.
@@ -64,9 +64,9 @@ A solução não depende de adivinhar. Ela segue uma ordem simples.
 
 ### 1. Buscar todos os recebimentos
 
-O webhook continua cuidando dos pagamentos com txid. Para os demais, é preciso uma consulta periódica. A especificação da API Pix prevê a consulta de Pix recebidos com filtros como período, `txIdPresente`, CPF e CNPJ. Com `txIdPresente` igual a falso, o sistema busca só os pagamentos sem identificador.
+O webhook continua cuidando dos pagamentos com txid. Para os demais, é preciso uma consulta periódica. A especificação da API Pix prevê a consulta de Pix recebidos com filtros como período, `txIdPresente`, CPF e CNPJ. O parâmetro `txIdPresente` filtra pela presença do identificador. Confirme com o seu provedor se ele está disponível e como funciona na prática.
 
-Nem todo provedor entrega os mesmos dados nem oferece a API da mesma forma. Na discussão citada, os participantes relatam que um provedor havia deixado de devolver o CPF ou CNPJ na consulta, e que a identificação do pagador acabou vindo de um extrato de conciliação. Por isso, confirme com o seu banco ou provedor qual canal traz o documento do pagador: API, extrato por API ou arquivo.
+Nem todo provedor entrega os mesmos dados nem oferece a API da mesma forma. Na discussão de 2022 citada acima, os participantes relatam que um provedor havia deixado de devolver o CPF ou CNPJ na consulta, e que a identificação do pagador acabou vindo de um extrato de conciliação. Por isso, confirme com o seu banco ou provedor qual canal traz o documento do pagador: API, extrato por API ou arquivo.
 
 ### 2. Guardar cada recebimento uma única vez
 
@@ -84,7 +84,7 @@ Uma regra de correspondência segura usa mais de um dado:
 | Valor exato, mas pagador desconhecido | Revisão humana, com a cobrança sugerida |
 | Nenhuma correspondência | Fila de "recebido sem identificação" |
 
-Pagador desconhecido é comum: o sócio paga no CPF, a empresa do grupo paga com outro CNPJ, ou um parente paga pelo cliente. Uma boa solução aprende com isso e permite vincular outro pagador ao cliente, sempre com a confirmação de uma pessoa.
+O pagador pode não ser o cliente cadastrado: o sócio paga no CPF, a empresa do grupo paga com outro CNPJ, ou um parente paga pelo cliente. Uma boa solução aprende com isso e permite vincular outro pagador ao cliente, sempre com a confirmação de uma pessoa.
 
 ### 4. Tratar a exceção em uma fila
 
@@ -109,7 +109,7 @@ Comece verificando o que você já tem. **O sistema pronto basta** quando o ERP 
 - há regras próprias, como baixa parcial, pagamento de várias faturas em um Pix ou clientes que pagam pelo CNPJ de outra empresa do grupo;
 - o pedido precisa ser liberado assim que a baixa acontece.
 
-Normalmente essa conciliação fica ao lado do ERP, sem substituí-lo: lê os recebimentos, aplica as regras, grava a baixa pela API e guarda o histórico. O guia sobre [integração com o Bling via API](/guias/integracao-bling-api/) mostra como funciona esse tipo de camada em um ERP muito usado. Para entender o que pesa no orçamento, veja [quanto custa um sistema sob medida](/guias/quanto-custa-um-sistema-sob-medida/).
+Essa conciliação pode ficar ao lado do ERP, sem substituí-lo: lê os recebimentos, aplica as regras, grava a baixa pela API e guarda o histórico. O guia sobre [integração com o Bling via API](/guias/integracao-bling-api/) mostra como funciona esse tipo de camada em um ERP muito usado. Para entender o que pesa no orçamento, veja [quanto custa um sistema sob medida](/guias/quanto-custa-um-sistema-sob-medida/).
 
 ## E quando o cliente paga errado?
 
