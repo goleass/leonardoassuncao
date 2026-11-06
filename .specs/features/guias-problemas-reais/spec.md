@@ -264,15 +264,15 @@ Implicit-requirement dimensions sweep:
 | PRB-01 | Regras do roadmap | Tasks | Implementing |
 | PRB-02 | Regras do roadmap | Tasks | Implementing |
 | PRB-03 | Regras do roadmap | Tasks | Implementing |
-| PRB-04 | Regras do roadmap | Tasks | Pending |
-| PRB-05 | Regras do roadmap | Tasks | Pending |
-| PRB-06 | Regras do roadmap | Tasks | Pending |
-| PRB-07 | Regras do roadmap | Tasks | Pending |
-| PRB-08 | Regras do roadmap | Tasks | Pending |
-| PRB-09 | Regras do roadmap | Tasks | Pending |
-| PRB-10 | Regras do roadmap | Tasks | Pending |
-| PRB-11 | Regras do roadmap | Tasks | Pending |
-| PRB-12 | Regras do roadmap | Tasks | Pending |
+| PRB-04 | Regras do roadmap | Tasks | Implementing |
+| PRB-05 | Regras do roadmap | Tasks | Implementing |
+| PRB-06 | Regras do roadmap | Tasks | Implementing |
+| PRB-07 | Regras do roadmap | Tasks | Implementing |
+| PRB-08 | Regras do roadmap | Tasks | Implementing |
+| PRB-09 | Regras do roadmap | Tasks | Implementing |
+| PRB-10 | Regras do roadmap | Tasks | Implementing |
+| PRB-11 | Regras do roadmap | Tasks | Implementing |
+| PRB-12 | Regras do roadmap | Tasks | Implementing |
 | SCHED-01 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-02 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-03 | P1: Publicação automática | Tasks | Implementing |
@@ -282,10 +282,10 @@ Implicit-requirement dimensions sweep:
 | SCHED-07 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-08 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-09 | P1: Publicação automática | Tasks | Implementing |
-| EDGE-01 | Edge cases | Tasks | Pending |
+| EDGE-01 | Edge cases | Tasks | Implementing |
 | EDGE-02 | Edge cases | Tasks | Pending |
 | EDGE-03 | Edge cases | Tasks | Pending |
-| EDGE-04 | Edge cases | Tasks | Pending |
+| EDGE-04 | Edge cases | Tasks | Implementing |
 | EDGE-05 | Edge cases | Tasks | Pending |
 
 **Coverage:** 26 total, 26 mapped to tasks, 0 unmapped

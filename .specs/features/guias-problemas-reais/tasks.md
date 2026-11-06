@@ -272,7 +272,7 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
-### T6: Escrever o guia erp-preenche-ibs-cbs-nfe
+### T6: Escrever o guia erp-preenche-ibs-cbs-nfe ✅
 
 **What**: Criar o guia `erp-preenche-ibs-cbs-nfe` com `servico: integracoes`, o `title`, o `h1`, o ângulo e o link de cluster do calendário.
 **Where**: `src/content/guias/erp-preenche-ibs-cbs-nfe.md`
@@ -287,14 +287,14 @@ Termina com o gate Build e a revisão do usuário.
 
 **Done when**:
 
-- [ ] Resultados de busca do h1 lidos; o ângulo não repete o de outro guia (PRB-08)
-- [ ] Cuidados da spec aplicados: Ato Técnico Conjunto CGIBS/RFB nº 1/2026, Ato Conjunto RFB/CGIBS nº 4/2026, Nota Técnica 2025.002 e calendário oficial do Simples; orientar a validar a parte tributária com o contador
-- [ ] `resumo` responde o h1 na primeira frase; ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre (PRB-07)
-- [ ] Links para `/integracoes/` e `/guias/integracao-bling-api/` (PRB-07, PRB-08)
-- [ ] Nenhum cliente, número, resultado ou experiência não confirmados (PRB-09); fontes oficiais nomeadas no texto (PRB-10)
-- [ ] Seções de controle atual, com ≥ 3 perdas concretas, e de pronto × sob medida (PRB-11); sem preço de site ou sistema (PRB-12)
-- [ ] `publishedAt` igual à data do calendário: 2026-11-05 (PRB-05)
-- [ ] Gate check passes: `npm test`
+- [x] Resultados de busca do h1 lidos; o ângulo não repete o de outro guia (PRB-08)
+- [x] Cuidados da spec aplicados: Ato Técnico Conjunto CGIBS/RFB nº 1/2026, Ato Conjunto RFB/CGIBS nº 4/2026, Nota Técnica 2025.002 e calendário oficial do Simples; orientar a validar a parte tributária com o contador
+- [x] `resumo` responde o h1 na primeira frase; ≥ 4 FAQ; ≥ 4 `##`; ≥ 1.200 palavras; menção a Canoas ou Porto Alegre (PRB-07)
+- [x] Links para `/integracoes/` e `/guias/integracao-bling-api/` (PRB-07, PRB-08)
+- [x] Nenhum cliente, número, resultado ou experiência não confirmados (PRB-09); fontes oficiais nomeadas no texto (PRB-10)
+- [x] Seções de controle atual, com ≥ 3 perdas concretas, e de pronto × sob medida (PRB-11); sem preço de site ou sistema (PRB-12)
+- [x] `publishedAt` igual à data do calendário: 2026-11-05 (PRB-05)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
