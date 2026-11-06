@@ -67,9 +67,11 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 
 **Acceptance Criteria**:
 
-1. CLAR-09: The /privacidade SHALL ter uma seção "Análise de navegação" que nomeia o Microsoft Clarity, os dados coletados (páginas, cliques, rolagem e gravações da sessão), os cookies e a finalidade de melhorar o site.
+1. CLAR-09: The /privacidade SHALL ter uma seção "Análise de navegação" que nomeia o Microsoft Clarity, os dados coletados (páginas, cliques, rolagem e gravações da sessão), os cookies `_clck` e `_clsk` como exemplos, como bloqueá-los no navegador e a finalidade de melhorar o site.
 2. CLAR-10: The /privacidade SHALL informar que o conteúdo dos campos do formulário de contato é mascarado nas gravações.
 3. CLAR-11: The /privacidade SHALL deixar de limitar sua introdução ao formulário de contato, citando também a análise de navegação.
+
+4. CLAR-14: The /privacidade SHALL informar que, dependendo do navegador, a Microsoft também pode usar cookies próprios, inclusive para publicidade.
 
 **Independent Test**: renderizar a página e ler as frases exigidas.
 
@@ -99,8 +101,9 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 | CLAR-11 | P1: Política | Execute | Implementing |
 | CLAR-12 | P1: Rastrear | Execute | Implementing |
 | CLAR-13 | P1: Rastrear | Execute | Implementing |
+| CLAR-14 | P1: Política | Execute | Implementing |
 
-**Coverage:** 13 total, 13 mapped to execute steps, 0 unmapped.
+**Coverage:** 14 total, 14 mapped to execute steps, 0 unmapped.
 
 ---
 

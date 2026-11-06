@@ -46,9 +46,14 @@ describe("Página /privacidade (LEGAL-01)", () => {
     expect(doc.querySelector("#analise-de-navegacao")?.textContent?.trim()).toBe("Análise de navegação");
     expect(text).toContain("Microsoft Clarity");
     expect(text).toContain("as páginas visitadas, os cliques, a rolagem e gravações da sessão");
-    expect(text).toContain("cookies _clck e _clsk");
+    expect(text).toContain("O Clarity guarda cookies no seu navegador, como _clck e _clsk, para reconhecer a visita.");
+    expect(text).toContain("Você pode bloqueá-los nas configurações do navegador.");
     expect(text).toContain("melhorar o site");
     expect(text).toContain("Saiba mais na política de privacidade da Microsoft.");
+  });
+
+  it("informa que a Microsoft pode usar cookies próprios, inclusive para publicidade (CLAR-14)", () => {
+    expect(text).toContain("Dependendo do navegador, a Microsoft também pode usar cookies próprios, inclusive para publicidade.");
   });
 
   it("informa que os campos do formulário são mascarados nas gravações (CLAR-10)", () => {
