@@ -190,7 +190,7 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
-### T3: Separar guias agendados no teste de build
+### T3: Separar guias agendados no teste de build ✅
 
 **What**: Tratar como publicados no teste de build só os guias com data até hoje e conferir que os agendados ficam fora da saída.
 **Where**: `tests/build/guias.test.ts`
@@ -205,9 +205,9 @@ Termina com o gate Build e a revisão do usuário.
 
 **Done when**:
 
-- [ ] Guia agendado não gera página nem aparece no sitemap, no `llms.txt` ou em `/guias/` (SCHED-01)
-- [ ] `<lastmod>` de `/guias/` considera só guias publicados (SCHED-03)
-- [ ] Gate check passes: `npm run check && npm test && npm run build && npm run test:build`
+- [x] Guia agendado não gera página nem aparece no sitemap, no `llms.txt` ou em `/guias/` (SCHED-01)
+- [x] `<lastmod>` de `/guias/` considera só guias publicados (SCHED-03)
+- [x] Gate check passes: `npm run check && npm test && npm run build && npm run test:build`
 
 **Tests**: unit
 **Gate**: build
