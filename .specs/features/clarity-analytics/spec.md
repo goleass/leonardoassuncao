@@ -77,8 +77,8 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 
 ## Edge Cases
 
-- IF o Clarity estiver fora do ar ou bloqueado por extensão THEN o site SHALL continuar funcionando, sem erro de script próprio.
-- CLAR-12: IF `window.clarity` já existe THEN o site SHALL manter a função existente, sem substituí-la.
+- CLAR-13: IF a tag do Clarity falhar ao carregar THEN a página SHALL manter o conteúdo e as animações de entrada, sem `pageerror`.
+- CLAR-12: IF `window.clarity` já existe THEN o site SHALL manter a função existente, sem substituí-la, e SHALL carregar a tag.
 
 ---
 
@@ -98,8 +98,9 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 | CLAR-10 | P1: Política | Execute | Implementing |
 | CLAR-11 | P1: Política | Execute | Implementing |
 | CLAR-12 | P1: Rastrear | Execute | Implementing |
+| CLAR-13 | P1: Rastrear | Execute | Implementing |
 
-**Coverage:** 12 total, 12 mapped to execute steps, 0 unmapped.
+**Coverage:** 13 total, 13 mapped to execute steps, 0 unmapped.
 
 ---
 

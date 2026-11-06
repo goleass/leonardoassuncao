@@ -173,10 +173,12 @@ const COLLECT = "https://u.clarity.ms/collect";
 const GIF = Buffer.from("R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", "base64");
 
 /** Abre a home na URL oficial, servindo o dist/ com os cabeçalhos dados. O Clarity é simulado como o real: CORS sim, CORP não. */
-async function openOfficial(override: Record<string, string> = {}) {
+async function openOfficial(override: Record<string, string> = {}, { tagFails = false } = {}) {
   const page = await browser.newPage();
   const violations: string[] = [];
+  const pageErrors: string[] = [];
   const finished = new Set<string>();
+  page.on("pageerror", (error) => pageErrors.push(error.message));
   page.on("console", (message) => {
     if (message.type() === "error") violations.push(message.text());
   });
@@ -194,11 +196,13 @@ async function openOfficial(override: Record<string, string> = {}) {
   });
   const cors = { "access-control-allow-origin": "*" };
   await page.route(TAG, (route) =>
-    route.fulfill({
-      headers: cors,
-      contentType: "application/javascript",
-      body: `const s = document.createElement("script"); s.src = ${JSON.stringify(LOADER)}; document.head.append(s); new Image().src = ${JSON.stringify(PIXEL)};`,
-    }),
+    tagFails
+      ? route.abort("blockedbyclient")
+      : route.fulfill({
+          headers: cors,
+          contentType: "application/javascript",
+          body: `const s = document.createElement("script"); s.src = ${JSON.stringify(LOADER)}; document.head.append(s); new Image().src = ${JSON.stringify(PIXEL)};`,
+        }),
   );
   await page.route(LOADER, (route) =>
     route.fulfill({
@@ -210,7 +214,7 @@ async function openOfficial(override: Record<string, string> = {}) {
   await page.route(PIXEL, (route) => route.fulfill({ headers: cors, contentType: "image/gif", body: GIF }));
   await page.route(COLLECT, (route) => route.fulfill({ headers: cors, contentType: "text/plain", body: "ok" }));
   await page.goto(`${OFFICIAL}/`, { waitUntil: "networkidle" });
-  return { page, violations, finished };
+  return { page, violations, pageErrors, finished };
 }
 
 describe("Clarity sob os cabeçalhos publicados (CLAR-07)", { timeout: 60_000 }, () => {
@@ -226,6 +230,16 @@ describe("Clarity sob os cabeçalhos publicados (CLAR-07)", { timeout: 60_000 },
     const { page, violations, finished } = await openOfficial({ "Content-Security-Policy": "script-src 'self'" });
     expect(finished.has(TAG)).toBe(false);
     expect(violations.some((issue) => /Content Security Policy/.test(issue))).toBe(true);
+    await page.close();
+  });
+
+  it("com a tag bloqueada ou fora do ar, a página funciona sem erro de script (CLAR-13)", async () => {
+    const { page, pageErrors, finished } = await openOfficial({}, { tagFails: true });
+    expect(finished.has(TAG)).toBe(false);
+    expect(await page.locator("main h1").count()).toBe(1);
+    expect(await page.locator(".reveal").count()).toBeGreaterThan(0);
+    expect(await hiddenReveals(page)).toEqual([]);
+    expect(pageErrors).toEqual([]);
     await page.close();
   });
 });
