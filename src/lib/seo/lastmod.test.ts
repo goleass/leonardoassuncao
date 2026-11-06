@@ -117,6 +117,32 @@ describe("guideDates (guias SMAP-02)", () => {
   });
 });
 
+describe("guideDates: guias agendados (SCHED-03)", () => {
+  const agendado = () => [
+    { name: "publicado.md", text: md("publishedAt: 2026-11-05") },
+    { name: "agendado.md", text: md("publishedAt: 2026-11-06") },
+  ];
+
+  it("ignora o guia com data futura em Brasília", () => {
+    const now = new Date("2026-11-06T02:59:59Z");
+    expect(guideDates("src/content/guias", agendado, now)).toEqual({ publicado: "2026-11-05" });
+  });
+
+  it("inclui o guia quando a data chega em Brasília", () => {
+    const now = new Date("2026-11-06T03:00:00Z");
+    expect(guideDates("src/content/guias", agendado, now)).toEqual({ publicado: "2026-11-05", agendado: "2026-11-06" });
+  });
+
+  it("guia agendado não define o <lastmod> de /guias/", () => {
+    const futuro = () => [
+      { name: "publicado.md", text: md("publishedAt: 2020-01-01") },
+      { name: "agendado.md", text: md("publishedAt: 2999-01-01") },
+    ];
+    const { run } = fakeGit({ shallow: "false\n", log: "" });
+    expect(withLastmod({ url: "https://www.leonardoassuncao.com.br/guias/" }, run, futuro).lastmod).toBe("2020-01-01");
+  });
+});
+
 describe("withLastmod: guias (guias SMAP-02, SMAP-03)", () => {
   const base = "https://www.leonardoassuncao.com.br";
 

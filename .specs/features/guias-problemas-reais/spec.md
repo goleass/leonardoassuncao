@@ -275,7 +275,7 @@ Implicit-requirement dimensions sweep:
 | PRB-12 | Regras do roadmap | Tasks | Pending |
 | SCHED-01 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-02 | P1: Publicação automática | Tasks | Implementing |
-| SCHED-03 | P1: Publicação automática | Tasks | Pending |
+| SCHED-03 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-04 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-05 | P1: Publicação automática | Tasks | Implementing |
 | SCHED-06 | P1: Publicação automática | Tasks | Pending |

@@ -165,7 +165,7 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
-### T2: Ignorar data futura no lastmod
+### T2: Ignorar data futura no lastmod ✅
 
 **What**: Fazer `guideDates` ignorar guias com `publishedAt` futuro, para o `<lastmod>` de `/guias/` não apontar para o futuro.
 **Where**: `src/lib/seo/lastmod.ts`
@@ -180,8 +180,8 @@ Termina com o gate Build e a revisão do usuário.
 
 **Done when**:
 
-- [ ] Guia futuro não entra em `guideDates` e não define o `<lastmod>` de `/guias/` (SCHED-03)
-- [ ] Gate check passes: `npm test`
+- [x] Guia futuro não entra em `guideDates` e não define o `<lastmod>` de `/guias/` (SCHED-03)
+- [x] Gate check passes: `npm test`
 
 **Tests**: unit
 **Gate**: quick
