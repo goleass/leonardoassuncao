@@ -47,6 +47,7 @@ describe("initClarity no domínio oficial", () => {
     const win = fakeWindow(official, existing);
     initClarity(win, document);
     expect(win.clarity).toBe(existing);
+    expect(scripts().map((script) => script.getAttribute("src"))).toEqual([TAG]);
   });
 });
 
