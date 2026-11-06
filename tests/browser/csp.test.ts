@@ -173,7 +173,7 @@ const COLLECT = "https://u.clarity.ms/collect";
 const GIF = Buffer.from("R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", "base64");
 
 /** Abre a home na URL oficial, servindo o dist/ com os cabeçalhos dados. O Clarity é simulado como o real: CORS sim, CORP não. */
-async function openOfficial(override: Record<string, string> = {}, { tagFails = false } = {}) {
+async function openOfficial(override: Record<string, string> = {}, { tagFails = false, path: pagePath = "/" } = {}) {
   const page = await browser.newPage();
   const violations: string[] = [];
   const pageErrors: string[] = [];
@@ -213,7 +213,7 @@ async function openOfficial(override: Record<string, string> = {}, { tagFails = 
   );
   await page.route(PIXEL, (route) => route.fulfill({ headers: cors, contentType: "image/gif", body: GIF }));
   await page.route(COLLECT, (route) => route.fulfill({ headers: cors, contentType: "text/plain", body: "ok" }));
-  await page.goto(`${OFFICIAL}/`, { waitUntil: "networkidle" });
+  await page.goto(`${OFFICIAL}${pagePath}`, { waitUntil: "networkidle" });
   return { page, violations, pageErrors, finished };
 }
 
@@ -223,6 +223,13 @@ describe("Clarity sob os cabeçalhos publicados (CLAR-07)", { timeout: 60_000 },
     expect(violations).toEqual([]);
     expect([...finished]).toEqual(expect.arrayContaining([TAG, LOADER, PIXEL, COLLECT]));
     expect(await page.evaluate(() => (window as unknown as { __clarityRan?: boolean }).__clarityRan)).toBe(true);
+    await page.close();
+  });
+
+  it("também carrega a tag em um guia, não só na página inicial (CLAR-01)", async () => {
+    const { page, violations, finished } = await openOfficial({}, { path: "/guias/quanto-custa-um-site/" });
+    expect(violations).toEqual([]);
+    expect([...finished]).toEqual(expect.arrayContaining([TAG, LOADER]));
     await page.close();
   });
 

@@ -31,6 +31,7 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 | Origens de script | `https://www.clarity.ms` e `https://scripts.clarity.ms` | São as duas observadas na tag; menor superfície que `*.clarity.ms` em script-src | n |
 | Origens de conexão e imagem | `https://*.clarity.ms` e `https://c.bing.com` | Lista da documentação da Microsoft, que faz balanceamento entre subdomínios | n |
 | Formulário nas gravações | `data-clarity-mask="true"` no formulário de contato | Garante a máscara mesmo se o modo do projeto mudar no painel | n |
+| Cobertura de páginas no navegador | Amostra: página inicial e um guia. Excluir outra página não é detectado | Decisão do dono na validação: o layout carrega o Clarity sem condição, e testar todas as páginas deixaria a suíte mais lenta | y |
 
 **Open questions:** none - all resolved or logged above.
 
@@ -72,6 +73,8 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 3. CLAR-11: The /privacidade SHALL deixar de limitar sua introdução ao formulário de contato, citando também a análise de navegação.
 
 4. CLAR-14: The /privacidade SHALL informar que, dependendo do navegador, a Microsoft também pode usar cookies próprios, inclusive para publicidade.
+5. CLAR-15: The /privacidade SHALL restringir a promessa de não compartilhar dados a uma seção de título "Finalidade dos dados do formulário".
+6. CLAR-16: The /privacidade SHALL dizer em "Seus direitos" que os dados da análise de navegação ficam com a Microsoft e indicar o e-mail do site e a política da Microsoft para dúvidas.
 
 **Independent Test**: renderizar a página e ler as frases exigidas.
 
@@ -102,8 +105,10 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 | CLAR-12 | P1: Rastrear | Execute | Implementing |
 | CLAR-13 | P1: Rastrear | Execute | Implementing |
 | CLAR-14 | P1: Política | Execute | Implementing |
+| CLAR-15 | P1: Política | Execute | Implementing |
+| CLAR-16 | P1: Política | Execute | Implementing |
 
-**Coverage:** 14 total, 14 mapped to execute steps, 0 unmapped.
+**Coverage:** 16 total, 16 mapped to execute steps, 0 unmapped.
 
 ---
 

@@ -200,6 +200,72 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - evidence: F22 tests/content/guide-rules.ts:6 (content-tests)
 - last seen: 2026-11-06T02:47:51Z
 
+### L-032 - Test a third-party outage by failing its request and asserting the page still works and raises no page error, not only that the request was blocked
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `third-party-scripts` · harmful: 0
+- features: clarity-analytics
+- evidence: M20b tests/browser/csp.test.ts:225 (third-party-scripts)
+- last seen: 2026-11-06T02:04:50Z
+
+### L-033 - When a guard preserves existing state, also assert that the rest of the flow still runs on that path
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `third-party-scripts` · harmful: 0
+- features: clarity-analytics
+- evidence: M21 src/scripts/clarity.test.ts:49 (third-party-scripts)
+- last seen: 2026-11-06T02:04:50Z
+
+### L-034 - Give every edge case a requirement ID and a traceability row so it cannot escape test coverage
+- signal: `ac_gap` · recurrence: 1 feature(s) · scope: `spec` · harmful: 0
+- features: clarity-analytics
+- evidence: Edge case outage spec.md:80 (spec)
+- last seen: 2026-11-06T02:04:50Z
+
+### L-035 - Name the exact items a disclosure requirement must list, checked against the vendor documentation
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `spec` · harmful: 0
+- features: clarity-analytics
+- evidence: CLAR-09 spec.md:70 (spec)
+- last seen: 2026-11-06T02:04:50Z
+
+### L-036 - State whether the rest of the flow continues when a requirement keeps existing state
+- signal: `spec_precision_gap` · recurrence: 1 feature(s) · scope: `spec` · harmful: 0
+- features: clarity-analytics
+- evidence: CLAR-12 spec.md:81 (spec)
+- last seen: 2026-11-06T02:04:50Z
+
+### L-037 - Assert text a requirement places in a section by reading that section's own content, not the whole page
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `content-tests` · harmful: 0
+- features: clarity-analytics
+- evidence: X12 src/pages/_privacidade.test.ts:47 (content-tests)
+- last seen: 2026-11-06T03:28:46Z
+
+### L-038 - Test an exact-host guard with a sibling subdomain and a lookalike that has the host as a prefix, not only unrelated hosts
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `third-party-scripts` · harmful: 0
+- features: clarity-analytics
+- evidence: X4 X5 src/scripts/clarity.test.ts:55 (third-party-scripts)
+- last seen: 2026-11-06T03:28:46Z
+
+### L-039 - When a requirement covers every page, exercise layout-level script wiring on a non-root page too
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `third-party-scripts` · harmful: 0
+- features: clarity-analytics
+- evidence: X11 tests/browser/csp.test.ts:216 (third-party-scripts)
+- last seen: 2026-11-06T03:28:46Z
+
+### L-040 - Test an exact-host guard with a host that has it as a suffix as well as a prefix
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `third-party-scripts` · harmful: 0
+- features: clarity-analytics
+- evidence: N1 src/scripts/clarity.test.ts:56 (third-party-scripts)
+- last seen: 2026-11-06T03:55:34Z
+
+### L-041 - Test that the middleware applies a response helper, not only the helper on its own
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `security-headers` · harmful: 0
+- features: clarity-analytics
+- evidence: N2 src/middleware.ts:5 (security-headers)
+- last seen: 2026-11-06T03:55:34Z
+
+### L-042 - When a requirement covers every page, check every built page or record sampling as an accepted limit
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `third-party-scripts` · harmful: 0
+- features: clarity-analytics
+- evidence: N3 tests/browser/csp.test.ts:230 (third-party-scripts)
+- last seen: 2026-11-06T03:55:34Z
+
 ## Quarantined (failed when applied - ignore)
 
 A confirmed lesson that recurred alongside failure. Kept for the maintainer to review.

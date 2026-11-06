@@ -52,7 +52,16 @@ describe("initClarity no domínio oficial", () => {
 });
 
 describe("initClarity fora do domínio oficial (CLAR-03)", () => {
-  it.each(["127.0.0.1", "localhost", "leonardoassuncao.netlify.app", "deploy-preview-1--leonardoassuncao.netlify.app", "leonardoassuncao.com.br"])(
+  it.each([
+    "127.0.0.1",
+    "localhost",
+    "leonardoassuncao.netlify.app",
+    "deploy-preview-1--leonardoassuncao.netlify.app",
+    "leonardoassuncao.com.br",
+    "staging.leonardoassuncao.com.br",
+    "foo.www.leonardoassuncao.com.br",
+    "www.leonardoassuncao.com.br.exemplo.com",
+  ])(
     "%s: não cria a fila nem carrega a tag",
     (hostname) => {
       const win = fakeWindow(hostname);

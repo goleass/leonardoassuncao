@@ -42,22 +42,48 @@ describe("Página /privacidade (LEGAL-01)", () => {
     expect(link?.textContent?.trim()).toBe("dados@exemplo.com.br");
   });
 
+  /** Texto entre o título da seção de análise e o próximo <h2>. */
+  function analysisSection(): string {
+    const parts: string[] = [];
+    let node = doc.querySelector("#analise-de-navegacao")?.nextElementSibling;
+    while (node && node.tagName !== "H2") {
+      parts.push(accessibleText(node));
+      node = node.nextElementSibling;
+    }
+    return parts.join(" ");
+  }
+
   it('tem a seção "Análise de navegação" com o Clarity, os dados, os cookies e a finalidade (CLAR-09)', () => {
     expect(doc.querySelector("#analise-de-navegacao")?.textContent?.trim()).toBe("Análise de navegação");
-    expect(text).toContain("Microsoft Clarity");
-    expect(text).toContain("as páginas visitadas, os cliques, a rolagem e gravações da sessão");
-    expect(text).toContain("O Clarity guarda cookies no seu navegador, como _clck e _clsk, para reconhecer a visita.");
-    expect(text).toContain("Você pode bloqueá-los nas configurações do navegador.");
-    expect(text).toContain("melhorar o site");
-    expect(text).toContain("Saiba mais na política de privacidade da Microsoft.");
+    const section = analysisSection();
+    expect(section).toContain("Microsoft Clarity");
+    expect(section).toContain("as páginas visitadas, os cliques, a rolagem e gravações da sessão");
+    expect(section).toContain("O Clarity guarda cookies no seu navegador, como _clck e _clsk, para reconhecer a visita.");
+    expect(section).toContain("Você pode bloqueá-los nas configurações do navegador.");
+    expect(section).toContain("melhorar o site");
+    expect(section).toContain("Saiba mais na política de privacidade da Microsoft.");
   });
 
   it("informa que a Microsoft pode usar cookies próprios, inclusive para publicidade (CLAR-14)", () => {
-    expect(text).toContain("Dependendo do navegador, a Microsoft também pode usar cookies próprios, inclusive para publicidade.");
+    expect(analysisSection()).toContain("Dependendo do navegador, a Microsoft também pode usar cookies próprios, inclusive para publicidade.");
   });
 
   it("informa que os campos do formulário são mascarados nas gravações (CLAR-10)", () => {
-    expect(text).toContain("O conteúdo dos campos do formulário de contato é mascarado nas gravações.");
+    expect(analysisSection()).toContain("O conteúdo dos campos do formulário de contato é mascarado nas gravações.");
+  });
+
+  it("a promessa de não compartilhar fica sob um título restrito ao formulário (CLAR-15)", () => {
+    const heading = doc.querySelector("#finalidade-formulario");
+    expect(heading?.textContent?.trim()).toBe("Finalidade dos dados do formulário");
+    expect(accessibleText(heading?.nextElementSibling as Element)).toContain("não são vendidos, compartilhados para marketing");
+  });
+
+  it('"Seus direitos" orienta sobre os dados da análise de navegação (CLAR-16)', () => {
+    const paragraph = doc.querySelector("#direitos-navegacao") as Element;
+    expect(accessibleText(paragraph)).toBe(
+      "Os dados da análise de navegação ficam com a Microsoft; para dúvidas sobre eles, escreva para o mesmo e-mail ou consulte a política de privacidade da Microsoft.",
+    );
+    expect(paragraph.previousElementSibling?.previousElementSibling?.textContent?.trim()).toBe("Seus direitos");
   });
 
   it("a introdução cita também a análise de navegação (CLAR-11)", () => {
