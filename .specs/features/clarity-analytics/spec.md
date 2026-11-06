@@ -73,6 +73,8 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 3. CLAR-11: The /privacidade SHALL deixar de limitar sua introdução ao formulário de contato, citando também a análise de navegação.
 
 4. CLAR-14: The /privacidade SHALL informar que, dependendo do navegador, a Microsoft também pode usar cookies próprios, inclusive para publicidade.
+5. CLAR-15: The /privacidade SHALL restringir a promessa de não compartilhar dados a uma seção de título "Finalidade dos dados do formulário".
+6. CLAR-16: The /privacidade SHALL dizer em "Seus direitos" que os dados da análise de navegação ficam com a Microsoft e indicar o e-mail do site e a política da Microsoft para dúvidas.
 
 **Independent Test**: renderizar a página e ler as frases exigidas.
 
@@ -103,8 +105,10 @@ O dono do site não tem dados de como os visitantes usam as páginas. O Microsof
 | CLAR-12 | P1: Rastrear | Execute | Implementing |
 | CLAR-13 | P1: Rastrear | Execute | Implementing |
 | CLAR-14 | P1: Política | Execute | Implementing |
+| CLAR-15 | P1: Política | Execute | Implementing |
+| CLAR-16 | P1: Política | Execute | Implementing |
 
-**Coverage:** 14 total, 14 mapped to execute steps, 0 unmapped.
+**Coverage:** 16 total, 16 mapped to execute steps, 0 unmapped.
 
 ---
 

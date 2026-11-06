@@ -72,6 +72,20 @@ describe("Página /privacidade (LEGAL-01)", () => {
     expect(analysisSection()).toContain("O conteúdo dos campos do formulário de contato é mascarado nas gravações.");
   });
 
+  it("a promessa de não compartilhar fica sob um título restrito ao formulário (CLAR-15)", () => {
+    const heading = doc.querySelector("#finalidade-formulario");
+    expect(heading?.textContent?.trim()).toBe("Finalidade dos dados do formulário");
+    expect(accessibleText(heading?.nextElementSibling as Element)).toContain("não são vendidos, compartilhados para marketing");
+  });
+
+  it('"Seus direitos" orienta sobre os dados da análise de navegação (CLAR-16)', () => {
+    const paragraph = doc.querySelector("#direitos-navegacao") as Element;
+    expect(accessibleText(paragraph)).toBe(
+      "Os dados da análise de navegação ficam com a Microsoft; para dúvidas sobre eles, escreva para o mesmo e-mail ou consulte a política de privacidade da Microsoft.",
+    );
+    expect(paragraph.previousElementSibling?.previousElementSibling?.textContent?.trim()).toBe("Seus direitos");
+  });
+
   it("a introdução cita também a análise de navegação (CLAR-11)", () => {
     expect(doc.querySelector(".legal__lead")?.textContent?.replace(/\s+/g, " ")).toContain("dados da análise de navegação");
   });
