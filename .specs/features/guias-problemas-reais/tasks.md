@@ -471,7 +471,7 @@ Termina com o gate Build e a revisão do usuário.
 
 ---
 
-### T38: Neutralizar frequências sem fonte nos guias de 05/11
+### T38: Neutralizar frequências sem fonte nos guias de 05/11 ✅
 
 **What**: Trocar as frases de frequência ou resultado sem medida que restaram nos guias de 05/11.
 **Where**: `src/content/guias/locacao-equipamentos-devolucao-parcial.md`
@@ -486,8 +486,8 @@ Termina com o gate Build e a revisão do usuário.
 
 **Done when**:
 
-- [ ] Frases apontadas viram texto neutro (PRB-09)
-- [ ] Gate check passes: `npm run check && npm test && npm run build && npm run test:build`
+- [x] Frases apontadas viram texto neutro (PRB-09)
+- [x] Gate check passes: `npm run check && npm test && npm run build && npm run test:build`
 
 **Tests**: unit
 **Gate**: build

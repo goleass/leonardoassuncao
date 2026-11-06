@@ -25,7 +25,7 @@ Se esse cenário é comum na sua empresa, a integração pode até estar funcion
 
 ## Por que o ERP não dá baixa quando o Pix vem direto na chave?
 
-O ERP precisa de alguma informação que ligue o dinheiro recebido à cobrança aberta. No Pix, esse elo costuma ser o **txid**, o identificador da transação.
+O ERP precisa de alguma informação que ligue o dinheiro recebido à cobrança aberta. No Pix, esse elo é o **txid**, o identificador da transação, quando a cobrança é paga com ele.
 
 O caminho normal é este:
 

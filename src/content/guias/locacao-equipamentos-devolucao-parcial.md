@@ -21,7 +21,7 @@ faq:
 
 O contrato saiu com 200 painéis de andaime. Na semana seguinte, a obra devolveu 120. Depois, mandou mais 50 em outro caminhão e 28 no fim do mês. Sobraram 2 painéis que ninguém sabe se voltaram, e a fatura está para sair.
 
-A multiplicação não é o problema mais difícil. O problema é ter certeza de **quantas peças estavam com o cliente em cada dia**, e conseguir mostrar isso quando ele questiona o valor. Neste guia eu explico como organizar a cobrança pelo saldo, o que costuma dar errado e quando vale usar um sistema. Não existe uma única fórmula: prazos, período mínimo e regras de atraso dependem do contrato de cada locadora, e os valores abaixo são fictícios.
+A multiplicação não é o problema mais difícil. O problema é ter certeza de **quantas peças estavam com o cliente em cada dia**, e conseguir mostrar isso quando ele questiona o valor. Neste guia eu explico como organizar a cobrança pelo saldo, o que pode dar errado e quando vale usar um sistema. Não existe uma única fórmula: prazos, período mínimo e regras de atraso dependem do contrato de cada locadora, e os valores abaixo são fictícios.
 
 ## Como calcular as diárias em uma devolução parcial?
 
@@ -59,7 +59,7 @@ A regra mais importante é **o saldo vir das movimentações**, e não de um cam
 
 ## Como a locadora controla isso hoje e o que perde?
 
-Muitas locadoras começam com ferramentas simples, que atendem bem no início:
+Uma locadora pode começar com ferramentas simples, que atendem bem no início:
 
 - **Planilha por contrato.** Cada contrato vira uma aba, com colunas para as devoluções e fórmulas que alguém adapta a cada caso.
 - **Papel no pátio.** O romaneio é preenchido na conferência, fica na prancheta e só entra na planilha dias depois.
@@ -89,7 +89,7 @@ Esses casos causam mais discussão do que a devolução normal, então defina um
 
 ## Como mostrar a cobrança para o cliente?
 
-Grande parte da discussão desaparece quando o cliente consegue conferir a conta. Junto da fatura, envie um demonstrativo com:
+Boa parte da discussão pode ser evitada quando o cliente consegue conferir a conta. Junto da fatura, envie um demonstrativo com:
 
 - cada período, com data inicial e final;
 - o saldo de cada item naquele período;
@@ -127,4 +127,4 @@ Você pode melhorar o controle antes de decidir sobre um sistema:
 
 Eu atendo empresas de Canoas, Porto Alegre e região metropolitana, além de outras cidades de forma remota. Não parto de um modelo fixo de locação: o primeiro passo é entender a regra do seu contrato e testar com casos reais antes de propor qualquer desenvolvimento.
 
-Na página de [software sob medida](/software-sob-medida/) está como eu trabalho. Se você quiser avaliar o seu cenário, [fale comigo](/#contato) com um exemplo de contrato que deu trabalho para fechar, sem dados pessoais do cliente. Normalmente é nele que aparecem as regras que um sistema precisa cobrir.
+Na página de [software sob medida](/software-sob-medida/) está como eu trabalho. Se você quiser avaliar o seu cenário, [fale comigo](/#contato) com um exemplo de contrato que deu trabalho para fechar, sem dados pessoais do cliente. É nesse tipo de contrato que as regras que um sistema precisa cobrir tendem a aparecer.
