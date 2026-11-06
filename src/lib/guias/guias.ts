@@ -28,8 +28,18 @@ export const lastDate = (g: Guide): Date => g.updatedAt ?? g.publishedAt;
 
 const newestFirst = (list: Guide[]) => [...list].sort((a, b) => lastDate(b).getTime() - lastDate(a).getTime());
 
-/** Valida slug e marcadores, remove rascunhos fora do dev e ordena do mais recente (COL-05, COL-07 a COL-09). */
-export function selectGuides(guides: Guide[], { includeDrafts }: { includeDrafts: boolean }): Guide[] {
+// en-CA formata como AAAA-MM-DD, comparável com a data do frontmatter.
+const brazilDay = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" });
+
+/** A data de publicação já chegou em Brasília? O build roda em UTC, e o calendário dos guias é do Brasil (SCHED-01, SCHED-02). */
+export const isDue = (publishedAt: Date, now: Date = new Date()): boolean =>
+  publishedAt.toISOString().slice(0, 10) <= brazilDay.format(now);
+
+/** Valida slug e marcadores, remove rascunhos e guias agendados fora do dev e ordena do mais recente (COL-05, COL-07 a COL-09, SCHED-01). */
+export function selectGuides(
+  guides: Guide[],
+  { includeDrafts, now = new Date() }: { includeDrafts: boolean; now?: Date },
+): Guide[] {
   for (const g of guides) {
     const file = `guias/${g.slug}.md`;
     if (!SLUG.test(g.slug)) throw new Error(`${file}: nome do arquivo inválido; use letras minúsculas, números e hífens`);
@@ -40,7 +50,7 @@ export function selectGuides(guides: Guide[], { includeDrafts }: { includeDrafts
       if (marker) throw new Error(`${file}: marcador pendente "${marker}" em guia publicado; resolva ou use draft: true`);
     }
   }
-  return newestFirst(includeDrafts ? guides : guides.filter((g) => !g.draft));
+  return newestFirst(includeDrafts ? guides : guides.filter((g) => !g.draft && isDue(g.publishedAt, now)));
 }
 
 export const guidesFor = (guides: Guide[], servico: string): Guide[] =>
